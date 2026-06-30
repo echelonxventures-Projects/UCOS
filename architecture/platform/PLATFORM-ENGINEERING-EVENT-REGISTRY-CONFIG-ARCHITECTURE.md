@@ -2,9 +2,9 @@
 
 **Artifact ID:** UCOS-PEA-003
 **Layer:** ARCHITECTURE (Platform Engineering)
-**Status:** CREATED — IN PROGRESS (Phase 9.0C.1B — Event Catalog Architecture Part 1; Section XI Part B, `PEV-001..PEV-036`)
-**Version:** 0.4.0
-**Phase:** Phase 9.0C — Platform Engineering Architecture: Event, Registry & Configuration Architecture (executed as sub-phases 9.0C.1A → 9.0C.1B …)
+**Status:** CREATED — IN PROGRESS (Phase 9.0C.1C — Event Catalog Architecture Part 2; Section XI Part B, `PEV-001..PEV-073` complete)
+**Version:** 0.5.0
+**Phase:** Phase 9.0C — Platform Engineering Architecture: Event, Registry & Configuration Architecture (executed as sub-phases 9.0C.1A → 9.0C.1B → 9.0C.1C …)
 **Date:** 2026-06-30
 **Owner:** Chief Platform Engineer / Enterprise Platform Architect
 **Approver:** Authority Board (ratification deferred to a later Platform Engineering validation phase)
@@ -31,9 +31,9 @@
 > - **9.0C.1A — Event Domain Architecture** (Section XI Part A): `PED-001..017`, `PEGM-001`, `PEL-001`,
 >   `TM-PEA-006A`, `TM-PEA-006B`. **COMPLETE** (`UCOS-PEA-9.0C.1A-COMP-001`).
 > - **9.0C.1B — Event Catalog Architecture Part 1** (Section XI Part B): `PEV-001..036`, `TM-PEA-006`
->   (Part 1). **← THIS SUB-PHASE.**
+>   (Part 1). **COMPLETE** (`UCOS-PEA-9.0C.1B-COMP-001`).
 > - **9.0C.1C — Event Catalog Architecture Part 2** (Section XI Part B cont.): `PEV-037..073`, `TM-PEA-006`
->   (Part 2). *(authorized; not begun)*
+>   (Part 2). **← THIS SUB-PHASE.**
 > - **9.0C.2 — Registry Architecture** (Section XII): `PRG-001..017`, `PRE-001..073`, `TM-PEA-007`. *(deferred)*
 > - **9.0C.3 — Configuration Architecture** (Section XIII): `PCD-001..017`, `PCF-001..073`, `TM-PEA-008`. *(deferred)*
 > - **9.0C.4 — Metadata Architecture** (Section XIV): `PMD-001..017`, `PME-001..073`, `TM-PEA-009`. *(deferred)*
@@ -1186,17 +1186,607 @@ classifications. The vocabulary is **fixed here** so that the event domains (`PE
 
 ---
 
+## Section XI — Event Architecture
+
+### Part B — Event Catalog (Part 2: `PEV-037..PEV-073`)
+
+> **Catalog scope (Part 2).** This sub-phase (**Phase 9.0C.1C**) enumerates the **second half** of the
+> Platform Event Catalog — `PEV-037..PEV-073`, mapped **1:1** from `PRS-037..PRS-073`, completing
+> `PED-009` (`PEV-037..038`) and populating `PED-010..PED-017`. It **inherits** the event domains
+> (`PED-001..017`), event governance (`PEGM-001`), and event lifecycle (`PEL-001`) established in **9.0C.1A**
+> and the catalog conventions, common controls, definition, and classification vocabulary established in
+> **9.0C.1B** without alteration. `PEV-001..036` (Part 1) are **not** re-generated, re-numbered, or altered
+> here.
+>
+> **Inherited definition & common controls.** A **Platform Event** (`PEV`) is the authoritative, governed
+> declaration of a single canonical signal produced by exactly one Platform Runtime Service (`PRS`) and
+> owned by exactly one Platform Event Domain (`PED`) — a **governance / ownership construct**, not a topic,
+> stream, queue, channel, broker, partition, message schema, payload, product, or code. The **Common
+> Authority**, **Common Payload Authority** (event contracts/schemas/payloads owned by Prompt 07 —
+> deferred), **Common Lifecycle Authority** (`PEL-001` ten stages; migration-only), and the **Common
+> Governance (PVG)**, **Ownership (PVO)**, **Audit (PVA)**, **Traceability (PVT)**, **Boundary (PVB)**,
+> **Failure (PVF)**, and **Recovery (PVR)** controls stated once for the catalog in Part B (Part 1) apply in
+> full to every `PEV-037..073` below and are **not** restated per event. Each `PEV` realizes exactly one
+> `PRS` (1:1) and belongs to exactly one `PED`, inheriting that domain's platform domain (`PE-nn`),
+> capability anchor (CAP-09..19), governance (`PEG`), ownership (`PEO`), boundary (`PEB`), governance model
+> (`PEGM-001`), and lifecycle (`PEL-001`). **Event Classification** is exactly one of the ten canonical
+> classifications (§P.4); **Event Category** is the finer functional grouping; **Event Scope** is one of
+> `Domain-Internal`, `Platform-Wide`, or `Cross-Domain`. Each `PEV` below lists only its **event-specific**
+> fields; `PRS-039` Audit Capture is a **universal consumer** of every governed event (PVA1) and is listed
+> only where it is the primary functional consumer.
+
+
+#### Event Domain `PED-009` — Secrets & Key Management (`PRD-009`, CAP-17) — `PEV-037..038` (Part 2 remainder)
+
+> **Scope note.** `PED-009` owns four services (`PRS-035..038`). Part 1 catalogued `PEV-035..036`; Part 2
+> completes the domain with `PEV-037..038`. With these two events the domain is **fully populated**
+> (`PEV-035..038`).
+
+#### PEV-037 — Rotation Completed
+- **Purpose:** Signal that a governed rotation of secrets/keys has completed without breaking consumers
+  (backward-compatible, bounded overlap window). **Owning Event Domain:** `PED-009`. **Owning Runtime
+  Domain:** `PRD-009`. **Producing Runtime Service:** `PRS-037` Rotation Coordination.
+- **Primary Consuming Services:** `PRS-038` Secret Reference Resolution; `PRS-042` Integrity &
+  Tamper-evidence; `PRS-039` Audit Capture.
+- **Event Category:** Rotation-completion signal. **Event Classification:** Capability Event. **Event
+  Scope:** Platform-Wide.
+- **Event-specific Failure/Recovery:** rotation failure contained in `PEX-009` with prior material valid
+  during overlap; idempotent re-rotation; no secret material in payload. + common controls.
+
+#### PEV-038 — Secret Reference Resolved
+- **Purpose:** Signal that a governed secret/key **reference** has been resolved to a runtime handle for a
+  consuming service (references only — never literal values). **Owning Event Domain:** `PED-009`. **Owning
+  Runtime Domain:** `PRD-009`. **Producing Runtime Service:** `PRS-038` Secret Reference Resolution.
+- **Primary Consuming Services:** `PRS-035` Secret Issuance; `PRS-042` Integrity & Tamper-evidence;
+  `PRS-039` Audit Capture.
+- **Event Category:** Reference-resolution signal. **Event Classification:** Capability Event. **Event
+  Scope:** Platform-Wide.
+- **Event-specific Failure/Recovery:** deny-by-default on resolution failure; no secret values in audit/
+  telemetry payloads (PVB5); deterministic re-resolution. + common controls.
+
+
+#### Event Domain `PED-010` — Audit & Evidence (`PRD-010`, CAP-16) — `PEV-039..042`
+
+#### PEV-039 — Audit Record Captured
+- **Purpose:** Signal that a governed, append-only audit record has been captured from a runtime domain —
+  the auditability spine that receives signals from all domains. **Owning Event Domain:** `PED-010`.
+  **Owning Runtime Domain:** `PRD-010`. **Producing Runtime Service:** `PRS-039` Audit Capture.
+- **Primary Consuming Services:** `PRS-040` Evidence Custody; `PRS-073` Governance Evidence Aggregation.
+- **Event Category:** Audit-capture signal. **Event Classification:** Audit Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** append-only — never suppressed or mutated; capture failure raises a
+  non-waivable S1/S3/S4 alert; deterministic, idempotent re-capture. + common controls.
+
+#### PEV-040 — Evidence Custodied
+- **Purpose:** Signal that captured audit evidence has been placed under governed custody preserving
+  classification and lineage (custody ≠ ownership). **Owning Event Domain:** `PED-010`. **Owning Runtime
+  Domain:** `PRD-010`. **Producing Runtime Service:** `PRS-040` Evidence Custody.
+- **Primary Consuming Services:** `PRS-042` Integrity & Tamper-evidence; `PRS-041` Audit Query &
+  Attestation.
+- **Event Category:** Custody signal. **Event Classification:** Audit Event. **Event Scope:**
+  Domain-Internal.
+- **Event-specific Failure/Recovery:** tamper-evident; retention-protected; no evidence loss; recovery via
+  governed re-custody from append-only source. + common controls.
+
+#### PEV-041 — Attestation Produced
+- **Purpose:** Signal that a governed attestation / evidence-query result has been produced for an
+  authorized consumer (read-only over custodied evidence). **Owning Event Domain:** `PED-010`. **Owning
+  Runtime Domain:** `PRD-010`. **Producing Runtime Service:** `PRS-041` Audit Query & Attestation.
+- **Primary Consuming Services:** `PRS-073` Governance Evidence Aggregation; `PRS-067` Reporting Surface.
+- **Event Category:** Attestation signal. **Event Classification:** Audit Event. **Event Scope:**
+  Cross-Domain (to `PED-017`).
+- **Event-specific Failure/Recovery:** least-privilege, read-only; deny-by-default on authz failure;
+  deterministic re-attestation. + common controls.
+
+#### PEV-042 — Integrity Verified
+- **Purpose:** Signal the outcome of a governed integrity / tamper-evidence verification over audit and
+  evidence records (deterministic verification). **Owning Event Domain:** `PED-010`. **Owning Runtime
+  Domain:** `PRD-010`. **Producing Runtime Service:** `PRS-042` Integrity & Tamper-evidence.
+- **Primary Consuming Services:** `PRS-051` Alert Signaling (on tamper indication); `PRS-073` Governance
+  Evidence Aggregation.
+- **Event Category:** Integrity-verification signal. **Event Classification:** Audit Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** non-waivable S1/S3/S4; tamper indication escalates via `PRS-051`;
+  deterministic re-verification; no suppression. + common controls.
+
+
+#### Event Domain `PED-011` — Configuration & Metadata Delivery (`PRD-011`, CAP-10) — `PEV-043..046`
+
+#### PEV-043 — Configuration Resolved
+- **Purpose:** Signal that governed, versioned configuration has been resolved for a runtime domain,
+  separated from secrets and code. **Owning Event Domain:** `PED-011`. **Owning Runtime Domain:**
+  `PRD-011`. **Producing Runtime Service:** `PRS-043` Configuration Resolution.
+- **Primary Consuming Services:** (platform-wide configuration consumers) `PRS-001` Execution Scheduling;
+  `PRS-047` Telemetry Ingestion; `PRS-039` Audit Capture.
+- **Event Category:** Configuration-resolution signal. **Event Classification:** Configuration Event.
+  **Event Scope:** Platform-Wide.
+- **Event-specific Failure/Recovery:** never co-mingled with code/secrets; versioned/traceable; last-known-
+  good on resolution failure; deterministic re-resolution. + common controls.
+
+#### PEV-044 — Metadata Delivered
+- **Purpose:** Signal that governed metadata (variability semantics per `UCOS-INF-ARCH-001`) has been
+  delivered to consuming services. **Owning Event Domain:** `PED-011`. **Owning Runtime Domain:**
+  `PRD-011`. **Producing Runtime Service:** `PRS-044` Metadata Delivery.
+- **Primary Consuming Services:** (platform-wide metadata consumers) `PRS-047` Telemetry Ingestion;
+  `PRS-062` Desired-State Reconciliation; `PRS-049` Trace Correlation.
+- **Event Category:** Metadata-delivery signal. **Event Classification:** Metadata Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** metadata-driven; no behaviour encoded that should be metadata;
+  deterministic re-delivery; classification preserved. + common controls.
+
+#### PEV-045 — Configuration Promoted
+- **Purpose:** Signal a governed configuration version/promotion transition (migration-only; no in-place
+  redefinition). **Owning Event Domain:** `PED-011`. **Owning Runtime Domain:** `PRD-011`. **Producing
+  Runtime Service:** `PRS-045` Configuration Versioning.
+- **Primary Consuming Services:** `PRS-043` Configuration Resolution; `PRS-046` Change Propagation.
+- **Event Category:** Promotion signal. **Event Classification:** Configuration Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** versioned; no deletion of ratified versions (PEP-016); deterministic
+  re-promotion; rollback to prior version is migration-safe. + common controls.
+
+#### PEV-046 — Change Propagated
+- **Purpose:** Signal deterministic, ordered propagation of a governed configuration/metadata change to
+  bound consumers. **Owning Event Domain:** `PED-011`. **Owning Runtime Domain:** `PRD-011`. **Producing
+  Runtime Service:** `PRS-046` Change Propagation.
+- **Primary Consuming Services:** `PRS-014` Subscription Registration (bound subscribers); `PRS-043`
+  Configuration Resolution.
+- **Event Category:** Change-propagation signal. **Event Classification:** Configuration Event. **Event
+  Scope:** Platform-Wide.
+- **Event-specific Failure/Recovery:** ordered, idempotent propagation; undeliverable changes dead-lettered
+  via `PRS-017` with no loss; deterministic replay. + common controls.
+
+
+#### Event Domain `PED-012` — Observability & Telemetry (`PRD-012`, CAP-11) — `PEV-047..051`
+
+#### PEV-047 — Telemetry Ingested
+- **Purpose:** Signal that governed telemetry (logs/metrics/traces) has been ingested and normalized from a
+  runtime domain (classification preserved; no classified-data leakage). **Owning Event Domain:**
+  `PED-012`. **Owning Runtime Domain:** `PRD-012`. **Producing Runtime Service:** `PRS-047` Telemetry
+  Ingestion.
+- **Primary Consuming Services:** `PRS-048` Metrics Aggregation; `PRS-049` Trace Correlation; `PRS-064`
+  Drift Detection.
+- **Event Category:** Telemetry-ingestion signal. **Event Classification:** Control Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** no classified data in telemetry (PVB5); classification preserved;
+  deterministic re-ingestion; bounded buffering. + common controls.
+
+#### PEV-048 — Metrics Aggregated
+- **Purpose:** Signal that governed metrics have been aggregated over a deterministic window for health/SLO
+  evaluation. **Owning Event Domain:** `PED-012`. **Owning Runtime Domain:** `PRD-012`. **Producing Runtime
+  Service:** `PRS-048` Metrics Aggregation.
+- **Primary Consuming Services:** `PRS-050` Health & SLO Evaluation.
+- **Event Category:** Metrics-aggregation signal. **Event Classification:** Control Event. **Event Scope:**
+  Domain-Internal.
+- **Event-specific Failure/Recovery:** deterministic aggregation windows; idempotent re-aggregation on
+  replay. + common controls.
+
+#### PEV-049 — Trace Correlated
+- **Purpose:** Signal that governed traces have been correlated across runtime domains for end-to-end
+  traceability (PEP-006; no PII leakage). **Owning Event Domain:** `PED-012`. **Owning Runtime Domain:**
+  `PRD-012`. **Producing Runtime Service:** `PRS-049` Trace Correlation.
+- **Primary Consuming Services:** `PRS-072` Control-Plane Coordination; `PRS-067` Reporting Surface.
+- **Event Category:** Trace-correlation signal. **Event Classification:** Control Event. **Event Scope:**
+  Domain-Internal.
+- **Event-specific Failure/Recovery:** preserves traceability; no PII; deterministic re-correlation. +
+  common controls.
+
+#### PEV-050 — SLO Evaluated
+- **Purpose:** Signal the outcome of a governed health/SLO evaluation (including breach indication) against
+  metadata-driven thresholds. **Owning Event Domain:** `PED-012`. **Owning Runtime Domain:** `PRD-012`.
+  **Producing Runtime Service:** `PRS-050` Health & SLO Evaluation.
+- **Primary Consuming Services:** `PRS-051` Alert Signaling; `PRS-054` Circuit & Bulkhead Governance;
+  `PRS-060` Rollback Coordination.
+- **Event Category:** SLO-evaluation signal. **Event Classification:** Control Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** deterministic thresholds; metadata-driven SLOs; idempotent
+  re-evaluation. + common controls.
+
+#### PEV-051 — Alert Signaled
+- **Purpose:** Signal generation/routing of a governed alert to the resilience and control-plane domains.
+  **Owning Event Domain:** `PED-012`. **Owning Runtime Domain:** `PRD-012`. **Producing Runtime Service:**
+  `PRS-051` Alert Signaling.
+- **Primary Consuming Services:** `PRS-053` Retry & Backoff Governance; `PRS-072` Control-Plane
+  Coordination.
+- **Event Category:** Alert signal. **Event Classification:** Control Event. **Event Scope:** Cross-Domain
+  (to `PED-013`/`PED-017`).
+- **Event-specific Failure/Recovery:** deterministic routing; no alerting product; undeliverable alerts
+  dead-lettered via `PRS-017`; idempotent re-signal. + common controls.
+
+
+#### Event Domain `PED-013` — Resilience & Continuity (`PRD-013`, CAP-15) — `PEV-052..056`
+
+#### PEV-052 — Idempotency Coordinated
+- **Purpose:** Signal that a governed idempotency-key decision has been coordinated for platform-wide
+  consumption (deterministic; bounded key windows). **Owning Event Domain:** `PED-013`. **Owning Runtime
+  Domain:** `PRD-013`. **Producing Runtime Service:** `PRS-052` Idempotency Coordination.
+- **Primary Consuming Services:** (platform-wide idempotency consumers) `PRS-015` Event Delivery; `PRS-005`
+  Persistence Coordination.
+- **Event Category:** Idempotency-coordination signal. **Event Classification:** Execution Event. **Event
+  Scope:** Platform-Wide.
+- **Event-specific Failure/Recovery:** deterministic; bounded key windows; idempotent by construction;
+  fail-safe deny on ambiguity. + common controls.
+
+#### PEV-053 — Retry Governed
+- **Purpose:** Signal a governed, bounded retry/backoff directive for a transient failure (deterministic
+  backoff). **Owning Event Domain:** `PED-013`. **Owning Runtime Domain:** `PRD-013`. **Producing Runtime
+  Service:** `PRS-053` Retry & Backoff Governance.
+- **Primary Consuming Services:** (the failing/retrying service); `PRS-039` Audit Capture.
+- **Event Category:** Retry-directive signal. **Event Classification:** Control Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** bounded retries; idempotent; deterministic backoff; exhaustion
+  dead-letters via `PRS-017` with no loss. + common controls.
+
+#### PEV-054 — Circuit State Changed
+- **Purpose:** Signal a governed circuit-breaking / bulkhead isolation state transition (bounded blast
+  radius). **Owning Event Domain:** `PED-013`. **Owning Runtime Domain:** `PRD-013`. **Producing Runtime
+  Service:** `PRS-054` Circuit & Bulkhead Governance.
+- **Primary Consuming Services:** `PRS-055` Failover Coordination; `PRS-072` Control-Plane Coordination.
+- **Event Category:** Circuit-state signal. **Event Classification:** Control Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** deterministic; fail-safe defaults; bounded blast radius; idempotent
+  state transitions. + common controls.
+
+#### PEV-055 — Failover Initiated
+- **Purpose:** Signal initiation of a governed failover (no failover product/topology selection).
+  **Owning Event Domain:** `PED-013`. **Owning Runtime Domain:** `PRD-013`. **Producing Runtime Service:**
+  `PRS-055` Failover Coordination.
+- **Primary Consuming Services:** `PRS-003` Runtime Lifecycle; `PRS-056` Recovery & Continuity.
+- **Event Category:** Failover signal. **Event Classification:** Execution Event. **Event Scope:**
+  Cross-Domain (to `PED-001`).
+- **Event-specific Failure/Recovery:** deterministic, idempotent failover; bounded; recovery via `PRS-056`.
+  + common controls.
+
+#### PEV-056 — Recovery Completed
+- **Purpose:** Signal completion of governed recovery / business-continuity action and posture (bounded
+  RPO/RTO at policy level). **Owning Event Domain:** `PED-013`. **Owning Runtime Domain:** `PRD-013`.
+  **Producing Runtime Service:** `PRS-056` Recovery & Continuity.
+- **Primary Consuming Services:** `PRS-072` Control-Plane Coordination; `PRS-039` Audit Capture.
+- **Event Category:** Recovery-completion signal. **Event Classification:** Execution Event. **Event
+  Scope:** Platform-Wide.
+- **Event-specific Failure/Recovery:** deterministic, idempotent recovery; governed replay via `PRS-017`/
+  `PRD-013`; migration-safe. + common controls.
+
+
+#### Event Domain `PED-014` — Delivery & CI/CD (`PRD-014`, CAP-15) — `PEV-057..060`
+
+#### PEV-057 — Build Assembled
+- **Purpose:** Signal that a releasable platform element has been governed-assembled (reproducible;
+  registered; no CI/CD product). **Owning Event Domain:** `PED-014`. **Owning Runtime Domain:** `PRD-014`.
+  **Producing Runtime Service:** `PRS-057` Build Assembly Coordination.
+- **Primary Consuming Services:** `PRS-058` Promotion Gate Evaluation.
+- **Event Category:** Build-assembly signal. **Event Classification:** Control Event. **Event Scope:**
+  Domain-Internal.
+- **Event-specific Failure/Recovery:** reproducible; registered via `PRS-022`; deterministic re-assembly;
+  no product selection. + common controls.
+
+#### PEV-058 — Gate Evaluated
+- **Purpose:** Signal the verdict of a governed quality/security/documentation promotion-gate evaluation
+  (no gate bypass). **Owning Event Domain:** `PED-014`. **Owning Runtime Domain:** `PRD-014`. **Producing
+  Runtime Service:** `PRS-058` Promotion Gate Evaluation.
+- **Primary Consuming Services:** `PRS-059` Release Coordination; `PRS-045` Configuration Versioning.
+- **Event Category:** Gate-verdict signal. **Event Classification:** Control Event. **Event Scope:**
+  Domain-Internal.
+- **Event-specific Failure/Recovery:** deterministic verdicts; no gate bypass; fail-closed on gate failure;
+  idempotent re-evaluation. + common controls.
+
+#### PEV-059 — Release Promoted
+- **Purpose:** Signal a governed release/promotion across environments on gate PASS (gated; reproducible;
+  migration-only). **Owning Event Domain:** `PED-014`. **Owning Runtime Domain:** `PRD-014`. **Producing
+  Runtime Service:** `PRS-059` Release Coordination.
+- **Primary Consuming Services:** `PRS-061` Provisioning Coordination; `PRS-060` Rollback Coordination.
+- **Event Category:** Release-promotion signal. **Event Classification:** Control Event. **Event Scope:**
+  Cross-Domain (to `PED-015`).
+- **Event-specific Failure/Recovery:** gated; reproducible; migration-only (PEP-016); rollback via
+  `PRS-060`. + common controls.
+
+#### PEV-060 — Release Rolled Back
+- **Purpose:** Signal a governed rollback to a prior released version on failure (deterministic, idempotent,
+  backward-compatible). **Owning Event Domain:** `PED-014`. **Owning Runtime Domain:** `PRD-014`.
+  **Producing Runtime Service:** `PRS-060` Rollback Coordination.
+- **Primary Consuming Services:** `PRS-072` Control-Plane Coordination; `PRS-039` Audit Capture.
+- **Event Category:** Rollback signal. **Event Classification:** Control Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** deterministic, idempotent rollback; backward-compatible; no deletion
+  of ratified releases (PEP-016). + common controls.
+
+
+#### Event Domain `PED-015` — Infrastructure & Provisioning (`PRD-015`, CAP-15) — `PEV-061..064`
+
+#### PEV-061 — Provisioning Coordinated
+- **Purpose:** Signal that a governed declarative provisioning intent has been coordinated (no IaC tool; no
+  live provisioning; no secrets in intent). **Owning Event Domain:** `PED-015`. **Owning Runtime Domain:**
+  `PRD-015`. **Producing Runtime Service:** `PRS-061` Provisioning Coordination.
+- **Primary Consuming Services:** `PRS-063` Environment Composition; `PRS-062` Desired-State Reconciliation.
+- **Event Category:** Provisioning-intent signal. **Event Classification:** Control Event. **Event Scope:**
+  Domain-Internal.
+- **Event-specific Failure/Recovery:** declarative; reproducible; no secrets in intent (PVB5); deterministic
+  re-coordination. + common controls.
+
+#### PEV-062 — State Reconciled
+- **Purpose:** Signal that declared desired-state has been reconciled with observed posture (deterministic,
+  idempotent). **Owning Event Domain:** `PED-015`. **Owning Runtime Domain:** `PRD-015`. **Producing
+  Runtime Service:** `PRS-062` Desired-State Reconciliation.
+- **Primary Consuming Services:** `PRS-061` Provisioning Coordination; `PRS-072` Control-Plane Coordination.
+- **Event Category:** Reconciliation signal. **Event Classification:** Control Event. **Event Scope:**
+  Domain-Internal.
+- **Event-specific Failure/Recovery:** deterministic, idempotent reconciliation; converges to desired-state;
+  auditable. + common controls.
+
+#### PEV-063 — Environment Composed
+- **Purpose:** Signal governed declarative composition of an environment from registered elements
+  (reproducible; no snowflake environments). **Owning Event Domain:** `PED-015`. **Owning Runtime Domain:**
+  `PRD-015`. **Producing Runtime Service:** `PRS-063` Environment Composition.
+- **Primary Consuming Services:** `PRS-061` Provisioning Coordination; `PRS-059` Release Coordination.
+- **Event Category:** Composition signal. **Event Classification:** Control Event. **Event Scope:**
+  Domain-Internal.
+- **Event-specific Failure/Recovery:** reproducible; registered elements only (`PRS-022`); deterministic
+  re-composition. + common controls.
+
+#### PEV-064 — Drift Detected
+- **Purpose:** Signal governed detection of drift between desired and observed environment posture
+  (deterministic; auditable). **Owning Event Domain:** `PED-015`. **Owning Runtime Domain:** `PRD-015`.
+  **Producing Runtime Service:** `PRS-064` Drift Detection.
+- **Primary Consuming Services:** `PRS-062` Desired-State Reconciliation; `PRS-072` Control-Plane
+  Coordination.
+- **Event Category:** Drift signal. **Event Classification:** Control Event. **Event Scope:** Cross-Domain
+  (to `PED-017`).
+- **Event-specific Failure/Recovery:** deterministic detection; auditable; idempotent re-detection;
+  reconciliation via `PRS-062`. + common controls.
+
+
+#### Event Domain `PED-016` — Intelligence & Analytics (`PRD-016`, CAP-13) — `PEV-065..068`
+
+#### PEV-065 — Insight Derived
+- **Purpose:** Signal that governed insight has been derived from governed events preserving classification
+  (no analytics product; no reclassification). **Owning Event Domain:** `PED-016`. **Owning Runtime
+  Domain:** `PRD-016`. **Producing Runtime Service:** `PRS-065` Event Insight Derivation.
+- **Primary Consuming Services:** `PRS-066` Aggregation & Materialization.
+- **Event Category:** Insight-derivation signal. **Event Classification:** Capability Event. **Event
+  Scope:** Domain-Internal.
+- **Event-specific Failure/Recovery:** classification preserved; no reclassification; deterministic
+  re-derivation. + common controls.
+
+#### PEV-066 — Aggregate Materialized
+- **Purpose:** Signal governed aggregation/materialization of insights (classification-preserving;
+  deterministic). **Owning Event Domain:** `PED-016`. **Owning Runtime Domain:** `PRD-016`. **Producing
+  Runtime Service:** `PRS-066` Aggregation & Materialization.
+- **Primary Consuming Services:** `PRS-067` Reporting Surface.
+- **Event Category:** Materialization signal. **Event Classification:** Capability Event. **Event Scope:**
+  Domain-Internal.
+- **Event-specific Failure/Recovery:** deterministic aggregation; classification preserved; idempotent
+  re-materialization. + common controls.
+
+#### PEV-067 — Report Served
+- **Purpose:** Signal that a governed report / insight response has been served to an authorized consumer
+  (least-privilege; classification preserved; no dashboard product). **Owning Event Domain:** `PED-016`.
+  **Owning Runtime Domain:** `PRD-016`. **Producing Runtime Service:** `PRS-067` Reporting Surface.
+- **Primary Consuming Services:** (authorized governed consumers); `PRS-039` Audit Capture.
+- **Event Category:** Reporting signal. **Event Classification:** Capability Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** least-privilege; deny-by-default on authz failure; classification
+  preserved. + common controls.
+
+#### PEV-068 — Insight Governed
+- **Purpose:** Signal a governed insight-lifecycle/lineage verdict and data-governance conformance (no
+  bypass of data governance; lineage preserved). **Owning Event Domain:** `PED-016`. **Owning Runtime
+  Domain:** `PRD-016`. **Producing Runtime Service:** `PRS-068` Insight Governance.
+- **Primary Consuming Services:** `PRS-066` Aggregation & Materialization; `PRS-073` Governance Evidence
+  Aggregation.
+- **Event Category:** Insight-lineage signal. **Event Classification:** Metadata Event. **Event Scope:**
+  Domain-Internal.
+- **Event-specific Failure/Recovery:** no bypass of data governance; lineage preserved; deterministic
+  re-governance. + common controls.
+
+
+#### Event Domain `PED-017` — Platform Governance & Control Plane (`PRD-017`, CAP-15) — `PEV-069..073`
+
+#### PEV-069 — Policy Enforced
+- **Purpose:** Signal governed enforcement of `PEP-001..020` and policy across `PRD-001..016` (control-plane
+  spine; non-waivable S1/S3/S4 never auto-waived). **Owning Event Domain:** `PED-017`. **Owning Runtime
+  Domain:** `PRD-017`. **Producing Runtime Service:** `PRS-069` Principle & Policy Enforcement.
+- **Primary Consuming Services:** (all governed domains `PED-001..016`); `PRS-073` Governance Evidence
+  Aggregation.
+- **Event Category:** Policy-enforcement signal. **Event Classification:** Governance Event. **Event
+  Scope:** Platform-Wide.
+- **Event-specific Failure/Recovery:** deterministic; non-waivable S1/S3/S4 never auto-waived; fail-closed
+  on enforcement ambiguity; idempotent re-enforcement. + common controls.
+
+#### PEV-070 — Approval Arbitrated
+- **Purpose:** Signal the verdict of an Approval-By-Exception arbitration (Trusted vs Approval-Required;
+  escalation terminal at the Authority Board). **Owning Event Domain:** `PED-017`. **Owning Runtime
+  Domain:** `PRD-017`. **Producing Runtime Service:** `PRS-070` Approval-By-Exception Arbitration.
+- **Primary Consuming Services:** (the requesting service); `PRS-073` Governance Evidence Aggregation;
+  `PRS-039` Audit Capture.
+- **Event Category:** Approval-arbitration signal. **Event Classification:** Governance Event. **Event
+  Scope:** Platform-Wide.
+- **Event-specific Failure/Recovery:** deterministic; deny-by-default; escalation terminal at the Authority
+  Board; idempotent re-arbitration. + common controls.
+
+#### PEV-071 — Element Lifecycle Governed
+- **Purpose:** Signal a governed platform-element lifecycle verdict (register / version / deprecate /
+  retire; migration-only — no deletion of ratified elements). **Owning Event Domain:** `PED-017`. **Owning
+  Runtime Domain:** `PRD-017`. **Producing Runtime Service:** `PRS-071` Platform Element Lifecycle
+  Governance.
+- **Primary Consuming Services:** `PRS-025` Registration Lifecycle; `PRS-073` Governance Evidence
+  Aggregation.
+- **Event Category:** Element-lifecycle signal. **Event Classification:** Governance Event. **Event Scope:**
+  Platform-Wide.
+- **Event-specific Failure/Recovery:** no deletion of ratified elements (PEP-016); migration-only;
+  deterministic re-governance. + common controls.
+
+#### PEV-072 — Control-Plane Coordinated
+- **Purpose:** Signal a governed control-plane coordination directive / state across all runtime domains
+  (never overrides Authority). **Owning Event Domain:** `PED-017`. **Owning Runtime Domain:** `PRD-017`.
+  **Producing Runtime Service:** `PRS-072` Control-Plane Coordination.
+- **Primary Consuming Services:** (all governed domains `PED-001..016`); `PRS-039` Audit Capture.
+- **Event Category:** Control-plane-coordination signal. **Event Classification:** Control Event. **Event
+  Scope:** Platform-Wide.
+- **Event-specific Failure/Recovery:** deterministic; never overrides Authority; bounded; idempotent
+  re-coordination. + common controls.
+
+#### PEV-073 — Governance Evidence Aggregated
+- **Purpose:** Signal that governance evidence across `PRD-001..016` has been aggregated for assurance/
+  attestation (read-only over evidence; tamper-evident; traceable). **Owning Event Domain:** `PED-017`.
+  **Owning Runtime Domain:** `PRD-017`. **Producing Runtime Service:** `PRS-073` Governance Evidence
+  Aggregation.
+- **Primary Consuming Services:** `PRS-041` Audit Query & Attestation; (Authority Board assurance surface).
+- **Event Category:** Governance-evidence signal. **Event Classification:** Governance Event. **Event
+  Scope:** Platform-Wide.
+- **Event-specific Failure/Recovery:** read-only over evidence; tamper-evident; traceable; deterministic
+  re-aggregation; no suppression. + common controls.
+
+
+---
+
+## Section XI — Event Architecture: Traceability Matrix (Part B, Part 2)
+
+### TM-PEA-006 (Part 2) — Runtime Service → Event (`PEV-037..073`, 1:1)
+
+| Event (`PEV`) | Event Name | Producing Service (`PRS`) | Owning Event Domain (`PED`) | Runtime Domain (`PRD`) | Classification |
+|---------------|------------|---------------------------|-----------------------------|------------------------|----------------|
+| `PEV-037` | Rotation Completed | `PRS-037` | `PED-009` | `PRD-009` | Capability Event |
+| `PEV-038` | Secret Reference Resolved | `PRS-038` | `PED-009` | `PRD-009` | Capability Event |
+| `PEV-039` | Audit Record Captured | `PRS-039` | `PED-010` | `PRD-010` | Audit Event |
+| `PEV-040` | Evidence Custodied | `PRS-040` | `PED-010` | `PRD-010` | Audit Event |
+| `PEV-041` | Attestation Produced | `PRS-041` | `PED-010` | `PRD-010` | Audit Event |
+| `PEV-042` | Integrity Verified | `PRS-042` | `PED-010` | `PRD-010` | Audit Event |
+| `PEV-043` | Configuration Resolved | `PRS-043` | `PED-011` | `PRD-011` | Configuration Event |
+| `PEV-044` | Metadata Delivered | `PRS-044` | `PED-011` | `PRD-011` | Metadata Event |
+| `PEV-045` | Configuration Promoted | `PRS-045` | `PED-011` | `PRD-011` | Configuration Event |
+| `PEV-046` | Change Propagated | `PRS-046` | `PED-011` | `PRD-011` | Configuration Event |
+| `PEV-047` | Telemetry Ingested | `PRS-047` | `PED-012` | `PRD-012` | Control Event |
+| `PEV-048` | Metrics Aggregated | `PRS-048` | `PED-012` | `PRD-012` | Control Event |
+| `PEV-049` | Trace Correlated | `PRS-049` | `PED-012` | `PRD-012` | Control Event |
+| `PEV-050` | SLO Evaluated | `PRS-050` | `PED-012` | `PRD-012` | Control Event |
+| `PEV-051` | Alert Signaled | `PRS-051` | `PED-012` | `PRD-012` | Control Event |
+| `PEV-052` | Idempotency Coordinated | `PRS-052` | `PED-013` | `PRD-013` | Execution Event |
+| `PEV-053` | Retry Governed | `PRS-053` | `PED-013` | `PRD-013` | Control Event |
+| `PEV-054` | Circuit State Changed | `PRS-054` | `PED-013` | `PRD-013` | Control Event |
+| `PEV-055` | Failover Initiated | `PRS-055` | `PED-013` | `PRD-013` | Execution Event |
+| `PEV-056` | Recovery Completed | `PRS-056` | `PED-013` | `PRD-013` | Execution Event |
+| `PEV-057` | Build Assembled | `PRS-057` | `PED-014` | `PRD-014` | Control Event |
+| `PEV-058` | Gate Evaluated | `PRS-058` | `PED-014` | `PRD-014` | Control Event |
+| `PEV-059` | Release Promoted | `PRS-059` | `PED-014` | `PRD-014` | Control Event |
+| `PEV-060` | Release Rolled Back | `PRS-060` | `PED-014` | `PRD-014` | Control Event |
+| `PEV-061` | Provisioning Coordinated | `PRS-061` | `PED-015` | `PRD-015` | Control Event |
+| `PEV-062` | State Reconciled | `PRS-062` | `PED-015` | `PRD-015` | Control Event |
+| `PEV-063` | Environment Composed | `PRS-063` | `PED-015` | `PRD-015` | Control Event |
+| `PEV-064` | Drift Detected | `PRS-064` | `PED-015` | `PRD-015` | Control Event |
+| `PEV-065` | Insight Derived | `PRS-065` | `PED-016` | `PRD-016` | Capability Event |
+| `PEV-066` | Aggregate Materialized | `PRS-066` | `PED-016` | `PRD-016` | Capability Event |
+| `PEV-067` | Report Served | `PRS-067` | `PED-016` | `PRD-016` | Capability Event |
+| `PEV-068` | Insight Governed | `PRS-068` | `PED-016` | `PRD-016` | Metadata Event |
+| `PEV-069` | Policy Enforced | `PRS-069` | `PED-017` | `PRD-017` | Governance Event |
+| `PEV-070` | Approval Arbitrated | `PRS-070` | `PED-017` | `PRD-017` | Governance Event |
+| `PEV-071` | Element Lifecycle Governed | `PRS-071` | `PED-017` | `PRD-017` | Governance Event |
+| `PEV-072` | Control-Plane Coordinated | `PRS-072` | `PED-017` | `PRD-017` | Control Event |
+| `PEV-073` | Governance Evidence Aggregated | `PRS-073` | `PED-017` | `PRD-017` | Governance Event |
+
+> **Result:** 37/37 events → services (1:1); 0 orphan events; 0 orphan services (`PRS-037..073`); 0
+> duplicate events; 100% coverage of `PRS-037..073`. Each event belongs to exactly one `PED`. Combined with
+> Part 1 (`TM-PEA-006` Part 1, `PEV-001..036`), the full `TM-PEA-006` now covers `PEV-001..073` ↔
+> `PRS-001..073` (73/73, 1:1).
+
+### Event Domain Distribution (`PEV-037..073` across `PED-009..017`)
+
+| Event Domain (`PED`) | Runtime Domain | Capability anchor | Events (`PEV`) | Count |
+|----------------------|----------------|-------------------|----------------|------:|
+| `PED-009` Secrets & Key Management | `PRD-009` | CAP-17 | `PEV-037..038` (completes `PEV-035..038`) | 2 |
+| `PED-010` Audit & Evidence | `PRD-010` | CAP-16 | `PEV-039..042` | 4 |
+| `PED-011` Configuration & Metadata Delivery | `PRD-011` | CAP-10 | `PEV-043..046` | 4 |
+| `PED-012` Observability & Telemetry | `PRD-012` | CAP-11 | `PEV-047..051` | 5 |
+| `PED-013` Resilience & Continuity | `PRD-013` | CAP-15 | `PEV-052..056` | 5 |
+| `PED-014` Delivery & CI/CD | `PRD-014` | CAP-15 | `PEV-057..060` | 4 |
+| `PED-015` Infrastructure & Provisioning | `PRD-015` | CAP-15 | `PEV-061..064` | 4 |
+| `PED-016` Intelligence & Analytics | `PRD-016` | CAP-13 | `PEV-065..068` | 4 |
+| `PED-017` Platform Governance & Control Plane | `PRD-017` | CAP-15 | `PEV-069..073` | 5 |
+
+> **Result:** `PEV-037..073` distributed across **9 event domains** (`PED-009..017`); sum
+> 2+4+4+5+5+4+4+4+5 = **37**. `PED-009` is now **fully populated** (`PEV-035..038`, 4 events total across
+> Parts 1+2). Combined with Part 1, **all 17 event domains** (`PED-001..017`) are now populated and
+> **every** runtime service `PRS-001..073` produces exactly one event `PEV-001..073` (73/73, 1:1; no
+> service produces a duplicate or zero events).
+
+> **Catalog completeness (Parts 1 + 2).** `PEV-001..073` (73 events) ↔ `PRS-001..073` (73 services), 1:1,
+> distributed across `PED-001..017` (17/17 populated). Combined classification distribution
+> (`PEV-001..073`): Execution ×9 (PEV-001..004, 007, 008, 052, 055, 056); Domain ×2 (PEV-005, 006); Control
+> ×20 (PEV-009..012, 047..051, 053, 054, 057..064, 072); Capability ×20 (PEV-013..021, 031..038, 065..067);
+> Registry ×4 (PEV-022..025); Workflow ×5 (PEV-026..030); Audit ×4 (PEV-039..042); Configuration ×3
+> (PEV-043, 045, 046); Metadata ×2 (PEV-044, 068); Governance ×4 (PEV-069..071, 073). Sum = 9+2+20+20+4+5+4+3+2+4 = **73**.
+
+
+---
+
+## Section XI Part B (Part 2) — Mandatory Validation (Phase 9.0C.1C)
+
+| Inventory | Required | Produced | Result |
+|-----------|----------|---------:|:------:|
+| Platform Events (PEV) | 37 | 37 (`PEV-037..PEV-073`) | ✅ |
+| Runtime Services covered (PRS) | 37 | 37 (`PRS-037..PRS-073`) | ✅ |
+| Event Domains (PED) populated by Part 2 | 9 | 9 (`PED-009..017`; `PED-009` completed) | ✅ |
+| Traceability Matrix (TM) | 1 (Part 2) | 1 (`TM-PEA-006` Part 2) | ✅ |
+
+| Confirmation | Target | Result |
+|--------------|--------|:------:|
+| PRS-037..073 Coverage | 100% | ✅ 100% (37/37; each `PRS` produces ≥1 event) |
+| Event Ownership (each `PEV` → exactly one `PED`) | 100% | ✅ 100% (37/37) |
+| Event Governance (`PEGM-001` binds all `PEV`; each inherits its `PEG`) | 100% | ✅ 100% |
+| Event Lifecycle Mapping (`PEL-001` 10 stages bind all `PEV`) | 100% | ✅ 100% |
+| Event Classification (exactly one of the 10 §P.4 classes) | 37/37 | ✅ 37/37 |
+| Classification ↔ owning `PED` produced-category consistency | 37/37 | ✅ 37/37 (each `PEV` class ∈ its `PED`'s declared produced categories) |
+| Orphans (events / services) | 0 | ✅ 0 |
+| Ownership Conflicts | 0 | ✅ 0 (single owning `PED` per event; single owner from `PEO`) |
+| Governance Conflicts | 0 | ✅ 0 (single `PEG` per `PED`; spine `PEG-017`) |
+| Boundary Violations | 0 | ✅ 0 (inherited `PEB` honored; substrate `PRD-004` only; PVB1–PVB5) |
+| Duplicate Events | 0 | ✅ 0 (no `PRS` produces a duplicate canonical `PEV`; no renumbering of `PEV-001..036`) |
+| Traceability Gaps | 0 | ✅ 0 (`TM-PEA-006` Part 2 complete; full matrix `PEV-001..073`) |
+| Implementation Leakage | 0 | ✅ NONE |
+| Part 1 events altered (`PEV-001..036`) | 0 | ✅ 0 (no alteration / renumbering) |
+| Placeholder events | 0 | ✅ 0 |
+
+> **Whole-catalog confirmation (Parts 1 + 2).** PEV **73** (`PEV-001..073`); PRS covered **73**
+> (`PRS-001..073`); `PED` populated **17/17** (`PED-001..017`); `TM-PEA-006` **complete** (Part 1 + Part 2,
+> 73 rows, 1:1). 100% coverage of `PRS-001..073`; 100% event ownership / governance / lifecycle mapping;
+> 73/73 classified into exactly one of the ten canonical classifications; 0 orphans; 0 ownership / governance
+> / boundary / traceability conflicts; 0 duplicate events; implementation leakage NONE.
+
+> **Implementation-leakage scan (Phase 9.0C.1C).** No cloud provider, region, programming language,
+> framework, library, runtime, container technology, orchestration platform, service mesh, message broker/
+> queue, event-streaming product, database, datastore, storage engine, CI/CD product, IaC tool, vendor,
+> SKU, topology, or network design is named or selected. Terms such as "event", "telemetry", "metrics",
+> "trace", "retry", "circuit", "failover", "rollback", "build", "release", "provisioning", "queue", and
+> "dead-letter" appear **only** as names of event / catalog / lifecycle / governance **constructs** or
+> within explicit deferral / neutrality / prohibition statements — never as technology selections (PEP-010
+> enforced). Event **contracts/schemas/payloads** are owned by Prompt 07 and are **not** defined here
+> (Payload Authority deferred). Registry/Configuration/Metadata/Control Fabric **sections** (Registry
+> `PRG`/`PRE`, Configuration, Metadata `PMD`/`PME`, Control Fabric `PCB`) are deferred to **Phases
+> 9.0C.2–9.0C.5**; "Configuration Event" / "Metadata Event" / "Control Event" / "Registry Event" here are
+> **event classifications**, not those deferred architectural sections.
+
+> **Inheritance-integrity scan.** No `PED-001..017`, `PEGM-001`, `PEL-001`, `TM-PEA-006A/006B`, or
+> `TM-PEA-006` Part 1 (`PEV-001..036`) was altered; no `PE/PEP/PEG/PEO/PEB` or `PRD/PRS/PSR/PEX/PWF` was
+> altered; no business domain, capability, IC/MC, or Conceptual/Logical/Physical Data construct was created,
+> removed, merged, split, re-owned, or reclassified. Every `PEV-037..073` inherits ownership (`PEO`),
+> governance (`PEG`), boundary (`PEB`), governance model (`PEGM-001`), and lifecycle (`PEL-001`) of its
+> owning `PED` unchanged. No new ownership/governance/lifecycle/boundary models were introduced.
+
+> **Stop-condition scan.** No governance violation, ownership conflict, event conflict, traceability
+> conflict, or implementation leakage detected. Phase 9.0C.1C proceeds to audit, auto-commit, and state /
+> registry update.
+
+---
+
 ## Document Control
 
 | Field | Value |
 |-------|-------|
 | Artifact ID | UCOS-PEA-003 |
-| Version | 0.4.0 |
-| Status | CREATED — IN PROGRESS (Phase 9.0C.1B — Event Catalog Architecture Part 1; Section XI Part B, `PEV-001..036`) |
-| Phase | Phase 9.0C.1B — Platform Engineering Architecture: Event Catalog Architecture (Part 1) |
+| Version | 0.5.0 |
+| Status | CREATED — IN PROGRESS (Phase 9.0C.1C — Event Catalog Architecture Part 2; Section XI Part B, `PEV-001..073` complete) |
+| Phase | Phase 9.0C.1C — Platform Engineering Architecture: Event Catalog Architecture (Part 2) |
 | Companion of | `UCOS-PEA-001` (Foundation & Governance, v0.1.0), `UCOS-PEA-002` (Runtime & Service Architecture, v0.2.0) |
 | Supersedes | — |
-| Next Phase | Phase 9.0C.1C — Event Catalog Architecture Part 2 (`PEV-037..073`, `TM-PEA-006` Part 2) (AUTHORIZED; not begun) |
+| Next Phase | Phase 9.0C.1D — Event Catalog Validation & Consolidation (AUTHORIZED; not begun) |
 
 ## Traceability
 - **Refines:** AUTH-001..012, STATE-001, `UCOS-CONST-001`, `UCOS-ENT-ARCH-001`, `UCOS-DOM-ARCH-001`,
@@ -1206,6 +1796,7 @@ classifications. The vocabulary is **fixed here** so that the event domains (`PE
   `PWF-001..017`), `UCOS-PEA-003` Section XI Part A (`PED-001..017`, `PEGM-001`, `PEL-001`,
   `TM-PEA-006A/006B`), `CTX-ARCHB-001` (§1/§3–§5), `CTX-CAP-001`, `CTX-REG-001`, `CTX-TRACE-001`, SKILL-009,
   SKILL-011, PROMPT-08.
-- **Refined by:** `UCOS-PEA-9.0C.1A-COMP-001`, `UCOS-PEA-9.0C.1B-COMP-001` (completion reports); Phase
-  9.0C.1C (Event Catalog Part 2, `PEV-037..073`); Phases 9.0C.2–9.0C.5 (Registry / Configuration /
-  Metadata / Control Fabric); platform technology-selection ADRs; Prompts 07, 09–12.
+- **Refined by:** `UCOS-PEA-9.0C.1A-COMP-001`, `UCOS-PEA-9.0C.1B-COMP-001`, `UCOS-PEA-9.0C.1C-COMP-001`
+  (completion reports); Phase 9.0C.1D (Event Catalog Validation & Consolidation); Phases 9.0C.2–9.0C.5
+  (Registry / Configuration / Metadata / Control Fabric); platform technology-selection ADRs; Prompts 07,
+  09–12.
