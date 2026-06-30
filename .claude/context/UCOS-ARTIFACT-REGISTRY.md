@@ -643,3 +643,190 @@
 > `apps/` remains EMPTY). Gates: `GATE-DOC-001` PASS · Traceability PASS · Gap Scan PASS. Status **CREATED —
 > GENERATED v1.0.0**; ratification + Article IX lock release reserved to the Authority Board. Resolves the
 > generation of Condition **C-1**; **C-2/C-3/C-4 remain OPEN**; Article IX generation lock remains **ACTIVE**.
+
+
+
+### Security Architecture (Phase 10.2C — Prompt 09 generation; subordinate to Authority + Constitution + EA + Domain + Capability + Data + Platform Engineering; Article IX lock ACTIVE — design artifacts only)
+
+> **Append-only.** This section records the Phase 10.2C execution of `PROMPT-09` (Security Architecture).
+> It introduces **no** control implementation code, **no** API/event/data contracts, **no** infrastructure,
+> and **no** technology/vendor/cloud/datastore/runtime/IdP/KMS/HSM/cipher/protocol/policy-engine selection.
+> It mutates no frozen governance construct (`UCOS-PEA-001..007`, Baseline 1.0.0, ratified domains/
+> capabilities/data/control-fabric). Status **CREATED — GENERATED / READY FOR RATIFICATION**; independent
+> ratification deferred (no self-certification). It resolves the *generation* portion of Condition **C-3**
+> (Security) from `PHASE-10.0`/`PHASE-10.1`/`CR-003`; formal ratification + Authority Board sign-off + the
+> Article IX lock release remain with the Authority Board. Non-waivable **S1/S3/S4** are designed & enforced.
+
+| Artifact ID | Name | Path | Layer | Type | Status | Refines | Refined by |
+|-------------|------|------|-------|------|--------|---------|------------|
+| UCOS-SEC-ARCH-001 | UCOS Security Architecture (master; SP-01..10; identity/authn/authz/tenancy; data protection DP-1..7; secrets/least-privilege SEC-1..6/LP-1..5; audit AUD-1..7; 10 trust boundaries TB-01..10; 20 controls; non-waivable S1/S3/S4 enforcement) | `architecture/security/SECURITY-ARCHITECTURE.md` | SEC | ARCH | **CREATED — READY FOR RATIFICATION v1.0.0** (Phase 10.2C; GATE-DOC-001 PASS / GATE-SEC-001 design coverage PASS / leakage NONE; ratification deferred) | AUTH-008, AUTH-003 (P6/IP-09/IP-10/IP-17), AUTH-007, AUTH-009, AUTH-010, UCOS-CONST-001 (Part X/XI, Art. IX/XII), GATE-SEC-001, GATE-DOC-001, UCOS-DOM-ARCH-001, UCOS-PDATA-ARCH-001, UCOS-CAP-ARCH-001, UCOS-PEA-001/002/003/007, PROMPT-09 | UCOS-SEC-THREAT-001, UCOS-SEC-CONTROL-001, UCOS-SEC-TRACE-001, UCOS-SEC-COMP-001, UCOS-SEC-DONE-001, UCOS-SEC-ADR-001..008; Prompts 10, 11, 12 |
+| UCOS-SEC-THREAT-001 | UCOS Security Threat Models (STRIDE; 62 threats; TB-01..10 + 5 domain classes) | `architecture/security/SECURITY-THREAT-MODELS.md` | SEC | THREAT | **CREATED — READY FOR RATIFICATION v1.0.0** | UCOS-SEC-ARCH-001, AUTH-008 §6.5, UCOS-DOM-ARCH-001, UCOS-PDATA-ARCH-001, UCOS-PEA-002 | UCOS-SEC-CONTROL-001, UCOS-SEC-TRACE-001; Prompts 10–12 |
+| UCOS-SEC-CONTROL-001 | UCOS Security Control Catalog & Mapping (SEC-CTL-001..020; S1–S7 7/7; threat→control 62/62) | `architecture/security/SECURITY-CONTROL-MAPPING.md` | SEC | CONTROL | **CREATED — READY FOR RATIFICATION v1.0.0** | UCOS-SEC-ARCH-001, UCOS-SEC-THREAT-001, AUTH-008 §6/§7, GATE-SEC-001, UCOS-PEA-002, UCOS-PEA-007, UCOS-PDATA-ARCH-001 | UCOS-SEC-TRACE-001, UCOS-SEC-COMP-001; Prompts 10–12 |
+| UCOS-SEC-TRACE-001 | UCOS Security Traceability Matrix (boundary→threat→control→checkpoint→realization; data→protection; 0 orphans) | `architecture/security/SECURITY-TRACEABILITY-MATRIX.md` | SEC | TRACE | **CREATED — READY FOR RATIFICATION v1.0.0** | UCOS-SEC-ARCH-001, UCOS-SEC-THREAT-001, UCOS-SEC-CONTROL-001, AUTH-008, AUTH-010, UCOS-CONST-001 (Part X), GATE-SEC-001 | UCOS-SEC-COMP-001, UCOS-SEC-DONE-001; Prompts 10–12 |
+| UCOS-SEC-COMP-001 | UCOS Security Architecture Compliance Report (COMPLIANT; AUTH-008/Const X-XI PASS; 0 blocking gaps) | `architecture/security/SECURITY-COMPLIANCE-REPORT.md` | SEC | REPORT | **CREATED v1.0.0 — COMPLIANT** | UCOS-SEC-ARCH-001 (+companions), AUTH-008, UCOS-CONST-001 (X/XI), GATE-SEC-001, GATE-DOC-001 | UCOS-SEC-DONE-001; Prompt 11 |
+| UCOS-SEC-DONE-001 | UCOS Security Architecture Completion Report (FINAL; 14 artifacts; remediates C-3 generation) | `architecture/security/SECURITY-COMPLETION-REPORT.md` | SEC | REPORT | **FINAL v1.0.0** | all Phase-9 security artifacts, PROMPT-09, PHASE-10.1-CONDITION-RESOLUTION-REPORT, CR-003 | security ratification (future); Phase 10.1 re-run; Prompts 10–12 |
+| UCOS-SEC-ADR-001 | Zero-Trust Boundary Enforcement Model | `architecture/security/adr/UCOS-SEC-ADR-001.md` | SEC | ADR | **Accepted (design) v1.0.0** | UCOS-SEC-ARCH-001, AUTH-008, UCOS-PEA-002 | Prompts 10–11 |
+| UCOS-SEC-ADR-002 | Identity & Authentication Architecture | `architecture/security/adr/UCOS-SEC-ADR-002.md` | SEC | ADR | **Accepted (design) v1.0.0** | UCOS-SEC-ARCH-001, AUTH-008, UCOS-PEA-002 (PRD-008), CAP-09/CAP-17 | Prompts 10–11 |
+| UCOS-SEC-ADR-003 | Authorization Model (Deny-by-Default, Policy-Driven RBAC+ABAC) | `architecture/security/adr/UCOS-SEC-ADR-003.md` | SEC | ADR | **Accepted (design) v1.0.0** | UCOS-SEC-ARCH-001, AUTH-008, UCOS-DOM-ARCH-001 (DOM-025), UCOS-PEA-002 (PRD-008) | Prompts 10–11 |
+| UCOS-SEC-ADR-004 | Tenancy Isolation Model | `architecture/security/adr/UCOS-SEC-ADR-004.md` | SEC | ADR | **Accepted (design) v1.0.0** | UCOS-SEC-ARCH-001, AUTH-008, UCOS-PEA-002 (PRD-008, PRS-006) | Prompts 10–11 |
+| UCOS-SEC-ADR-005 | Secrets & Key Management Policy (S3) | `architecture/security/adr/UCOS-SEC-ADR-005.md` | SEC | ADR | **Accepted (design) v1.0.0** | UCOS-SEC-ARCH-001, AUTH-008, UCOS-PEA-002 (PRD-009) | Prompts 10–11 |
+| UCOS-SEC-ADR-006 | Data Protection Model (S4) | `architecture/security/adr/UCOS-SEC-ADR-006.md` | SEC | ADR | **Accepted (design) v1.0.0** | UCOS-SEC-ARCH-001, AUTH-008/AUTH-007, UCOS-PDATA-ARCH-001 §III.5, UCOS-PEA-002 (PRD-002/009) | Prompts 10–11 |
+| UCOS-SEC-ADR-007 | Immutable Audit-Logging Architecture (S6) | `architecture/security/adr/UCOS-SEC-ADR-007.md` | SEC | ADR | **Accepted (design) v1.0.0** | UCOS-SEC-ARCH-001, AUTH-008, UCOS-PEA-002 (PRD-010), CAP-16 | Prompts 10–12 |
+| UCOS-SEC-ADR-008 | Threat-Modeling Methodology (STRIDE) | `architecture/security/adr/UCOS-SEC-ADR-008.md` | SEC | ADR | **Accepted (design) v1.0.0** | UCOS-SEC-ARCH-001, UCOS-SEC-THREAT-001, AUTH-008 §6.5 | UCOS-SEC-CONTROL-001; Prompt 07 (FO-1); Prompts 10–11 |
+
+> **Security Architecture precedence & discipline.** Subordinate to the Authority Layer, ratified
+> Constitution (Part X Security, Part XI Compliance), EA, Domain, Capability, Data, and Platform
+> Engineering Architectures; occupies the SECURITY layer, consumed by — never superseding — implementation
+> (Prompt 10) and verified against built software by Prompt 11 (`GATE-SEC-001`). **Phase 10.2C (Prompt 09)
+> GENERATED:** master Security Architecture (`UCOS-SEC-ARCH-001`) + 5 companions + 8 ADRs (14 artifacts).
+> Content: 10 security principles `SP-01..10`; identity model (4 principal classes); authentication
+> `AUTHN-1..6`; authorization (deny-by-default, policy-driven RBAC+ABAC abstraction) + tenancy isolation
+> `TEN-1..4`; data protection `DP-1..7` (classification inherited unchanged from `UCOS-PDATA-ARCH-001`
+> §III.5); secrets `SEC-1..6` + least-privilege `LP-1..5`; immutable audit `AUD-1..7`; 10 trust boundaries
+> `TB-01..10`; **62 STRIDE threats** (43 boundary + 19 domain-class); **20 controls** `SEC-CTL-001..020`
+> realized 1:1+ by ratified platform services (identity `PRS-031..034`, secrets `PRS-035..038`, audit
+> `PRS-039..042`, gateway `PRS-018..021`, eventing `PRS-013..017`, networking `PRS-009..012`). Coverage:
+> trust boundaries with ≥1 threat model **10/10**; threats mapped to ≥1 control **62/62**; controls mapped
+> to ≥1 checkpoint **20/20** and ≥1 realizer **20/20**; `GATE-SEC-001` checkpoints **7/7**; sensitive-data
+> domains with ≥1 protection control **17/17 PD**. **Non-waivable S1/S3/S4 designed & enforced;** 0 silent
+> open surfaces; 0 unmapped threats; 0 unprotected sensitive-data entities; **0 blocking (non-waivable)
+> security gaps.** Gates: `GATE-DOC-001` PASS · `GATE-SEC-001` design coverage PASS · Traceability PASS ·
+> Gap Scan PASS. **Implementation leakage NONE** (no control code, no contracts, no infrastructure, no
+> technology/vendor/cloud/datastore/runtime/IdP/KMS/HSM/cipher/protocol/policy-engine selection; `security/`
+> and `apps/`/`services/` remain code-free). Per-contract threat models deferred to Prompt 07 ratification
+> (forward obligation **FO-1**). Status **CREATED — READY FOR RATIFICATION v1.0.0**; ratification + Article
+> IX lock release reserved to the Authority Board. Resolves the generation of Condition **C-3**;
+> **C-2/C-4 remain OPEN**; Article IX generation lock remains **ACTIVE**.
+
+
+
+### Platform Technology-Selection ADRs — Phase 10.1 (PROMPT-08 §7.1; Implementation Readiness Condition C-4; additive / migration-only; subordinate to Authority + Constitution + ratified architectures + UCOS-PEA-001..007 + UCOS Governance Baseline 1.0.0)
+
+> **Append-only / additive.** This section registers the seven governed platform technology-selection
+> ADRs authorized by `CTX-ARCHB-001` §5 and deferred by `PEP-010` throughout Phases 9.0A–9.0C. No prior
+> row is deleted, renamed, or re-owned; **no** frozen artifact (`UCOS-PEA-001..007`, Governance Baseline
+> 1.0.0, ratified domains/entities/matrices) is edited. The ADRs **select technology**; they generate no
+> source code, no live infrastructure, no event/API contracts (Prompt 07), and no security threat model/
+> controls (Prompt 09). Non-waivable S1/S3/S4 (AUTH-008) preserved. Satisfies **Phase 10.0 Condition
+> C-4** (`UCOS-IMP-READY-001`).
+
+| Artifact ID | Name | Path | Layer | Type | Status | Refines (upstream) | Refined by (downstream) |
+|-------------|------|------|-------|------|--------|--------------------|-------------------------|
+| UCOS-PLAT-ADR-INDEX | Platform Technology-Selection ADR Index & Decision Record (inventory + decision matrix + traceability summary + validation) | `architecture/platform/adr/UCOS-PLAT-ADR-INDEX.md` | ARCH (Platform Engineering) | ADR INDEX | **FINAL — ADR SET ACCEPTED v1.0.0** (7/7 ADRs; completeness/traceability/governance PASS; satisfies C-4) | UCOS-PEA-001..007, UCOS-PDATA-ARCH-001, UCOS-INF-ARCH-001, UCOS-IMP-DELIV-001, UCOS-IMP-GOV-001, UCOS-IMP-READY-001, CTX-ARCHB-001 §5, AUTH-004/007/008/009/010, GATE-REL-001, PROMPT-08 | Phase 9.1 platform ratification; Prompts 09–12; UCOS-IMP-* work packages |
+| UCOS-PLAT-ADR-001 | ADR-001 Runtime & Compute (OCI + Kubernetes; primary Java 21 LTS; governed polyglot TypeScript/Go) | `architecture/platform/adr/UCOS-PLAT-ADR-001-RUNTIME.md` | ARCH (Platform Engineering) | ADR | **ACCEPTED v1.0.0** (technology-selection scope; `PE-01`; CAP-15) | UCOS-PEA-001 (PE-01/PEG-001/PEO-001/PEB-001), UCOS-PEA-002 (PRD/PRS/PEX/PWF), CTX-ARCHB-001 §1/§5/§6, AUTH-004/009, PROMPT-08 | UCOS-PLAT-ADR-INDEX; ADR-003/006/007; Prompts 09–12; WP-PLT-01 |
+| UCOS-PLAT-ADR-002 | ADR-002 Storage & Persistence (PostgreSQL SoR + S3-compatible object + OpenSearch + Redis; analytical store deferred → UCOS-PLAT-ADR-002A) | `architecture/platform/adr/UCOS-PLAT-ADR-002-STORAGE.md` | ARCH (Platform Engineering) | ADR | **ACCEPTED v1.0.0** (technology-selection scope; `PE-02`; CAP-15; realizes Physical Data Architecture) | UCOS-PEA-001 (PE-02/PEG-002/PEO-002/PEB-002), UCOS-PDATA-ARCH-001 (PD/PDE/PDP/PDS/PDL), CTX-ARCHB-001 §5, AUTH-007/008/009, PROMPT-08 | UCOS-PLAT-ADR-INDEX; UCOS-PLAT-ADR-002A (future); ADR-003/004/005/006; Prompts 09–12; WP-PLT-02 |
+| UCOS-PLAT-ADR-003 | ADR-003 Event Fabric (Apache Kafka API + Schema Registry + CloudEvents; at-least-once + idempotent consumers) | `architecture/platform/adr/UCOS-PLAT-ADR-003-EVENT-FABRIC.md` | ARCH (Platform Engineering) | ADR | **ACCEPTED v1.0.0** (technology-selection scope; `PE-04`; CAP-12; realizes Event Architecture; contracts → Prompt 07) | UCOS-PEA-001 (PE-04/PEG-004/PEO-004/PEB-004), UCOS-PEA-003 (PEV/PED/PEGM/PEL/TM-PEA-014/015), CTX-ARCHB-001 §1/§3/§5, AUTH-004/009, PROMPT-08 | UCOS-PLAT-ADR-INDEX; ADR-002/004/006; Prompt 07 (contracts); Prompts 09–12; WP-PLT-04 |
+| UCOS-PLAT-ADR-004 | ADR-004 Registry & Discovery (Kubernetes discovery + open Schema/Contract Registry + PostgreSQL-backed Platform Registry) | `architecture/platform/adr/UCOS-PLAT-ADR-004-REGISTRY.md` | ARCH (Platform Engineering) | ADR | **ACCEPTED v1.0.0** (technology-selection scope; `PE-06`; CAP-19; realizes Registry Architecture) | UCOS-PEA-001 (PE-06/PEG-006/PEO-006/PEB-006), UCOS-PEA-004 (PRG/PRE/PRA/PRL/TM-PEA-011-013), CTX-ARCHB-001 §5, AUTH-009/010, CTX-REG-001, PROMPT-08 | UCOS-PLAT-ADR-INDEX; ADR-003/005/006; Prompt 07; Prompts 09–12; WP-PLT-06 |
+| UCOS-PLAT-ADR-005 | ADR-005 Metadata & Configuration Delivery (PostgreSQL SoR + Config/Metadata service API + GitOps + JSON Schema; secrets excluded) | `architecture/platform/adr/UCOS-PLAT-ADR-005-METADATA.md` | ARCH (Platform Engineering) | ADR | **ACCEPTED v1.0.0** (technology-selection scope; `PE-11`; CAP-10; realizes Configuration/Metadata Architectures) | UCOS-PEA-001 (PE-11/PEG-011/PEO-011/PEB-011), UCOS-PEA-005 (PCD/PCF), UCOS-PEA-006 (PMD/PME), UCOS-INF-ARCH-001, CTX-ARCHB-001 §5, AUTH-007/009, PROMPT-08 | UCOS-PLAT-ADR-INDEX; ADR-004/006/007; Prompts 09–12; WP-PLT-11 |
+| UCOS-PLAT-ADR-006 | ADR-006 Security Substrate (OIDC/OAuth2 IdP + OPA policy-as-code + mTLS service mesh + secrets manager/KMS; threat model & controls → Prompt 09) | `architecture/platform/adr/UCOS-PLAT-ADR-006-SECURITY.md` | ARCH (Platform Engineering) | ADR | **ACCEPTED v1.0.0** (security-substrate technology-selection scope; `PE-08`/`PE-09`/`PE-03`; CAP-09/17; S1/S3/S4 preserved) | UCOS-PEA-001 (PE-03/08/09; PEG/PEO/PEB-003/008/009), CTX-ARCHB-001 §3/§4/§5, AUTH-008/009, PROMPT-08 | UCOS-PLAT-ADR-INDEX; Prompt 09 (threat model + controls — C-3); ADR-002/003/004/007; Prompts 10–12; WP-PLT-03/08/09 |
+| UCOS-PLAT-ADR-007 | ADR-007 Delivery Toolchain (Git + pipeline-as-code + Terraform/OpenTofu + GitOps [Argo/Flux] + Sigstore/cosign + OCI registry; gate-enforcing) | `architecture/platform/adr/UCOS-PLAT-ADR-007-DELIVERY-TOOLCHAIN.md` | ARCH (Platform Engineering) | ADR | **ACCEPTED v1.0.0** (design-level technology-selection scope; `PE-14`/`PE-15`; CAP-15; no live provisioning) | UCOS-PEA-001 (PE-14/15; PEG/PEO/PEB-014/015), UCOS-IMP-DELIV-001, UCOS-IMP-GOV-001, GATE-REL-001, CTX-ARCHB-001 §5, AUTH-008/009, PROMPT-08 | UCOS-PLAT-ADR-INDEX; ADR-001/005/006; Prompts 10–12; WP-PLT-14 |
+
+> **Platform Technology-Selection ADR precedence note.** The seven ADRs (`UCOS-PLAT-ADR-001..007`) and
+> their index (`UCOS-PLAT-ADR-INDEX`) are ARCHITECTURE-tier platform technology-selection records,
+> subordinate to the Authority Layer + Constitution + all ratified architectures + `UCOS-PEA-001..007` +
+> the UCOS Governance Baseline 1.0.0; governed by the platform governance spine `PE-17`/`PEG-017` (CAP-15),
+> terminal authority the Authority Board. They are **ACCEPTED** (technology-selection scope) and satisfy
+> **Phase 10.0 Condition C-4** (`UCOS-IMP-READY-001`); they feed the Phase 9.1 platform ratification (C-5)
+> and the Authority Board Article IX lock release (C-6). Each selection is expressed as an open/neutral
+> contract (Kubernetes/S3/Kafka/OIDC/OAuth2/OpenAPI/AsyncAPI/CloudEvents/OCI/Terraform-HCL) honoring
+> `PEP-010` and `CTX-ARCHB-001` §5. Deferred governed sub-decisions explicitly recorded: `UCOS-PLAT-ADR-002A`
+> (analytical/OLAP store), `PE-12` observability product, `PE-07` workflow/orchestration engine. Validation:
+> ADR completeness 7/7 (8/8 sections each); traceability 0 orphans / 0 broken chains; governance compliance
+> PASS (single-owner per ADR; PEG/PEO/PEB cited; escalation terminal at Authority Board); non-waivable
+> S1/S3/S4 preserved; **0 mutation of frozen artifacts**; no source code / no live infrastructure / no
+> Prompt 07 contracts / no Prompt 09 threat model authored. Evolution migration-only (`PEP-016`): a
+> superseding selection requires a new ADR version + AUTH-012 decision record.
+
+
+
+### Security Architecture — Prompt 09 (Phase 9 Security Architecture; remediates Implementation Readiness Condition C-3 / CR-003; additive / migration-only; subordinate to Authority + Constitution Part X/XI + ratified architectures + UCOS-PEA-001..007 + UCOS Governance Baseline 1.0.0)
+
+> **Append-only / additive.** Registers the Prompt-09 Security Architecture artifact set generated on
+> branch `phase-9.2-convergence`. No prior row is deleted, renamed, or re-owned; **no** frozen artifact
+> (`UCOS-PEA-001..007`, Governance Baseline 1.0.0, ratified domains/entities/matrices) is edited. The
+> Security Architecture is design-only: it implements **no** control in code, provisions **no**
+> infrastructure, and selects **no** technology/vendor/cloud/IdP/KMS/cipher (those are owned by the
+> technology-selection ADRs `UCOS-PLAT-ADR-001..007` and Prompt 10). Non-waivable **S1/S3/S4** (AUTH-008)
+> designed & enforced. Remediates **C-3** (`UCOS-IMP-READY-001`); formal closure requires independent
+> ratification + Authority Board sign-off (still pending — see `CR-003`).
+
+| Artifact ID | Name | Path | Layer | Type | Status | Refines (upstream) | Refined by (downstream) |
+|-------------|------|------|-------|------|--------|--------------------|-------------------------|
+| UCOS-SEC-ARCH-001 | UCOS Security Architecture (master; Sections I–XIV; SP-01..10; TB-01..10; non-waivable S1/S3/S4) | `architecture/security/SECURITY-ARCHITECTURE.md` | ARCH (Security) | ARCH | **CREATED — READY FOR RATIFICATION v1.0.0** (design coverage PASS; S1/S3/S4 designed & enforced; leakage NONE) | AUTH-003/007/008/009/010, UCOS-CONST-001 (Part X/XI, Art. IX/XII), GATE-SEC-001, GATE-DOC-001, UCOS-DOM-ARCH-001, UCOS-PDATA-ARCH-001, UCOS-CAP-ARCH-001, UCOS-PEA-001/002/003/007, PROMPT-09 | UCOS-SEC-THREAT-001, UCOS-SEC-CONTROL-001, UCOS-SEC-TRACE-001, UCOS-SEC-COMP-001, UCOS-SEC-DONE-001, UCOS-SEC-ADR-001..008; Prompts 10–12 |
+| UCOS-SEC-THREAT-001 | UCOS Security Threat Models (STRIDE; 62 threats; TB-01..10 + 5 domain classes) | `architecture/security/SECURITY-THREAT-MODELS.md` | ARCH (Security) | THREAT MODEL | **CREATED — READY FOR RATIFICATION v1.0.0** (62 threats; 0 unmapped) | UCOS-SEC-ARCH-001, AUTH-008 §6.5, UCOS-DOM-ARCH-001, UCOS-PDATA-ARCH-001, UCOS-PEA-002 | UCOS-SEC-CONTROL-001, UCOS-SEC-TRACE-001; UCOS-SEC-ADR-008; Prompts 10–12 |
+| UCOS-SEC-CONTROL-001 | UCOS Security Control Catalog & Mapping (SEC-CTL-001..020; 7/7 GATE-SEC-001 checkpoints) | `architecture/security/SECURITY-CONTROL-MAPPING.md` | ARCH (Security) | CONTROL CATALOG | **CREATED — READY FOR RATIFICATION v1.0.0** (20 controls; 0 unmapped threats; 0 unrealized controls) | UCOS-SEC-ARCH-001, UCOS-SEC-THREAT-001, AUTH-008 §6/§7, GATE-SEC-001, UCOS-PEA-002, UCOS-PEA-007, UCOS-PDATA-ARCH-001 | UCOS-SEC-TRACE-001, UCOS-SEC-COMP-001; Prompts 10–12 |
+| UCOS-SEC-TRACE-001 | UCOS Security Traceability Matrix (Authority→principle→boundary→threat→control→checkpoint→realizer; sensitive-data→control; ADR→decision) | `architecture/security/SECURITY-TRACEABILITY-MATRIX.md` | ARCH (Security) | TRACE | **CREATED — READY FOR RATIFICATION v1.0.0** (0 orphans; full bidirectional lineage) | UCOS-SEC-ARCH-001, UCOS-SEC-THREAT-001, UCOS-SEC-CONTROL-001, AUTH-008, AUTH-010, UCOS-CONST-001 (Part X), GATE-SEC-001 | UCOS-SEC-COMP-001, UCOS-SEC-DONE-001; Prompts 10–12 |
+| UCOS-SEC-COMP-001 | UCOS Security Compliance Report | `architecture/security/SECURITY-COMPLIANCE-REPORT.md` | ARCH (Security) | REPORT | **CREATED — READY FOR RATIFICATION v1.0.0** (Const. Part X/XI PASS; AUTH-008 §6/§7 PASS; leakage NONE) | UCOS-SEC-ARCH-001, UCOS-SEC-CONTROL-001, UCOS-SEC-TRACE-001, AUTH-008, UCOS-CONST-001 (Part X/XI), GATE-SEC-001, GATE-DOC-001 | UCOS-SEC-DONE-001; security ratification (future); Prompts 10–12 |
+| UCOS-SEC-DONE-001 | UCOS Security Architecture Completion Report (+ Addendum A: ADR completion, cross-ref/traceability validation, registration, consistency assessment) | `architecture/security/SECURITY-COMPLETION-REPORT.md` | ARCH (Security) | REPORT | **FINAL v1.1.0** (Phase 9 generation complete; Addendum A closure-validation PASS) | UCOS-SEC-ARCH-001 (+companions), UCOS-SEC-ADR-001..008, PROMPT-09, PHASE-10.1-CONDITION-RESOLUTION-REPORT, CR-003 | security ratification (future); Phase 10.1 re-run; Prompts 10–12 |
+| UCOS-SEC-ADR-001 | SEC ADR-001 Zero-Trust Boundary Enforcement Model (S1) | `architecture/security/adr/UCOS-SEC-ADR-001.md` | ARCH (Security) | ADR | **Accepted (design) v1.0.0** (SP-01/02/08; S1) | UCOS-SEC-ARCH-001 §I/§IX/§X, AUTH-008, UCOS-PEA-002 (PE-03/04/05/08) | Prompts 10–11 |
+| UCOS-SEC-ADR-002 | SEC ADR-002 Identity & Authentication Architecture | `architecture/security/adr/UCOS-SEC-ADR-002.md` | ARCH (Security) | ADR | **Accepted (design) v1.0.0** (SP-02; AUTHN-1..6; S1) | UCOS-SEC-ARCH-001 §III/§IV, AUTH-008, UCOS-PEA-002 (PRD-008) | Prompts 10–11 |
+| UCOS-SEC-ADR-003 | SEC ADR-003 Authorization Model (deny-by-default, RBAC+ABAC) | `architecture/security/adr/UCOS-SEC-ADR-003.md` | ARCH (Security) | ADR | **Accepted (design) v1.0.0** (SP-03; V.1..3; S1/S5) | UCOS-SEC-ARCH-001 §V, AUTH-008, UCOS-DOM-025 (Policy), UCOS-PEA-002 (PRD-008/011) | Prompts 10–11 |
+| UCOS-SEC-ADR-004 | SEC ADR-004 Tenancy Isolation Model | `architecture/security/adr/UCOS-SEC-ADR-004.md` | ARCH (Security) | ADR | **Accepted (design) v1.0.0** (TEN-1..4; S1/S4/S5) | UCOS-SEC-ARCH-001 §V.4, AUTH-008, UCOS-PEA-002 (PRD-008) | Prompts 10–11 |
+| UCOS-SEC-ADR-005 | SEC ADR-005 Secrets & Key Management Policy (S3) | `architecture/security/adr/UCOS-SEC-ADR-005.md` | ARCH (Security) | ADR | **Accepted (design) v1.0.0** (SP-04; SEC-1..6; S3 non-waivable) | UCOS-SEC-ARCH-001 §VII, AUTH-008, UCOS-PEA-002 (PRD-009) | UCOS-SEC-ADR-006; Prompts 10–11 |
+| UCOS-SEC-ADR-006 | SEC ADR-006 Data Protection Model (S4) — completed with Alternatives Considered | `architecture/security/adr/UCOS-SEC-ADR-006.md` | ARCH (Security) | ADR | **Accepted (design) v1.1.0** (SP-05; DP-1..7; S4 non-waivable; Alternatives added) | UCOS-SEC-ARCH-001 §VI, AUTH-008/AUTH-007, UCOS-PDATA-ARCH-001 §III.5, UCOS-PEA-002 (PRD-002/009) | Prompts 10–11 |
+| UCOS-SEC-ADR-007 | SEC ADR-007 Immutable Audit-Logging Architecture (S6) — completed with Alternatives Considered | `architecture/security/adr/UCOS-SEC-ADR-007.md` | ARCH (Security) | ADR | **Accepted (design) v1.1.0** (SP-07; AUD-1..7; S6; Alternatives added) | UCOS-SEC-ARCH-001 §VIII, AUTH-008, UCOS-PEA-002 (PRD-010), CAP-16 | Prompts 10–12 |
+| UCOS-SEC-ADR-008 | SEC ADR-008 Threat-Modeling Methodology (STRIDE) — completed with Alternatives Considered | `architecture/security/adr/UCOS-SEC-ADR-008.md` | ARCH (Security) | ADR | **Accepted (design) v1.1.0** (SP-06; S2; Alternatives added) | UCOS-SEC-ARCH-001 §IX, UCOS-SEC-THREAT-001, AUTH-008 §6.5 | UCOS-SEC-CONTROL-001; Prompt 07 (FO-1); Prompts 10–11 |
+
+> **Security Architecture precedence note.** `UCOS-SEC-ARCH-001` (+ companions `UCOS-SEC-THREAT-001`,
+> `UCOS-SEC-CONTROL-001`, `UCOS-SEC-TRACE-001`, `UCOS-SEC-COMP-001`, `UCOS-SEC-DONE-001`) and the eight
+> security ADRs (`UCOS-SEC-ADR-001..008`) are ARCHITECTURE-tier security-design artifacts, subordinate to
+> the Authority Layer + Constitution (Part X Security / Part XI Compliance / Art. XII non-waivable / Art.
+> IX lock) + all ratified architectures + `UCOS-PEA-001..007` + the UCOS Governance Baseline 1.0.0; owned
+> by Security Governance (`UCOS-DOM-024`; CAP-17), terminal authority the Authority Board. Status
+> **CREATED — READY FOR RATIFICATION** (design coverage PASS; non-waivable **S1/S3/S4** designed &
+> enforced; 0 unprotected boundaries; 0 unmapped threats; implementation leakage NONE). Validation at
+> registration: ADR set completeness 8/8; cross-references resolved 100% (SP-01..10, S1..S7, TB-01..10,
+> AUTHN/DP/SEC/TEN/AUD requirement IDs, SEC-CTL-001..020, PRD/PRS/PE substrate); traceability 0 orphans
+> (62/62 threats mapped; 20/20 controls realized & checkpoint-mapped; 17/17 sensitive-data PD domains
+> protected; 8/8 ADR→decision). Remediates **C-3**; **formal C-3 closure still requires independent
+> ratification + Authority Board sign-off** (`CR-003`), and construction remains gated by the Article IX
+> lock and conditions C-1/C-2/C-4..C-6 (`UCOS-IMP-READY-001`). Branch `phase-9.2-convergence` NOT pushed /
+> NOT merged / NOT tagged. Evolution migration-only (`PEP-016` / AUTH-012).
+
+
+
+### Service & API Contract Architecture (Phase 10.2B — Prompt 07 generation; subordinate to Authority + Constitution + EA + Domain + Capability + Information/Metadata + Data + Experience Architecture; Article IX lock ACTIVE — contract design artifacts only)
+
+> **Append-only.** This section records the Phase 10.2B execution of `PROMPT-07` (Service & API
+> Contracts). It introduces **no** implementation code, **no** infrastructure, **no** deployment
+> artifacts, **no** technology selection, **no** security controls (owned by Prompt 09), and **no**
+> fabricated ASR/N-1 quantitative values (all recorded as `PENDING ASR RATIFICATION`). It mutates no
+> frozen governance construct (`UCOS-PEA-001..007`, Baseline 1.0.0, ratified domains/capabilities/IC/MC/
+> data entities). Status **CREATED — GENERATED**; independent ratification deferred (no self-certification).
+> It resolves the *generation* portion of Condition **C-2** (Service/API) from `UCOS-CONSTRUCTION-BLOCKED`
+> §5 step 2; formal ratification + Article IX lock release remain with the Authority Board. `services/`
+> (code) remains EMPTY.
+
+| Artifact ID | Name | Path | Layer | Type | Status | Refines | Refined by |
+|-------------|------|------|-------|------|--------|---------|------------|
+| `UCOS-SVC-ARCH-001` | UCOS Service & API Contract Architecture (28 services `UCOS-SVC-001..028`; service boundary map; seam→integration-style; versioning/deprecation policy `UCOS-SVC-POLICY-001`; contract-test specs `UCOS-SVC-CTEST-001`; traceability `TM-SVC-001..006`) | `architecture/services/UCOS-SERVICE-API-CONTRACT-ARCHITECTURE.md` | SVC | ARCH | **CREATED — GENERATED v1.0.0** (Phase 10.2B; GATE-DOC-001 PASS / Contract-First PASS / Traceability PASS / Seam Coverage PASS / ECR Coverage PASS / Gap Scan PASS; ratification deferred) | AUTH-004/005/006/007/008/009/010, UCOS-CONST-001 (Art. IV/IX), CTX-ARCHB-001, UCOS-DOM-ARCH-001, UCOS-CAP-ARCH-001, UCOS-INF-ARCH-001, UCOS-DATA-ARCH-001, UCOS-LDATA-ARCH-001, UCOS-PDATA-ARCH-001, UCOS-EXP-ARCH-001 (`UCOS-EXP-CR-001..021`), UCOS-PEA-003 (`PEV-001..073`), PROMPT-07 | `UCOS-CONTRACT-CAT-001`, `UCOS-SVC-ADR-001..007`; Prompt 08 (platform/runtime), Prompt 09 (security), Prompt 10 (implementation), Prompt 11 (contract tests), Prompt 12 (certification) |
+| `UCOS-CONTRACT-CAT-001` | UCOS Contract Catalog (30 API contracts `UCOS-API-CONTRACT-001..030`; 27 event contracts `UCOS-EVT-CONTRACT-001..027`; 28 data contracts `UCOS-DATA-CONTRACT-001..028`; 85 total; all `v1.0`) | `specifications/contracts/UCOS-CONTRACT-CATALOG.md` | SVC | CONTRACT CATALOG | **CREATED — GENERATED v1.0.0** (Phase 10.2B; NFRs `PENDING ASR RATIFICATION`; security `FLAGGED FOR PROMPT 09`; 0 fabricated NFRs; 0 invented controls; 0 data-schema redefinition; leakage NONE) | UCOS-SVC-ARCH-001, UCOS-DOM-ARCH-001 §VIII, UCOS-CAP-ARCH-001, UCOS-EXP-ARCH-001, UCOS-PDATA-ARCH-001, UCOS-LDATA-ARCH-001, UCOS-INF-ARCH-001 (`MC-01..13`), UCOS-PEA-003 (`PEV-001..073`), PROMPT-07 | Prompt 08, Prompt 09, Prompt 10, Prompt 11 |
+| `UCOS-SVC-ADR-001` | One Service per Bounded Context | `architecture/services/adr/UCOS-SVC-ADR-001.md` | SVC | ADR | **Accepted (generated) v1.0.0** | UCOS-SVC-ARCH-001, AUTH-003/005, UCOS-DOM-ARCH-001 | Prompt 08/10 |
+| `UCOS-SVC-ADR-002` | Contract-First at Every Seam (Article IV) | `architecture/services/adr/UCOS-SVC-ADR-002.md` | SVC | ADR | **Accepted (generated) v1.0.0** | UCOS-SVC-ARCH-001, UCOS-CONST-001 (Art. IV), AUTH-004 | Prompt 10/11 |
+| `UCOS-SVC-ADR-003` | Experience BFFs for Surface Aggregation | `architecture/services/adr/UCOS-SVC-ADR-003.md` | SVC | ADR | **Accepted (generated) v1.0.0** | UCOS-SVC-ARCH-001, UCOS-EXP-ARCH-001, AUTH-004 | Prompt 09/10 |
+| `UCOS-SVC-ADR-004` | Synchronous APIs for Reads/Commands, Events for State Propagation | `architecture/services/adr/UCOS-SVC-ADR-004.md` | SVC | ADR | **Accepted (generated) v1.0.0** | UCOS-SVC-ARCH-001, UCOS-DOM-ARCH-001 §VIII, UCOS-PEA-003 | Prompt 08/10/11 |
+| `UCOS-SVC-ADR-005` | Semantic Versioning & Migration-Only Contract Evolution | `architecture/services/adr/UCOS-SVC-ADR-005.md` | SVC | ADR | **Accepted (generated) v1.0.0** | UCOS-SVC-ARCH-001, AUTH-009, PEP-016/017 | Prompt 11 |
+| `UCOS-SVC-ADR-006` | Data Contracts Reference Authoritative Data Entities (No Redefinition) | `architecture/services/adr/UCOS-SVC-ADR-006.md` | SVC | ADR | **Accepted (generated) v1.0.0** | UCOS-SVC-ARCH-001, UCOS-LDATA-ARCH-001, UCOS-PDATA-ARCH-001, AUTH-007 | Prompt 09/10 |
+| `UCOS-SVC-ADR-007` | NFRs Deferred to ASR Ratification; Security Deferred to Prompt 09 | `architecture/services/adr/UCOS-SVC-ADR-007.md` | SVC | ADR | **Accepted (generated) v1.0.0** | UCOS-SVC-ARCH-001, AUTH-006 (N-1), AUTH-008, UCOS-CAP-ARCH-001 | Prompt 02 (ASRs), Prompt 09 (security) |
+
+> **Service & API Contract Architecture precedence & discipline.** Subordinate to the Authority Layer,
+> ratified Constitution (Art. IV contract-first / Art. IX generation lock), EA, Domain, Capability,
+> Information/Metadata, and Data Architectures, and the Experience Architecture; occupies the SERVICE/
+> CONTRACT layer (`CTX-ARCHB-001` §2), consumed by — never superseding — platform realization (Prompt 08),
+> security (Prompt 09), and implementation (Prompt 10). **Phase 10.2B (Prompt 07) GENERATED:** 28 service
+> boundaries (1:1 with bounded contexts `UCOS-DOM-001..028`); 30 API contracts (28 service APIs + 2
+> experience BFFs `UCOS-API-CONTRACT-029/030`); 27 event contracts (1 per producing domain; Experience
+> Delivery terminal); 28 data contracts (referencing `PDE-*`/`LDO-*`, classification inherited); versioning/
+> deprecation policy; contract-test specifications (executed Prompt 11); 7 ADRs; 6 traceability matrices.
+> **Coverage:** services↔contexts **28/28**; capabilities realized **19/19**; declared seams covered
+> **100%** (`TM-SVC-002`); ECRs mapped to contract operations **21/21** (`TM-SVC-003`); contracts with
+> capability+domain anchor **85/85**; exposed boundaries flagged for Prompt 09 **32/32** (30 API + 2 BFF) +
+> 27 event transport flags; event→`PEV` linkage **27/27**. **Gap scan PASS** (0 uncovered seams; 0 dangling
+> contracts; 0 ECR orphans; 0 fabricated NFRs; 0 invented controls; 0 data-schema redefinition).
+> **Implementation leakage NONE** (no service/app code, no runtime/technology selection, no infrastructure,
+> no deployment artifacts, no security controls; all NFRs `PENDING ASR RATIFICATION`; `services/` EMPTY).
+> Gates: `GATE-DOC-001` PASS · Contract-First (Art. IV) PASS · Traceability PASS · Seam Coverage PASS · ECR
+> Coverage PASS · Gap Scan PASS. Status **CREATED — GENERATED v1.0.0**; ratification + Article IX lock
+> release reserved to the Authority Board. **Resolves the generation of Condition C-2**; C-1 (Experience)
+> generated (`UCOS-EXP-ARCH-001`); **C-3 (Security, Prompt 09) and C-4 (Technology ADRs, Prompt 08) remain
+> OPEN**; Article IX generation lock remains **ACTIVE** (`UCOS-CONSTRUCTION-BLOCKED` unchanged).
