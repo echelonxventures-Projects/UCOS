@@ -579,3 +579,29 @@
 > applied `REG-PROP-CTRL-001..011` append-only (0 destructive changes; 0 removal of ratified constructs).
 > Part of **UCOS Governance Baseline 1.0.0** (ESTABLISHED · FROZEN). Branch `phase-9.2-convergence` is NOT
 > pushed and NOT merged to main; release tag `ucos-governance-1.0.0` prepared (proposal) but NOT created.
+
+
+
+### Phase 10.0 — Implementation Readiness (Implementation Planning; subordinate to UCOS Governance Baseline 1.0.0 + Authority + Constitution Art. IX)
+| Artifact ID | Name | Path | Layer | Type | Status | Refines | Refined by |
+|-------------|------|------|-------|------|--------|---------|------------|
+| UCOS-IMP-CAP-001 | UCOS Implementation Capability Model (ICU-001..019; TM-IMP-001) | `docs/implementation/UCOS-CAPABILITY-MODEL.md` | IMP | MODEL | CREATED — Implementation Planning v1.0.0 | UCOS-GOVERNANCE-BASELINE-1.0, UCOS-CAP-ARCH-001, UCOS-DOM-ARCH-001, UCOS-PEA-001/002, TM-PEA-002, AUTH-006 | UCOS-IMP-ROAD-001, UCOS-IMP-WPS-001, UCOS-IMP-DEP-001, UCOS-IMP-READY-001 |
+| UCOS-IMP-ROAD-001 | UCOS Implementation Roadmap (S0–S7; TM-IMP-002) | `docs/implementation/UCOS-IMPLEMENTATION-ROADMAP.md` | IMP | ROADMAP | CREATED — Implementation Planning v1.0.0 | UCOS-IMP-CAP-001, UCOS-GOVERNANCE-BASELINE-1.0, UCOS-CONST-001 (Art. IX), Prompts 06–12 | UCOS-IMP-WPS-001, UCOS-IMP-PI-001, UCOS-IMP-READY-001 |
+| UCOS-IMP-WPS-001 | UCOS Work Package Structure (33 WPs / 9 work streams; TM-IMP-003) | `docs/implementation/UCOS-WORK-PACKAGE-STRUCTURE.md` | IMP | STRUCTURE | CREATED — Implementation Planning v1.0.0 | UCOS-IMP-CAP-001, UCOS-IMP-ROAD-001, UCOS-PEA-001/002, Prompts 06–12 | UCOS-IMP-DEP-001, UCOS-IMP-PI-001, UCOS-IMP-GOV-001, UCOS-IMP-READY-001 |
+| UCOS-IMP-DEP-001 | UCOS Implementation Dependency Graph (acyclic; TM-IMP-004) | `docs/implementation/UCOS-DEPENDENCY-GRAPH.md` | IMP | GRAPH | CREATED — Implementation Planning v1.0.0 | UCOS-IMP-WPS-001, UCOS-IMP-ROAD-001, PSR-001..017, UCOS-CONST-001 (Art. IX) | UCOS-IMP-PI-001, UCOS-IMP-DELIV-001, UCOS-IMP-READY-001 |
+| UCOS-IMP-DELIV-001 | UCOS Delivery Architecture (teams/streams/environments/DoD; TM-IMP-005) | `docs/implementation/UCOS-DELIVERY-ARCHITECTURE.md` | IMP | ARCH | CREATED — Implementation Planning v1.0.0 | UCOS-IMP-WPS-001, UCOS-IMP-DEP-001, CTX-ARCHB-001, PEO-001..017, GATE-QUAL/SEC/DOC-001 | UCOS-IMP-GOV-001, UCOS-IMP-PI-001, UCOS-IMP-READY-001 |
+| UCOS-IMP-GOV-001 | UCOS Implementation Governance (gates + Art. IX lock; TM-IMP-006) | `docs/implementation/UCOS-IMPLEMENTATION-GOVERNANCE.md` | IMP | GOVERNANCE | CREATED — Implementation Planning v1.0.0 | AUTH-008/009/012, UCOS-CONST-001 (Art. IX), GATE-QUAL/SEC/DOC-001, PEA-007, PEO-001..017, CTX-TRACE-001 | UCOS-IMP-PI-001, UCOS-IMP-READY-001 |
+| UCOS-IMP-PI-001 | UCOS Program Increment Plan (PI-0..PI-7; TM-IMP-007) | `docs/implementation/UCOS-PROGRAM-INCREMENT-PLAN.md` | IMP | PLAN | CREATED — Implementation Planning v1.0.0 | UCOS-IMP-ROAD-001, UCOS-IMP-WPS-001, UCOS-IMP-DEP-001, UCOS-IMP-GOV-001 | UCOS-IMP-READY-001 |
+| UCOS-IMP-READY-001 | Phase 10.0 Implementation Readiness Report (TM-IMP-CERT-001; verdict READY WITH CONDITIONS) | `PHASE-10.0-IMPLEMENTATION-READINESS-REPORT.md` | IMP | REPORT | Final — READY WITH CONDITIONS v1.0.0 | UCOS-GOVERNANCE-BASELINE-1.0, UCOS-IMP-CAP-001, UCOS-IMP-ROAD-001, UCOS-IMP-WPS-001, UCOS-IMP-DEP-001, UCOS-IMP-DELIV-001, UCOS-IMP-GOV-001, UCOS-IMP-PI-001, UCOS-CONST-001 (Art. IX), PROMPT-10 | Prompts 06/07/08/09 enablement (PI-0), Phase 9.1 ratification, Prompts 10/11/12 |
+
+> **Phase 10.0 precedence & discipline.** All `UCOS-IMP-*` artifacts are **implementation-planning**
+> artifacts subordinate to the frozen UCOS Governance Baseline 1.0.0, the Authority Layer, and the
+> Constitution (Article IX generation lock). They introduce **no** new capability/domain/contract/data/
+> metadata/experience/platform/security construct, **no** source code, **no** technology selection, and
+> mutate **no** frozen governance construct (`UCOS-PEA-001..007`, Baseline 1.0.0, ratified domains/entities/
+> matrices). Embedded matrices: `TM-IMP-001` (Capability Traceability), `TM-IMP-002` (Roadmap), `TM-IMP-003`
+> (Work Package), `TM-IMP-004` (Dependency), `TM-IMP-005` (Delivery Architecture), `TM-IMP-006`
+> (Implementation Governance), `TM-IMP-007` (Program Increment), `TM-IMP-CERT-001` (Readiness Certification —
+> 9/13 PASS · 4 CONDITIONS · 0 FAIL). Verdict **IMPLEMENTATION READY WITH CONDITIONS**: Prompt 10 code
+> generation gated on conditions C-1..C-6 (Prompts 06/07/09 ratified, Prompt 08 technology-selection ADRs,
+> Phase 9.1 platform ratification, Authority Board Article IX lock release), consolidated in `PI-0`.

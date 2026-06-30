@@ -1684,3 +1684,58 @@ a Git `origin` remote is provisioned.
 > EXECUTED · RELEASE CERTIFIED · MERGE READY · TAG READY.** Branch `phase-9.2-convergence` NOT pushed / NOT
 > merged / NOT tagged. This concludes the Platform Engineering Governance Program; downstream merge + tag
 > `ucos-governance-1.0.0` reserved to release governance.
+
+
+
+---
+
+## 0C. Phase 10.0 — Implementation Readiness (CURRENT — supersedes §0/§0B for delivery-program status)
+
+> **Append-only.** This section records the Phase 10.0 implementation-readiness program. It adds **no**
+> architecture, code, technology selection, or governance change, and **modifies no** frozen governance
+> construct (`UCOS-PEA-001..007`, the Governance Baseline 1.0.0, or any ratified domain/entity/matrix). It
+> is the CURRENT status for the implementation delivery program.
+
+| Field | Value |
+|-------|-------|
+| Phase | **Phase 10.0 — Implementation Readiness** (COMPLETE) |
+| Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE / DO NOT TAG) |
+| Mode | IMPLEMENTATION PLANNING ONLY — no source code, no platform implementation, no runtime construction, no technology selection |
+| Input baseline | UCOS Governance Baseline 1.0.0 (FROZEN · ESTABLISHED · CERTIFIED) |
+| Deliverables | 8 (`UCOS-IMP-CAP-001`, `UCOS-IMP-ROAD-001`, `UCOS-IMP-WPS-001`, `UCOS-IMP-DEP-001`, `UCOS-IMP-DELIV-001`, `UCOS-IMP-GOV-001`, `UCOS-IMP-PI-001`, `UCOS-IMP-READY-001`) |
+| Traceability matrices | 8 (`TM-IMP-001..007` + `TM-IMP-CERT-001`) |
+| Capability decomposition | 19 capabilities `CAP-01..19` → 19 ICUs `ICU-001..019`; 73/73 runtime services covered |
+| Work breakdown | 33 work packages across 9 work streams (`WP-ENB-01..05`, `WP-PLT-01..17`, `WP-BIZ-01..08`, `WP-EXP-01`, `WP-VNC-01..02`) |
+| Program increments | 8 (`PI-0..PI-7`); all 33 WPs assigned; acyclic; gate-bound |
+| Certification | `TM-IMP-CERT-001` — **9/13 PASS · 4 CONDITIONS · 0 FAIL** |
+| Conditions (lock-release) | C-1 Experience (06), C-2 Contracts (07), C-3 Security (09), C-4 Technology ADRs (08), C-5 Phase 9.1 platform ratification, C-6 Article IX lock release — consolidated in `PI-0` |
+| **Verdict** | **IMPLEMENTATION READY WITH CONDITIONS** |
+| Next Step | Execute `PI-0` (Enablement & Lock Release): complete & ratify Prompts 06/07/09, record technology-selection ADRs (08), ratify `PEA-001..007` (Phase 9.1); then Authority Board releases the Article IX lock |
+| Conflicts / leakage | 0 orphan capabilities/services · 0 dependency cycles · 0 WP authorizing code ahead of lock · 0 new capability/domain/contract/tech · implementation leakage NONE · 0 frozen-construct mutations |
+
+> **Phase 10.0 — Implementation Readiness (COMPLETE).** Transformed the ratified, frozen **UCOS Governance
+> Baseline 1.0.0** into an **executable platform delivery program** at the planning level. Generated the
+> Implementation Capability Model (`UCOS-IMP-CAP-001`; `ICU-001..019` 1:1 from `CAP-01..19`; 73/73 runtime
+> services covered via platform/governance ICUs; `TM-IMP-001`), Implementation Roadmap (`UCOS-IMP-ROAD-001`;
+> stages `S0`–`S7`, lock-respecting, substrate-first; `TM-IMP-002`), Work Package Structure
+> (`UCOS-IMP-WPS-001`; 33 WPs across 9 work streams; 17 platform WPs 1:1 with `PE-01..17`, 8 commerce WPs
+> 1:1 with `CAP-01..08`, 1 experience WP, 5 enablement/lock-release WPs, 2 assurance WPs; `TM-IMP-003`),
+> Dependency Graph (`UCOS-IMP-DEP-001`; acyclic DAG consistent with `PSR-001..017`; critical path
+> contracts→registry→config→identity→control→order→experience→validation→release; `TM-IMP-004`), Delivery
+> Architecture (`UCOS-IMP-DELIV-001`; team topology aligned to `PEO-001..017`, 5 delivery streams, 4 gated
+> environments `ENV-DEV/INT/STAGE/PROD`, Definition of Done; technology-neutral; `TM-IMP-005`),
+> Implementation Governance (`UCOS-IMP-GOV-001`; enacts gates `GATE-QUAL/SEC/DOC-001`, Article IX lock
+> control, Control Fabric `PEA-007`, single-owner accountability, append-only discipline; non-waivable
+> S1/S3/S4 preserved; `TM-IMP-006`), and Program Increment Plan (`UCOS-IMP-PI-001`; `PI-0..PI-7` covering
+> all 33 WPs; `TM-IMP-007`). The Implementation Readiness Report (`UCOS-IMP-READY-001`) renders
+> `TM-IMP-CERT-001` (**9/13 PASS · 4 CONDITIONS · 0 FAIL**) and the verdict **IMPLEMENTATION READY WITH
+> CONDITIONS**: the implementation *planning* program is complete and certified, but *code generation*
+> (Prompt 10) MAY NOT begin until conditions **C-1..C-6** are satisfied and the Constitution Article IX
+> generation lock is released by the Authority Board (consolidated in `PI-0`). Validation: 8/8 deliverables;
+> 8/8 matrices; 19/19 capabilities decomposed; 73/73 services covered; 17/17 platform domains
+> work-packaged; 8/8 commerce capabilities work-packaged; dependency graph acyclic; **0 source code; 0
+> technology selection; 0 governance/registry/baseline change; 0 frozen-construct mutation; implementation
+> leakage NONE**. Artifacts `UCOS-IMP-CAP-001`/`ROAD-001`/`WPS-001`/`DEP-001`/`DELIV-001`/`GOV-001`/`PI-001`
+> in `docs/implementation/`; `UCOS-IMP-READY-001` at repository root
+> (`PHASE-10.0-IMPLEMENTATION-READINESS-REPORT.md`). **Phase 10.0 work stops here; PI-0 enablement and the
+> Article IX lock release are the next governed steps.** Branch NOT pushed / NOT merged / NOT tagged.
