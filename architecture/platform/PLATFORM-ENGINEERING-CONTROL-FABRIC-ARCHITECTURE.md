@@ -2,9 +2,9 @@
 
 **Artifact ID:** UCOS-PEA-007
 **Layer:** ARCHITECTURE (Platform Engineering — Control Fabric)
-**Status:** CREATED — IN PROGRESS (Phase 9.0C.5 Part 3 — Control Authority Architecture)
-**Version:** 0.3.0
-**Phase:** Phase 9.0C.5 — Control Fabric Architecture (Part 3 of N — Control Authority)
+**Status:** CREATED — IN PROGRESS (Phase 9.0C.5 Part 4 — Control Traceability & Mapping Architecture)
+**Version:** 0.4.0
+**Phase:** Phase 9.0C.5 — Control Fabric Architecture (Part 4 of N — Control Traceability)
 **Date:** 2026-06-30
 **Owner:** Chief Platform Engineer / Platform Governance & Control Plane (CAP-15; `PE-17`)
 **Approver:** Authority Board (ratification deferred to the Platform Engineering validation phase)
@@ -1316,3 +1316,284 @@ four architecture authority models is asserted in §33.
 - **Presides over (read-only, preserved):** `PEGM-001`/`PRA-001`/`PCA-001`/`PMA-001` and the 12 Control
   Domains / 73 Control Entities, whose inherited `PEG/PEO/PEB`, authority anchors, and lifecycle semantics
   are preserved unchanged (CFP-010).
+
+
+
+---
+
+# PART 4 — CONTROL TRACEABILITY & MAPPING ARCHITECTURE
+
+> **Part 4 banner.** This part is **appended** to `UCOS-PEA-007`. It establishes the **Control Traceability
+> Architecture ONLY** — three traceability matrices **`TM-CTRL-001`** (Control Domain Mapping,
+> `PCD-CTRL ↔ PRD`), **`TM-CTRL-002`** (Control Entity Mapping, `PCE ↔ PRS`), and **`TM-CTRL-003`**
+> (Control Governance Mapping, `PCD-CTRL`/`PCE ↔ PEG`/`PEO`/`PEB`/Authority Sources) — together with full
+> coverage validation and conflict analysis. Per the Part 4 mandate this part **DOES NOT** create
+> Lifecycle Artifacts, Registry Entries, State Entries, Certification Reports, or Consolidation Reports;
+> it does **NOT** modify `STATE-001` or `CTX-REG-001`; and it changes nothing in Parts 1–3 except the
+> artifact version/status header. Parts 1 (`PCD-CTRL-001..012`), 2 (`PCE-001..073`), and 3
+> (`PCA-CTRL-001`) remain authoritative and unaltered. These matrices **realize** the Control Traceability
+> Strategy of Part 1 §13.
+
+## 36. Part 4 Document Control & Scope
+
+| Field | Value |
+|-------|-------|
+| Part | Phase 9.0C.5 **Part 4** — Control Traceability & Mapping Architecture |
+| Artifact | `UCOS-PEA-007` (advanced to v0.4.0 by this part) |
+| Delivers | **`TM-CTRL-001`** (`PCD-CTRL ↔ PRD`), **`TM-CTRL-002`** (`PCE ↔ PRS`), **`TM-CTRL-003`** (`PCD-CTRL`/`PCE ↔ PEG`/`PEO`/`PEB`/Authority); coverage validation; conflict analysis |
+| Authority basis | Part 1 (`bc3ae70`) · Part 2 (`57e3050`) · Part 3 (`c4a0679`) |
+| Source of mappings (read-only) | Part 1 §9–§10 (domains), Part 2 §18–§19 (entities/classification), Part 3 §25–§33 (authority) |
+| Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE) |
+
+### 36.1 Identifier convention (binding)
+
+Control traceability matrices use the **compound** prefix **`TM-CTRL-NNN`** (Traceability Matrix — Control
+Fabric). The mandatory `-CTRL-` infix keeps them **distinct** from the 12 platform `TM-PEA-*` matrices and
+the 3 `TM-CERT-*` matrices: no collision, re-use, or supersession. `TM-CTRL-001..003` **reuse** those
+existing matrices as read-only lineage sources (Part 1 §13) and never duplicate or alter them.
+
+### 36.2 Part 4 scope (binding)
+
+**In scope (this delivery):** `TM-CTRL-001`, `TM-CTRL-002`, `TM-CTRL-003`; the runtime-domain grouping
+(`PRD-001..017`) that anchors them; coverage validation (12/12 domains, 73/73 entities, 100% across
+traceability/governance/ownership/boundary/authority); and conflict confirmations (0 orphans, 0 broken
+mappings, 0 circular dependencies, 0 governance/ownership/boundary/authority conflicts).
+
+**Out of scope (deferred / prohibited in this part):** Lifecycle Artifacts (no control-lifecycle ID);
+Registry Entries (`CTX-REG-001`); State Entries (`STATE-001`); Certification Reports; Consolidation
+Reports; Control Mappings to `PED/PRG/PCD/PMD`/`PEV/PRE/PCF/PME` (deferred); technology/product selection
+(PEP-010/CFP-011); any alteration of `UCOS-PEA-001..006` or Parts 1–3 (header excepted).
+
+## 37. Control Traceability Model
+
+> **Lineage spine (binding).** Every controlled element traces along a single acyclic upward spine
+> terminating at the Authority Board:
+>
+> `PCE-nnn → PRS-nnn → PRD-XXX → PE-XX → CAP-YY → AUTH-009 → Authority Board`
+> and `PCD-CTRL-nnn → {PRD spanned} ⟂ PRD-017 (spine anchor) → CAP-15 → PEG-017 → AUTH-009 → Authority Board`.
+
+### 37.1 Runtime-domain grouping (`PRD-001..017`) — read-only anchor
+
+Derived from `UCOS-PEA-002`: each `PRD-XXX` owns a contiguous block of `PRS`, with governance `PEG-XXX`,
+ownership `PEO-XXX`, and boundary `PEB-XXX` aligned by number.
+
+| PRD | Services (`PRS`) | `PEG`/`PEO`/`PEB` | Authority sources | CAP |
+|-----|------------------|:------------------:|-------------------|:---:|
+| PRD-001 | 001–004 | 001 | AUTH-004/009 | CAP-15 |
+| PRD-002 | 005–008 | 002 | AUTH-007/009 | CAP-15 |
+| PRD-003 | 009–012 | 003 | AUTH-008/009 | CAP-17 |
+| PRD-004 | 013–017 | 004 | AUTH-004/009 | CAP-12 |
+| PRD-005 | 018–021 | 005 | AUTH-004/009 | CAP-12 |
+| PRD-006 | 022–025 | 006 | AUTH-009/010 | CAP-19 |
+| PRD-007 | 026–030 | 007 | AUTH-009 | CAP-18 |
+| PRD-008 | 031–034 | 008 | AUTH-008/009 | CAP-09 |
+| PRD-009 | 035–038 | 009 | AUTH-008/009 | CAP-17 |
+| PRD-010 | 039–042 | 010 | AUTH-008/009/010 | CAP-16 |
+| PRD-011 | 043–046 | 011 | AUTH-007/009 | CAP-10 |
+| PRD-012 | 047–051 | 012 | AUTH-009 | CAP-11 |
+| PRD-013 | 052–056 | 013 | AUTH-009 | CAP-15 |
+| PRD-014 | 057–060 | 014 | AUTH-009 | CAP-15 |
+| PRD-015 | 061–064 | 015 | AUTH-009 | CAP-15 |
+| PRD-016 | 065–068 | 016 | AUTH-007/009 | CAP-13 |
+| PRD-017 | 069–073 | 017 | AUTH-009 | CAP-15 |
+
+## 38. TM-CTRL-001 — Control Domain Mapping Matrix (`PCD-CTRL ↔ PRD`)
+
+> Each Control Domain is **structurally anchored** on `PRD-017` (control-plane spine; all 12) and
+> **governs across** the set of `PRD`s whose services carry that domain's Control Entities (derived from
+> Part 2 §18–§19). The mapping is intentionally **many-to-many** (control is cross-cutting): each
+> `PCD-CTRL` spans ≥1 `PRD`, and each of the 17 `PRD`s is covered by ≥1 `PCD-CTRL`.
+
+| Control Domain | CCG | Structural anchor | Governs across (`PRD`) | # PRD |
+|----------------|:---:|:-----------------:|------------------------|:-----:|
+| PCD-CTRL-001 — Control Authority & Decision-Rights | CCG-1 | PRD-017 | PRD-007, 008, 017 | 3 |
+| PCD-CTRL-002 — Governance Orchestration | CCG-1 | PRD-017 | PRD-007, 016, 017 | 3 |
+| PCD-CTRL-003 — Policy & Principle Enforcement | CCG-1 | PRD-017 | PRD-001, 003, 017 | 3 |
+| PCD-CTRL-004 — Control Lifecycle & Promotion | CCG-2 | PRD-017 | PRD-001, 002, 006, 009, 014, 015, 017 | 7 |
+| PCD-CTRL-005 — Change & Evolution Control | CCG-2 | PRD-017 | PRD-005, 009, 011 | 3 |
+| PCD-CTRL-006 — Configuration & Metadata Control Alignment | CCG-2 | PRD-017 | PRD-011, 015 | 2 |
+| PCD-CTRL-007 — Traceability & Lineage Control | CCG-3 | PRD-017 | PRD-003, 006, 012 | 3 |
+| PCD-CTRL-008 — Audit & Evidence Control | CCG-3 | PRD-017 | PRD-010, 017 | 2 |
+| PCD-CTRL-009 — Compliance & Conformance Control | CCG-3 | PRD-017 | PRD-002, 009, 012, 016 | 4 |
+| PCD-CTRL-010 — Boundary & Isolation Control | CCG-3 | PRD-017 | PRD-001, 002, 003, 005, 008, 016 | 6 |
+| PCD-CTRL-011 — Control Signal & Eventing | CCG-4 | PRD-017 | PRD-004, 007, 012 | 3 |
+| PCD-CTRL-012 — Exception, Escalation & Continuity | CCG-4 | PRD-017 | PRD-002, 004, 007, 013, 014 | 5 |
+
+### 38.1 Reverse coverage (`PRD → PCD-CTRL`) — every PRD controlled
+
+| PRD | Controlled by Control Domains | PRD | Controlled by Control Domains |
+|-----|-------------------------------|-----|-------------------------------|
+| PRD-001 | 003, 004, 010 | PRD-010 | 008 |
+| PRD-002 | 004, 009, 010, 012 | PRD-011 | 005, 006 |
+| PRD-003 | 003, 007, 010 | PRD-012 | 007, 009, 011 |
+| PRD-004 | 011, 012 | PRD-013 | 012 |
+| PRD-005 | 005, 010 | PRD-014 | 004, 012 |
+| PRD-006 | 004, 007 | PRD-015 | 004, 006 |
+| PRD-007 | 001, 002, 011, 012 | PRD-016 | 002, 009, 010 |
+| PRD-008 | 001, 010 | PRD-017 | 001, 002, 003, 004, 008 |
+| PRD-009 | 004, 005, 009 | — | — |
+
+> **TM-CTRL-001 result:** 12/12 Control Domains mapped; **17/17 `PRD` covered**; all anchored on `PRD-017`
+> → CAP-15 → `PEG-017` → AUTH-009 → Authority Board. **0 orphan domains; 0 uncovered `PRD`.**
+
+## 39. TM-CTRL-002 — Control Entity Mapping Matrix (`PCE ↔ PRS`)
+
+> Total, injective bijection `PCE-nnn ↔ PRS-nnn` for all `nnn ∈ {001..073}` (Part 2 §16.1 E1/E2). Grouped
+> by owning `PRD` for lineage; class = owning `PCD-CTRL` (Part 2 §19).
+
+| PCE → PRS | PRD | Class | PCE → PRS | PRD | Class | PCE → PRS | PRD | Class |
+|-----------|:---:|:-----:|-----------|:---:|:-----:|-----------|:---:|:-----:|
+| 001 ↔ 001 | 001 | 004 | 026 ↔ 026 | 007 | 002 | 051 ↔ 051 | 012 | 011 |
+| 002 ↔ 002 | 001 | 010 | 027 ↔ 027 | 007 | 002 | 052 ↔ 052 | 013 | 012 |
+| 003 ↔ 003 | 001 | 004 | 028 ↔ 028 | 007 | 001 | 053 ↔ 053 | 013 | 012 |
+| 004 ↔ 004 | 001 | 003 | 029 ↔ 029 | 007 | 012 | 054 ↔ 054 | 013 | 012 |
+| 005 ↔ 005 | 002 | 009 | 030 ↔ 030 | 007 | 011 | 055 ↔ 055 | 013 | 012 |
+| 006 ↔ 006 | 002 | 010 | 031 ↔ 031 | 008 | 010 | 056 ↔ 056 | 013 | 012 |
+| 007 ↔ 007 | 002 | 004 | 032 ↔ 032 | 008 | 001 | 057 ↔ 057 | 014 | 004 |
+| 008 ↔ 008 | 002 | 012 | 033 ↔ 033 | 008 | 010 | 058 ↔ 058 | 014 | 004 |
+| 009 ↔ 009 | 003 | 010 | 034 ↔ 034 | 008 | 010 | 059 ↔ 059 | 014 | 004 |
+| 010 ↔ 010 | 003 | 010 | 035 ↔ 035 | 009 | 009 | 060 ↔ 060 | 014 | 012 |
+| 011 ↔ 011 | 003 | 003 | 036 ↔ 036 | 009 | 004 | 061 ↔ 061 | 015 | 004 |
+| 012 ↔ 012 | 003 | 007 | 037 ↔ 037 | 009 | 005 | 062 ↔ 062 | 015 | 006 |
+| 013 ↔ 013 | 004 | 011 | 038 ↔ 038 | 009 | 009 | 063 ↔ 063 | 015 | 004 |
+| 014 ↔ 014 | 004 | 011 | 039 ↔ 039 | 010 | 008 | 064 ↔ 064 | 015 | 006 |
+| 015 ↔ 015 | 004 | 011 | 040 ↔ 040 | 010 | 008 | 065 ↔ 065 | 016 | 009 |
+| 016 ↔ 016 | 004 | 011 | 041 ↔ 041 | 010 | 008 | 066 ↔ 066 | 016 | 009 |
+| 017 ↔ 017 | 004 | 012 | 042 ↔ 042 | 010 | 008 | 067 ↔ 067 | 016 | 010 |
+| 018 ↔ 018 | 005 | 010 | 043 ↔ 043 | 011 | 006 | 068 ↔ 068 | 016 | 002 |
+| 019 ↔ 019 | 005 | 010 | 044 ↔ 044 | 011 | 006 | 069 ↔ 069 | 017 | 003 |
+| 020 ↔ 020 | 005 | 005 | 045 ↔ 045 | 011 | 005 | 070 ↔ 070 | 017 | 001 |
+| 021 ↔ 021 | 005 | 010 | 046 ↔ 046 | 011 | 005 | 071 ↔ 071 | 017 | 004 |
+| 022 ↔ 022 | 006 | 007 | 047 ↔ 047 | 012 | 011 | 072 ↔ 072 | 017 | 002 |
+| 023 ↔ 023 | 006 | 007 | 048 ↔ 048 | 012 | 011 | 073 ↔ 073 | 017 | 008 |
+| 024 ↔ 024 | 006 | 007 | 049 ↔ 049 | 012 | 007 | — | — | — |
+| 025 ↔ 025 | 006 | 004 | 050 ↔ 050 | 012 | 009 | — | — | — |
+
+> **TM-CTRL-002 result:** **73/73** entities mapped 1:1 to `PRS-001..073`; bijection **total & injective**;
+> **0 orphans, 0 duplicates, 0 broken mappings.** Class column values are `PCD-CTRL-0NN` (abbreviated).
+
+## 40. TM-CTRL-003 — Control Governance Mapping Matrix (`PCD-CTRL`/`PCE ↔ PEG`/`PEO`/`PEB`/Authority)
+
+> Each `PCE` inherits **exactly one** `PEG-XXX`/`PEO-XXX`/`PEB-XXX` (= its controlled `PRS`'s, unchanged —
+> CFP-010), and is **presided over** by the control-plane spine `PEG-017`/`PEO-017`/`PEB-017` without
+> replacement (Part 2 §16.2). Authority terminates at the Authority Board for all.
+
+### 40.1 Part A — Entity-level governance mapping (by `PEG` group; all 73)
+
+| `PEG` / `PEO` / `PEB` | Authority sources | CAP | Control Entities (`PCE`) | # |
+|:----------------------:|-------------------|:---:|--------------------------|:-:|
+| 001 | AUTH-004/009 | CAP-15 | 001, 002, 003, 004 | 4 |
+| 002 | AUTH-007/009 | CAP-15 | 005, 006, 007, 008 | 4 |
+| 003 | AUTH-008/009 | CAP-17 | 009, 010, 011, 012 | 4 |
+| 004 | AUTH-004/009 | CAP-12 | 013, 014, 015, 016, 017 | 5 |
+| 005 | AUTH-004/009 | CAP-12 | 018, 019, 020, 021 | 4 |
+| 006 | AUTH-009/010 | CAP-19 | 022, 023, 024, 025 | 4 |
+| 007 | AUTH-009 | CAP-18 | 026, 027, 028, 029, 030 | 5 |
+| 008 | AUTH-008/009 | CAP-09 | 031, 032, 033, 034 | 4 |
+| 009 | AUTH-008/009 | CAP-17 | 035, 036, 037, 038 | 4 |
+| 010 | AUTH-008/009/010 | CAP-16 | 039, 040, 041, 042 | 4 |
+| 011 | AUTH-007/009 | CAP-10 | 043, 044, 045, 046 | 4 |
+| 012 | AUTH-009 | CAP-11 | 047, 048, 049, 050, 051 | 5 |
+| 013 | AUTH-009 | CAP-15 | 052, 053, 054, 055, 056 | 5 |
+| 014 | AUTH-009 | CAP-15 | 057, 058, 059, 060 | 4 |
+| 015 | AUTH-009 | CAP-15 | 061, 062, 063, 064 | 4 |
+| 016 | AUTH-007/009 | CAP-13 | 065, 066, 067, 068 | 4 |
+| 017 | AUTH-009 | CAP-15 | 069, 070, 071, 072, 073 | 5 |
+| **Total** | all → Authority Board | — | `PCE-001..073` | **73** |
+
+### 40.2 Part B — Domain-level governance mapping (presiding + governed-across)
+
+| Control Domain | Presiding gov | Governed-across `PEG`/`PEO`/`PEB` (= spanned `PRD`) | Authority sources (union) |
+|----------------|:-------------:|------------------------------------------------------|---------------------------|
+| PCD-CTRL-001 | PEG-017 | 007, 008, 017 | AUTH-008/009 |
+| PCD-CTRL-002 | PEG-017 | 007, 016, 017 | AUTH-007/009 |
+| PCD-CTRL-003 | PEG-017 | 001, 003, 017 | AUTH-004/008/009 |
+| PCD-CTRL-004 | PEG-017 | 001, 002, 006, 009, 014, 015, 017 | AUTH-004/007/008/009/010 |
+| PCD-CTRL-005 | PEG-017 | 005, 009, 011 | AUTH-004/007/008/009 |
+| PCD-CTRL-006 | PEG-017 | 011, 015 | AUTH-007/009 |
+| PCD-CTRL-007 | PEG-017 | 003, 006, 012 | AUTH-008/009/010 |
+| PCD-CTRL-008 | PEG-017 | 010, 017 | AUTH-008/009/010 |
+| PCD-CTRL-009 | PEG-017 | 002, 009, 012, 016 | AUTH-007/008/009 |
+| PCD-CTRL-010 | PEG-017 | 001, 002, 003, 005, 008, 016 | AUTH-004/007/008/009 |
+| PCD-CTRL-011 | PEG-017 | 004, 007, 012 | AUTH-004/009 |
+| PCD-CTRL-012 | PEG-017 | 002, 004, 007, 013, 014 | AUTH-004/007/009 |
+
+> **TM-CTRL-003 result:** 73/73 entities each map to exactly one inherited `PEG`/`PEO`/`PEB`
+> (17 distinct each); 12/12 domains presided by `PEG-017`; all authority terminates at the Authority
+> Board. **0 governance / ownership / boundary / authority conflicts.**
+
+## 41. Coverage Validation
+
+| Coverage dimension | Required | Observed | Result |
+|--------------------|:--------:|:--------:|:------:|
+| Control Domains covered (`TM-CTRL-001`) | 12/12 | 12/12 (each → ≥1 `PRD`; all anchored `PRD-017`) | ✅ |
+| Runtime Domains covered (reverse) | 17/17 | 17/17 (each `PRD` → ≥1 `PCD-CTRL`) | ✅ |
+| Control Entities covered (`TM-CTRL-002`) | 73/73 | 73/73 (bijection `PCE-nnn ↔ PRS-nnn`) | ✅ |
+| Traceability coverage | 100% | 100% (every element on the upward spine to Authority Board) | ✅ |
+| Governance coverage (`TM-CTRL-003`) | 100% | 100% (73/73 inherit one `PEG`; 12/12 presided `PEG-017`) | ✅ |
+| Ownership coverage | 100% | 100% (73/73 inherit one `PEO`; single owner per domain) | ✅ |
+| Boundary coverage | 100% | 100% (73/73 inherit one `PEB`; all within `PEB-017`) | ✅ |
+| Authority coverage | 100% | 100% (12 domains + 73 entities → AUTH-009 → Authority Board) | ✅ |
+
+## 42. Conflict Analysis
+
+| Confirmation | Target | Observed | Result |
+|--------------|:------:|:--------:|:------:|
+| Orphans (entity with no `PRS`; domain with no `PRD`; uncovered `PRD`) | 0 | 0 (73/73 mapped; 12/12 span ≥1 `PRD`; 17/17 `PRD` covered) | ✅ |
+| Broken mappings | 0 | 0 (bijection total & injective; every domain/entity resolves to a real target) | ✅ |
+| Circular dependencies | 0 | 0 (lineage is a strict acyclic DAG: `PCE→PRS→PRD→PE→CAP→AUTH→Board`) | ✅ |
+| Governance conflicts | 0 | 0 (one inherited `PEG` per entity; `PEG-017` presides, never replaces — CFP-010) | ✅ |
+| Ownership conflicts | 0 | 0 (one inherited `PEO` per entity; single accountable owner per domain — CFP-003) | ✅ |
+| Boundary violations | 0 | 0 (one inherited `PEB` per entity; all crossings honor `PEB-017` — CFP-009) | ✅ |
+| Authority conflicts | 0 | 0 (single terminal = Authority Board; AUTH-009 precedence enacted — CFP-001) | ✅ |
+
+### 42.1 Acyclicity proof sketch
+
+All edges in `TM-CTRL-001/002/003` point strictly **upward** in tiered order
+(`PCE → PRS → PRD → PE → CAP → AUTH → Authority Board`; and `PCD-CTRL → PRD/PRD-017 → CAP-15 → PEG-017 →
+AUTH-009 → Authority Board`). No edge points downward or laterally, and the Authority Board is a unique
+sink with no outgoing edge. A directed graph with strictly increasing tier rank on every edge and a single
+terminal sink contains **no cycle**. ∴ **0 circular dependencies.**
+
+## 43. Part 4 Validation
+
+| Validation | Required | Observed | Result |
+|------------|----------|----------|:------:|
+| Matrices generated | 3 | 3 (`TM-CTRL-001`, `TM-CTRL-002`, `TM-CTRL-003`) | ✅ |
+| Domains covered | 12/12 | 12/12 | ✅ |
+| Entities covered | 73/73 | 73/73 | ✅ |
+| Traceability coverage | 100% | 100% | ✅ |
+| Governance coverage | 100% | 100% | ✅ |
+| Ownership coverage | 100% | 100% | ✅ |
+| Boundary coverage | 100% | 100% | ✅ |
+| Authority coverage | 100% | 100% | ✅ |
+| Orphans / broken mappings / circular dependencies | 0 / 0 / 0 | 0 / 0 / 0 | ✅ |
+| Governance / ownership / boundary / authority conflicts | 0 each | 0 each | ✅ |
+| Lifecycle artifacts created | 0 (prohibited) | 0 | ✅ |
+| Registry entries created (`CTX-REG-001`) | 0 (prohibited) | 0 | ✅ |
+| State entries created (`STATE-001`) | 0 (prohibited) | 0 | ✅ |
+| Certification / consolidation reports created | 0 (prohibited) | 0 | ✅ |
+| Alteration of `UCOS-PEA-001..006` / Parts 1–3 (header excepted) | 0 | 0 | ✅ |
+| Implementation / technology leakage | 0 | 0 (PEP-010 / CFP-011) | ✅ |
+
+## 44. Part 4 Document Control (close)
+
+| Field | Value |
+|-------|-------|
+| Artifact ID | UCOS-PEA-007 |
+| Version | 0.4.0 (advanced by Part 4) |
+| Status | CREATED — IN PROGRESS (Phase 9.0C.5 Part 4 — Control Traceability & Mapping Architecture) |
+| Part 4 delivers | `TM-CTRL-001` (`PCD-CTRL ↔ PRD`), `TM-CTRL-002` (`PCE ↔ PRS`), `TM-CTRL-003` (`PCD-CTRL`/`PCE ↔ PEG`/`PEO`/`PEB`/Authority); coverage validation; conflict analysis |
+| Part 4 created (prohibited) | Lifecycle artifacts: NONE · Registry entries: NONE · State entries: NONE · Certification reports: NONE · Consolidation reports: NONE |
+| Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE) |
+| Next | Phase 9.0C.5 Part 5 — Control Mappings / Crosswalks to `PED/PRG/PCD/PMD` · `PEV/PRE/PCF/PME` (re-sequenced; not begun) |
+
+### Part 4 Traceability addendum
+- **Refines (additionally):** `UCOS-PEA-002` (`PRD-001..017`, `PRS-001..073`); the 12 `TM-PEA-*` and 3
+  `TM-CERT-*` matrices (read-only lineage sources, Part 1 §13); Part 1 §13 (Control Traceability Strategy,
+  now realized as `TM-CTRL-001..003`).
+- **Refined by:** `PHASE-9.0C.5-PART-4-COMPLETION-REPORT.md`; re-sequenced Phase 9.0C.5 Part 5 (control
+  mappings/crosswalks), Part 6 (control lifecycle standard), Part 7 (validation, `CTX-REG-001` +
+  `STATE-001` proposals); Phase 9.1 ratification.
+- **Traces (read-only, preserved):** every `PCD-CTRL`/`PCE` to its `PRD`/`PRS`/`PEG`/`PEO`/`PEB`/authority
+  source, all preserved unchanged (CFP-010); single terminal = Authority Board (CFP-001).
