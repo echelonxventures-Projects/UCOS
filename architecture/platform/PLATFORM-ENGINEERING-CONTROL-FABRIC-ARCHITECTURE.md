@@ -2,9 +2,9 @@
 
 **Artifact ID:** UCOS-PEA-007
 **Layer:** ARCHITECTURE (Platform Engineering — Control Fabric)
-**Status:** CREATED — IN PROGRESS (Phase 9.0C.5 Part 2 — Control Entity Architecture)
-**Version:** 0.2.0
-**Phase:** Phase 9.0C.5 — Control Fabric Architecture (Part 2 of N — Control Entities)
+**Status:** CREATED — IN PROGRESS (Phase 9.0C.5 Part 3 — Control Authority Architecture)
+**Version:** 0.3.0
+**Phase:** Phase 9.0C.5 — Control Fabric Architecture (Part 3 of N — Control Authority)
 **Date:** 2026-06-30
 **Owner:** Chief Platform Engineer / Platform Governance & Control Plane (CAP-15; `PE-17`)
 **Approver:** Authority Board (ratification deferred to the Platform Engineering validation phase)
@@ -911,3 +911,408 @@ turn inherits them from its owning Runtime Domain `PRD-XXX`, `UCOS-PEA-002`):
   + `STATE-001` proposals).
 - **Controls (read-only, preserved):** each `PCE-nnn` controls `PRS-nnn` while preserving its inherited
   `PEG-XXX`/`PEO-XXX`/`PEB-XXX`, authority anchor, and lifecycle semantics (CFP-010).
+
+
+
+---
+
+# PART 3 — CONTROL AUTHORITY ARCHITECTURE
+
+> **Part 3 banner.** This part is **appended** to `UCOS-PEA-007`. It establishes the **Control Authority
+> Architecture ONLY** — the single Control Authority Model **`PCA-CTRL-001`** and its constituent
+> structures (Authority Hierarchy, Authority Delegation, Decision Rights, Escalation Model, Exception
+> Model, Approval Model, Ratification Model). Per the Part 3 mandate this part **DOES NOT** create
+> Lifecycle Artifacts, Traceability Matrices, Registry Entries, State Entries, or Certification Reports;
+> it does **NOT** modify `STATE-001` or `CTX-REG-001`; and it changes nothing in Parts 1–2 except the
+> artifact version/status header. Part 1 (`PCD-CTRL-001..012`, `CFP-001..012`) and Part 2
+> (`PCE-001..073`) remain authoritative and unaltered. `PCA-CTRL-001` **formalizes** — and is fully
+> consistent with — the Control Authority *structure* described informally in Part 1 §11.
+
+## 23. Part 3 Document Control & Scope
+
+| Field | Value |
+|-------|-------|
+| Part | Phase 9.0C.5 **Part 3** — Control Authority Architecture |
+| Artifact | `UCOS-PEA-007` (advanced to v0.3.0 by this part) |
+| Delivers | **`PCA-CTRL-001`** — the Control Authority Model — establishing: Authority Hierarchy, Authority Delegation, Decision Rights, Escalation Model, Exception Model, Approval Model, Ratification Model |
+| Authority basis | `UCOS-PEA-007` Part 1 (commit `bc3ae70`); Part 2 (commit `57e3050`) |
+| Coverage anchor | The 12 Control Domains `PCD-CTRL-001..012` (Part 1) and the 73 Control Entities `PCE-001..073` (Part 2) |
+| Alignment basis | The four ratified architecture authority models `PEGM-001` (Event), `PRA-001` (Registry), `PCA-001` (Configuration), `PMA-001` (Metadata) |
+| Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE) |
+
+### 23.1 Identifier convention (disambiguation — binding)
+
+The Control Authority Model uses the **compound** identifier **`PCA-CTRL-001`** (Platform **C**ontrol
+**A**uthority — Control Fabric). The mandatory `-CTRL-` infix keeps it **distinct** from the Configuration
+Authority Model **`PCA-001`** (`UCOS-PEA-005`): there is **no** collision, re-use, re-naming, or
+supersession. `PCA-CTRL-001` is the **peer** — not the replacement — of `PEGM-001`/`PRA-001`/`PCA-001`/
+`PMA-001`; it **presides over** them as the control-plane authority surface (Part 1 §8) and **never**
+amends them.
+
+### 23.2 Roadmap re-sequencing (governance note — binding)
+
+Parts 1–2 anticipated "Part 3 — Control Mappings / Crosswalks" and "Part 5 — Control Authority & Lifecycle
+Standards" in their Future-Workstreams tables. **The current Phase 9.0C.5 Part 3 mandate supersedes that
+anticipation**: this Part 3 delivers the **Control Authority Architecture** (`PCA-CTRL-001`) and the
+previously-anticipated workstreams **re-sequence** as follows (this reconciliation is additive and
+conflict-free; the anticipated tables in Parts 1–2 are point-in-time records and are not altered):
+
+| Workstream | Prior anticipated part | Re-sequenced part |
+|------------|:---------------------:|:-----------------:|
+| Control Authority Architecture (`PCA-CTRL-001`) | Part 5 (partial) | **Part 3 (this delivery)** |
+| Control Mappings / Crosswalks | Part 3 | Part 4 |
+| Control Traceability Matrices (`TM-CTRL-*`) | Part 4 | Part 5 |
+| Control Lifecycle Standard (control-lifecycle ID) | Part 5 (partial) | Part 6 |
+| Validation, `CTX-REG-001` + `STATE-001` proposals | Part 6 | Part 7 |
+
+### 23.3 Part 3 scope (binding)
+
+**In scope (this delivery):**
+- The single **Control Authority Model `PCA-CTRL-001`** and its **seven established structures**:
+  Authority Hierarchy, Authority Delegation, Decision Rights, Escalation Model, Exception Model, Approval
+  Model, Ratification Model.
+- **Authority coverage** of all **12 Control Domains** (`PCD-CTRL-001..012`) and all **73 Control
+  Entities** (`PCE-001..073`).
+- **Alignment validation** against `PEGM-001`/`PRA-001`/`PCA-001`/`PMA-001`, confirming **0 authority
+  conflicts, 0 escalation conflicts, 0 delegation conflicts, 0 governance conflicts**.
+
+**Out of scope (deferred / prohibited in this part):**
+- **No** Lifecycle Artifacts (no control-lifecycle identifier minted) — re-sequenced Part 6.
+- **No** Traceability Matrices (`TM-CTRL-*`) — re-sequenced Part 5.
+- **No** Registry Entries (`CTX-REG-001`) — re-sequenced Part 7.
+- **No** State Entries (`STATE-001`) — re-sequenced Part 7.
+- **No** Certification Reports (Authority Board ratification deferred).
+- **No** Control Mappings / Crosswalks — re-sequenced Part 4.
+- **No** technology/product/cloud/runtime/framework/vendor selection (PEP-010 / CFP-011).
+- **No** alteration of any `UCOS-PEA-001..006` construct, nor of Parts 1–2 (header excepted).
+
+## 24. PCA-CTRL-001 — Control Authority Model
+
+> **Definition.** `PCA-CTRL-001` is the **single, authoritative Control Authority Model** of the UCOS
+> platform control plane. It defines **who may make which control decision, under what rights, by what
+> delegation, with what approval, escalating by what path, handling exceptions by what rule, and ratified
+> by what model** — for every Control Domain (`PCD-CTRL-001..012`) and every Control Entity
+> (`PCE-001..073`). It is a **governance/control construct** (CFP-011 / PEP-010): not an engine, product,
+> workflow, or code. It **enacts — never amends** — AUTH-009 (Governance Canon), AUTH-010 (Traceability
+> Canon), and AUTH-008 (Security Canon; non-waivable S1/S3/S4), and it **presides over — never replaces**
+> the four architecture authority models `PEGM-001`/`PRA-001`/`PCA-001`/`PMA-001` (Part 1 §8, CFP-010).
+
+### 24.1 Model identity
+
+| Attribute | Value |
+|-----------|-------|
+| Identifier | `PCA-CTRL-001` |
+| Name | Platform Control Authority Model (Control Fabric) |
+| Owner | Platform Governance Owner (control-plane spine) via `PEO-017` |
+| Steward | Platform Governance Steward (CAP-15) |
+| Governing model | `PEG-017` (governance-of-governance) |
+| Capability anchor | CAP-15 Platform Governance |
+| Spine | `PE-17` → `PRD-017` → CAP-15 → AUTH-009 → **Authority Board** (terminal) |
+| Constituent structures | 7 — Hierarchy, Delegation, Decision Rights, Escalation, Exception, Approval, Ratification (§25–§31) |
+| Authority surface | 12 Control Domains + 73 Control Entities (100% coverage; §32) |
+| Enacts (never amends) | AUTH-008 / AUTH-009 / AUTH-010; `PEP-001..020`; `CFP-001..012` |
+| Presides over (never replaces) | `PEGM-001`, `PRA-001`, `PCA-001`, `PMA-001` |
+
+### 24.2 Structure-parity with the four architecture authority models
+
+`PEGM-001`/`PRA-001`/`PCA-001`/`PMA-001` are each defined across eight authority structures (Stewardship,
+Ownership, Governance, Change Control, Approval, Audit, Escalation, Traceability). `PCA-CTRL-001` is
+**structurally parallel and superset-compatible**: its seven mandated structures map onto, and never
+contradict, those eight — guaranteeing alignment (validated in §33).
+
+| `PCA-CTRL-001` structure (mandated) | Corresponds to the four models' structure(s) |
+|-------------------------------------|----------------------------------------------|
+| Authority Hierarchy (§25) | Stewardship + Ownership |
+| Authority Delegation (§26) | Ownership + Governance |
+| Decision Rights (§27) | Governance |
+| Escalation Model (§28) | Escalation |
+| Exception Model (§29) | Approval (deviation handling) + Audit |
+| Approval Model (§30) | Approval (Approval-By-Exception, PEP-020) |
+| Ratification Model (§31) | Change Control + Audit + Traceability |
+
+## 25. Authority Hierarchy
+
+A single, acyclic, terminal hierarchy. Every control authority resolves **upward** to exactly one
+terminal — the **Authority Board** — with no alternate terminal (CFP-001).
+
+```
+                         ┌─────────────────────────────┐
+   T1 — TERMINAL         │       AUTHORITY BOARD        │   AUTH-009 (terminal control authority)
+                         └──────────────▲──────────────┘
+                                        │  (ratification / final arbitration / non-waivable authority)
+   T2 — SPINE            ┌──────────────┴──────────────┐
+                         │ Platform Governance Owner    │   PE-17 / PEG-017 / PEO-017 / CAP-15
+                         │ (control-plane spine)        │   — presides over PCA-CTRL-001
+                         └──────────────▲──────────────┘
+                                        │  (control-framework definition; cross-domain arbitration)
+   T3 — DOMAIN           ┌──────────────┴──────────────┐
+                         │ Control Domain Owners        │   one per PCD-CTRL-001..012
+                         │ (single accountable owner)   │   (CFP-003 — never shared)
+                         └──────────────▲──────────────┘
+                                        │  (in-scope control decisions; Trusted-in-policy)
+   T4 — ENTITY           ┌──────────────┴──────────────┐
+                         │ Control Entities PCE-001..073│   each controls one PRS-001..073 (1:1)
+                         │ (read-only controllers)      │   inherits PEG/PEO/PEB unchanged (CFP-010)
+                         └─────────────────────────────┘
+```
+
+| Tier | Holder | Span | Accountability |
+|------|--------|------|----------------|
+| **T1 — Terminal** | Authority Board | Whole platform | Final arbitration; ratification; non-waivable S1/S3/S4 authority (AUTH-008). |
+| **T2 — Spine** | Platform Governance Owner (`PE-17`/`PEG-017`) | All 12 Control Domains | Control-framework definition; Approval-By-Exception arbitration; cross-domain conflict resolution. |
+| **T3 — Domain** | Control Domain Owner (×12) | One `PCD-CTRL` concern | In-scope control decisions; single accountable owner (CFP-003). |
+| **T4 — Entity** | Control Entity (`PCE`, ×73) | One controlled `PRS` | Exercises domain authority over its mapped service; inherits `PEG/PEO/PEB` unchanged. |
+
+**Hierarchy invariants.** (H1) Exactly one terminal (Authority Board). (H2) Single owner per Control
+Domain — no shared ownership (CFP-003). (H3) Every `PCE` resolves to exactly one Control Domain Owner
+(its class, Part 2 §19) → `PE-17` → Authority Board — no orphan, no cycle. (H4) The hierarchy **enacts**
+AUTH-009 precedence; it never reorders or overrides it.
+
+## 26. Authority Delegation
+
+Authority is **delegated downward, accountability is retained upward.** A higher tier may delegate the
+*exercise* of a control decision to a lower tier, but **never** delegates away terminal accountability or
+any non-waivable control.
+
+| Delegation | From → To | What may be delegated | What may NOT be delegated |
+|------------|-----------|-----------------------|---------------------------|
+| D1 | Authority Board → Spine (`PE-17`) | Control-framework definition; cross-domain arbitration; Approval-By-Exception adjudication | Final ratification; canon amendment; non-waivable S1/S3/S4 authority (AUTH-008) |
+| D2 | Spine (`PE-17`) → Control Domain Owner | In-scope control decisions for that domain (Trusted-in-policy operation) | Cross-domain conflict resolution; framework redefinition; escalation-terminal authority |
+| D3 | Control Domain Owner → Control Entity (`PCE`) | Routine, deterministic, in-policy control over the mapped `PRS` | Class re-assignment; deviation approval; any `PEG/PEO/PEB` mutation (CFP-010) |
+
+**Delegation rules (binding).**
+- **(DG1) Accountability is non-delegable.** Delegating *exercise* never transfers *accountability*; the
+  delegating tier remains answerable upward.
+- **(DG2) Scope-bounded.** A delegate acts strictly within the delegating tier's scope; sub-delegation
+  beyond scope is prohibited.
+- **(DG3) Single-owner preserved.** Delegation never creates a second owner of the same Control Domain
+  (CFP-003) nor a second control plane (CFP-001).
+- **(DG4) Non-waivable floor.** No delegation path can authorize auto-waiver of S1/S3/S4 (CFP-012,
+  AUTH-008).
+- **(DG5) Read-only floor.** Delegation to a `PCE` never confers mutation rights over controlled
+  `UCOS-PEA-001..006` constructs (CFP-010).
+- **(DG6) Inheritance-preserving.** Delegation operates *within* each entity's inherited `PEG-XXX`/
+  `PEO-XXX`/`PEB-XXX`; it neither replaces nor re-owns them (Part 2 §16.2).
+
+## 27. Decision Rights
+
+Every control decision is classified by **decision class** and bound to exactly **one accountable tier**
+under Approval-By-Exception (PEP-020 / CFP-007).
+
+| DR | Decision class | Accountable tier (decides) | Mode | Notes |
+|----|----------------|---------------------------|------|-------|
+| DR-1 | Routine in-policy control over one `PRS` | T4 — Control Entity (`PCE`) | **Trusted** (autonomous, audited) | Deterministic; within domain class scope. |
+| DR-2 | In-scope control decision for one Control Domain | T3 — Control Domain Owner | **Trusted-in-policy** | Single accountable owner (CFP-003). |
+| DR-3 | Cross-domain control conflict / framework interpretation | T2 — Spine (`PE-17`) | **Arbitrated** | Approval-By-Exception adjudication. |
+| DR-4 | Deviation / exception / canon-adjacent / any non-waivable touch | T1 — Authority Board (via T2) | **Approval-Required** | Escalates §28; never auto-approved. |
+| DR-5 | Ratification / canon amendment | T1 — Authority Board | **Approval-Required (terminal)** | §31; non-delegable (DG1). |
+
+**Decision-rights invariants.** (DRi1) Exactly one accountable tier per decision (no shared decision
+rights). (DRi2) Trusted operations are in-policy, deterministic, single-domain (CFP-004/CFP-007).
+(DRi3) Any decision touching a non-waivable control is DR-4/DR-5 (never DR-1/DR-2/DR-3). (DRi4) Decision
+rights are consistent across all 12 domains and all 73 entities (§32) and never override AUTH-009
+precedence.
+
+## 28. Escalation Model
+
+A **single, linear, terminal** escalation path (CFP-001). There is exactly one escalation terminal and no
+alternate authority.
+
+```
+Control Entity (PCE)                         ─┐ deviation / out-of-policy / conflict
+   → Control Domain Owner (PCD-CTRL-nnn)      │  detected and referred
+       → Platform Governance Owner (PE-17)    │  (Approval-By-Exception arbitration)
+           → AUTHORITY BOARD (terminal)      ─┘  final arbitration / ratification (AUTH-009)
+```
+
+| Step | From | To | Trigger |
+|------|------|----|---------|
+| E1 | `PCE` (T4) | Control Domain Owner (T3) | Out-of-policy condition, deviation, or ambiguity in single-service control. |
+| E2 | Control Domain Owner (T3) | Spine `PE-17` (T2) | Cross-domain conflict, framework interpretation, or unresolved deviation. |
+| E3 | Spine `PE-17` (T2) | Authority Board (T1) | Canon-adjacent change, non-waivable touch, or unresolved arbitration. |
+
+**Escalation invariants.** (ES1) One terminal only — Authority Board (CFP-001). (ES2) Escalation is
+monotonic upward — no lateral or downward escalation, no skipping that bypasses accountability.
+(ES3) Routing through `PCD-CTRL-012` (Exception, Escalation & Continuity) is the governed coordination
+channel for E1→E3 (Part 1 §10). (ES4) No Control Domain or Entity may instantiate an alternate terminal
+or second escalation plane. (ES5) Escalation is consistent with the escalation structure of `PEGM-001`/
+`PRA-001`/`PCA-001`/`PMA-001` (all terminate at the Authority Board) — validated §33.
+
+## 29. Exception Model
+
+Exceptions (deviations from in-policy control) are **handled, never silently absorbed.** Every exception
+is detected, classified, referred for approval, and recorded (append-only).
+
+| EX | Exception type | Handling | Terminal disposition |
+|----|----------------|----------|----------------------|
+| EX-1 | In-policy variance within tolerance | Auto-handled by `PCE`; audited | Recorded (no escalation) |
+| EX-2 | Out-of-policy deviation (waivable) | Referred via §28 to the accountable tier (DR-3/DR-4) | Approved-by-exception or rejected; recorded |
+| EX-3 | Non-waivable control touch (S1/S3/S4) | **Never auto-waived**; escalates to Authority Board (DR-5) | Authority Board only; recorded |
+| EX-4 | Cross-domain / framework conflict | Arbitrated at Spine; may escalate to T1 | Arbitrated/ratified; recorded |
+
+**Exception rules (binding).**
+- **(EXr1) Non-waivable preservation.** S1/S3/S4 are **never** auto-waived by any control action
+  (CFP-012, AUTH-008); EX-3 always reaches the Authority Board.
+- **(EXr2) Approval-gated.** Every EX-2/EX-3/EX-4 requires explicit approval per §30 before disposition;
+  no exception is self-approved.
+- **(EXr3) Append-only evidence.** Every exception and its disposition is recorded append-only (CFP-005),
+  coordinated with `PCD-CTRL-008` (Audit & Evidence) — but **no** audit/registry/state artifact is minted
+  in this part (§23.3).
+- **(EXr4) Determinism preserved.** Exception handling never makes in-policy control non-deterministic
+  (CFP-004); identical governed inputs yield identical dispositions.
+- **(EXr5) Boundary-preserving.** Exception handling honors `PEB-017` and each entity's inherited
+  `PEB-XXX` (CFP-009); no exception path bypasses a governing boundary.
+
+## 30. Approval Model
+
+The Control Fabric operates **Approval-By-Exception** (PEP-020 / CFP-007): in-policy control is autonomous;
+deviations require explicit, single-owner approval.
+
+| AP | Operation | Approval mode | Approver |
+|----|-----------|---------------|----------|
+| AP-1 | Trusted in-policy control (DR-1/DR-2) | **No approval** (autonomous, audited) | — (operates under delegated authority) |
+| AP-2 | Cross-domain arbitration (DR-3) | **Approval-by-exception** | Spine `PE-17` (T2) |
+| AP-3 | Deviation / canon-adjacent / non-waivable touch (DR-4) | **Explicit approval-required** | Authority Board (via T2) |
+| AP-4 | Ratification / canon amendment (DR-5) | **Terminal approval-required** | Authority Board (T1) |
+
+**Approval rules (binding).** (AR1) Trusted ≠ unapproved-risk: AP-1 is pre-authorized by delegation
+(§26) and fully audited. (AR2) Approval authority is single-owner per tier — no committee dilutes
+accountability (CFP-003). (AR3) No operation touching non-waivable controls is ever AP-1/AP-2 — it is
+AP-3/AP-4 (EXr1). (AR4) Approval is consistent with the Approval structure of `PEGM-001`/`PRA-001`/
+`PCA-001`/`PMA-001` (all use Approval-By-Exception via `PRS-070`) — validated §33. (AR5) `PCE-070`
+(Approval-By-Exception Arbitration Control, class `PCD-CTRL-001`) and `PCE-069`/`PCE-032`/`PCE-028` are
+the entity-level realizations of this model (Part 2 §18) — referenced read-only, not redefined here.
+
+## 31. Ratification Model
+
+Control authority **evolves only by ratified, versioned migration** (CFP-008 / PEP-016). Ratified control
+facts are **never deleted or redefined in place**; supersession is append-only and linked.
+
+| RM | Ratification step | Authority | Output (deferred to later parts) |
+|----|-------------------|-----------|----------------------------------|
+| RM-1 | Propose control-authority change (versioned) | Spine `PE-17` (T2) | Decision record (AUTH-012) — not minted here |
+| RM-2 | Arbitrate / validate alignment (§33) | Spine `PE-17` (T2) | Validation evidence — recorded later |
+| RM-3 | **Ratify** (final) | **Authority Board (T1)** | Ratification — deferred (Certification Reports prohibited this part, §23.3) |
+| RM-4 | Supersede (append-only) | Authority Board (T1) | Superseded fact retained + linked to successor |
+
+**Ratification rules (binding).** (RR1) Ratification is terminal and non-delegable (DG1, DR-5).
+(RR2) Migration-only: no ratified control fact is deleted or edited in place (CFP-008). (RR3) Every
+ratification produces append-only, traceable evidence (AUTH-010) — emitted as governed
+proposals/matrices in re-sequenced Parts 5–7, **not** in this part. (RR4) This part itself is **CREATED —
+IN PROGRESS**; Authority Board ratification of `PCA-CTRL-001` is **deferred** (no Certification Report
+generated — §23.3). (RR5) Ratification consistency with the Change-Control/Traceability structures of the
+four architecture authority models is asserted in §33.
+
+## 32. Authority Coverage (12 Domains · 73 Entities)
+
+> `PCA-CTRL-001` provides **100% authority coverage**: every Control Domain has a defined T3 owner under
+> the hierarchy, and every Control Entity resolves through its domain to the terminal Authority Board.
+
+### 32.1 Domain authority coverage (12/12)
+
+| Control Domain | CCG | T3 owner (single) | Decision rights | Escalation terminal | Covered |
+|----------------|:---:|-------------------|:---------------:|:-------------------:|:-------:|
+| PCD-CTRL-001 — Control Authority & Decision-Rights | CCG-1 | Control Authority Owner | DR-2..DR-5 | Authority Board | ✅ |
+| PCD-CTRL-002 — Governance Orchestration | CCG-1 | Governance Orchestration Owner | DR-2/DR-3 | Authority Board | ✅ |
+| PCD-CTRL-003 — Policy & Principle Enforcement | CCG-1 | Policy & Principle Enforcement Owner | DR-2/DR-4 | Authority Board | ✅ |
+| PCD-CTRL-004 — Control Lifecycle & Promotion | CCG-2 | Control Lifecycle & Promotion Owner | DR-2/DR-4 | Authority Board | ✅ |
+| PCD-CTRL-005 — Change & Evolution Control | CCG-2 | Change & Evolution Control Owner | DR-2/DR-4/DR-5 | Authority Board | ✅ |
+| PCD-CTRL-006 — Configuration & Metadata Control Alignment | CCG-2 | Config & Metadata Control Alignment Owner | DR-2 | Authority Board | ✅ |
+| PCD-CTRL-007 — Traceability & Lineage Control | CCG-3 | Traceability & Lineage Control Owner | DR-2 | Authority Board | ✅ |
+| PCD-CTRL-008 — Audit & Evidence Control | CCG-3 | Audit & Evidence Control Owner | DR-2 | Authority Board | ✅ |
+| PCD-CTRL-009 — Compliance & Conformance Control | CCG-3 | Compliance & Conformance Control Owner | DR-2/DR-4 (non-waivable) | Authority Board | ✅ |
+| PCD-CTRL-010 — Boundary & Isolation Control | CCG-3 | Boundary & Isolation Control Owner | DR-2 | Authority Board | ✅ |
+| PCD-CTRL-011 — Control Signal & Eventing | CCG-4 | Control Signal & Eventing Owner | DR-1/DR-2 | Authority Board | ✅ |
+| PCD-CTRL-012 — Exception, Escalation & Continuity | CCG-4 | Exception, Escalation & Continuity Owner | DR-2/DR-3 (escalation coordination) | Authority Board | ✅ |
+
+> **Domain coverage: 12/12 — single owner each (CFP-003); all terminate at the Authority Board.**
+
+### 32.2 Entity authority coverage (73/73)
+
+| Authority-coverage dimension | Required | Observed | Result |
+|------------------------------|:--------:|:--------:|:------:|
+| Every `PCE` resolves to exactly one T3 Control Domain Owner (its class) | 73/73 | 73/73 (Part 2 §19 classification) | ✅ |
+| Every `PCE` resolves upward to the terminal Authority Board | 73/73 | 73/73 (T4→T3→T2→T1) | ✅ |
+| Every `PCE` operates Trusted-in-policy (DR-1) / escalates by §28 | 73/73 | 73/73 | ✅ |
+| Every `PCE` preserves inherited `PEG-XXX`/`PEO-XXX`/`PEB-XXX` authority | 73/73 | 73/73 (CFP-010; Part 2 §16.2) | ✅ |
+| Orphan entities (no resolving authority) | 0 | 0 | ✅ |
+| Entities with >1 accountable owner | 0 | 0 (CFP-003) | ✅ |
+
+> **Entity coverage: 73/73 — 100% authority coverage; 0 orphans; 0 multi-owner conflicts.**
+
+## 33. Alignment Validation (PEGM-001 · PRA-001 · PCA-001 · PMA-001)
+
+> Confirms `PCA-CTRL-001` is consistent with — and presides over without replacing — the four ratified
+> architecture authority models. Source of truth: `TM-CERT-003-GOVERNANCE-CERTIFICATION.md` (Layer 3:
+> 4/4 authority models consistent; identical Approval-By-Exception discipline; identical Authority-Board
+> escalation terminal; spine `PEG-017`/`PRD-017`).
+
+| Alignment dimension | `PEGM-001` (Event) | `PRA-001` (Registry) | `PCA-001` (Config) | `PMA-001` (Metadata) | `PCA-CTRL-001` | Conflict |
+|---------------------|:------------------:|:--------------------:|:------------------:|:--------------------:|:--------------:|:--------:|
+| Terminal authority | Authority Board | Authority Board | Authority Board | Authority Board | Authority Board | **0** |
+| Spine | `PEG-017`/`PRD-017` | `PEG-017`/`PRD-017` | `PEG-017`/`PRD-017` | `PEG-017`/`PRD-017` | `PEG-017`/`PRD-017` | **0** |
+| Approval discipline | Approval-By-Exception (PEP-020) | Approval-By-Exception | Approval-By-Exception | Approval-By-Exception | Approval-By-Exception (§30) | **0** |
+| Escalation terminal | Authority Board | Authority Board | Authority Board | Authority Board | Authority Board (§28) | **0** |
+| Single-owner accountability | yes | yes | yes | yes | yes (CFP-003; §25) | **0** |
+| Enacts (never amends) AUTH-008/009/010 | yes | yes | yes | yes | yes (§24) | **0** |
+| Non-waivable S1/S3/S4 preserved | yes | yes | yes | yes | yes (EXr1; §29) | **0** |
+| Migration-only change control | yes | yes | yes | yes | yes (§31) | **0** |
+
+### 33.1 Conflict confirmations (mandated)
+
+| Confirmation | Target | Observed | Result |
+|--------------|:------:|:--------:|:------:|
+| **No authority conflicts** | 0 | 0 — single terminal; single owner per domain; AUTH-009 precedence enacted, never overridden | ✅ |
+| **No escalation conflicts** | 0 | 0 — one linear terminal path (CFP-001); identical terminal to all four models | ✅ |
+| **No delegation conflicts** | 0 | 0 — accountability non-delegable (DG1); no second owner/plane (DG3); read-only floor (DG5) | ✅ |
+| **No governance conflicts** | 0 | 0 — `PCA-CTRL-001` presides via `PEG-017`, never replaces `PEGM/PRA/PCA/PMA` (CFP-010) | ✅ |
+
+## 34. Part 3 Validation
+
+| Validation | Required | Observed | Result |
+|------------|----------|----------|:------:|
+| Control Authority Model defined | 1 | 1 (`PCA-CTRL-001`) | ✅ |
+| Established structures (Hierarchy/Delegation/Decision-Rights/Escalation/Exception/Approval/Ratification) | 7 | 7 (§25–§31) | ✅ |
+| Control Domains covered | 12 | 12/12 (§32.1) | ✅ |
+| Control Entities covered | 73 | 73/73 (§32.2) | ✅ |
+| Authority coverage | 100% | 100% (12 domains + 73 entities) | ✅ |
+| Authority conflicts | 0 | 0 (§33.1) | ✅ |
+| Escalation conflicts | 0 | 0 (§33.1) | ✅ |
+| Delegation conflicts | 0 | 0 (§33.1) | ✅ |
+| Governance conflicts | 0 | 0 (§33.1) | ✅ |
+| Alignment with `PEGM-001`/`PRA-001`/`PCA-001`/`PMA-001` | consistent | 4/4 consistent (§33) | ✅ |
+| Lifecycle artifacts created | 0 (prohibited) | 0 | ✅ |
+| Traceability matrices created | 0 (prohibited) | 0 | ✅ |
+| Registry entries created (`CTX-REG-001`) | 0 (prohibited) | 0 | ✅ |
+| State entries created (`STATE-001`) | 0 (prohibited) | 0 | ✅ |
+| Certification reports created | 0 (prohibited) | 0 | ✅ |
+| Alteration of `UCOS-PEA-001..006` / Parts 1–2 (header excepted) | 0 | 0 | ✅ |
+| Implementation / technology leakage | 0 | 0 (PEP-010 / CFP-011) | ✅ |
+
+> **Implementation-leakage scan.** No product, cloud, datastore, language, framework, runtime, container,
+> orchestrator, mesh, broker, CI/CD tool, IaC tool, vendor, topology, or network is named or selected.
+> Terms such as "hierarchy", "delegation", "escalation", "approval", and "ratification" appear only as
+> names of authority/governance constructs.
+
+## 35. Part 3 Document Control (close)
+
+| Field | Value |
+|-------|-------|
+| Artifact ID | UCOS-PEA-007 |
+| Version | 0.3.0 (advanced by Part 3) |
+| Status | CREATED — IN PROGRESS (Phase 9.0C.5 Part 3 — Control Authority Architecture) |
+| Part 3 delivers | `PCA-CTRL-001` (Control Authority Model): Authority Hierarchy, Delegation, Decision Rights, Escalation, Exception, Approval, Ratification; 100% authority coverage of 12 domains + 73 entities; alignment validation |
+| Part 3 created (prohibited) | Lifecycle artifacts: NONE · Traceability matrices: NONE · Registry entries: NONE · State entries: NONE · Certification reports: NONE |
+| Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE) |
+| Next | Phase 9.0C.5 Part 4 — Control Mappings / Crosswalks (re-sequenced; not begun) |
+
+### Part 3 Traceability addendum
+- **Refines (additionally):** AUTH-008/009/010/012; `PEGM-001`/`PRA-001`/`PCA-001`/`PMA-001` (alignment,
+  read-only); `TM-CERT-003-GOVERNANCE-CERTIFICATION.md` (Layer-3 governance-spine consistency, read-only);
+  Part 1 §11 (the informal control-authority structure now formalized as `PCA-CTRL-001`).
+- **Refined by:** `PHASE-9.0C.5-PART-3-COMPLETION-REPORT.md`; re-sequenced Phase 9.0C.5 Part 4 (control
+  mappings), Part 5 (`TM-CTRL-*`), Part 6 (control lifecycle standard), Part 7 (validation, `CTX-REG-001`
+  + `STATE-001` proposals); Phase 9.1 ratification.
+- **Presides over (read-only, preserved):** `PEGM-001`/`PRA-001`/`PCA-001`/`PMA-001` and the 12 Control
+  Domains / 73 Control Entities, whose inherited `PEG/PEO/PEB`, authority anchors, and lifecycle semantics
+  are preserved unchanged (CFP-010).
