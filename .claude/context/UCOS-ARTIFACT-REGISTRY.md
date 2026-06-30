@@ -510,3 +510,35 @@
 ## Traceability
 - Refines: `UCOS-TRACEABILITY-MODEL.md`
 - Governs: every artifact in the program.
+
+
+### Platform Engineering Architecture — Phase 9.2 Convergence & Ratification (converged on `phase-9.2-convergence` from `phase-9.0c.3-config` @ `eb55feb`; metadata import `46d41b5`; governance-audit import `0e82c0e`; NOT pushed / NOT merged to main)
+
+| Artifact ID | Name | Path | Type | Status |
+|-------------|------|------|------|--------|
+| UCOS-PEA-003 | Platform Engineering Architecture: Event Architecture (Section XI; PED-001..017; PEV-001..073; PEGM-001; PEL-001; TM-PEA-006/006A/006B/014/015) | `architecture/platform/PLATFORM-ENGINEERING-EVENT-REGISTRY-CONFIG-ARCHITECTURE.md` | ARCH (Platform Engineering) | **RATIFIED v1.0.0** (Phase 9.2 convergence; certified `UCOS-PEA-9.0C-CERT-001`) |
+| UCOS-PEA-004 | Platform Engineering Architecture: Registry Architecture (Section XII; PRG-001..017; PRE-001..073; PRA-001; PRL-001; TM-PEA-011/012/013) | `architecture/platform/PLATFORM-ENGINEERING-REGISTRY-ARCHITECTURE.md` | ARCH (Platform Engineering) | **RATIFIED v0.6.0** (Phase 9.2 convergence; certified) |
+| UCOS-PEA-005 | Platform Engineering Architecture: Configuration Architecture (Section XIII; PCD-001..017; PCF-001..073; PCA-001; PCL-001; TM-PEA-021/022/023) | `architecture/platform/PLATFORM-ENGINEERING-CONFIGURATION-ARCHITECTURE.md` | ARCH (Platform Engineering) | **RATIFIED v0.7.0** (Phase 9.2 convergence; certified) |
+| UCOS-PEA-006 | Platform Engineering Architecture: Metadata Architecture (Section XIV; PMD-001..017; PME-001..073; PMA-001; PML-001; TM-PEA-031/032/033) | `architecture/platform/PLATFORM-ENGINEERING-METADATA-ARCHITECTURE.md` | ARCH (Platform Engineering) | **RATIFIED v0.8.0** (Phase 9.2 convergence; certified) |
+| UCOS-PEA-9.0C.3-COMP-001 | Platform Engineering Phase 9.0C.3 Completion Report (Configuration) | `architecture/platform/PLATFORM-ENGINEERING-9.0C.3-COMPLETION-REPORT.md` | REPORT | FINAL — Audit Verdict PASS |
+| UCOS-PEA-9.0C.4-COMP-001 | Platform Engineering Phase 9.0C.4 Completion Report (Metadata) | `architecture/platform/PLATFORM-ENGINEERING-9.0C.4-COMPLETION-REPORT.md` | REPORT | FINAL — Audit Verdict PASS |
+| UCOS-PEA-9.0C-CERT-001 | Phase 9.0C Final Cross-Architecture Certification Report | `architecture/platform/certification/UCOS-PEA-9.0C-FINAL-CERTIFICATION-REPORT.md` | CERTIFICATION | FINAL — Verdict CONDITIONAL PASS (elevated to RATIFIED on convergence) |
+| TM-CERT-001 | Domain Certification Matrix (PED↔PRG↔PCD↔PMD) | `architecture/platform/certification/TM-CERT-001-DOMAIN-CERTIFICATION.md` | CERT MATRIX | FINAL — PASS |
+| TM-CERT-002 | Entity Certification Matrix (PEV↔PRE↔PCF↔PME) | `architecture/platform/certification/TM-CERT-002-ENTITY-CERTIFICATION.md` | CERT MATRIX | FINAL — PASS |
+| TM-CERT-003 | Governance Certification Matrix (Authority↔Ownership↔Governance↔Lifecycle↔Boundary) | `architecture/platform/certification/TM-CERT-003-GOVERNANCE-CERTIFICATION.md` | CERT MATRIX | FINAL — PASS |
+| GOV-AUD-001 | Cross-Architecture Governance Audit Report (Event↔Registry scoped) | `architecture/platform/governance/GOV-AUD-001-CROSS-ARCHITECTURE-GOVERNANCE-AUDIT.md` | AUDIT | FINAL — CONDITIONAL PASS (scope superseded by `UCOS-PEA-9.0C-CERT-001`) |
+| TM-GOV-001 | PED→PRG Crosswalk Matrix | `architecture/platform/governance/TM-GOV-001-PED-PRG-CROSSWALK-MATRIX.md` | TM | FINAL — PASS |
+| TM-GOV-002 | PEV→PRE Crosswalk Matrix | `architecture/platform/governance/TM-GOV-002-PEV-PRE-CROSSWALK-MATRIX.md` | TM | FINAL — PASS |
+| TM-GOV-003 | Governance Coverage Matrix | `architecture/platform/governance/TM-GOV-003-COVERAGE-MATRIX.md` | TM | FINAL — PASS |
+| RAT-001 | Platform Engineering Ratification Record | `architecture/platform/ratification/RAT-001-PLATFORM-ENGINEERING-RATIFICATION-RECORD.md` | RATIFICATION | FINAL — CONDITIONAL PASS → executed in Phase 9.2 |
+| TM-RAT-001 | Artifact Convergence Matrix | `architecture/platform/ratification/TM-RAT-001-ARTIFACT-CONVERGENCE-MATRIX.md` | RAT MATRIX | FINAL — 0 conflicts |
+| TM-RAT-002 | Proposal Resolution Matrix | `architecture/platform/ratification/TM-RAT-002-PROPOSAL-RESOLUTION-MATRIX.md` | RAT MATRIX | FINAL — 0 hard conflicts |
+| TM-CONV-001 | Proposal Execution Matrix | `architecture/platform/ratification/TM-CONV-001-PROPOSAL-EXECUTION-MATRIX.md` | CONV MATRIX | FINAL — 10/10 applied |
+| UCOS-PEA-9.2-CONV-001 | Phase 9.2 Architecture Convergence Report | `architecture/platform/ratification/UCOS-PEA-9.2-CONVERGENCE-REPORT.md` | REPORT | FINAL — Verdict RATIFIED PASS |
+| UCOS-PEA-9.2-INV-001 | Phase 9.2 Final Inventory | `architecture/platform/ratification/UCOS-PEA-9.2-FINAL-INVENTORY.md` | INVENTORY | FINAL |
+
+> **Phase 9.2 precedence note.** The four Platform Engineering architectures `UCOS-PEA-003/004/005/006` are
+> ratified peers, subordinate to the Authority Layer + Constitution + upstream ratified architectures +
+> `UCOS-PEA-001/002`. Convergence applied 8 governance proposals (9.0C.2/.3/.4/FINAL) + the Event 9.0C.1D
+> direct edit (reconciled) per `TM-CONV-001`; 0 rejected, 0 deferred. Branch `phase-9.2-convergence` is NOT
+> pushed and NOT merged to main.

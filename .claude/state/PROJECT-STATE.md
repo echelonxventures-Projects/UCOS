@@ -7,6 +7,39 @@
 
 ---
 
+## 0. Phase 9.2 — Architecture Convergence & Ratification (CURRENT — supersedes §1 for 9.0C status)
+
+| Field | Value |
+|-------|-------|
+| Phase | **Phase 9.2 — Controlled Architecture Convergence** (COMPLETE; executed approved `PHASE-9.1-CONSOLIDATION-PLAN`) |
+| Branch | `phase-9.2-convergence` (from `phase-9.0c.3-config` @ `eb55feb`); DO NOT PUSH / DO NOT MERGE TO MAIN |
+| Convergence Status | **CONVERGED** — all four Platform Engineering architectures integrated onto a single line (config-line base `eb55feb` + metadata import `46d41b5` + governance-audit import `0e82c0e`); 0 file/merge conflicts; `PEA-003` kept at authoritative **v1.0.0** |
+| `UCOS-PEA-003` Event | **RATIFIED** (v1.0.0) — PED-001..017, PEV-001..073, PEGM-001, PEL-001, TM-PEA-006/006A/006B/014/015 |
+| `UCOS-PEA-004` Registry | **RATIFIED** (v0.6.0) — PRG-001..017, PRE-001..073, PRA-001, PRL-001, TM-PEA-011/012/013 |
+| `UCOS-PEA-005` Configuration | **RATIFIED** (v0.7.0) — PCD-001..017, PCF-001..073, PCA-001, PCL-001, TM-PEA-021/022/023 |
+| `UCOS-PEA-006` Metadata | **RATIFIED** (v0.8.0) — PMD-001..017, PME-001..073, PMA-001, PML-001, TM-PEA-031/032/033 |
+| Certification Status | **CERTIFIED** — `UCOS-PEA-9.0C-CERT-001` (TM-CERT-001/002/003); Layers 1–5 PASS; 100% coverage; 0 conflicts |
+| Ratification Status | **RATIFIED PASS** — `RAT-001` conditions satisfied (convergence executed; proposals applied; mixed-application-model reconciled); supported by `TM-RAT-001/002` |
+| Authority Status | Subordinate to AUTH-001..012, `UCOS-CONST-001`, upstream ratified architectures, `UCOS-PEA-001/002`; terminal authority Authority Board via `PRD-017`; non-waivable S1/S3/S4 preserved |
+| Proposals | 8 governance proposals (9.0C.2/.3/.4/FINAL) + Event 9.0C.1D direct edit **APPLIED** (`TM-CONV-001`); 0 rejected; 0 deferred |
+| Next Phase | Phase 9.0C.5 — Control Fabric Architecture (**AUTHORIZED**; not begun); technology-selection ADRs; Prompt 09 Security |
+
+> **Phase 9.2 — Controlled Architecture Convergence (COMPLETE).** Executed the approved Phase 9.1
+> consolidation plan on branch `phase-9.2-convergence`: imported the Metadata workstream (`UCOS-PEA-006` +
+> `UCOS-PEA-9.0C.4-COMP-001` + 9.0C.4 proposals from `46d41b5`) and the Governance-audit workstream
+> (`GOV-AUD-001` + `TM-GOV-001/002/003` + report from `0e82c0e`) onto the config line (`eb55feb`, carrying
+> `UCOS-PEA-003` v1.0.0, `UCOS-PEA-004`, `UCOS-PEA-005`, and certification). Duplicate resolution: `PEA-003`
+> kept at **v1.0.0** (config line); stale metadata-branch v0.5.0 superseded (not imported). Applied all 8
+> governance state/registry proposals plus the Event 9.0C.1D direct edits (reconciled) per `TM-CONV-001`;
+> registered `RAT-001`, `TM-RAT-001/002` ratification package. Post-convergence validation: 17 PED / 17 PRG
+> / 17 PCD / 17 PMD; 73 PEV / 73 PRE / 73 PCF / 73 PME; 4 authority models; 4 lifecycle models; 12 `TM-PEA`
+> + 3 `TM-CERT` + 2 `TM-RAT` matrices; 0 orphans / ownership / governance / authority / lifecycle / boundary
+> / circular / traceability / registry conflicts; leakage NONE. **Verdict: RATIFIED PASS.** Convergence
+> report `UCOS-PEA-9.2-CONVERGENCE-REPORT`; final inventory `UCOS-PEA-9.2-FINAL-INVENTORY`. NOT pushed; NOT
+> merged to main. Phase 9.0C.5 (Control Fabric) AUTHORIZED but not begun.
+
+---
+
 ## 1. Current Phase
 
 | Phase | Value |
