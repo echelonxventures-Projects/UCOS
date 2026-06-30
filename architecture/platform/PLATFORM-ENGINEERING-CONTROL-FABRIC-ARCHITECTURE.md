@@ -2,9 +2,9 @@
 
 **Artifact ID:** UCOS-PEA-007
 **Layer:** ARCHITECTURE (Platform Engineering — Control Fabric)
-**Status:** CREATED — IN PROGRESS (Phase 9.0C.5 Part 4 — Control Traceability & Mapping Architecture)
-**Version:** 0.4.0
-**Phase:** Phase 9.0C.5 — Control Fabric Architecture (Part 4 of N — Control Traceability)
+**Status:** CREATED — IN PROGRESS (Phase 9.0C.5 Part 5 — Control Lifecycle Architecture)
+**Version:** 0.5.0
+**Phase:** Phase 9.0C.5 — Control Fabric Architecture (Part 5 of N — Control Lifecycle)
 **Date:** 2026-06-30
 **Owner:** Chief Platform Engineer / Platform Governance & Control Plane (CAP-15; `PE-17`)
 **Approver:** Authority Board (ratification deferred to the Platform Engineering validation phase)
@@ -1597,3 +1597,292 @@ terminal sink contains **no cycle**. ∴ **0 circular dependencies.**
   `STATE-001` proposals); Phase 9.1 ratification.
 - **Traces (read-only, preserved):** every `PCD-CTRL`/`PCE` to its `PRD`/`PRS`/`PEG`/`PEO`/`PEB`/authority
   source, all preserved unchanged (CFP-010); single terminal = Authority Board (CFP-001).
+
+
+
+---
+
+# PART 5 — CONTROL LIFECYCLE ARCHITECTURE
+
+> **Part 5 banner.** This part is **appended** to `UCOS-PEA-007`. It establishes the **Control Lifecycle
+> Architecture ONLY** — the single Control Lifecycle Model **`PCL-CTRL-001`** and its constituent rules
+> (Lifecycle States, Promotion Model, Approval Gates, Versioning Rules, Retention Rules, Archive Rules,
+> Exception Handling, Rollback Constraints). Per the Part 5 mandate this part **DOES NOT** create Registry
+> Entries, State Entries, Certification Reports, Consolidation Reports, additional Control Domains, or
+> additional Control Entities; it does **NOT** modify `STATE-001` or `CTX-REG-001`; and it changes nothing
+> in Parts 1–4 except the artifact version/status header. Parts 1 (`PCD-CTRL-001..012`), 2
+> (`PCE-001..073`), 3 (`PCA-CTRL-001`), and 4 (`TM-CTRL-001..003`) remain authoritative and unaltered.
+> `PCL-CTRL-001` **formalizes** the Control Lifecycle *overview* of Part 1 §12 (which explicitly deferred
+> minting a control-lifecycle identifier to a later part).
+
+## 45. Part 5 Document Control & Scope
+
+| Field | Value |
+|-------|-------|
+| Part | Phase 9.0C.5 **Part 5** — Control Lifecycle Architecture |
+| Artifact | `UCOS-PEA-007` (advanced to v0.5.0 by this part) |
+| Delivers | **`PCL-CTRL-001`** — the Control Lifecycle Model — establishing: Lifecycle States, Promotion Model, Approval Gates, Versioning Rules, Retention Rules, Archive Rules, Exception Handling, Rollback Constraints |
+| Authority basis | Part 1 (`bc3ae70`) · Part 2 (`57e3050`) · Part 3 (`c4a0679`) · Part 4 (`49a3657`) |
+| Alignment basis | The four ratified lifecycle standards `PEL-001` (Event), `PRL-001` (Registry), `PCL-001` (Configuration), `PML-001` (Metadata) — each 10 stages, migration-only |
+| Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE) |
+
+### 45.1 Identifier convention (binding)
+
+The Control Lifecycle Model uses the **compound** identifier **`PCL-CTRL-001`** (Platform **C**ontrol
+**L**ifecycle — Control Fabric). The mandatory `-CTRL-` infix keeps it **distinct** from the Configuration
+Lifecycle Standard **`PCL-001`** (`UCOS-PEA-005`): no collision, re-use, re-naming, or supersession.
+`PCL-CTRL-001` is the **peer** — not the replacement — of `PEL-001`/`PRL-001`/`PCL-001`/`PML-001`; it
+governs the lifecycle of the **control fabric's own constructs** and is **compatible** with (never amends)
+those four.
+
+### 45.2 Part 5 scope (binding)
+
+**In scope (this delivery):** the single **Control Lifecycle Model `PCL-CTRL-001`** and its **eight
+established rule-sets** (§47–§54); its **10 Lifecycle States** (§47, 1:1-aligned to the four standards'
+10 stages); **100% lifecycle coverage** of the 12 Control Domains (`PCD-CTRL-001..012`) and 73 Control
+Entities (`PCE-001..073`); and alignment validation against `PEL-001`/`PRL-001`/`PCL-001`/`PML-001`.
+
+**Out of scope (deferred / prohibited in this part):** Registry Entries (`CTX-REG-001`); State Entries
+(`STATE-001`); Certification Reports; Consolidation Reports; **no** additional Control Domains; **no**
+additional Control Entities; Control Mappings/Crosswalks to `PED/PRG/PCD/PMD` (deferred);
+technology/product selection (PEP-010/CFP-011); any alteration of `UCOS-PEA-001..006` or Parts 1–4
+(header excepted).
+
+## 46. PCL-CTRL-001 — Control Lifecycle Model
+
+> **Definition.** `PCL-CTRL-001` is the **single, authoritative Control Lifecycle Model** governing the
+> lifecycle of every Control Fabric construct — the 12 Control Domains (`PCD-CTRL-001..012`) and the 73
+> Control Entities (`PCE-001..073`). It is a **governance/control construct** (CFP-011 / PEP-010): not an
+> engine, product, workflow, or code. It is **migration-only** (CFP-008 / PEP-016) and **append-only**
+> (CFP-005): ratified control facts are **never deleted or redefined in place**. It **enacts — never
+> amends** — AUTH-008/009/010, and is **structurally parallel and compatible** with the four ratified
+> lifecycle standards (validated §55).
+
+### 46.1 Model identity
+
+| Attribute | Value |
+|-----------|-------|
+| Identifier | `PCL-CTRL-001` |
+| Name | Platform Control Lifecycle Model (Control Fabric) |
+| Owner / Steward | Platform Governance Owner (`PEO-017`) / Platform Governance Steward (CAP-15) |
+| Governing model | `PEG-017`; promotion gates coordinated via `PEG-014` (delivery gates) |
+| Authority anchor | `PCA-CTRL-001` (Part 3); CAP-15 / `PE-17` / `PRD-017` → AUTH-009 → **Authority Board** |
+| Lifecycle states | **10** (§47), 1:1-aligned to the four standards' 10 stages |
+| Per-state controls | Purpose · Authority · Entry Criteria · Exit Criteria · Governance Controls · Audit Controls · Traceability Controls (parallel to `PEL/PRL/PCL/PML`) |
+| Established rule-sets | 8 — States (§47), Promotion (§48), Approval Gates (§49), Versioning (§50), Retention (§51), Archive (§52), Exception Handling (§53), Rollback Constraints (§54) |
+| Evolution | Migration-only (CFP-008); append-only audit (CFP-005); never-delete-ratified |
+| Compatible with (never amends) | `PEL-001`, `PRL-001`, `PCL-001`, `PML-001` |
+
+## 47. Lifecycle States
+
+> **10 states**, each declaring the seven controls (Purpose/Authority/Entry/Exit/Governance/Audit/
+> Traceability). The states are **1:1-aligned** to `PEL-001`'s ten stages and **roll up** to the 7
+> conceptual stages of Part 1 §12.
+
+| # | Control state (`LS`) | Aligned standard stage | Part 1 §12 stage | Purpose (control terms) |
+|:-:|----------------------|------------------------|------------------|-------------------------|
+| LS-1 | **Definition** | Creation | Definition | A control concern (`PCD-CTRL`) / control object (`PCE`) is defined. |
+| LS-2 | **Validation** | Validation | Definition | Validated against canons (AUTH-004/005/007/008/009/010) and MECE classification. |
+| LS-3 | **Authorization** | Publication | Authorization | Control authority & decision rights assigned per `PCA-CTRL-001` (Part 3). |
+| LS-4 | **Activation** | Consumption (entry) | Activation | Control becomes operative under its governing model (`PEG-017` presiding). |
+| LS-5 | **Enforcement** | Consumption | Enforcement | In-policy control runs autonomously (Trusted, DR-1/DR-2); deviations escalate. |
+| LS-6 | **Monitoring** | Monitoring | Enforcement | Control decisions observed for drift/deviation (coordinated `PCD-CTRL-006/011`). |
+| LS-7 | **Audit** | Audit | Audit | Control decisions & evidence recorded append-only (`PCD-CTRL-008`; CFP-005). |
+| LS-8 | **Archival** | Archival | Evolution | Superseded control evidence archived (never deleted), linked to successor. |
+| LS-9 | **Deprecation** | Deprecation | Evolution | A control fact is marked superseded via versioned migration (AUTH-012). |
+| LS-10 | **Retirement** | Retirement | Supersession | Control fact retired; retained immutable, linked to its successor (never deleted). |
+
+**State invariants.** (LSi1) States are ordered and forward-only under migration (LS-1→…→LS-10); no
+in-place redefinition (CFP-008). (LSi2) Every state declares all seven controls. (LSi3) No ratified state
+record is deleted — Archival/Retention/Retirement retain it append-only (CFP-005). (LSi4) Authority for
+every transition resolves to the Authority Board via `PCA-CTRL-001` (Part 3 §25).
+
+## 48. Promotion Model
+
+Promotion = a **gated, approved, audited** forward transition between lifecycle states. Promotion is
+**migration-only**: a construct is promoted to the next state by a versioned, recorded migration — never by
+mutating the prior state in place.
+
+| PM | Promotion transition | Gate (§49) | Approval mode (Part 3 §30) | Audit |
+|----|----------------------|:----------:|----------------------------|:-----:|
+| PM-1 | LS-1 Definition → LS-2 Validation | G-DOC | AP-1 Trusted (in-policy) | append-only |
+| PM-2 | LS-2 Validation → LS-3 Authorization | G-QUAL | AP-2 Approval-by-exception (Spine) | append-only |
+| PM-3 | LS-3 Authorization → LS-4 Activation | G-AUTH | AP-3 Approval-required (Authority Board via Spine) | append-only |
+| PM-4 | LS-4 Activation → LS-5 Enforcement | G-SEC | AP-2 / AP-3 (non-waivable → AP-3) | append-only |
+| PM-5 | LS-5 Enforcement → LS-6 Monitoring | (continuous) | AP-1 Trusted | append-only |
+| PM-6 | LS-6 Monitoring → LS-7 Audit | (continuous) | AP-1 Trusted | append-only |
+| PM-7 | LS-7 Audit → LS-8 Archival | G-REL | AP-2 Approval-by-exception | append-only |
+| PM-8 | LS-8 Archival → LS-9 Deprecation | G-CHG | AP-3 Approval-required | append-only |
+| PM-9 | LS-9 Deprecation → LS-10 Retirement | G-RAT | AP-4 Terminal ratification (Authority Board) | append-only |
+
+**Promotion rules.** (PMr1) No skip that bypasses a non-waivable gate (G-SEC/G-RAT). (PMr2) Every
+promotion produces an append-only audit record (CFP-005) and a version increment where the construct
+changes (§50). (PMr3) Promotion never deletes the source-state record (CFP-008). (PMr4) Promotion honors
+`PEB-017` and inherited `PEB-XXX` (CFP-009).
+
+## 49. Approval Gates
+
+Promotion gates reuse the platform's governed gates (no new gate authored here) and bind to Part 3's
+Approval Model. Each gate is owned through the control-plane spine and arbitrated under Approval-By-Exception.
+
+| Gate | Name | Governed by | Verifies | Non-waivable? |
+|------|------|:-----------:|----------|:-------------:|
+| G-DOC | Documentation gate | `PEG-017` / documentation-gates | Definition completeness, traceability seed | No (waivable-by-exception) |
+| G-QUAL | Quality gate | `PEG-017` / quality-gates | Validation against canons; MECE classification | No |
+| G-AUTH | Authority gate | `PCA-CTRL-001` (Part 3) | Decision-rights/authority assignment correctness | Partial (non-waivable for canon-adjacent) |
+| G-SEC | Security gate | `PEG-017` / security-gates; AUTH-008 | Non-waivable S1/S3/S4 preservation | **Yes (S1/S3/S4)** |
+| G-REL | Release gate | `PEG-014` / `GATE-REL-001` | Readiness for archival/retention transition | No |
+| G-CHG | Change gate | `PCD-CTRL-005` / AUTH-012 | Versioned migration + decision record | No |
+| G-RAT | Ratification gate | Authority Board (Part 3 §31) | Terminal ratification of supersession/retirement | **Yes (terminal)** |
+
+**Gate rules.** (Gr1) G-SEC and G-RAT are **non-waivable** — never auto-passed by any control action
+(CFP-012, AUTH-008). (Gr2) A failed gate routes to Exception Handling (§53) and escalates per Part 3 §28.
+(Gr3) Gate verdicts are append-only evidence (CFP-005), coordinated with `PCD-CTRL-008`/`PCD-CTRL-009`.
+
+## 50. Versioning Rules
+
+| VR | Rule |
+|----|------|
+| VR-1 | **Semantic versioning** of every control construct's definition (`MAJOR.MINOR.PATCH`), consistent with the platform versioning discipline. |
+| VR-2 | **Migration-only** (CFP-008 / PEP-016): a new version is created by migration; the prior ratified version is **never** edited in place or deleted. |
+| VR-3 | Every version change carries an **AUTH-012 decision record** (governed via `PCD-CTRL-005`). |
+| VR-4 | A version change touching a **non-waivable** control (S1/S3/S4) is Approval-Required (AP-3/AP-4) and passes G-SEC/G-RAT. |
+| VR-5 | Version lineage is **traceable** (Part 4 `TM-CTRL-*` spine) — predecessor↔successor links are append-only. |
+| VR-6 | No version change alters `UCOS-PEA-001..006` constructs (CFP-010) — control versions are read-only over controlled constructs. |
+
+## 51. Retention Rules
+
+| RR | Rule |
+|----|------|
+| RR-1 | **Append-only retention** (CFP-005): every ratified control fact, decision, gate verdict, and audit record is retained. |
+| RR-2 | **Never-delete-ratified** (CFP-008): no ratified control record is ever deleted, truncated, or overwritten. |
+| RR-3 | Retention spans LS-7 Audit → LS-8 Archival → LS-10 Retirement; retired facts remain **immutably retained**. |
+| RR-4 | Retention of **non-waivable** control evidence (S1/S3/S4) is mandatory and non-waivable (AUTH-008). |
+| RR-5 | Retention is **technology-neutral** (CFP-011): no datastore/medium/retention-engine is selected (deferred to ADR phase). |
+| RR-6 | Retention coordinates with `PCD-CTRL-008` (Audit & Evidence) — but **no** registry/state artifact is minted here (§45.2). |
+
+## 52. Archive Rules
+
+| AR | Rule |
+|----|------|
+| AR-1 | Archival (LS-8) **preserves** superseded control facts; archival is a state transition, **not** a deletion (CFP-008). |
+| AR-2 | Every archived fact is **linked** to its successor version (predecessor↔successor lineage; Part 4 spine). |
+| AR-3 | Archived control evidence remains **auditable and immutable** (CFP-005) and traceable to the Authority Board. |
+| AR-4 | Archival honors `PEB-017`/inherited `PEB-XXX` (CFP-009); no archive crossing bypasses a governing boundary. |
+| AR-5 | Archival is **technology-neutral** (CFP-011): no archive store/format/engine is selected. |
+
+## 53. Exception Handling
+
+Lifecycle exceptions reuse Part 3 §29's Exception Model (EX-1..EX-4) and route through `PCD-CTRL-012`
+(Exception, Escalation & Continuity).
+
+| LX | Lifecycle exception | Handling | Terminal disposition |
+|----|---------------------|----------|----------------------|
+| LX-1 | In-tolerance promotion variance | Auto-handled; audited (EX-1) | Recorded (no escalation) |
+| LX-2 | Gate failure (waivable) | Referred via Part 3 §28; AP-2/AP-3 | Approved-by-exception or rejected; recorded |
+| LX-3 | Non-waivable gate failure (G-SEC/G-RAT) | **Never auto-waived**; escalates to Authority Board (EX-3) | Authority Board only; recorded |
+| LX-4 | Cross-domain lifecycle conflict | Arbitrated at Spine; may escalate to T1 (EX-4) | Arbitrated/ratified; recorded |
+
+**Exception rules.** (LXr1) Non-waivable lifecycle gates never auto-waived (CFP-012). (LXr2) Every
+exception + disposition is append-only evidence (CFP-005). (LXr3) Exception handling preserves determinism
+(CFP-004) and boundary integrity (CFP-009). (LXr4) Single escalation terminal = Authority Board (CFP-001).
+
+## 54. Rollback Constraints
+
+> Because the lifecycle is **migration-only**, "rollback" is **never** a deletion or in-place reversion —
+> it is a **forward migration to a prior ratified version**, recorded and approved.
+
+| RBC | Constraint |
+|-----|-----------|
+| RBC-1 | Rollback = **forward migration** to a previously-ratified version; the failed version is **retained** (deprecated), never deleted (CFP-008). |
+| RBC-2 | Rollback is **approval-gated** (AP-3 minimum; AP-4 if canon-adjacent or non-waivable) and passes G-CHG (+ G-SEC if non-waivable). |
+| RBC-3 | Rollback **never** restores a state that violates a **non-waivable** control (S1/S3/S4) (CFP-012, AUTH-008). |
+| RBC-4 | Rollback produces an **append-only** audit record + AUTH-012 decision record (CFP-005). |
+| RBC-5 | Rollback **never** deletes audit/evidence history (RR-2) and **never** breaks traceability lineage (Part 4 spine). |
+| RBC-6 | Rollback authority terminates at the Authority Board via `PCA-CTRL-001` (Part 3); no alternate terminal (CFP-001). |
+
+## 55. Alignment Validation (PEL-001 · PRL-001 · PCL-001 · PML-001)
+
+> Confirms `PCL-CTRL-001` is **compatible** with — and never amends — the four ratified lifecycle
+> standards. Each standard is a 10-stage, migration-only model with per-stage Purpose/Authority/Entry/
+> Exit/Governance/Audit/Traceability controls and escalation terminating at the Authority Board.
+
+| Alignment dimension | `PEL-001` | `PRL-001` | `PCL-001` | `PML-001` | `PCL-CTRL-001` | Conflict |
+|---------------------|:---------:|:---------:|:---------:|:---------:|:--------------:|:--------:|
+| Stage/state count | 10 | 10 | 10 | 10 | 10 (§47) | **0** |
+| Per-stage 7 controls | yes | yes | yes | yes | yes (§47) | **0** |
+| Migration-only evolution | yes | yes | yes | yes | yes (§50 VR-2) | **0** |
+| Append-only audit | yes | yes | yes | yes | yes (§51 RR-1) | **0** |
+| Never-delete-ratified | yes | yes | yes | yes | yes (§51 RR-2) | **0** |
+| Authority anchor / terminal | Authority Board | Authority Board | Authority Board | Authority Board | Authority Board (`PCA-CTRL-001`) | **0** |
+| Approval-By-Exception | yes (PEP-020) | yes | yes | yes | yes (§49 / Part 3 §30) | **0** |
+| Ratification (terminal) | Authority Board | Authority Board | Authority Board | Authority Board | Authority Board (§48 PM-9 / G-RAT) | **0** |
+
+### 55.1 Confirmations (mandated)
+
+| Confirmation | Result |
+|--------------|:------:|
+| **Lifecycle Compatibility** (10-state parallel; 7 controls per state) | ✅ Confirmed |
+| **Migration-Only Principle** (CFP-008 / PEP-016) | ✅ Confirmed (§50 VR-2; §54) |
+| **Append-Only Audit Principle** (CFP-005) | ✅ Confirmed (§51 RR-1; §52 AR-3) |
+| **Authority Compatibility** (anchored on `PCA-CTRL-001`; terminal = Authority Board) | ✅ Confirmed (§46.1; Part 3) |
+| **Ratification Compatibility** (terminal ratification at Authority Board via G-RAT) | ✅ Confirmed (§48 PM-9; §49) |
+
+## 56. Lifecycle Coverage (12 Domains · 73 Entities)
+
+| Coverage dimension | Required | Observed | Result |
+|--------------------|:--------:|:--------:|:------:|
+| Control Domains bound by `PCL-CTRL-001` | 12/12 | 12/12 (every `PCD-CTRL` traverses LS-1..LS-10) | ✅ |
+| Control Entities bound by `PCL-CTRL-001` | 73/73 | 73/73 (every `PCE` traverses LS-1..LS-10) | ✅ |
+| Lifecycle coverage | 100% | 100% (all 10 states bind all domains + entities) | ✅ |
+| Governance coverage (presided by `PEG-017`; gates via `PEG-014`/`PEG-017`) | 100% | 100% | ✅ |
+| Authority coverage (anchored on `PCA-CTRL-001`; terminal = Authority Board) | 100% | 100% | ✅ |
+| Lifecycle inheritance preserved (Part 2 §16.2 I5; `PRS-071`/`PEG-017`) | 73/73 | 73/73 (compatible, not replaced) | ✅ |
+
+## 57. Part 5 Validation
+
+| Validation | Required | Observed | Result |
+|------------|----------|----------|:------:|
+| Control Lifecycle Model defined | 1 | 1 (`PCL-CTRL-001`) | ✅ |
+| Established rule-sets (States/Promotion/Gates/Versioning/Retention/Archive/Exception/Rollback) | 8 | 8 (§47–§54) | ✅ |
+| Lifecycle states | 10 | 10 (§47; 1:1 to standards' stages) | ✅ |
+| Domains covered | 12 | 12/12 (§56) | ✅ |
+| Entities covered | 73 | 73/73 (§56) | ✅ |
+| Lifecycle coverage | 100% | 100% (§56) | ✅ |
+| Lifecycle conflicts | 0 | 0 (§55 — 8/8 dimensions aligned) | ✅ |
+| Governance conflicts | 0 | 0 (presided by `PEG-017`; never replaces `PEL/PRL/PCL/PML`) | ✅ |
+| Authority conflicts | 0 | 0 (anchored on `PCA-CTRL-001`; single terminal = Authority Board) | ✅ |
+| Lifecycle compatibility / migration-only / append-only / authority / ratification | confirmed | 5/5 confirmed (§55.1) | ✅ |
+| Registry entries created (`CTX-REG-001`) | 0 (prohibited) | 0 | ✅ |
+| State entries created (`STATE-001`) | 0 (prohibited) | 0 | ✅ |
+| Certification / consolidation reports created | 0 (prohibited) | 0 | ✅ |
+| Additional Control Domains / Entities created | 0 (prohibited) | 0 | ✅ |
+| Alteration of `UCOS-PEA-001..006` / Parts 1–4 (header excepted) | 0 | 0 | ✅ |
+| Implementation / technology leakage | 0 | 0 (PEP-010 / CFP-011) | ✅ |
+
+> **Implementation-leakage scan.** No product, cloud, datastore, language, framework, runtime, container,
+> orchestrator, mesh, broker, CI/CD tool, IaC tool, vendor, topology, or network is named or selected.
+> Terms such as "promotion", "gate", "archival", "retention", and "rollback" appear only as names of
+> lifecycle/governance constructs.
+
+## 58. Part 5 Document Control (close)
+
+| Field | Value |
+|-------|-------|
+| Artifact ID | UCOS-PEA-007 |
+| Version | 0.5.0 (advanced by Part 5) |
+| Status | CREATED — IN PROGRESS (Phase 9.0C.5 Part 5 — Control Lifecycle Architecture) |
+| Part 5 delivers | `PCL-CTRL-001` (Control Lifecycle Model): 10 Lifecycle States; Promotion Model; Approval Gates; Versioning/Retention/Archive Rules; Exception Handling; Rollback Constraints; 100% lifecycle coverage of 12 domains + 73 entities; alignment validation |
+| Part 5 created (prohibited) | Registry entries: NONE · State entries: NONE · Certification reports: NONE · Consolidation reports: NONE · Additional Control Domains: NONE · Additional Control Entities: NONE |
+| Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE) |
+| Next | Phase 9.0C.5 Part 6 — Control Mappings / Crosswalks to `PED/PRG/PCD/PMD` · `PEV/PRE/PCF/PME` (re-sequenced; not begun) |
+
+### Part 5 Traceability addendum
+- **Refines (additionally):** `PEL-001`/`PRL-001`/`PCL-001`/`PML-001` (alignment, read-only);
+  `GATE-REL-001`, `PEG-014` (delivery gates, read-only); AUTH-008/009/010/012; Part 1 §12 (the informal
+  Control Lifecycle overview now formalized as `PCL-CTRL-001`); Part 3 `PCA-CTRL-001` (authority anchor).
+- **Refined by:** `PHASE-9.0C.5-PART-5-COMPLETION-REPORT.md`; re-sequenced Phase 9.0C.5 Part 6 (control
+  mappings/crosswalks), Part 7 (validation, `CTX-REG-001` + `STATE-001` proposals); Phase 9.1 ratification.
+- **Governs lifecycle of (read-only, preserved):** the 12 Control Domains and 73 Control Entities, whose
+  inherited lifecycle semantics (via `PRS-071`/`PEG-017`) are preserved and made compatible — never
+  replaced (CFP-010; Part 2 §16.2 I5).
