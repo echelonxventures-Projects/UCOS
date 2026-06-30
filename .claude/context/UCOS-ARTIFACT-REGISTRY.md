@@ -542,3 +542,40 @@
 > `UCOS-PEA-001/002`. Convergence applied 8 governance proposals (9.0C.2/.3/.4/FINAL) + the Event 9.0C.1D
 > direct edit (reconciled) per `TM-CONV-001`; 0 rejected, 0 deferred. Branch `phase-9.2-convergence` is NOT
 > pushed and NOT merged to main.
+
+
+
+### Control Fabric Architecture — Phase 9.5B Baseline Execution & Release (applied `REG-PROP-CTRL-001..011`; UCOS Governance Baseline 1.0.0; branch `phase-9.2-convergence`; NOT pushed / NOT merged)
+
+> **Append-only / migration-only.** This section applies the Phase 9.2A registry proposals
+> (`REG-PROP-CTRL-001..011`), approved in Phase 9.3A and assessed READY in Phase 9.5A. No prior row is
+> deleted, renamed, or re-owned. Header reconciliation (RC-3) is recorded here authoritatively (the
+> registry is the single source of truth); the protected architecture documents are not edited.
+
+| Artifact ID | Name | Path | Type | Status |
+|-------------|------|------|------|--------|
+| UCOS-PEA-007 | Platform Engineering Architecture: Control Fabric Architecture (Phase 9.0C.5 Parts 1–7; PCD-CTRL-001..012; CCG-1..4; CFP-001..012; PCE-001..073; PCA-CTRL-001; PCL-CTRL-001; TM-CTRL-001..004; TM-CTRL-CERT-001..003) | `architecture/platform/PLATFORM-ENGINEERING-CONTROL-FABRIC-ARCHITECTURE.md` | ARCH (Platform Engineering) | **RATIFIED PASS v0.7.0** (Phase 9.0C.5 certified `UCOS-PEA-007-CERT-001`; ratified Phase 9.3A `UCOS-PEA-9.3A-GOVERNANCE-STATE.md`; adopted Baseline 1.0.0; header reconciliation CERTIFIED→RATIFIED applied at registry) |
+| PCD-CTRL-001..012 | Control Domains (12; 4 Control Groups CCG-1..4) | `…/PLATFORM-ENGINEERING-CONTROL-FABRIC-ARCHITECTURE.md` (Part 1 §9–§10) | ARCH construct | RATIFIED PASS (single owner each; spine-anchored PEG-017/PRD-017/CAP-15/AUTH-009) |
+| PCE-001..073 | Control Entities (73; 1:1 from PRS-001..073; MECE-classified) | `…CONTROL-FABRIC-ARCHITECTURE.md` (Part 2 §18–§19) | ARCH construct | RATIFIED PASS (inherited PEG/PEO/PEB preserved, CFP-010) |
+| PCA-CTRL-001 | Control Authority Model (7 structures; terminal Authority Board) | `…CONTROL-FABRIC-ARCHITECTURE.md` (Part 3 §24–§31) | AUTHORITY MODEL | RATIFIED PASS (presides over PEGM/PRA/PCA/PMA-001) |
+| TM-CTRL-001/002/003 | Control Traceability Matrices (PCD-CTRL↔PRD; PCE↔PRS; PCD-CTRL/PCE↔PEG/PEO/PEB/Authority) | `…CONTROL-FABRIC-ARCHITECTURE.md` (Part 4 §38–§40) | TM | RATIFIED PASS (0 orphans/broken/circular/gaps) |
+| PCL-CTRL-001 | Control Lifecycle Model (10 states; migration-only/append-only) | `…CONTROL-FABRIC-ARCHITECTURE.md` (Part 5 §46–§54) | LIFECYCLE MODEL | RATIFIED PASS (aligned PEL/PRL/PCL/PML-001) |
+| TM-CTRL-004 | Control Architecture Completeness Matrix (PCD-CTRL↔PCE↔PCA-CTRL↔PCL-CTRL) | `…CONTROL-FABRIC-ARCHITECTURE.md` (Part 6 §61) | TM | RATIFIED PASS (12/12 COMPLETE) |
+| UCOS-PEA-007-COMP-001 | Control Fabric Consolidation Report | `…CONTROL-FABRIC-ARCHITECTURE.md` (Part 6 §59) | REPORT | COMPLETE |
+| TM-CTRL-CERT-001/002/003 | Control Certification Matrices (PCD-CTRL↔PCE; PCD-CTRL↔PCA-CTRL↔PEG/PEO/PEB; PCE↔PCL-CTRL) | `…CONTROL-FABRIC-ARCHITECTURE.md` (Part 7 §68–§70) | CERT MATRIX | PASS |
+| UCOS-PEA-007-CERT-001 | Control Fabric Certification Report | `…CONTROL-FABRIC-ARCHITECTURE.md` (Part 7 §67) | CERTIFICATION | FINAL — PASS |
+| RAT-CTRL-001 | Control Fabric Ratification Record (+ TM-RAT-CTRL-001/002) | `PHASE-9.1A-RATIFICATION-REPORT.md` | RATIFICATION | RATIFIED PASS (READY WITH CONDITIONS → ACCEPTED Phase 9.3A) |
+| UCOS-PEA-9.2A-CONVERGENCE-REPORT | Control Fabric Controlled Convergence (TM-CONV-CTRL-001) | `UCOS-PEA-9.2A-CONVERGENCE-REPORT.md` | REPORT | FINAL — CONDITIONAL PASS |
+| UCOS-PEA-9.3A-GOVERNANCE-STATE | Control Fabric Final Governance State (TM-GOV-CTRL-001/002) | `UCOS-PEA-9.3A-GOVERNANCE-STATE.md` | GOV STATE | RATIFIED PASS |
+| UCOS-PLATFORM-GOVERNANCE-CLOSURE-REPORT | Platform Governance Closure (TM-GOV-CLOSE-001/002/003) | `UCOS-PLATFORM-GOVERNANCE-CLOSURE-REPORT.md` | AUDIT | PLATFORM GOVERNANCE PASS |
+| UCOS-GOVERNANCE-BASELINE-1.0 | UCOS Governance Baseline 1.0 (TM-BASELINE-001/002) | `UCOS-GOVERNANCE-BASELINE-1.0.md` | BASELINE | ESTABLISHED — FROZEN v1.0.0 |
+| UCOS-GOVERNANCE-RELEASE-EXECUTION-RECORD | Governance Release Execution Record (TM-RELEASE-EXEC-001/002/003) | `UCOS-GOVERNANCE-RELEASE-EXECUTION-RECORD.md` | RELEASE RECORD | EXECUTED (Phase 9.5B) |
+| UCOS-GOVERNANCE-RELEASE-CERTIFICATION | Governance Release Certification | `UCOS-GOVERNANCE-RELEASE-CERTIFICATION.md` | CERTIFICATION | RELEASE CERTIFIED (Phase 9.5B) |
+
+> **Phase 9.5B precedence note.** `UCOS-PEA-007` (Control Fabric) is a ratified peer of
+> `UCOS-PEA-003/004/005/006`, presiding over (never replacing) their authority/lifecycle models (CFP-010),
+> subordinate to the Authority Layer + Constitution + upstream ratified architectures + `UCOS-PEA-001/002`;
+> terminal authority Authority Board via `PRD-017`; non-waivable S1/S3/S4 preserved. Registry application
+> applied `REG-PROP-CTRL-001..011` append-only (0 destructive changes; 0 removal of ratified constructs).
+> Part of **UCOS Governance Baseline 1.0.0** (ESTABLISHED · FROZEN). Branch `phase-9.2-convergence` is NOT
+> pushed and NOT merged to main; release tag `ucos-governance-1.0.0` prepared (proposal) but NOT created.

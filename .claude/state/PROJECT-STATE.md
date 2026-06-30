@@ -1631,3 +1631,56 @@ a Git `origin` remote is provisioned.
   Platform Engineering Architecture `UCOS-PEA-001`, `UCOS-PEA-9.0A-COMP-001`, `UCOS-PEA-002`, `UCOS-PEA-9.0B-COMP-001`, `UCOS-PEA-003`, `UCOS-PEA-9.0C.1A-COMP-001`, `UCOS-PEA-9.0C.1B-COMP-001`, `UCOS-PEA-9.0C.1C-COMP-001`, `UCOS-PEA-9.0C.1D-COMP-001`,
   governance remediation `UCOS-GOV-DF002-001`, `UCOS-GOV-DF003-001`, `UCOS-GOV-CLOSE-001`.
 - Authority for progress reporting across the program; subordinate to the Authority Layer.
+
+
+
+---
+
+## 0B. Phase 9.5B — UCOS Governance Baseline Execution & Release (CURRENT — applied `STATE-PROP-CTRL-001..003`; supersedes §0 for Control Fabric / baseline status)
+
+> **Append-only / migration-only.** This section applies the Phase 9.2A state proposals
+> (`STATE-PROP-CTRL-001..003`), approved Phase 9.3A, assessed READY Phase 9.5A. All prior state is
+> preserved; no historical entry is deleted or rewritten. This section is the CURRENT status for the
+> Control Fabric and the UCOS Governance Baseline.
+
+| Field | Value |
+|-------|-------|
+| Phase | **Phase 9.5B — UCOS Governance Baseline Execution & Release** (COMPLETE) |
+| Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE / DO NOT TAG) |
+| UCOS Governance Baseline | **1.0.0 — ESTABLISHED · FROZEN · ADOPTED · RELEASE CERTIFIED** |
+| `UCOS-PEA-003` Event | RATIFIED PASS (v1.0.0) |
+| `UCOS-PEA-004` Registry | RATIFIED PASS (v0.6.0) |
+| `UCOS-PEA-005` Configuration | RATIFIED PASS (v0.7.0) |
+| `UCOS-PEA-006` Metadata | RATIFIED PASS (v0.8.0) |
+| `UCOS-PEA-007` Control Fabric | **RATIFIED PASS (v0.7.0)** — PCD-CTRL-001..012, PCE-001..073, PCA-CTRL-001, PCL-CTRL-001, TM-CTRL-001..004, TM-CTRL-CERT-001..003 |
+| Baseline totals | 80 governance domains; 365 governance entities; 5 authority models; 5 lifecycle models; 36 matrices |
+| Registry application | `REG-PROP-CTRL-001..011` APPLIED to `CTX-REG-001` (append-only) |
+| State application | `STATE-PROP-CTRL-001..003` APPLIED here (append-only) |
+| Header reconciliation | Recorded authoritatively in `CTX-REG-001` (UCOS-PEA-007 CERTIFIED→RATIFIED); protected docs unedited |
+| Release | Execution record `UCOS-GOVERNANCE-RELEASE-EXECUTION-RECORD`; certification `UCOS-GOVERNANCE-RELEASE-CERTIFICATION` |
+| Tag | `ucos-governance-1.0.0` prepared (proposal) — NOT created |
+| Verdict | **EXECUTED · RELEASE CERTIFIED · MERGE READY · TAG READY** |
+| Conflict analysis | 0 governance/ownership/authority/lifecycle/boundary/traceability/release-defect/merge-blocker |
+
+> **Applied state proposals (Phase 9.2A `STATE-PROP-CTRL-*`).**
+> - **STATE-PROP-CTRL-001** — Phase 9.0C.5 (Parts 1–7): Control Fabric defined (12 `PCD-CTRL`, 73 `PCE`,
+>   `PCA-CTRL-001`, `PCL-CTRL-001`, `TM-CTRL-001..004`, `TM-CTRL-CERT-001..003`), consolidated
+>   (`UCOS-PEA-007-COMP-001`), certified PASS (`UCOS-PEA-007-CERT-001`); `UCOS-PEA-007` v0.7.0.
+> - **STATE-PROP-CTRL-002** — Phase 9.1A: ratification package (`RAT-CTRL-001`, `TM-RAT-CTRL-001/002`);
+>   READY WITH CONDITIONS → ACCEPTED (Phase 9.3A).
+> - **STATE-PROP-CTRL-003** — Phase 9.2A: controlled convergence (`TM-CONV-CTRL-001`); CONDITIONAL PASS →
+>   governance-integrated RATIFIED PASS (Phase 9.3A) → platform closure PASS (Phase 9.4) → Baseline 1.0.0
+>   frozen (Phase 9.5) → adopted/release-ready (Phase 9.5A) → executed/certified (Phase 9.5B).
+
+> **Phase 9.5B — UCOS Governance Baseline Execution & Release (COMPLETE).** Executed the approved release
+> actions to operationalize **UCOS Governance Baseline 1.0.0**: applied `REG-PROP-CTRL-001..011`
+> (`CTX-REG-001`) and `STATE-PROP-CTRL-001..003` (this file) append-only/migration-only with 0 destructive
+> changes and 0 removal of ratified constructs; recorded header reconciliation authoritatively in the
+> registry (protected `UCOS-PEA-001..007` and the frozen baseline/freeze-record unedited); generated the
+> Governance Release Execution Record (`TM-RELEASE-EXEC-001/002/003`) and Governance Release Certification.
+> Validation: PEA-003..007 RATIFIED PASS; 80 domains / 365 entities / 5 authority / 5 lifecycle / 36
+> matrices; baseline integrity preserved 100%; 0 governance/ownership/authority/lifecycle/boundary/
+> traceability conflicts; 0 release defects; 0 merge blockers. **Verdict: UCOS GOVERNANCE BASELINE 1.0.0
+> EXECUTED · RELEASE CERTIFIED · MERGE READY · TAG READY.** Branch `phase-9.2-convergence` NOT pushed / NOT
+> merged / NOT tagged. This concludes the Platform Engineering Governance Program; downstream merge + tag
+> `ucos-governance-1.0.0` reserved to release governance.
