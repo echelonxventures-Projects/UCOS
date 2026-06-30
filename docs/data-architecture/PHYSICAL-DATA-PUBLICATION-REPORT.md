@@ -81,7 +81,7 @@
 | Tag | `v1.0.0-pdata-ratified` |
 | Tag type | Annotated |
 | Tag message | `RATIFIED & CERTIFIED: UCOS Physical Data Architecture v1.0 (Phase 8.1)` |
-| Tag references commit | `9513c21` (ratification commit; repositioned to the final Phase 8.1 records commit so the tag includes `UCOS-PDATA-PUB-001`) |
+| Tag references commit | the latest Phase 8.1 records commit on `main` (the annotated tag is repositioned after this report is committed so the tag includes `UCOS-PDATA-PUB-001`; the authoritative ratification commit is `9513c21` — see §3/§6) |
 | Tag pushed to remote | **NOT EXECUTED** — no `origin` remote configured |
 
 ---
