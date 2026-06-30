@@ -2,9 +2,9 @@
 
 **Artifact ID:** UCOS-PEA-007
 **Layer:** ARCHITECTURE (Platform Engineering — Control Fabric)
-**Status:** CREATED — IN PROGRESS (Phase 9.0C.5 Part 1 — Foundation & Domain Model)
-**Version:** 0.1.0
-**Phase:** Phase 9.0C.5 — Control Fabric Architecture (Part 1 of N — Foundation only)
+**Status:** CREATED — IN PROGRESS (Phase 9.0C.5 Part 2 — Control Entity Architecture)
+**Version:** 0.2.0
+**Phase:** Phase 9.0C.5 — Control Fabric Architecture (Part 2 of N — Control Entities)
 **Date:** 2026-06-30
 **Owner:** Chief Platform Engineer / Platform Governance & Control Plane (CAP-15; `PE-17`)
 **Approver:** Authority Board (ratification deferred to the Platform Engineering validation phase)
@@ -19,13 +19,14 @@
 | Artifact ID | UCOS-PEA-007 |
 | Name | UCOS Platform Engineering Architecture: Control Fabric Architecture |
 | Path | `architecture/platform/PLATFORM-ENGINEERING-CONTROL-FABRIC-ARCHITECTURE.md` |
-| Version | 0.1.0 |
-| Status | CREATED — IN PROGRESS (Phase 9.0C.5 Part 1 — Foundation & Domain Model) |
-| Phase | Phase 9.0C.5 — Control Fabric Architecture (Part 1 of N) |
-| Scope (this part) | Foundation only — Control Domains (`PCD-CTRL-001..012`), authority structure, scope, boundaries, principles, governance |
+| Version | 0.2.0 |
+| Status | CREATED — IN PROGRESS (Phase 9.0C.5 Part 2 — Control Entity Architecture) |
+| Phase | Phase 9.0C.5 — Control Fabric Architecture (Part 2 of N) |
+| Scope (Part 1) | Foundation only — Control Domains (`PCD-CTRL-001..012`), authority structure, scope, boundaries, principles, governance |
+| Scope (Part 2 — this delivery) | Control Entities only — `PCE-001..073` (1:1 to `PRS-001..073`), the Control Entity Classification model (MECE), classification assignment matrix, distribution summary, and Part 2 validation. No authority/lifecycle/traceability artifacts; no `STATE-001`/`CTX-REG-001` changes. |
 | Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE) |
 | Supersedes | — (supersedes the earlier anticipated `PCB-001..017` / §XV framing — see §1.2) |
-| Next Part | Phase 9.0C.5 Part 2 — Control Entities & Mappings (AUTHORIZED; not begun) |
+| Next Part | Phase 9.0C.5 Part 3 — Control Mappings / Crosswalks (AUTHORIZED; not begun) |
 | Readiness basis | `PHASE-9.0C.5-READINESS-REPORT.md` (Verdict READY WITH CONDITIONS; 10/10 validations PASS) |
 
 ### 1.1 Identifier convention (disambiguation — binding)
@@ -599,3 +600,314 @@ to `PEL/PRL/PCL/PML` so that the later control-lifecycle standard converges with
   mappings, matrices, authority/lifecycle standards, validation, registry/state proposals); Phase 9.1
   ratification; platform technology-selection ADRs; Prompts 09–12.
 - **Controls (read-only):** `UCOS-PEA-003/004/005/006` and the foundation/runtime layers `UCOS-PEA-001/002`.
+
+
+---
+
+# PART 2 — CONTROL ENTITY ARCHITECTURE
+
+> **Part 2 banner.** This part is **appended** to `UCOS-PEA-007`. It establishes **Control Entities ONLY**
+> (`PCE-001..073`) and their **Classification model**. Per the Part 2 mandate it does **NOT** create
+> authority artifacts, lifecycle artifacts, or traceability matrices; does **NOT** modify `STATE-001` or
+> `CTX-REG-001`; and changes nothing in Part 1 except the artifact version/status header. Part 1
+> (`PCD-CTRL-001..012`, `CFP-001..012`, governance, boundaries, authority structure) remains authoritative
+> and unaltered.
+
+## 15. Part 2 Document Control & Scope
+
+| Field | Value |
+|-------|-------|
+| Part | Phase 9.0C.5 **Part 2** — Control Entity Architecture |
+| Artifact | `UCOS-PEA-007` (advanced to v0.2.0 by this part) |
+| Delivers | `PCE-001..073` (Control Entity Catalog); Control Entity Classification model (MECE); classification assignment matrix; distribution summary; Part 2 validation |
+| 1:1 anchor | `PCE-001..073` ↔ `PRS-001..073` (`UCOS-PEA-002` Service Architecture, §VII) |
+| Classification basis | The 12 ratified Control Domains `PCD-CTRL-001..012` (Part 1 §9–§10), grouped by `CCG-1..CCG-4` |
+| Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE) |
+
+### 15.1 Part 2 scope (binding)
+
+**In scope (this delivery):**
+- The **Control Entity model** (definition, 1:1 mapping rule, inheritance-preservation rules).
+- The **73 Control Entities** `PCE-001..PCE-073`, each the control object for exactly one Runtime Service.
+- The **Control Entity Classification model** — a complete, **Mutually Exclusive & Collectively
+  Exhaustive (MECE)** classification: every `PCE` belongs to exactly one **owning Control Domain**
+  (`PCD-CTRL-001..012`), rolled up to its Control Group (`CCG-1..4`).
+- The **classification assignment matrix**, **distribution summary**, and **Part 2 validation**.
+
+**Out of scope (deferred / prohibited in this part):**
+- **No** authority artifacts (no Control Authority Model identifier minted) — Part 5.
+- **No** lifecycle artifacts (no control-lifecycle identifier minted) — Part 5.
+- **No** traceability matrices (`TM-CTRL-*`) — Part 4.
+- **No** Control Mappings / Crosswalks (`PCE → PED/PRG/PCD/PMD …`) — Part 3.
+- **No** `STATE-001` entries and **no** `CTX-REG-001` entries (not even proposals) — Part 6.
+- **No** technology/product/cloud/runtime/framework/vendor selection (PEP-010 / CFP-011).
+- **No** alteration of any `UCOS-PEA-001..006` construct — `PCE` entities are **read-only controllers**.
+
+## 16. Control Entity Model
+
+> **Definition.** A **Platform Control Entity** (`PCE`) is the **single authoritative control object**
+> through which the Control Fabric exercises governed control over exactly one Platform Runtime Service
+> (`PRS`). A `PCE` is a **governance/control construct** — it **controls** (decides, enforces, gates,
+> audits, constrains, signals, escalates) the behavior of its mapped `PRS`; it is **not** a service, a
+> microservice, an engine, a workflow, a product, or code (CFP-011 / PEP-010). It **never** re-creates,
+> re-owns, reclassifies, or mutates the `PRS` it controls (CFP-010).
+
+### 16.1 Mapping rule (1:1 — binding)
+
+- **(E1) Exact bijection.** There is **exactly one** `PCE-nnn` for **exactly one** `PRS-nnn`, for all
+  `nnn ∈ {001..073}`. `PCE-nnn` controls `PRS-nnn`. No `PCE` controls two services; no service is
+  controlled by two `PCE`s. The mapping is total (every `PRS` is controlled) and injective (no duplicates).
+- **(E2) Identifier alignment.** The numeric suffix of a `PCE` equals the numeric suffix of its `PRS`
+  (`PCE-031` ↔ `PRS-031`). This is a deliberate identity-alignment convention, not a re-use of the `PRS`
+  identifier.
+
+### 16.2 Inheritance-preservation rules (binding — CFP-010)
+
+Each `PCE` **preserves and inherits — never redefines** — the following from its mapped `PRS` (which in
+turn inherits them from its owning Runtime Domain `PRD-XXX`, `UCOS-PEA-002`):
+
+- **(I1) Ownership preserved.** The controlled service's ownership model `PEO-XXX` is inherited unchanged.
+  The `PCE` adds a **control accountability** layer (the owning Control Domain's single Control Owner under
+  `PEO-017`), but does **not** transfer, split, or re-own `PEO-XXX`.
+- **(I2) Governance preserved.** The controlled service's governance model `PEG-XXX` is inherited
+  unchanged. The `PCE` is **presided over** by the control-plane governance `PEG-017` (it *controls* via
+  the spine) but does **not** replace, merge, or redefine `PEG-XXX` (CFP-002, Part 1 §8).
+- **(I3) Boundary preserved.** The controlled service's boundary model `PEB-XXX` is inherited unchanged;
+  the `PCE` itself operates within `PEB-017` and honors `PEB-XXX`'s allowed/prohibited interactions. No
+  control action bypasses `PEB-XXX` or `PEB-017` (CFP-009).
+- **(I4) Authority inheritance preserved.** The controlled service's authority anchor (`AUTH-*` per its
+  `PRD`) is inherited unchanged; all control terminates at the **Authority Board** via `PE-17` → CAP-15 →
+  AUTH-009 (Part 1 §11).
+- **(I5) Lifecycle inheritance preserved.** Each `PCE` inherits the **migration-only, append-only,
+  never-delete-ratified** platform-element lifecycle semantics that govern its `PRS` (governed via
+  `PRS-071` Platform Element Lifecycle Governance / `PEG-017`, consistent with `PEL-001` semantics). No new
+  control-lifecycle identifier is minted in this part (Part 1 §12; deferred to Part 5).
+
+> **Net effect.** A `PCE` is **additive control over a preserved service**: same owner, same governance,
+> same boundary, same authority chain, same lifecycle semantics — now with one explicit, single-owner,
+> auditable control object classified into exactly one control concern.
+
+## 17. Control Entity Classification Model
+
+> **Classification axis (binding).** Every `PCE` is classified by its **owning Control Domain**
+> (`PCD-CTRL-001..012`) — the single cross-cutting control concern that most governs the controlled
+> service. The 12 Control Domains are the **classification classes**; they were established as
+> **disjoint & exhaustive control concerns** in Part 1 (§9.1 F4, §9.2). Therefore the classification is
+> **Mutually Exclusive** (each `PCE` in exactly one class) and **Collectively Exhaustive** (every `PCE`
+> classified; the 12 classes cover the entire control surface). Classes roll up to the four Control Groups
+> `CCG-1..CCG-4`.
+
+### 17.1 Classification class definitions
+
+| Class (Control Domain) | Control Group | A `PCE` is classified here when its controlled service's dominant control concern is … |
+|------------------------|:-------------:|----------------------------------------------------------------------------------------|
+| **PCD-CTRL-001** — Control Authority & Decision-Rights | CCG-1 | making/arbitrating governed **decisions** and allocating **decision rights** (authorization, decision evaluation, approval-by-exception). |
+| **PCD-CTRL-002** — Governance Orchestration | CCG-1 | **coordinating/orchestrating** governed behavior and governance across constructs (workflow orchestration, control-plane & insight governance). |
+| **PCD-CTRL-003** — Policy & Principle Enforcement | CCG-1 | **enforcing** principles/policies uniformly (principle enforcement, traffic/capacity policy enforcement). |
+| **PCD-CTRL-004** — Control Lifecycle & Promotion | CCG-2 | governing **lifecycle state & promotion** (runtime/key/registration/element lifecycle; build/gate/release; provisioning & composition actuation). |
+| **PCD-CTRL-005** — Change & Evolution Control | CCG-2 | governing **versioned, migration-only change/evolution** (version negotiation, configuration versioning, change propagation, rotation). |
+| **PCD-CTRL-006** — Configuration & Metadata Control Alignment | CCG-2 | keeping **config/metadata-driven behavior consistent** and detecting/governing **drift** (config resolution, metadata delivery, desired-state, drift). |
+| **PCD-CTRL-007** — Traceability & Lineage Control | CCG-3 | **registration integrity & lineage closure** ("Registry First"; registration, discovery, registry metadata, posture registry, trace correlation). |
+| **PCD-CTRL-008** — Audit & Evidence Control | CCG-3 | **audit-of-decisions & evidence integrity** (audit capture, evidence custody, attestation, tamper-evidence, governance-evidence aggregation). |
+| **PCD-CTRL-009** — Compliance & Conformance Control | CCG-3 | **conformance to canons & preservation of non-waivable (S1/S3/S4)** controls and classification (persistence-classification, secrets, SLO conformance, insight classification). |
+| **PCD-CTRL-010** — Boundary & Isolation Control | CCG-3 | **boundary integrity, least-privilege & isolation** of crossings (placement, access brokering, connectivity, segmentation, ingress/egress, mediation, authn, tenancy, session, reporting). |
+| **PCD-CTRL-011** — Control Signal & Eventing | CCG-4 | **control-plane signalling / eventing coordination** (event publish/subscribe/deliver/dedup, task dispatch, telemetry/metrics/alert signalling). |
+| **PCD-CTRL-012** — Exception, Escalation & Continuity | CCG-4 | **exception handling, escalation & continuity/recovery** (dead-letter/replay, compensation, idempotency, retry, circuit, failover, recovery, rollback, snapshot/backup). |
+
+### 17.2 MECE assertions
+
+- **Mutually Exclusive.** Each `PCE` is assigned to **exactly one** `PCD-CTRL` class by its dominant
+  control concern (§18 catalog; §19 matrix). No `PCE` carries two classes.
+- **Collectively Exhaustive.** All 73 `PCE`s are classified; the 12 classes (4 Control Groups) cover the
+  entire control surface defined in Part 1 §9.2. There is **no** "unclassified" or "other" bucket.
+
+## 18. Control Entity Catalog (`PCE-001..PCE-073`)
+
+> **How to read.** Each row defines one Control Entity: its identifier, the `PRS` it controls (1:1), its
+> control-entity name, its **classification** (owning Control Domain + Control Group), and the **inherited
+> & preserved** governance (`PEG`), ownership (`PEO`), boundary (`PEB`), authority anchor, and capability
+> anchor of the controlled service. **Lifecycle inheritance** is uniform across all 73 entities
+> (migration-only / append-only / never-delete-ratified, via `PRS-071`/`PEG-017`; §16.2 I5) and is stated
+> once here rather than repeated per row. Control scope of each `PCE` = govern its `PRS`'s governed
+> behavior within its class concern (read-only over the service; CFP-010).
+
+| PCE | Controls PRS | Control Entity Name | Class (PCD-CTRL) | CCG | Gov `PEG` | Own `PEO` | Bnd `PEB` | Authority | CAP |
+|-----|--------------|---------------------|:----------------:|:---:|:---------:|:---------:|:---------:|-----------|:---:|
+| PCE-001 | PRS-001 | Execution Scheduling Control | PCD-CTRL-004 | CCG-2 | PEG-001 | PEO-001 | PEB-001 | AUTH-004/009 | CAP-15 |
+| PCE-002 | PRS-002 | Workload Placement Control | PCD-CTRL-010 | CCG-3 | PEG-001 | PEO-001 | PEB-001 | AUTH-004/009 | CAP-15 |
+| PCE-003 | PRS-003 | Runtime Lifecycle Control | PCD-CTRL-004 | CCG-2 | PEG-001 | PEO-001 | PEB-001 | AUTH-004/009 | CAP-15 |
+| PCE-004 | PRS-004 | Capacity Governance Control | PCD-CTRL-003 | CCG-1 | PEG-001 | PEO-001 | PEB-001 | AUTH-004/009 | CAP-15 |
+| PCE-005 | PRS-005 | Persistence Coordination Control | PCD-CTRL-009 | CCG-3 | PEG-002 | PEO-002 | PEB-002 | AUTH-007/009 | CAP-15 |
+| PCE-006 | PRS-006 | Data Access Brokering Control | PCD-CTRL-010 | CCG-3 | PEG-002 | PEO-002 | PEB-002 | AUTH-007/009 | CAP-15 |
+| PCE-007 | PRS-007 | Retention Enforcement Control | PCD-CTRL-004 | CCG-2 | PEG-002 | PEO-002 | PEB-002 | AUTH-007/009 | CAP-15 |
+| PCE-008 | PRS-008 | Snapshot & Backup Coordination Control | PCD-CTRL-012 | CCG-4 | PEG-002 | PEO-002 | PEB-002 | AUTH-007/009 | CAP-15 |
+| PCE-009 | PRS-009 | Connectivity Brokering Control | PCD-CTRL-010 | CCG-3 | PEG-003 | PEO-003 | PEB-003 | AUTH-008/009 | CAP-17 |
+| PCE-010 | PRS-010 | Segmentation Enforcement Control | PCD-CTRL-010 | CCG-3 | PEG-003 | PEO-003 | PEB-003 | AUTH-008/009 | CAP-17 |
+| PCE-011 | PRS-011 | Traffic Governance Control | PCD-CTRL-003 | CCG-1 | PEG-003 | PEO-003 | PEB-003 | AUTH-008/009 | CAP-17 |
+| PCE-012 | PRS-012 | Connectivity Posture Registry Control | PCD-CTRL-007 | CCG-3 | PEG-003 | PEO-003 | PEB-003 | AUTH-008/009 | CAP-17 |
+| PCE-013 | PRS-013 | Event Publication Control | PCD-CTRL-011 | CCG-4 | PEG-004 | PEO-004 | PEB-004 | AUTH-004/009 | CAP-12 |
+| PCE-014 | PRS-014 | Event Subscription Control | PCD-CTRL-011 | CCG-4 | PEG-004 | PEO-004 | PEB-004 | AUTH-004/009 | CAP-12 |
+| PCE-015 | PRS-015 | Event Delivery Control | PCD-CTRL-011 | CCG-4 | PEG-004 | PEO-004 | PEB-004 | AUTH-004/009 | CAP-12 |
+| PCE-016 | PRS-016 | Idempotency & Deduplication Control | PCD-CTRL-011 | CCG-4 | PEG-004 | PEO-004 | PEB-004 | AUTH-004/009 | CAP-12 |
+| PCE-017 | PRS-017 | Dead-letter & Replay Control | PCD-CTRL-012 | CCG-4 | PEG-004 | PEO-004 | PEB-004 | AUTH-004/009 | CAP-12 |
+| PCE-018 | PRS-018 | Contract Ingress Control | PCD-CTRL-010 | CCG-3 | PEG-005 | PEO-005 | PEB-005 | AUTH-004/009 | CAP-12 |
+| PCE-019 | PRS-019 | Contract Egress Control | PCD-CTRL-010 | CCG-3 | PEG-005 | PEO-005 | PEB-005 | AUTH-004/009 | CAP-12 |
+| PCE-020 | PRS-020 | Version Negotiation Control | PCD-CTRL-005 | CCG-2 | PEG-005 | PEO-005 | PEB-005 | AUTH-004/009 | CAP-12 |
+| PCE-021 | PRS-021 | Request Mediation Control | PCD-CTRL-010 | CCG-3 | PEG-005 | PEO-005 | PEB-005 | AUTH-004/009 | CAP-12 |
+| PCE-022 | PRS-022 | Element Registration Control | PCD-CTRL-007 | CCG-3 | PEG-006 | PEO-006 | PEB-006 | AUTH-009/010 | CAP-19 |
+| PCE-023 | PRS-023 | Discovery & Resolution Control | PCD-CTRL-007 | CCG-3 | PEG-006 | PEO-006 | PEB-006 | AUTH-009/010 | CAP-19 |
+| PCE-024 | PRS-024 | Registry Metadata Control | PCD-CTRL-007 | CCG-3 | PEG-006 | PEO-006 | PEB-006 | AUTH-009/010 | CAP-19 |
+| PCE-025 | PRS-025 | Registration Lifecycle Control | PCD-CTRL-004 | CCG-2 | PEG-006 | PEO-006 | PEB-006 | AUTH-009/010 | CAP-19 |
+| PCE-026 | PRS-026 | Workflow Resolution Control | PCD-CTRL-002 | CCG-1 | PEG-007 | PEO-007 | PEB-007 | AUTH-009 | CAP-18 |
+| PCE-027 | PRS-027 | Workflow Execution Control | PCD-CTRL-002 | CCG-1 | PEG-007 | PEO-007 | PEB-007 | AUTH-009 | CAP-18 |
+| PCE-028 | PRS-028 | Decision Evaluation Control | PCD-CTRL-001 | CCG-1 | PEG-007 | PEO-007 | PEB-007 | AUTH-009 | CAP-18 |
+| PCE-029 | PRS-029 | Compensation Coordination Control | PCD-CTRL-012 | CCG-4 | PEG-007 | PEO-007 | PEB-007 | AUTH-009 | CAP-18 |
+| PCE-030 | PRS-030 | Task Dispatch Control | PCD-CTRL-011 | CCG-4 | PEG-007 | PEO-007 | PEB-007 | AUTH-009 | CAP-18 |
+| PCE-031 | PRS-031 | Authentication Control | PCD-CTRL-010 | CCG-3 | PEG-008 | PEO-008 | PEB-008 | AUTH-008/009 | CAP-09 |
+| PCE-032 | PRS-032 | Authorization Control | PCD-CTRL-001 | CCG-1 | PEG-008 | PEO-008 | PEB-008 | AUTH-008/009 | CAP-09 |
+| PCE-033 | PRS-033 | Tenancy Context Control | PCD-CTRL-010 | CCG-3 | PEG-008 | PEO-008 | PEB-008 | AUTH-008/009 | CAP-09 |
+| PCE-034 | PRS-034 | Session & Token Control | PCD-CTRL-010 | CCG-3 | PEG-008 | PEO-008 | PEB-008 | AUTH-008/009 | CAP-09 |
+| PCE-035 | PRS-035 | Secret Issuance Control | PCD-CTRL-009 | CCG-3 | PEG-009 | PEO-009 | PEB-009 | AUTH-008/009 | CAP-17 |
+| PCE-036 | PRS-036 | Key Lifecycle Control | PCD-CTRL-004 | CCG-2 | PEG-009 | PEO-009 | PEB-009 | AUTH-008/009 | CAP-17 |
+| PCE-037 | PRS-037 | Rotation Coordination Control | PCD-CTRL-005 | CCG-2 | PEG-009 | PEO-009 | PEB-009 | AUTH-008/009 | CAP-17 |
+| PCE-038 | PRS-038 | Secret Reference Resolution Control | PCD-CTRL-009 | CCG-3 | PEG-009 | PEO-009 | PEB-009 | AUTH-008/009 | CAP-17 |
+| PCE-039 | PRS-039 | Audit Capture Control | PCD-CTRL-008 | CCG-3 | PEG-010 | PEO-010 | PEB-010 | AUTH-008/009/010 | CAP-16 |
+| PCE-040 | PRS-040 | Evidence Custody Control | PCD-CTRL-008 | CCG-3 | PEG-010 | PEO-010 | PEB-010 | AUTH-008/009/010 | CAP-16 |
+| PCE-041 | PRS-041 | Audit Query & Attestation Control | PCD-CTRL-008 | CCG-3 | PEG-010 | PEO-010 | PEB-010 | AUTH-008/009/010 | CAP-16 |
+| PCE-042 | PRS-042 | Integrity & Tamper-evidence Control | PCD-CTRL-008 | CCG-3 | PEG-010 | PEO-010 | PEB-010 | AUTH-008/009/010 | CAP-16 |
+| PCE-043 | PRS-043 | Configuration Resolution Control | PCD-CTRL-006 | CCG-2 | PEG-011 | PEO-011 | PEB-011 | AUTH-007/009 | CAP-10 |
+| PCE-044 | PRS-044 | Metadata Delivery Control | PCD-CTRL-006 | CCG-2 | PEG-011 | PEO-011 | PEB-011 | AUTH-007/009 | CAP-10 |
+| PCE-045 | PRS-045 | Configuration Versioning Control | PCD-CTRL-005 | CCG-2 | PEG-011 | PEO-011 | PEB-011 | AUTH-007/009 | CAP-10 |
+| PCE-046 | PRS-046 | Change Propagation Control | PCD-CTRL-005 | CCG-2 | PEG-011 | PEO-011 | PEB-011 | AUTH-007/009 | CAP-10 |
+| PCE-047 | PRS-047 | Telemetry Ingestion Control | PCD-CTRL-011 | CCG-4 | PEG-012 | PEO-012 | PEB-012 | AUTH-009 | CAP-11 |
+| PCE-048 | PRS-048 | Metrics Aggregation Control | PCD-CTRL-011 | CCG-4 | PEG-012 | PEO-012 | PEB-012 | AUTH-009 | CAP-11 |
+| PCE-049 | PRS-049 | Trace Correlation Control | PCD-CTRL-007 | CCG-3 | PEG-012 | PEO-012 | PEB-012 | AUTH-009 | CAP-11 |
+| PCE-050 | PRS-050 | Health & SLO Evaluation Control | PCD-CTRL-009 | CCG-3 | PEG-012 | PEO-012 | PEB-012 | AUTH-009 | CAP-11 |
+| PCE-051 | PRS-051 | Alert Signaling Control | PCD-CTRL-011 | CCG-4 | PEG-012 | PEO-012 | PEB-012 | AUTH-009 | CAP-11 |
+| PCE-052 | PRS-052 | Idempotency Coordination Control | PCD-CTRL-012 | CCG-4 | PEG-013 | PEO-013 | PEB-013 | AUTH-009 | CAP-15 |
+| PCE-053 | PRS-053 | Retry & Backoff Governance Control | PCD-CTRL-012 | CCG-4 | PEG-013 | PEO-013 | PEB-013 | AUTH-009 | CAP-15 |
+| PCE-054 | PRS-054 | Circuit & Bulkhead Governance Control | PCD-CTRL-012 | CCG-4 | PEG-013 | PEO-013 | PEB-013 | AUTH-009 | CAP-15 |
+| PCE-055 | PRS-055 | Failover Coordination Control | PCD-CTRL-012 | CCG-4 | PEG-013 | PEO-013 | PEB-013 | AUTH-009 | CAP-15 |
+| PCE-056 | PRS-056 | Recovery & Continuity Control | PCD-CTRL-012 | CCG-4 | PEG-013 | PEO-013 | PEB-013 | AUTH-009 | CAP-15 |
+| PCE-057 | PRS-057 | Build Assembly Coordination Control | PCD-CTRL-004 | CCG-2 | PEG-014 | PEO-014 | PEB-014 | AUTH-009 | CAP-15 |
+| PCE-058 | PRS-058 | Promotion Gate Evaluation Control | PCD-CTRL-004 | CCG-2 | PEG-014 | PEO-014 | PEB-014 | AUTH-009 | CAP-15 |
+| PCE-059 | PRS-059 | Release Coordination Control | PCD-CTRL-004 | CCG-2 | PEG-014 | PEO-014 | PEB-014 | AUTH-009 | CAP-15 |
+| PCE-060 | PRS-060 | Rollback Coordination Control | PCD-CTRL-012 | CCG-4 | PEG-014 | PEO-014 | PEB-014 | AUTH-009 | CAP-15 |
+| PCE-061 | PRS-061 | Provisioning Coordination Control | PCD-CTRL-004 | CCG-2 | PEG-015 | PEO-015 | PEB-015 | AUTH-009 | CAP-15 |
+| PCE-062 | PRS-062 | Desired-State Reconciliation Control | PCD-CTRL-006 | CCG-2 | PEG-015 | PEO-015 | PEB-015 | AUTH-009 | CAP-15 |
+| PCE-063 | PRS-063 | Environment Composition Control | PCD-CTRL-004 | CCG-2 | PEG-015 | PEO-015 | PEB-015 | AUTH-009 | CAP-15 |
+| PCE-064 | PRS-064 | Drift Detection Control | PCD-CTRL-006 | CCG-2 | PEG-015 | PEO-015 | PEB-015 | AUTH-009 | CAP-15 |
+| PCE-065 | PRS-065 | Event Insight Derivation Control | PCD-CTRL-009 | CCG-3 | PEG-016 | PEO-016 | PEB-016 | AUTH-007/009 | CAP-13 |
+| PCE-066 | PRS-066 | Aggregation & Materialization Control | PCD-CTRL-009 | CCG-3 | PEG-016 | PEO-016 | PEB-016 | AUTH-007/009 | CAP-13 |
+| PCE-067 | PRS-067 | Reporting Surface Control | PCD-CTRL-010 | CCG-3 | PEG-016 | PEO-016 | PEB-016 | AUTH-007/009 | CAP-13 |
+| PCE-068 | PRS-068 | Insight Governance Control | PCD-CTRL-002 | CCG-1 | PEG-016 | PEO-016 | PEB-016 | AUTH-007/009 | CAP-13 |
+| PCE-069 | PRS-069 | Principle & Policy Enforcement Control | PCD-CTRL-003 | CCG-1 | PEG-017 | PEO-017 | PEB-017 | AUTH-009 | CAP-15 |
+| PCE-070 | PRS-070 | Approval-By-Exception Arbitration Control | PCD-CTRL-001 | CCG-1 | PEG-017 | PEO-017 | PEB-017 | AUTH-009 | CAP-15 |
+| PCE-071 | PRS-071 | Platform Element Lifecycle Governance Control | PCD-CTRL-004 | CCG-2 | PEG-017 | PEO-017 | PEB-017 | AUTH-009 | CAP-15 |
+| PCE-072 | PRS-072 | Control-Plane Coordination Control | PCD-CTRL-002 | CCG-1 | PEG-017 | PEO-017 | PEB-017 | AUTH-009 | CAP-15 |
+| PCE-073 | PRS-073 | Governance Evidence Aggregation Control | PCD-CTRL-008 | CCG-3 | PEG-017 | PEO-017 | PEB-017 | AUTH-009 | CAP-15 |
+
+> **Count:** 73 Control Entities (`PCE-001..PCE-073`), 1:1 with `PRS-001..PRS-073`. **Inherited lifecycle
+> (all 73):** migration-only / append-only / never-delete-ratified (via `PRS-071` / `PEG-017`; §16.2 I5).
+
+## 19. Classification Assignment Matrix
+
+> The matrix below groups all 73 `PCE`s by their single assigned classification class. Each `PCE` appears
+> **exactly once** (Mutual Exclusivity); the union of all rows is `PCE-001..073` (Collective Exhaustiveness).
+
+| Class (Control Domain) | CCG | Assigned Control Entities | Count |
+|------------------------|:---:|---------------------------|:-----:|
+| PCD-CTRL-001 — Control Authority & Decision-Rights | CCG-1 | PCE-028, PCE-032, PCE-070 | 3 |
+| PCD-CTRL-002 — Governance Orchestration | CCG-1 | PCE-026, PCE-027, PCE-068, PCE-072 | 4 |
+| PCD-CTRL-003 — Policy & Principle Enforcement | CCG-1 | PCE-004, PCE-011, PCE-069 | 3 |
+| PCD-CTRL-004 — Control Lifecycle & Promotion | CCG-2 | PCE-001, PCE-003, PCE-007, PCE-025, PCE-036, PCE-057, PCE-058, PCE-059, PCE-061, PCE-063, PCE-071 | 11 |
+| PCD-CTRL-005 — Change & Evolution Control | CCG-2 | PCE-020, PCE-037, PCE-045, PCE-046 | 4 |
+| PCD-CTRL-006 — Configuration & Metadata Control Alignment | CCG-2 | PCE-043, PCE-044, PCE-062, PCE-064 | 4 |
+| PCD-CTRL-007 — Traceability & Lineage Control | CCG-3 | PCE-012, PCE-022, PCE-023, PCE-024, PCE-049 | 5 |
+| PCD-CTRL-008 — Audit & Evidence Control | CCG-3 | PCE-039, PCE-040, PCE-041, PCE-042, PCE-073 | 5 |
+| PCD-CTRL-009 — Compliance & Conformance Control | CCG-3 | PCE-005, PCE-035, PCE-038, PCE-050, PCE-065, PCE-066 | 6 |
+| PCD-CTRL-010 — Boundary & Isolation Control | CCG-3 | PCE-002, PCE-006, PCE-009, PCE-010, PCE-018, PCE-019, PCE-021, PCE-031, PCE-033, PCE-034, PCE-067 | 11 |
+| PCD-CTRL-011 — Control Signal & Eventing | CCG-4 | PCE-013, PCE-014, PCE-015, PCE-016, PCE-030, PCE-047, PCE-048, PCE-051 | 8 |
+| PCD-CTRL-012 — Exception, Escalation & Continuity | CCG-4 | PCE-008, PCE-017, PCE-029, PCE-052, PCE-053, PCE-054, PCE-055, PCE-056, PCE-060 | 9 |
+| **Total** | — | — | **73** |
+
+## 20. Distribution Summary
+
+### 20.1 By Control Domain (classification class)
+
+| Class | 001 | 002 | 003 | 004 | 005 | 006 | 007 | 008 | 009 | 010 | 011 | 012 | Total |
+|-------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:-----:|
+| Count | 3 | 4 | 3 | 11 | 4 | 4 | 5 | 5 | 6 | 11 | 8 | 9 | **73** |
+
+### 20.2 By Control Group
+
+| Control Group | Member classes | Count | Share |
+|---------------|----------------|:-----:|:-----:|
+| CCG-1 — Authority & Governance Control | PCD-CTRL-001/002/003 | 10 | 13.7% |
+| CCG-2 — Lifecycle & Change Control | PCD-CTRL-004/005/006 | 19 | 26.0% |
+| CCG-3 — Integrity & Assurance Control | PCD-CTRL-007/008/009/010 | 27 | 37.0% |
+| CCG-4 — Coordination & Continuity Control | PCD-CTRL-011/012 | 17 | 23.3% |
+| **Total** | 12 classes | **73** | **100%** |
+
+### 20.3 Inheritance distribution (preserved from `PRS`/`PRD`)
+
+| Inherited dimension | Distinct values across the 73 `PCE`s |
+|---------------------|--------------------------------------|
+| Governance (`PEG`) | `PEG-001..PEG-017` (17 distinct; each `PCE` inherits exactly one) |
+| Ownership (`PEO`) | `PEO-001..PEO-017` (17 distinct; each `PCE` inherits exactly one) |
+| Boundary (`PEB`) | `PEB-001..PEB-017` (17 distinct; each `PCE` inherits exactly one) |
+| Authority anchor | AUTH-004/007/008/009/010 sets per controlled domain; all terminate at the Authority Board |
+| Lifecycle | Uniform migration-only / append-only / never-delete-ratified (via `PRS-071`/`PEG-017`) |
+
+## 21. Part 2 Validation
+
+| Validation | Required | Observed | Result |
+|------------|----------|----------|:------:|
+| Control Entity coverage (`PCE` ↔ `PRS`) | 73/73 | 73/73 (bijection `PCE-nnn`↔`PRS-nnn`, `nnn`=001..073) | ✅ |
+| Duplicate Control Entities | 0 | 0 (each `PCE-nnn` defined once; each `PRS` controlled once) | ✅ |
+| Unassigned entities (no classification) | 0 | 0 (every `PCE` has exactly one `PCD-CTRL` class — §18/§19) | ✅ |
+| Multi-classified entities (>1 class) | 0 | 0 (Mutual Exclusivity holds) | ✅ |
+| Orphan entities (no `PRS`, or off-spine) | 0 | 0 (every `PCE` controls a real `PRS`; all anchored on `PE-17`/CAP-15/AUTH-009 → Authority Board) | ✅ |
+| Classification completeness (MECE) | 12 MECE classes cover all | 12/12 classes; ∪ = `PCE-001..073`; ∩ = ∅ | ✅ |
+| Governance conflicts | 0 | 0 (each `PCE` inherits exactly one `PEG-XXX`, unchanged; presided by `PEG-017`, not replaced) | ✅ |
+| Ownership conflicts | 0 | 0 (each `PCE` inherits exactly one `PEO-XXX`, unchanged; single control owner per class via `PEO-017`) | ✅ |
+| Boundary violations | 0 | 0 (each `PCE` inherits exactly one `PEB-XXX`; operates within `PEB-017`; no bypass — CFP-009) | ✅ |
+| Authority-inheritance preserved | 73/73 | 73/73 (controlled-service `AUTH-*` preserved; terminal = Authority Board) | ✅ |
+| Lifecycle-inheritance preserved | 73/73 | 73/73 (migration-only/append-only; no new lifecycle ID minted) | ✅ |
+| Alteration of `UCOS-PEA-001..006` constructs | 0 | 0 (Control Entities are read-only controllers — CFP-010) | ✅ |
+| Prohibited artifacts created (authority/lifecycle/matrix) | 0 | 0 (none minted — §15.1) | ✅ |
+| `STATE-001` / `CTX-REG-001` modified | 0 | 0 (untouched — §15.1) | ✅ |
+| Implementation / technology leakage | 0 | 0 (no product/cloud/runtime/framework/vendor named — PEP-010/CFP-011) | ✅ |
+
+### 21.1 Conflict analysis (summary)
+
+- **Coverage:** 73/73 — complete bijection, no gaps.
+- **Duplicates:** 0 — injective mapping; no identifier reused.
+- **Unassigned:** 0 — every entity classified.
+- **Orphans:** 0 — every entity controls a live `PRS` and is anchored on the control-plane spine.
+- **Governance conflicts:** 0 — exactly one inherited `PEG` per entity; the fabric *presides* (`PEG-017`)
+  without replacing any `PEG-XXX` (CFP-002/CFP-010).
+- **Ownership conflicts:** 0 — exactly one inherited `PEO` per entity; one accountable control owner per
+  class (CFP-003); no shared/duplicated ownership.
+- **Boundary violations:** 0 — exactly one inherited `PEB` per entity; all crossings honor `PEB-017` and
+  the inherited `PEB-XXX` (CFP-009).
+
+## 22. Part 2 Document Control (close)
+
+| Field | Value |
+|-------|-------|
+| Artifact ID | UCOS-PEA-007 |
+| Version | 0.2.0 (advanced by Part 2) |
+| Status | CREATED — IN PROGRESS (Phase 9.0C.5 Part 2 — Control Entity Architecture) |
+| Part 2 delivers | `PCE-001..073`; Control Entity Classification model (MECE); assignment matrix; distribution summary; Part 2 validation |
+| Part 2 created (prohibited) | Authority artifacts: NONE · Lifecycle artifacts: NONE · Traceability matrices: NONE · `STATE-001`/`CTX-REG-001` changes: NONE |
+| Branch | `phase-9.2-convergence` (DO NOT PUSH / DO NOT MERGE) |
+| Next | Phase 9.0C.5 Part 3 — Control Mappings / Crosswalks (AUTHORIZED; not begun) |
+
+### Part 2 Traceability addendum
+- **Refines (additionally):** `UCOS-PEA-002` Service Architecture (`PRS-001..073`) — the 1:1 control anchor.
+- **Refined by:** `PHASE-9.0C.5-PART-2-COMPLETION-REPORT.md`; Phase 9.0C.5 Part 3 (control mappings),
+  Part 4 (`TM-CTRL-*`), Part 5 (control authority/lifecycle standards), Part 6 (validation, `CTX-REG-001`
+  + `STATE-001` proposals).
+- **Controls (read-only, preserved):** each `PCE-nnn` controls `PRS-nnn` while preserving its inherited
+  `PEG-XXX`/`PEO-XXX`/`PEB-XXX`, authority anchor, and lifecycle semantics (CFP-010).
