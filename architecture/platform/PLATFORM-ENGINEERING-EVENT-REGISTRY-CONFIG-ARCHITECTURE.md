@@ -2,9 +2,9 @@
 
 **Artifact ID:** UCOS-PEA-003
 **Layer:** ARCHITECTURE (Platform Engineering)
-**Status:** CREATED — IN PROGRESS (Phase 9.0C.1C — Event Catalog Architecture Part 2; Section XI Part B, `PEV-001..PEV-073` complete)
-**Version:** 0.5.0
-**Phase:** Phase 9.0C — Platform Engineering Architecture: Event, Registry & Configuration Architecture (executed as sub-phases 9.0C.1A → 9.0C.1B → 9.0C.1C …)
+**Status:** CREATED — EVENT ARCHITECTURE VALIDATED & CONSOLIDATED (Phase 9.0C.1D — Event Catalog Validation & Consolidation; Section XI Parts A+B+C complete; `PED-001..017`, `PEV-001..073` consolidated; ratification deferred to Phase 9.1)
+**Version:** 1.0.0
+**Phase:** Phase 9.0C — Platform Engineering Architecture: Event, Registry & Configuration Architecture (executed as sub-phases 9.0C.1A → 9.0C.1B → 9.0C.1C → 9.0C.1D …)
 **Date:** 2026-06-30
 **Owner:** Chief Platform Engineer / Enterprise Platform Architect
 **Approver:** Authority Board (ratification deferred to a later Platform Engineering validation phase)
@@ -33,7 +33,10 @@
 > - **9.0C.1B — Event Catalog Architecture Part 1** (Section XI Part B): `PEV-001..036`, `TM-PEA-006`
 >   (Part 1). **COMPLETE** (`UCOS-PEA-9.0C.1B-COMP-001`).
 > - **9.0C.1C — Event Catalog Architecture Part 2** (Section XI Part B cont.): `PEV-037..073`, `TM-PEA-006`
->   (Part 2). **← THIS SUB-PHASE.**
+>   (Part 2). **COMPLETE** (`UCOS-PEA-9.0C.1C-COMP-001`).
+> - **9.0C.1D — Event Catalog Validation & Consolidation** (Section XI Part C): consolidation of
+>   `PED-001..017` + `PEV-001..073`; `TM-PEA-014` (Cross-Domain Event Validation), `TM-PEA-015` (Event
+>   Classification Coverage). **COMPLETE** (`UCOS-PEA-9.0C.1D-COMP-001`). `UCOS-PEA-003` → **v1.0.0**.
 > - **9.0C.2 — Registry Architecture** (Section XII): `PRG-001..017`, `PRE-001..073`, `TM-PEA-007`. *(deferred)*
 > - **9.0C.3 — Configuration Architecture** (Section XIII): `PCD-001..017`, `PCF-001..073`, `TM-PEA-008`. *(deferred)*
 > - **9.0C.4 — Metadata Architecture** (Section XIV): `PMD-001..017`, `PME-001..073`, `TM-PEA-009`. *(deferred)*
@@ -1776,17 +1779,234 @@ classifications. The vocabulary is **fixed here** so that the event domains (`PE
 
 ---
 
+## Section XI — Event Architecture
+
+### Part C — Event Catalog Validation & Consolidation (Phase 9.0C.1D)
+
+> **Purpose.** Phase 9.0C.1D **consolidates** the Event Architecture generated incrementally across
+> Phases 9.0C.1A (Event Domains, `PED-001..017`; `PEGM-001`; `PEL-001`; `TM-PEA-006A/006B`), 9.0C.1B
+> (Event Catalog Part 1, `PEV-001..036`; `TM-PEA-006` Part 1), and 9.0C.1C (Event Catalog Part 2,
+> `PEV-037..073`; `TM-PEA-006` Part 2) into a single, validated, consolidated baseline. It **generates no
+> new event, event domain, governance model, lifecycle stage, classification, ownership, boundary, or
+> traceability source** — it **validates** the union of all prior sub-phase outputs end-to-end and adds
+> two consolidation traceability matrices (`TM-PEA-014` Cross-Domain Event Validation; `TM-PEA-015` Event
+> Classification Coverage). No `PED`, `PEV`, `PEGM-001`, `PEL-001`, `TM-PEA-006/006A/006B`, or any
+> `PE/PEP/PEG/PEO/PEB` or `PRD/PRS/PSR/PEX/PWF` construct is altered, renumbered, re-owned, or
+> reclassified. Event contracts/schemas/payloads remain owned by Prompt 07 (deferred); Registry,
+> Configuration, Metadata, and Control Fabric remain deferred to Phases 9.0C.2–9.0C.5; technology
+> selection remains deferred to the technology-selection phase (ADRs).
+
+#### XI.C.1 Consolidated Inventory
+
+| Construct | Identifier range | Count | Source sub-phase | Result |
+|-----------|------------------|------:|------------------|:------:|
+| Platform Event Domains (`PED`) | `PED-001..PED-017` | 17 | 9.0C.1A | ✅ |
+| Platform Event Governance Model (`PEGM`) | `PEGM-001` | 1 | 9.0C.1A | ✅ |
+| Platform Event Lifecycle Standard (`PEL`) | `PEL-001` (10 stages) | 1 | 9.0C.1A | ✅ |
+| Platform Events (`PEV`) | `PEV-001..PEV-073` | 73 | 9.0C.1B + 9.0C.1C | ✅ |
+| Event Classifications (canonical vocabulary) | §P.4 (10 classes) | 10 | 9.0C.1A | ✅ |
+| Traceability Matrices (event) | `TM-PEA-006A`, `TM-PEA-006B`, `TM-PEA-006` (Parts 1+2) | 3 | 9.0C.1A–1C | ✅ |
+| Consolidation Traceability Matrices | `TM-PEA-014`, `TM-PEA-015` | 2 | 9.0C.1D | ✅ |
+
+> **Identifier integrity (consolidated).** `PEV-001..073` contiguous, unique, **0 gaps / 0 duplicates / 0
+> reuse**; `PED-001..017` contiguous, unique, **0 gaps / 0 duplicates**; 1:1 `PRS-001..073 → PEV-001..073`
+> and 1:1 `PRD-001..017 → PED-001..017` preserved exactly as generated. No collision among `PED`, `PEV`,
+> `PEGM`, `PEL`, `TM-PEA-001..006/006A/006B`, `TM-PEA-014/015`.
+
+#### XI.C.2 Service & Domain Coverage Confirmation
+
+| Confirmation | Target | Result |
+|--------------|--------|:------:|
+| Runtime Service Coverage (`PRS-001..073` → exactly one `PEV`) | 100% | ✅ 100% (73/73, 1:1) |
+| Runtime Domain Coverage (`PRD-001..017` → exactly one `PED`) | 100% | ✅ 100% (17/17, 1:1) |
+| Event Domain Population (each `PED` owns ≥1 `PEV`) | 17/17 | ✅ 17/17 (all populated) |
+| Event Ownership (each `PEV` → exactly one `PED`) | 100% | ✅ 100% (73/73) |
+| Governance Coverage (`PEGM-001` binds every `PED`/`PEV`; each inherits its `PEG`; spine `PEG-017`) | 100% | ✅ 100% |
+| Lifecycle Coverage (`PEL-001` 10 stages bind every `PED`/`PEV`) | 100% | ✅ 100% |
+| Classification Coverage (each `PEV` ∈ exactly one of 10 classes; all 10 represented) | 73/73; 10/10 | ✅ 73/73; 10/10 |
+
+> **Event Domain → Service/Event population (consolidated).** Each `PED` owns exactly the runtime services
+> declared in `TM-PEA-006A` and exactly the events those services produce: `PED-001` `PEV-001..004` (4);
+> `PED-002` `PEV-005..008` (4); `PED-003` `PEV-009..012` (4); `PED-004` `PEV-013..017` (5); `PED-005`
+> `PEV-018..021` (4); `PED-006` `PEV-022..025` (4); `PED-007` `PEV-026..030` (5); `PED-008` `PEV-031..034`
+> (4); `PED-009` `PEV-035..038` (4); `PED-010` `PEV-039..042` (4); `PED-011` `PEV-043..046` (4); `PED-012`
+> `PEV-047..051` (5); `PED-013` `PEV-052..056` (5); `PED-014` `PEV-057..060` (4); `PED-015` `PEV-061..064`
+> (4); `PED-016` `PEV-065..068` (4); `PED-017` `PEV-069..073` (5). Sum = **73**; **0** partially-populated
+> domains; **0** services owning zero events; **0** services owning more than one canonical event.
+
+#### XI.C.3 Classification-to-Owning-Domain Consistency
+
+Every `PEV` carries a classification that is within the **declared produced event categories** of its
+owning `PED` (Section XI Part A). Consolidated confirmation (each owning `PED`'s produced categories ⊇ the
+classifications of the events it owns):
+
+| `PED` | Declared Produced Categories (Part A) | Classifications of owned `PEV` | Consistent |
+|-------|----------------------------------------|--------------------------------|:----------:|
+| `PED-001` | Execution | Execution ×4 | ✅ |
+| `PED-002` | Domain, Execution | Domain ×2, Execution ×2 | ✅ |
+| `PED-003` | Control | Control ×4 | ✅ |
+| `PED-004` | Capability | Capability ×5 | ✅ |
+| `PED-005` | Capability | Capability ×4 | ✅ |
+| `PED-006` | Registry | Registry ×4 | ✅ |
+| `PED-007` | Workflow | Workflow ×5 | ✅ |
+| `PED-008` | Capability | Capability ×4 | ✅ |
+| `PED-009` | Capability | Capability ×4 | ✅ |
+| `PED-010` | Audit | Audit ×4 | ✅ |
+| `PED-011` | Configuration, Metadata | Configuration ×3, Metadata ×1 | ✅ |
+| `PED-012` | Control | Control ×5 | ✅ |
+| `PED-013` | Execution, Control | Execution ×3, Control ×2 | ✅ |
+| `PED-014` | Control | Control ×4 | ✅ |
+| `PED-015` | Control | Control ×4 | ✅ |
+| `PED-016` | Capability, Metadata | Capability ×3, Metadata ×1 | ✅ |
+| `PED-017` | Governance, Control | Governance ×4, Control ×1 | ✅ |
+
+> **Result:** 73/73 events classified consistently with their owning `PED`'s declared produced categories;
+> **0** classification/ownership inconsistencies.
+
+---
+
+### TM-PEA-014 — Cross-Domain Event Validation Matrix
+
+> **Scope.** Validates that every cross-domain event flow honours the inherited boundary model (`PEB`) and
+> the common boundary constraints (EBC1–EBC4 / PVB1–PVB5): cross-domain flow only via the governed eventing
+> substrate (`PRD-004`); no shared mutable event state (translation/ACL only); least-privilege idempotent
+> consumption; prohibited interactions remain prohibited; no secrets/keys/classified data beyond inherited
+> classification. The matrix has two parts: **(A)** explicit `Cross-Domain`-scoped events; **(B)** per-`PED`
+> consumed-category producibility (every consumed event category is produced by at least one `PED`).
+
+#### TM-PEA-014.A — Explicit Cross-Domain-scoped events (`Event Scope = Cross-Domain`)
+
+| Event (`PEV`) | Event Name | Producing `PED` (→ `PRD`) | Target Consuming `PED` | Classification | Substrate (`PRD-004`) | Boundary (`PEB`) honoured | Result |
+|---------------|------------|---------------------------|------------------------|----------------|:---------------------:|:-------------------------:|:------:|
+| `PEV-008` | Snapshot Coordinated | `PED-002` (`PRD-002`) | `PED-013` | Execution Event | ✅ | ✅ (no shared mutable state; classification preserved) | ✅ |
+| `PEV-011` | Traffic Governed | `PED-003` (`PRD-003`) | `PED-013` | Control Event | ✅ | ✅ (least-privilege; deterministic) | ✅ |
+| `PEV-029` | Compensation Executed | `PED-007` (`PRD-007`) | `PED-013` | Workflow Event | ✅ | ✅ (idempotent; bounded) | ✅ |
+| `PEV-041` | Attestation Produced | `PED-010` (`PRD-010`) | `PED-017` | Audit Event | ✅ | ✅ (read-only; least-privilege) | ✅ |
+| `PEV-051` | Alert Signaled | `PED-012` (`PRD-012`) | `PED-013` / `PED-017` | Control Event | ✅ | ✅ (no classified leakage; idempotent) | ✅ |
+| `PEV-055` | Failover Initiated | `PED-013` (`PRD-013`) | `PED-001` | Execution Event | ✅ | ✅ (deterministic; bounded) | ✅ |
+| `PEV-059` | Release Promoted | `PED-014` (`PRD-014`) | `PED-015` | Control Event | ✅ | ✅ (gated; migration-only) | ✅ |
+| `PEV-064` | Drift Detected | `PED-015` (`PRD-015`) | `PED-017` | Control Event | ✅ | ✅ (deterministic; auditable) | ✅ |
+
+> **Result (A):** 8/8 explicit cross-domain events flow only via the governed eventing substrate (`PRD-004`)
+> with the inherited `PEB` honoured; **0** boundary violations; **0** shared-mutable-state couplings; **0**
+> secret/key/classified leakage; every target consumer is an authorized, least-privilege, idempotent
+> consumer. `PRS-039` (Audit Capture) is a universal consumer of all eight (PVA1).
+
+#### TM-PEA-014.B — Consumed-category producibility (no orphan consumption)
+
+| Consumed Event Category | Declared as consumed by `PED` | Produced by `PED` (at least one) | Producible | Result |
+|-------------------------|-------------------------------|----------------------------------|:----------:|:------:|
+| Execution Event | `PED-001`, `PED-002` | `PED-001`, `PED-002`, `PED-013` | ✅ | ✅ |
+| Domain Event | (consumed within `PED-002`) | `PED-002` | ✅ | ✅ |
+| Control Event | `PED-001`, `PED-002`, `PED-007`, `PED-011`, `PED-013`, `PED-014`, `PED-015`, `PED-017` | `PED-003`, `PED-012`, `PED-013`, `PED-014`, `PED-015`, `PED-017` | ✅ | ✅ |
+| Capability Event | `PED-007`, `PED-016` | `PED-004`, `PED-005`, `PED-008`, `PED-009`, `PED-016` | ✅ | ✅ |
+| Registry Event | `PED-001..017` (discovery) | `PED-006` | ✅ | ✅ |
+| Workflow Event | (consumed within `PED-007`) | `PED-007` | ✅ | ✅ |
+| Governance Event | `PED-003`, `PED-005`, `PED-006`, `PED-007`, `PED-011`, `PED-014` | `PED-017` | ✅ | ✅ |
+| Audit Event | `PED-017` | `PED-010` | ✅ | ✅ |
+| Configuration Event | `PED-001..016` (config consumers) | `PED-011` | ✅ | ✅ |
+| Metadata Event | `PED-016` (insight lineage) | `PED-011`, `PED-016` | ✅ | ✅ |
+
+> **Result (B):** 10/10 consumed event categories are produced by at least one owning `PED`; **0** orphan
+> consumption (no `PED` declares consumption of a category that no `PED` produces); all cross-domain
+> consumption is mediated by `PRD-004` and governed by `PEGM-001`. **Cross-domain validation verdict:
+> PASS.**
+
+---
+
+### TM-PEA-015 — Event Classification Coverage Matrix
+
+> **Scope.** Confirms that the ten canonical event classifications (§P.4) fully and disjointly cover the 73
+> events `PEV-001..073` — every event has exactly one classification, every classification is represented,
+> and the per-class counts sum to 73.
+
+| # | Event Classification | Count | Events (`PEV`) | Owning Event Domains (`PED`) | Represented |
+|---|----------------------|------:|----------------|------------------------------|:-----------:|
+| 1 | Execution Event | 9 | `PEV-001..004`, `PEV-007`, `PEV-008`, `PEV-052`, `PEV-055`, `PEV-056` | `PED-001`, `PED-002`, `PED-013` | ✅ |
+| 2 | Domain Event | 2 | `PEV-005`, `PEV-006` | `PED-002` | ✅ |
+| 3 | Control Event | 20 | `PEV-009..012`, `PEV-047..051`, `PEV-053`, `PEV-054`, `PEV-057..064`, `PEV-072` | `PED-003`, `PED-012`, `PED-013`, `PED-014`, `PED-015`, `PED-017` | ✅ |
+| 4 | Capability Event | 20 | `PEV-013..021`, `PEV-031..038`, `PEV-065..067` | `PED-004`, `PED-005`, `PED-008`, `PED-009`, `PED-016` | ✅ |
+| 5 | Registry Event | 4 | `PEV-022..025` | `PED-006` | ✅ |
+| 6 | Workflow Event | 5 | `PEV-026..030` | `PED-007` | ✅ |
+| 7 | Audit Event | 4 | `PEV-039..042` | `PED-010` | ✅ |
+| 8 | Configuration Event | 3 | `PEV-043`, `PEV-045`, `PEV-046` | `PED-011` | ✅ |
+| 9 | Metadata Event | 2 | `PEV-044`, `PEV-068` | `PED-011`, `PED-016` | ✅ |
+| 10 | Governance Event | 4 | `PEV-069..071`, `PEV-073` | `PED-017` | ✅ |
+| — | **Total** | **73** | `PEV-001..073` | `PED-001..017` | ✅ |
+
+> **Result:** 9 + 2 + 20 + 20 + 4 + 5 + 4 + 3 + 2 + 4 = **73** = full catalog; **10/10** classifications
+> represented; every `PEV` carries exactly one classification (disjoint, exhaustive); **0** unclassified
+> events; **0** multi-classified events. **Classification coverage verdict: PASS.**
+
+---
+
+## Section XI Part C — Mandatory Validation (Phase 9.0C.1D)
+
+| Inventory | Required | Confirmed | Result |
+|-----------|----------|----------:|:------:|
+| Platform Events validated (`PEV`) | 73 | 73 (`PEV-001..073`) | ✅ |
+| Event Domains validated (`PED`) | 17 | 17 (`PED-001..017`) | ✅ |
+| Event Classifications validated | 10 | 10 (§P.4) | ✅ |
+| Consolidation Traceability Matrices (TM) | 2 | 2 (`TM-PEA-014`, `TM-PEA-015`) | ✅ |
+
+| Confirmation | Target | Result |
+|--------------|--------|:------:|
+| Runtime Service Coverage | 100% | ✅ 100% (73/73 `PRS` → `PEV`, 1:1) |
+| Runtime Domain Coverage | 100% | ✅ 100% (17/17 `PRD` → `PED`, 1:1) |
+| Event Ownership | 100% | ✅ 100% (73/73 → exactly one `PED`) |
+| Governance Coverage | 100% | ✅ 100% (`PEGM-001`; spine `PEG-017`) |
+| Lifecycle Coverage | 100% | ✅ 100% (`PEL-001` 10 stages) |
+| Classification Coverage | 100% | ✅ 100% (73/73; 10/10 classes; `TM-PEA-015`) |
+| Cross-Domain Event Validation | PASS | ✅ PASS (8/8 cross-domain flows + 10/10 consumed categories; `TM-PEA-014`) |
+| Orphan events | 0 | ✅ 0 |
+| Orphan event domains | 0 | ✅ 0 |
+| Duplicate events | 0 | ✅ 0 |
+| Ownership conflicts | 0 | ✅ 0 |
+| Governance conflicts | 0 | ✅ 0 |
+| Boundary violations | 0 | ✅ 0 |
+| Traceability gaps | 0 | ✅ 0 |
+| Classification/ownership inconsistencies | 0 | ✅ 0 (73/73 consistent) |
+| Implementation leakage | 0 | ✅ NONE |
+| New events / domains / governance / lifecycle / classifications created | 0 | ✅ 0 (consolidation only) |
+| `PED`/`PEV`/`PEGM-001`/`PEL-001`/`TM-PEA-006/006A/006B` altered | 0 | ✅ 0 |
+| `PE/PEP/PEG/PEO/PEB` or `PRD/PRS/PSR/PEX/PWF` altered | 0 | ✅ 0 |
+
+> **Implementation-leakage scan (Phase 9.0C.1D).** No cloud provider, region, programming language,
+> framework, library, runtime, container technology, orchestration platform, service mesh, message broker/
+> queue, event-streaming product, database, datastore, storage engine, CI/CD product, IaC tool, vendor,
+> SKU, topology, or network design is named or selected. This consolidation references only governed
+> event / domain / governance / lifecycle / classification / traceability **constructs** already
+> established in Parts A and B. Event **contracts/schemas/payloads** remain owned by Prompt 07 (deferred);
+> Registry/Configuration/Metadata/Control Fabric remain deferred to **Phases 9.0C.2–9.0C.5** ("Configuration
+> Event" / "Metadata Event" / "Control Event" / "Registry Event" are **event classifications**, not those
+> deferred architectural sections). PEP-010 Platform Independence enforced.
+
+> **Consolidation-integrity scan.** Phase 9.0C.1D created **no** new `PED`, `PEV`, `PEGM`, `PEL`,
+> classification, ownership, governance, boundary, or lifecycle construct; it added only the two
+> consolidation traceability matrices (`TM-PEA-014`, `TM-PEA-015`) and the validation tables above. No
+> `PED-001..017`, `PEV-001..073`, `PEGM-001`, `PEL-001`, `TM-PEA-006/006A/006B`, `PE/PEP/PEG/PEO/PEB`, or
+> `PRD/PRS/PSR/PEX/PWF` was altered, renumbered, re-owned, or reclassified.
+
+> **Stop-condition scan.** No governance violation, ownership conflict, event conflict, traceability
+> conflict, classification inconsistency, or implementation leakage detected. **Phase 9.0C.1D — Event
+> Catalog Validation & Consolidation verdict: PASS.** The full Platform Event Catalog (`PEV-001..073`)
+> across all 17 event domains (`PED-001..017`) and ten classifications is **validated and consolidated**.
+> `UCOS-PEA-003` advances to **v1.0.0** (CREATED — EVENT ARCHITECTURE VALIDATED & CONSOLIDATED);
+> formal ratification & certification are deferred to the Platform Engineering validation phase (Phase 9.1).
+
+---
+
 ## Document Control
 
 | Field | Value |
 |-------|-------|
 | Artifact ID | UCOS-PEA-003 |
-| Version | 0.5.0 |
-| Status | CREATED — IN PROGRESS (Phase 9.0C.1C — Event Catalog Architecture Part 2; Section XI Part B, `PEV-001..073` complete) |
-| Phase | Phase 9.0C.1C — Platform Engineering Architecture: Event Catalog Architecture (Part 2) |
+| Version | 1.0.0 |
+| Status | CREATED — EVENT ARCHITECTURE VALIDATED & CONSOLIDATED (Phase 9.0C.1D; Section XI Parts A+B+C; `PED-001..017`, `PEV-001..073`, `TM-PEA-006A/006B/006/014/015`; ratification deferred to Phase 9.1) |
+| Phase | Phase 9.0C.1D — Platform Engineering Architecture: Event Catalog Validation & Consolidation |
 | Companion of | `UCOS-PEA-001` (Foundation & Governance, v0.1.0), `UCOS-PEA-002` (Runtime & Service Architecture, v0.2.0) |
 | Supersedes | — |
-| Next Phase | Phase 9.0C.1D — Event Catalog Validation & Consolidation (AUTHORIZED; not begun) |
+| Next Phase | Phase 9.0C.2 — Registry Architecture (AUTHORIZED; not begun) |
 
 ## Traceability
 - **Refines:** AUTH-001..012, STATE-001, `UCOS-CONST-001`, `UCOS-ENT-ARCH-001`, `UCOS-DOM-ARCH-001`,
@@ -1794,9 +2014,10 @@ classifications. The vocabulary is **fixed here** so that the event domains (`PE
   `UCOS-PDATA-ARCH-001`, `UCOS-PEA-001` (`PE-01..17`, `PEP-001..020`, `PEG-001..017`, `PEO-001..017`,
   `PEB-001..017`), `UCOS-PEA-002` (`PRD-001..017`, `PRS-001..073`, `PSR-001..017`, `PEX-001..017`,
   `PWF-001..017`), `UCOS-PEA-003` Section XI Part A (`PED-001..017`, `PEGM-001`, `PEL-001`,
-  `TM-PEA-006A/006B`), `CTX-ARCHB-001` (§1/§3–§5), `CTX-CAP-001`, `CTX-REG-001`, `CTX-TRACE-001`, SKILL-009,
-  SKILL-011, PROMPT-08.
-- **Refined by:** `UCOS-PEA-9.0C.1A-COMP-001`, `UCOS-PEA-9.0C.1B-COMP-001`, `UCOS-PEA-9.0C.1C-COMP-001`
-  (completion reports); Phase 9.0C.1D (Event Catalog Validation & Consolidation); Phases 9.0C.2–9.0C.5
-  (Registry / Configuration / Metadata / Control Fabric); platform technology-selection ADRs; Prompts 07,
-  09–12.
+  `TM-PEA-006A/006B`), Section XI Part B (`PEV-001..073`, `TM-PEA-006` Parts 1+2), Section XI Part C
+  (consolidation; `TM-PEA-014`, `TM-PEA-015`), `CTX-ARCHB-001` (§1/§3–§5), `CTX-CAP-001`, `CTX-REG-001`,
+  `CTX-TRACE-001`, SKILL-009, SKILL-011, PROMPT-08.
+- **Refined by:** `UCOS-PEA-9.0C.1A-COMP-001`, `UCOS-PEA-9.0C.1B-COMP-001`, `UCOS-PEA-9.0C.1C-COMP-001`,
+  `UCOS-PEA-9.0C.1D-COMP-001` (completion reports); Phases 9.0C.2–9.0C.5 (Registry / Configuration /
+  Metadata / Control Fabric); Platform Engineering validation phase (Phase 9.1; ratification);
+  platform technology-selection ADRs; Prompts 07, 09–12.
