@@ -605,3 +605,41 @@
 > 9/13 PASS · 4 CONDITIONS · 0 FAIL). Verdict **IMPLEMENTATION READY WITH CONDITIONS**: Prompt 10 code
 > generation gated on conditions C-1..C-6 (Prompts 06/07/09 ratified, Prompt 08 technology-selection ADRs,
 > Phase 9.1 platform ratification, Authority Board Article IX lock release), consolidated in `PI-0`.
+
+
+
+### Experience Architecture (Phase 10.2A — Prompt 06 generation; subordinate to Authority + Constitution + EA + Domain + Capability + Information/Metadata Architecture; Article IX lock ACTIVE — design artifacts only)
+
+> **Append-only.** This section records the Phase 10.2A execution of `PROMPT-06` (Experience Architecture).
+> It introduces **no** UI/app code, **no** API/event/data contracts, **no** domain/data/metadata model,
+> **no** security architecture, and **no** technology selection. It mutates no frozen governance construct
+> (`UCOS-PEA-001..007`, Baseline 1.0.0, ratified domains/capabilities/IC/MC). Status **CREATED — GENERATED**;
+> independent ratification deferred (no self-certification). It resolves the *generation* portion of
+> Condition **C-1** (Experience) from `PHASE-10.0`/`PHASE-10.1`; formal ratification + Article IX lock
+> release remain with the Authority Board.
+
+| Artifact ID | Name | Path | Layer | Type | Status | Refines | Refined by |
+|-------------|------|------|-------|------|--------|---------|------------|
+| UCOS-EXP-ARCH-001 | UCOS Experience Architecture (14 surfaces `UCOS-EXP-SURFACE-001..014`; 15 journeys `UCOS-EXP-JOURNEY-001..015`; 5 IA/navigation models `UCOS-EXP-IA-001..005`; 7 UX/design-system standards `UCOS-EXP-STD-001..007` incl. WCAG 2.2 AA; 21 consumption requirements `UCOS-EXP-CR-001..021`; `TM-EXP-001` traceability matrix) | `architecture/experience/UCOS-EXP-ARCHITECTURE.md` | EXP | ARCH | **CREATED — GENERATED v1.0.0** (Phase 10.2A; GATE-DOC-001 PASS / Traceability PASS / Gap Scan PASS; ratification deferred) | AUTH-001/003/004/005/006/010/011, UCOS-CONST-001 (Art. IX), CTX-ARCHB-001, UCOS-ENT-ARCH-001, UCOS-DOM-ARCH-001, UCOS-CAP-ARCH-001, UCOS-INF-ARCH-001, SKILL-007, PROMPT-06 | UCOS-EXP-ADR-001..007; Prompt 07 (contracts, via ECR-001..021), Prompt 09 (security/UI threat surface), Prompt 10 (apps) |
+| UCOS-EXP-ADR-001 | Channel-Agnostic Core Flows, Edge-Specific Presentation | `architecture/experience/adr/UCOS-EXP-ADR-001.md` | EXP | ADR | **Accepted (generated) v1.0.0** | UCOS-EXP-ARCH-001, CTX-ARCHB-001, AUTH-004, SKILL-007 | Prompt 10 |
+| UCOS-EXP-ADR-002 | Surface Taxonomy: Storefront / Console / Portal Separation | `architecture/experience/adr/UCOS-EXP-ADR-002.md` | EXP | ADR | **Accepted (generated) v1.0.0** | UCOS-EXP-ARCH-001, UCOS-DOM-ARCH-001, UCOS-CAP-ARCH-001, SKILL-007 | Prompt 10 |
+| UCOS-EXP-ADR-003 | WCAG 2.2 AA as Non-Waivable Accessibility Baseline | `architecture/experience/adr/UCOS-EXP-ADR-003.md` | EXP | ADR | **Accepted (generated) v1.0.0** | UCOS-EXP-ARCH-001, SKILL-007, CTX-ARCHB-001, AUTH-009 | Prompt 11 (validation) |
+| UCOS-EXP-ADR-004 | Metadata-Driven Variability (No Code Forks) | `architecture/experience/adr/UCOS-EXP-ADR-004.md` | EXP | ADR | **Accepted (generated) v1.0.0** | UCOS-EXP-ARCH-001, Const. Art. V, AUTH-003 (IP-04/IP-H), UCOS-INF-ARCH-001 | Prompt 07/08/10 |
+| UCOS-EXP-ADR-005 | Contract-First Consumption (Contracts Deferred to Prompt 07) | `architecture/experience/adr/UCOS-EXP-ADR-005.md` | EXP | ADR | **Accepted (generated) v1.0.0** | UCOS-EXP-ARCH-001, CTX-ARCHB-001, AUTH-004, SKILL-007 | Prompt 07 |
+| UCOS-EXP-ADR-006 | Unified Console Shell with Role-Based Navigation | `architecture/experience/adr/UCOS-EXP-ADR-006.md` | EXP | ADR | **Accepted (generated) v1.0.0** | UCOS-EXP-ARCH-001 (UCOS-EXP-IA-003), SKILL-007, AUTH-009 | Prompt 09/10 |
+| UCOS-EXP-ADR-007 | Explicit Design of Loading / Empty / Error / Success States | `architecture/experience/adr/UCOS-EXP-ADR-007.md` | EXP | ADR | **Accepted (generated) v1.0.0** | UCOS-EXP-ARCH-001 (UCOS-EXP-STD-003), SKILL-007, CTX-ARCHB-001 | Prompt 10/11 |
+
+> **Experience Architecture precedence & discipline.** Subordinate to the Authority Layer, ratified
+> Constitution, EA, Domain, Capability, and Information/Metadata Architectures; occupies the EXPERIENCE
+> layer (`CTX-ARCHB-001` §2), consumed by — never superseding — contracts (Prompt 07), security (Prompt 09),
+> and implementation (Prompt 10). **Phase 10.2A (Prompt 06) GENERATED:** 14 surfaces, 15 journeys, 5
+> IA/navigation models, 7 UX/design-system standards (incl. non-waivable **WCAG 2.2 AA**, `UCOS-EXP-STD-002`),
+> 21 experience consumption requirements (forward dependencies for Prompt 07), and 7 experience ADRs.
+> Coverage: capabilities **19/19**, domains **28/28**, surfaces **14/14** (each ≥1 capability + domain),
+> journeys **15/15** (each ≥1 capability + domain + surface + goal), accessibility **14/14** surfaces.
+> Gap scan **PASS** (0 orphan surfaces; 0 orphan journeys; 0 coverage gaps; 0 ECR orphans). Metadata
+> traceability **PASS** (variability → `MC-13`/`MC-01`, IP-H). **Implementation leakage NONE** (no UI code,
+> no API/event/data contracts, no security architecture, no technology/vendor/cloud/framework selection;
+> `apps/` remains EMPTY). Gates: `GATE-DOC-001` PASS · Traceability PASS · Gap Scan PASS. Status **CREATED —
+> GENERATED v1.0.0**; ratification + Article IX lock release reserved to the Authority Board. Resolves the
+> generation of Condition **C-1**; **C-2/C-3/C-4 remain OPEN**; Article IX generation lock remains **ACTIVE**.

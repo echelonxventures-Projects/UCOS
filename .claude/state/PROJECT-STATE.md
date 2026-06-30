@@ -1739,3 +1739,47 @@ a Git `origin` remote is provisioned.
 > in `docs/implementation/`; `UCOS-IMP-READY-001` at repository root
 > (`PHASE-10.0-IMPLEMENTATION-READINESS-REPORT.md`). **Phase 10.0 work stops here; PI-0 enablement and the
 > Article IX lock release are the next governed steps.** Branch NOT pushed / NOT merged / NOT tagged.
+
+
+
+---
+
+## 0D. Phase 10.2A — Experience Architecture (Prompt 06) (CURRENT — supersedes §0C for design-pipeline status)
+
+> **Append-only.** This section records the Phase 10.2A execution of `PROMPT-06` (Experience Architecture).
+> It adds **no** UI/app code, API/event/data contracts, domain/data/metadata model, security architecture,
+> or technology selection, and **modifies no** frozen governance construct. It is the CURRENT status for the
+> Experience design pipeline (Condition C-1 generation).
+
+| Field | Value |
+|-------|-------|
+| Phase | **Phase 10.2A — Experience Architecture (Prompt 06)** (GENERATED) |
+| Branch | `phase-10-implementation-readiness` (DO NOT PUSH / DO NOT MERGE / DO NOT TAG) |
+| Mode | EXPERIENCE DESIGN ONLY — no UI/app code, no API/event contracts, no domain/data/metadata, no security architecture, no technology selection |
+| Primary artifact | `UCOS-EXP-ARCH-001` (`architecture/experience/UCOS-EXP-ARCHITECTURE.md`) |
+| Deliverables | 14 surfaces `UCOS-EXP-SURFACE-001..014`; 15 journeys `UCOS-EXP-JOURNEY-001..015`; 5 IA/navigation models `UCOS-EXP-IA-001..005`; 7 UX/design-system standards `UCOS-EXP-STD-001..007`; 21 consumption requirements `UCOS-EXP-CR-001..021`; 7 ADRs `UCOS-EXP-ADR-001..007` |
+| Traceability | `TM-EXP-001` (embedded): capabilities 19/19; domains 28/28; surfaces 14/14 (each ≥1 cap + domain); journeys 15/15 (each ≥1 cap + domain + surface + goal); ECRs 21/21 traced |
+| Accessibility | `UCOS-EXP-STD-002` WCAG 2.2 AA on **14/14** surfaces (non-waivable; `UCOS-EXP-ADR-003`) |
+| Metadata traceability | Variability/theming/locale → `MC-13`/`MC-01`, IP-H / IP-04 / Const. Art. V (`UCOS-EXP-ADR-004`) |
+| Gates | `GATE-DOC-001` PASS · Traceability PASS · Gap Scan PASS |
+| Gap scan | 0 orphan surfaces · 0 orphan journeys · 0 capability gaps · 0 domain gaps · 0 surface-without-accessibility · 0 ECR orphans · leakage NONE |
+| Status | **CREATED — GENERATED v1.0.0**; independent ratification deferred (no self-certification) |
+| Condition impact | **C-1 (Experience) — GENERATION COMPLETE** (awaiting ratification + Authority Board). C-2/C-3/C-4 remain OPEN. Article IX generation lock remains **ACTIVE**. |
+| Next Step | Independent ratification of `UCOS-EXP-ARCH-001`; then Prompt 07 (Service & API Contracts) consuming `UCOS-EXP-CR-001..021` to address C-2 |
+
+> **Phase 10.2A — Experience Architecture (Prompt 06) GENERATED.** Executed `PROMPT-06` exactly to scope:
+> designed the UCOS experience architecture as 14 surfaces (storefront/mobile/account/checkout +
+> merchandising/operations/partner/support/governance/IAM/compliance/observability/configuration/developer
+> consoles & portals), 15 channel-agnostic interaction journeys, a 5-model information architecture &
+> navigation set (global taxonomy, storefront IA, role-based console shell, self-service IA, resource
+> addressing/deep-linking), 7 UX/design-system standards (design-system/component contract; **WCAG 2.2 AA**
+> accessibility; interaction/state; i18n/l10n; metadata-driven theming/variability; responsive/channel;
+> classification-aware data display), 21 experience consumption requirements handed forward to Prompt 07,
+> and 7 experience ADRs. Full upstream traceability to `CAP-01..19` (19/19), `UCOS-DOM-001..028` (28/28),
+> strategic goals `G1..G5`, and metadata constructs (`UCOS-INF-ARCH-001`). Validation: GATE-DOC-001 PASS;
+> traceability PASS (0 orphan surfaces/journeys); gap scan PASS (0 coverage gaps); accessibility 14/14;
+> **implementation leakage NONE** (no UI code, no API/event/data contracts, no security architecture, no
+> technology selection; `apps/` EMPTY). Registered in `CTX-REG-001` (Experience Architecture section).
+> Status **CREATED — GENERATED**; ratification and Constitution Article IX generation-lock release remain
+> reserved to the Authority Board (Phase 10.1 verdict — IMPLEMENTATION NOT AUTHORIZED — otherwise unchanged;
+> C-2/C-3/C-4 still OPEN).
