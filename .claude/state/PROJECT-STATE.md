@@ -2,7 +2,7 @@
 
 **Artifact ID:** STATE-001
 **Status:** Live (single source of truth for program progress)
-**Last Updated:** 2026-06-30 (Phase 9.0B — Platform Engineering Architecture: Runtime & Service Architecture COMPLETE — `UCOS-PEA-002` CREATED — IN PROGRESS v0.2.0, Sections VI–X; 17 runtime domains PRD-001..017 [1:1 from PE-01..17], 73 runtime services PRS-001..073, 17 service relationship models PSR-001..017, 17 execution models PEX-001..017, 17 workflow models PWF-001..017, 5 traceability matrices TM-PEA-001..005; audit PASS; 100% domain/capability/runtime/service/execution/workflow coverage; 0 orphans/ownership/runtime/boundary/circular/traceability conflicts; leakage NONE; completion report `UCOS-PEA-9.0B-COMP-001` FINAL; Phase 9.0C Event, Registry & Configuration Architecture AUTHORIZED, not begun. Prior: Phase 9.0A Foundation & Governance `UCOS-PEA-001` v0.1.0 Sections I–V)
+**Last Updated:** 2026-06-30 (Phase 9.0C.1A — Platform Engineering Architecture: Event Domain Architecture COMPLETE — `UCOS-PEA-003` CREATED — IN PROGRESS v0.3.0, Section XI Part A; 17 platform event domains PED-001..017 [1:1 from PRD-001..017], Platform Event Governance Model PEGM-001 [8 structures], Platform Event Lifecycle Standard PEL-001 [10 stages], 2 traceability matrices TM-PEA-006A [Runtime Domain→Event Domain] / TM-PEA-006B [Platform Domain→Event Domain]; audit PASS; 100% platform/runtime/governance/ownership/lifecycle coverage; 73/73 services covered; 0 orphans/ownership/governance/boundary/traceability conflicts; leakage NONE; completion report `UCOS-PEA-9.0C.1A-COMP-001` FINAL; Phase 9.0C re-scoped into sub-phases 9.0C.1A [DONE] → 9.0C.1B Event Catalog PEV-001..073 [AUTHORIZED, not begun] → 9.0C.2 Registry → 9.0C.3 Configuration → 9.0C.4 Metadata → 9.0C.5 Control Fabric. Prior: Phase 9.0B Runtime & Service `UCOS-PEA-002` v0.2.0 Sections VI–X; Phase 9.0A Foundation & Governance `UCOS-PEA-001` v0.1.0 Sections I–V)
 **Update rule:** Every prompt/generator MUST update this file as its final step.
 
 ---
@@ -11,9 +11,9 @@
 
 | Phase | Value |
 |-------|-------|
-| Phase | **Phase 9.0B — Platform Engineering Architecture: Runtime & Service Architecture** (Generation COMPLETE) |
+| Phase | **Phase 9.0C.1A — Platform Engineering Architecture: Event Domain Architecture** (Generation COMPLETE) |
 | Phase Status | **COMPLETE (generation; audit PASS)** — `UCOS-PEA-002` **CREATED — IN PROGRESS (v0.2.0)**, Sections VI–X. Derived the Phase 9.0A foundation (`UCOS-PEA-001`: `PE-01..17`, `PEP-001..020`, `PEG-001..017`, `PEO-001..017`, `PEB-001..017`) into **17 Platform Runtime Domains** (`PRD-001..PRD-017`, 1:1 from `PE-01..PE-17`); **73 Platform Runtime Services** (`PRS-001..PRS-073`, mapping all anchored capabilities CAP-09..19); **17 Service Relationship Models** (`PSR-001..PSR-017`); **17 Execution Models** (`PEX-001..PEX-017`); **17 Workflow Models** (`PWF-001..PWF-017`); and **5 Traceability Matrices** (`TM-PEA-001..TM-PEA-005`). Mandatory validation: PRD 17 / PRS 73 / PSR 17 / PEX 17 / PWF 17 / TM 5; domain/capability/runtime/service/execution/workflow coverage **100%**; 0 orphans; 0 ownership conflicts; 0 runtime conflicts; 0 service boundary violations; 0 circular dependencies; 0 traceability gaps; implementation leakage **NONE** (no cloud/language/framework/runtime/container/orchestration/mesh/broker/queue/database/datastore/CI-CD/IaC/vendor/topology/network selection — deferred). Final Audit Verdict **PASS** (`UCOS-PEA-9.0B-COMP-001` FINAL). No `PE/PEP/PEG/PEO/PEB` altered (inherited unchanged); 0 capability/domain create/remove/merge/split/re-own/reclassify. |
-| Next Phase | Phase 9.0C — Platform Engineering Architecture: Event, Registry & Configuration Architecture (**AUTHORIZED**; **not begun**) |
+| Next Phase | Phase 9.0C.1B — Platform Engineering Architecture: Event Catalog Architecture (`PEV-001..073`, `TM-PEA-006`) (**AUTHORIZED**; **not begun**) |
 | Generation Lock | Platform Engineering **Runtime & Service Architecture** generated (Phase 9.0B; `UCOS-PEA-002` v0.2.0 CREATED — IN PROGRESS; Sections VI–X). Event, Registry & Configuration Architecture (Phase 9.0C), technology selection (ADRs), Security (Prompt 09), Experience / Service / Implementation / Code generation **LOCKED** (not permitted yet). Foundation & Governance (Phase 9.0A; `UCOS-PEA-001` v0.1.0) COMPLETE. Conceptual Data **RATIFIED**; Logical Data **RATIFIED — AUTHORITATIVE**; Physical Data **RATIFIED — CERTIFIED — AUTHORITATIVE** (v1.0.0). **No** technology/vendor/cloud/datastore/database/language/framework/runtime/container/orchestration/mesh/broker/queue/CI-CD/IaC/topology/network/schema/DDL/SQL/NoSQL/infrastructure/code generated (deferred to Phase 9.0C and the platform technology-selection phase as ADRs) |
 
 > **Phase 9.0B — Platform Engineering Architecture: Runtime & Service Architecture Generation (COMPLETE).**
@@ -54,6 +54,40 @@
 > PROGRESS** (v0.2.0); ratification deferred. Completion report `UCOS-PEA-9.0B-COMP-001` (FINAL; Audit
 > Verdict PASS) registered in `CTX-REG-001`. **Phase 9.0C (Event, Registry & Configuration Architecture) is
 > AUTHORIZED but NOT begun.** Generation lock for downstream phases intact.
+
+> **Phase 9.0C.1A — Platform Engineering Architecture: Event Domain Architecture Generation (COMPLETE).**
+> Generated `UCOS-PEA-003` (v0.3.0; Section XI Part A) in
+> `architecture/platform/PLATFORM-ENGINEERING-EVENT-REGISTRY-CONFIG-ARCHITECTURE.md` as the governed
+> companion of `UCOS-PEA-001`/`UCOS-PEA-002`, deriving the foundational **Event Domain** fabric from the
+> Phase 9.0B runtime/service topology without altering any `PE/PEP/PEG/PEO/PEB` or `PRD/PRS/PSR/PEX/PWF`
+> definition. Phase 9.0C was **re-scoped into governed sub-phases** (9.0C.1A Event Domains → 9.0C.1B Event
+> Catalog → 9.0C.2 Registry → 9.0C.3 Configuration → 9.0C.4 Metadata → 9.0C.5 Control Fabric). This
+> sub-phase (**9.0C.1A**) established **17 Platform Event Domains** (`PED-001..PED-017`) mapped strictly
+> 1:1 from the 17 Runtime Domains (`PRD-001..PRD-017`), each inheriting its platform domain (`PE-nn`),
+> capability anchor (CAP-09..19), governance (`PEG`), ownership (`PEO`), and boundary (`PEB`), with
+> Identifier/Event Domain Name/Purpose/Authority/Owning Platform Domain/Owning Runtime Domain/Owning
+> Governance Model/Owning Ownership Model/Supported Capabilities/Supported Runtime Services/Produced Event
+> Categories/Consumed Event Categories + common Governance/Ownership/Audit/Traceability/Boundary/Lifecycle
+> controls and per-domain mapping justification; the **Platform Event Governance Model** (`PEGM-001`) across
+> eight structures (Authority/Ownership/Stewardship/Approval/Audit/Escalation/Compliance/Traceability; CAP-15
+> spine `PEG-017`; Approval-By-Exception per PEP-020; escalation terminal at the Authority Board; non-waivable
+> S1/S3/S4 preserved); the **Platform Event Lifecycle Standard** (`PEL-001`) across ten stages (Creation,
+> Validation, Publication, Consumption, Monitoring, Audit, Archival, Retention, Deprecation, Retirement),
+> each with Purpose/Authority/Entry/Exit/Governance/Audit/Traceability controls and migration-only evolution
+> (PEP-016); and the two mandatory traceability matrices (`TM-PEA-006A` Runtime Domain→Event Domain;
+> `TM-PEA-006B` Platform Domain→Event Domain). The fixed ten-classification event vocabulary (Domain/
+> Capability/Execution/Workflow/Governance/Audit/Configuration/Registry/Metadata/Control Event) was
+> established for the deferred `PEV` catalog. Mandatory validation: PED **17**, PEGM **1**, PEL **1**, TM
+> **2**; platform-domain/runtime-domain/governance/ownership/lifecycle coverage **100%**; 73/73 runtime
+> services covered by exactly one event domain; 0 orphans; 0 ownership conflicts; 0 governance conflicts; 0
+> event boundary violations; 0 traceability gaps; **implementation leakage NONE** (PEP-010 enforced — no
+> cloud/language/framework/runtime/container/orchestration/mesh/broker/queue/event-streaming-product/
+> database/datastore/storage-engine/CI-CD/IaC/vendor/topology/network selection; event contracts/schemas/
+> payloads owned by Prompt 07; `PEV` catalog deferred to 9.0C.1B; Registry/Configuration/Metadata/Control
+> Fabric deferred to 9.0C.2–9.0C.5). Final Audit Verdict **PASS**. `UCOS-PEA-003` status **CREATED — IN
+> PROGRESS** (v0.3.0); ratification deferred. Completion report `UCOS-PEA-9.0C.1A-COMP-001` (FINAL; Audit
+> Verdict PASS) registered in `CTX-REG-001`. **Phase 9.0C.1B (Event Catalog Architecture, `PEV-001..073`,
+> `TM-PEA-006`) is AUTHORIZED but NOT begun.** Generation lock for downstream phases intact.
 
 > **Phase 9.0A — Platform Engineering Architecture: Foundation & Governance Generation (COMPLETE).**
 > Generated `UCOS-PEA-001` (v0.1.0; Sections I–V) in `architecture/platform/PLATFORM-ENGINEERING-ARCHITECTURE.md`
@@ -1237,21 +1271,21 @@
 
 ## 8. Next Execution Step
 
-➡️ **Phase 9.0C — Platform Engineering Architecture: Event, Registry & Configuration Architecture
-(AUTHORIZED; NOT begun).** Phase 9.0B (Platform Engineering Architecture: Runtime & Service Architecture)
-is **COMPLETE**: `UCOS-PEA-002` (v0.2.0; Sections VI–X) establishes the platform runtime/service topology —
-**17 Platform Runtime Domains** (`PRD-001..PRD-017`, 1:1 from `PE-01..PE-17`), **73 Platform Runtime
-Services** (`PRS-001..PRS-073`, all capabilities CAP-09..19 mapped), **17 Service Relationship Models**
-(`PSR-001..PSR-017`), **17 Execution Models** (`PEX-001..PEX-017`), **17 Workflow Models**
-(`PWF-001..PWF-017`), and **5 Traceability Matrices** (`TM-PEA-001..TM-PEA-005`). Mandatory validation PASS
-(PRD 17 / PRS 73 / PSR 17 / PEX 17 / PWF 17 / TM 5; 100% domain/capability/runtime/service/execution/
-workflow coverage; 0 orphans/ownership/runtime/boundary/circular/traceability conflicts; implementation
-leakage NONE); Final Audit Verdict **PASS**; completion report `UCOS-PEA-9.0B-COMP-001` (FINAL).
-`UCOS-PEA-002` status **CREATED — IN PROGRESS** (v0.2.0); ratification deferred to a later Platform
-Engineering validation phase. Per the standing mandate, **work stops here; Phase 9.0C is NOT started.**
-When executed, Phase 9.0C defines the platform Event, Registry & Configuration Architecture; the platform
-technology-selection phase remains the owner of all technology/vendor/datastore/cloud/deployment selection
-deferred here, recorded as ADRs.
+➡️ **Phase 9.0C.1B — Platform Engineering Architecture: Event Catalog Architecture (AUTHORIZED; NOT begun).**
+Phase 9.0C.1A (Event Domain Architecture) is **COMPLETE**: `UCOS-PEA-003` (v0.3.0; Section XI Part A)
+establishes **17 Platform Event Domains** (`PED-001..PED-017`, 1:1 from `PRD-001..017`), the **Platform
+Event Governance Model** (`PEGM-001`; 8 structures), the **Platform Event Lifecycle Standard** (`PEL-001`;
+10 stages), and **2 traceability matrices** (`TM-PEA-006A`, `TM-PEA-006B`). Mandatory validation PASS (PED
+17 / PEGM 1 / PEL 1 / TM 2; 100% platform/runtime/governance/ownership/lifecycle coverage; 73/73 services
+covered; 0 orphans/ownership/governance/boundary/traceability conflicts; implementation leakage NONE); Final
+Audit Verdict **PASS**; completion report `UCOS-PEA-9.0C.1A-COMP-001` (FINAL). `UCOS-PEA-003` status
+**CREATED — IN PROGRESS** (v0.3.0); ratification deferred to a later Platform Engineering validation phase
+(Phase 9.1). Per the standing mandate, **work stops here; Phase 9.0C.1B is NOT started.** When executed,
+Phase 9.0C.1B defines the platform Event Catalog (`PEV-001..073`, 1:1 from `PRS-001..073`) and `TM-PEA-006`
+(Runtime Service → Event); subsequent sub-phases deliver Registry (9.0C.2), Configuration (9.0C.3), Metadata
+(9.0C.4), and Control Fabric (9.0C.5). Event contracts/schemas/payloads remain owned by Prompt 07; the
+platform technology-selection phase remains the owner of all technology/vendor/cloud/datastore/deployment
+selection deferred here, recorded as ADRs.
 Outstanding governed Trusted Operations to honor at their next touch: **N-1** (author CAP-01..14
 quantitative attributes under Prompt 02, AUTH-006 §6.3/§6.4) and the canonical **"Party"** glossary
 term (Prompt 03). Do not skip stages; do not generate technology/runtime-implementation/service-code/
@@ -1290,6 +1324,7 @@ a Git `origin` remote is provisioned.
 | Phase 8.1 | Physical Data Architecture Validation, Ratification & Certification (five validation streams — Architecture/Governance/Traceability/Leakage/Completeness — all PASS; PD-GOV-001..010 PASS; 73 traceability chains, 0 broken/orphan/missing; 0 ownership/governance/authority/stewardship conflicts; 17 PDAC COMPLETE; 17 PDRM READY; leakage NONE; audit `UCOS-PDATA-AUD-001` PASS; ratification `UCOS-PDATA-RAT-001` RATIFIED; certification `UCOS-PDATA-CERT-001` 13/13 APPROVED; publication `UCOS-PDATA-PUB-001`; `UCOS-PDATA-ARCH-001` → v1.0.0 RATIFIED — CERTIFIED — AUTHORITATIVE) | ✅ Complete | 2026-06-30 |
 | Phase 9.0A | Platform Engineering Architecture: Foundation & Governance Generation (Sections I–V; 17 platform domains PE-01..PE-17 across 5 planes; 20 principles PEP-001..020; 17 governance models PEG-001..017; 17 ownership models PEO-001..017; 17 boundary models PEB-001..017; PEP 20/PEG 17/PEO 17/PEB 17; domain/capability/governance/ownership coverage 100%; 0 ownership/governance/boundary/traceability conflicts; leakage NONE; CREATED — IN PROGRESS v0.1.0; Final Audit Verdict PASS; completion report `UCOS-PEA-9.0A-COMP-001`) | ✅ Complete (generation) | 2026-06-30 |
 | Phase 9.0B | Platform Engineering Architecture: Runtime & Service Architecture Generation (Sections VI–X; 17 runtime domains PRD-001..017 [1:1 from PE-01..17]; 73 runtime services PRS-001..073 [all capabilities CAP-09..19 mapped]; 17 service relationship models PSR-001..017; 17 execution models PEX-001..017; 17 workflow models PWF-001..017; 5 traceability matrices TM-PEA-001..005; PRD 17/PRS 73/PSR 17/PEX 17/PWF 17/TM 5; domain/capability/runtime/service/execution/workflow coverage 100%; 0 orphans/ownership/runtime/boundary/circular/traceability conflicts; leakage NONE; CREATED — IN PROGRESS v0.2.0; Final Audit Verdict PASS; completion report `UCOS-PEA-9.0B-COMP-001`) | ✅ Complete (generation) | 2026-06-30 |
+| Phase 9.0C.1A | Platform Engineering Architecture: Event Domain Architecture Generation (Section XI Part A; 17 platform event domains PED-001..017 [1:1 from PRD-001..017]; Platform Event Governance Model PEGM-001 [8 structures]; Platform Event Lifecycle Standard PEL-001 [10 stages]; 2 traceability matrices TM-PEA-006A [Runtime Domain→Event Domain] / TM-PEA-006B [Platform Domain→Event Domain]; fixed 10-classification event vocabulary; PED 17/PEGM 1/PEL 1/TM 2; platform/runtime/governance/ownership/lifecycle coverage 100%; 73/73 services covered; 0 orphans/ownership/governance/boundary/traceability conflicts; leakage NONE; UCOS-PEA-003 CREATED — IN PROGRESS v0.3.0; Final Audit Verdict PASS; completion report `UCOS-PEA-9.0C.1A-COMP-001`; Phase 9.0C re-scoped into sub-phases 9.0C.1A..9.0C.5) | ✅ Complete (generation) | 2026-06-30 |
 
 ## 10. Readiness Status
 
