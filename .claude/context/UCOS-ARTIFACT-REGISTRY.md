@@ -830,3 +830,47 @@
 > release reserved to the Authority Board. **Resolves the generation of Condition C-2**; C-1 (Experience)
 > generated (`UCOS-EXP-ARCH-001`); **C-3 (Security, Prompt 09) and C-4 (Technology ADRs, Prompt 08) remain
 > OPEN**; Article IX generation lock remains **ACTIVE** (`UCOS-CONSTRUCTION-BLOCKED` unchanged).
+
+
+
+### Governance Ledger Reconciliation — Phase 10.6 (CP-2; append-only; records Authority Board condition closure + registers governance evidence artifacts; subordinate to Authority + Constitution Art. IX)
+
+> **Append-only / reconciliation.** This section reconciles `CTX-REG-001` to the Authority Board decisions
+> of record (`UCOS-AUTH-BOARD-003`, D-1..D-6). It registers the governance evidence artifacts (preserved in
+> commit `8920bec`) and records implementation-condition closure. No prior row is deleted, renamed, or
+> re-owned; no history is rewritten; no architecture/ADR/service/security content is changed; no
+> implementation is authorized; the Article IX lock is **not** released.
+
+#### Implementation Condition Closure Status (Authority Board, 2026-06-30)
+
+| Condition | Status | Ratification review | Board motion |
+|-----------|:------:|---------------------|:------------:|
+| C-1 Experience (06) | **RATIFIED — CLOSED** | `UCOS-EXP-RAT-001` | D-1 |
+| C-2 Service & API (07) | **RATIFIED — CLOSED** | `UCOS-SVC-RAT-001` | D-2 |
+| C-3 Security (09) | **RATIFIED — CLOSED** | `UCOS-SEC-RAT-001` | D-3 |
+| C-4 Technology ADRs (08) | **RATIFIED — CLOSED** | `UCOS-C4-ADR-RAT-001` (preservation `f4c57c5`) | D-4 |
+| C-5 Platform Ratification (PEA-001..007) | **CONFIRMED SATISFIED — CLOSED** | `UCOS-GOVERNANCE-BASELINE-1.0` | D-5 |
+
+> CP-1 **CLOSED** (`UCOS-C4-ADR-RAT-001`); CP-2 **CLOSED** (this reconciliation); CP-3 **CLOSED** (`8920bec`).
+> Article IX Lock-Release Review **COMPLETED** (`UCOS-ART9-LRR-001`); all conditions satisfied **except the
+> Authority Board lock-release act**; Article IX lock **ACTIVE**; construction **BLOCKED**.
+
+#### Governance Evidence Artifacts (registered; preserved at commit `8920bec`, except where noted)
+
+| Artifact ID | Name | Path | Layer | Type | Status | Refines | Refined by |
+|-------------|------|------|-------|------|--------|---------|------------|
+| UCOS-EXP-RAT-001 | Experience Architecture Ratification Review | `UCOS-EXP-RAT-001.md` | GOV | RATIFICATION REVIEW | **FINAL — PASS** (committed `3848046`) | UCOS-EXP-ARCH-001, AUTH-009/010 | Authority Board D-1 |
+| UCOS-SVC-RAT-001 | Service & API Contract Ratification Review | `UCOS-SVC-RAT-001.md` | GOV | RATIFICATION REVIEW | **FINAL — PASS** | UCOS-SVC-ARCH-001, UCOS-CONTRACT-CAT-001 | Authority Board D-2 |
+| UCOS-SEC-RAT-001 | Security Architecture Ratification Review | `architecture/security/UCOS-SEC-RAT-001.md` | GOV | RATIFICATION REVIEW | **FINAL — PASS** | UCOS-SEC-ARCH-001 (+companions) | Authority Board D-3 |
+| UCOS-C4-ADR-RAT-001 | Independent C-4 ADR Ratification Review | `UCOS-C4-ADR-RAT-001.md` | GOV | RATIFICATION REVIEW | **FINAL — PASS (10/10)** | UCOS-PLAT-ADR-001..007, UCOS-PLAT-ADR-INDEX | Authority Board D-4; CP-1 |
+| UCOS-IMP-COND-002 | Phase 10.3 Condition Reassessment | `PHASE-10.3-CONDITION-REASSESSMENT.md` | IMP | REPORT | **FINAL** | PHASE-10.1-CONDITION-RESOLUTION-REPORT, RAT reviews | UCOS-AUTH-BOARD-002/003 |
+| UCOS-AUTH-BOARD-002 | Authority Board Ratification Package | `AUTHORITY-BOARD-RATIFICATION-PACKAGE.md` | GOV | BOARD PACKAGE | **FINAL** | UCOS-IMP-COND-002, RAT reviews | UCOS-AUTH-BOARD-003 |
+| UCOS-AUTH-BOARD-003 | Authority Board Decision Record (D-1..D-6) | `AUTHORITY-BOARD-DECISION-RECORD.md` | GOV | DECISION RECORD | **FINAL — D-1..D-5 APPROVED; D-6 conduct** | UCOS-AUTH-BOARD-002, RAT reviews | UCOS-ART9-LRR-001; ledger reconciliation |
+| UCOS-C4-ADR-AUDIT-001 | C-4 ADR Repository Preservation Audit | `C4-ADR-REPOSITORY-PRESERVATION-AUDIT.md` | GOV | AUDIT | **FINAL — PASS WITH OBSERVATIONS** | architecture/platform/adr/* | UCOS-C4-ADR-REMED-PLAN-001 |
+| UCOS-C4-ADR-REMED-PLAN-001 | C-4 ADR Preservation Remediation Plan | `C4-ADR-PRESERVATION-REMEDIATION-PLAN.md` | GOV | PLAN | **FINAL** (executed `f4c57c5`) | UCOS-C4-ADR-AUDIT-001 | preservation commit f4c57c5 |
+| UCOS-ART9-LRR-001 | Article IX Lock-Release Review (C-6) | `ARTICLE-IX-LOCK-RELEASE-REVIEW.md` | GOV | REVIEW | **FINAL — NOT YET RELEASE-READY → CP-1/2/3 now CLOSED** | UCOS-AUTH-BOARD-003, RAT reviews, UCOS-CONST-001 Art. IX | Authority Board lock-release act (future) |
+
+> **Preservation note.** `UCOS-EXP-RAT-001` was preserved earlier (`3848046`); the remaining nine governance
+> evidence artifacts were preserved in `8920bec` (PHASE-10.5, CP-3). The C-4 ADR set itself is preserved in
+> `f4c57c5` (PHASE-10.4). This reconciliation (PHASE-10.6) records closure; the **lock-release act remains
+> reserved to the Authority Board**.

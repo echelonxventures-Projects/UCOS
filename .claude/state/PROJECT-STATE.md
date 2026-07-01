@@ -2058,3 +2058,47 @@ a Git `origin` remote is provisioned.
 > Operation **N-1** (CAP-01..14 quantitative ASRs under Prompt 02) must supply the values currently held as
 > `PENDING ASR RATIFICATION` via a governed versioned contract update. **Work stops here; no downstream
 > phase is started.**
+
+
+
+---
+
+## Phase 10.6 — Governance Ledger Reconciliation (CP-2) — Implementation Conditions C-1..C-5 CLOSED
+
+> **Append-only.** This section reconciles the governance ledger to the Authority Board decisions of record
+> (`AUTHORITY-BOARD-DECISION-RECORD`, `UCOS-AUTH-BOARD-003`, motions D-1..D-6). It records condition closure
+> and condition-precedent status. It **deletes nothing, rewrites no history, and changes no
+> architecture/ADR/service/security artifact**. It authorizes **no** implementation and releases **no**
+> lock. Where earlier sections (e.g., §1 "Generation Lock" / pipeline-status "Pending" rows) reflect a
+> pre-ratification state, **this section supersedes them** for condition status.
+
+### Implementation Condition Closure (Authority Board, 2026-06-30)
+
+| Condition | Decision | Status | Ratification reference | Board motion | Preservation |
+|-----------|----------|:------:|------------------------|:------------:|--------------|
+| **C-1 Experience (Prompt 06)** | RATIFIED | **CLOSED** | `UCOS-EXP-RAT-001` (PASS 12/12) | **D-1** | `UCOS-EXP-ARCH-001` + ADRs committed (`1b37d0f`); review (`3848046`) |
+| **C-2 Service & API (Prompt 07)** | RATIFIED | **CLOSED** | `UCOS-SVC-RAT-001` (PASS 12/12) | **D-2** | arch/contracts (`0ad488c`); review (`8920bec`) |
+| **C-3 Security (Prompt 09)** | RATIFIED | **CLOSED** | `UCOS-SEC-RAT-001` (PASS 12/12; S1/S3/S4 enforced) | **D-3** | security arch (`0ad488c`); review (`8920bec`) |
+| **C-4 Technology ADRs (Prompt 08)** | RATIFIED | **CLOSED** | `UCOS-C4-ADR-RAT-001` (PASS 10/10) | **D-4** | ADR set preserved (`f4c57c5`); review (`8920bec`) |
+| **C-5 Platform Ratification (PEA-001..007)** | CONFIRMED SATISFIED | **CLOSED** | `UCOS-GOVERNANCE-BASELINE-1.0` (FROZEN/RATIFIED) | **D-5** | baseline frozen |
+
+### Condition-Precedent (C-6) Status
+
+| CP | Description | Status | Evidence |
+|----|-------------|:------:|----------|
+| **CP-1** | Independent C-4 ADR ratification review | **CLOSED** | `UCOS-C4-ADR-RAT-001` (PASS 10/10) |
+| **CP-2** | Governance ledger reconciliation (this record) | **CLOSED** | this section + `CTX-REG-001` reconciliation + `PHASE-10.6-LEDGER-RECONCILIATION-REPORT` |
+| **CP-3** | Preservation of governance evidence | **CLOSED** | commit `8920bec` (9 governance artifacts) |
+
+### Article IX Status
+
+- **Article IX Lock-Release Review COMPLETED** — `ARTICLE-IX-LOCK-RELEASE-REVIEW` (`UCOS-ART9-LRR-001`).
+- **All review conditions are now satisfied except the lock-release act itself.** With C-1..C-5 CLOSED and
+  CP-1/CP-2/CP-3 CLOSED, the only remaining step is the Authority Board's explicit **Article IX
+  lock-release act** (issuance of `UCOS-ARTICLE-IX-LOCK-RELEASE` + `UCOS-CONSTRUCTION-AUTHORIZATION`).
+- **Article IX generation lock REMAINS ACTIVE** until that act. `UCOS-CONSTRUCTION-BLOCKED` is unchanged.
+  **No implementation is authorized by this reconciliation.**
+
+> **Net status after Phase 10.6:** Implementation conditions **C-1..C-5 = CLOSED**; **C-6 conditions
+> precedent CP-1/CP-2/CP-3 = CLOSED**; **C-6 lock-release act = PENDING (Authority Board)**; Article IX lock
+> **ACTIVE**; construction **BLOCKED** pending the release act.
