@@ -1,0 +1,80 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-01 Runtime & Compute — Workload Security & Placement Baseline
+# ADR-001 (Kubernetes) + ADR-006 (workload identity for mTLS). Declarative template.
+#
+# This is the MANDATORY workload baseline every foundation service Deployment
+# MUST inherit (no service code here — a governed template/policy). It encodes:
+#   - Runtime security controls: non-root, read-only rootfs, drop ALL caps,
+#     seccomp RuntimeDefault, no privilege escalation (PodSecurity "restricted").
+#   - Workload identity: a dedicated ServiceAccount per workload = the mTLS
+#     identity (S1 via SEC-CTL-014); NOT the default SA.
+#   - Placement/availability: topology spread across zones + PodDisruptionBudget
+#     (AC-1 zero-downtime, N+1) + rolling update (no downtime deploy, ASR §3.3).
+# NO SECRETS (S3): env/volumes reference WI-SEED.5 handles only.
+# Traceability: ADR-001/006; UCOS-ASR-NFR-001 §3 (AC-1), §3.3 (zero-downtime),
+#   §7 (N+1/fault tolerance); SEC-CTL-001/002/014 (S1), SEC-CTL-013 (least priv).
+# =============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: platform-workload           # per-workload identity (overridden per service); mTLS identity source
+  namespace: ucos-platform
+  labels:
+    ucos.io/control-s1: "SEC-CTL-014"
+automountServiceAccountToken: true  # workload identity token (bound, short-lived)
+---
+# Governed Deployment BASELINE (podTemplate contract inherited by foundation services).
+# Illustrative template — concrete service images/args are set by WP-PLT-06/11 (contract-first).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workload-baseline-template
+  namespace: ucos-platform
+  labels:
+    ucos.io/template: "runtime-baseline"
+    ucos.io/availability-class: "AC-1"
+spec:
+  replicas: 3                        # N+1 (≥3) for AC-1 (ASR §7)
+  strategy:
+    type: RollingUpdate              # zero-downtime deploy (ASR §3.3)
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels: { ucos.io/template: "runtime-baseline" }
+  template:
+    metadata:
+      labels:
+        ucos.io/template: "runtime-baseline"
+    spec:
+      serviceAccountName: platform-workload   # workload identity (S1)
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile: { type: RuntimeDefault }
+      topologySpreadConstraints:      # spread across zones for AC-1 fault tolerance
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels: { ucos.io/template: "runtime-baseline" }
+      containers:
+        - name: workload
+          image: "OCI_IMAGE_SET_BY_OWNING_WP"   # placeholder; set contract-first by WP-PLT-06/11
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }
+          resources:
+            requests: { cpu: "100m", memory: "128Mi" }
+            limits:   { cpu: "500m", memory: "512Mi" }
+          # Secrets by reference only (S3) — resolved from WI-SEED.5 handles; never inline.
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: platform-pdb
+  namespace: ucos-platform
+spec:
+  minAvailable: 2                    # preserve AC-1 availability during disruption (ASR §3)
+  selector:
+    matchLabels: { ucos.io/availability-class: "AC-1" }

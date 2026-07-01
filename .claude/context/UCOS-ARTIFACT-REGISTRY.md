@@ -874,3 +874,109 @@
 > evidence artifacts were preserved in `8920bec` (PHASE-10.5, CP-3). The C-4 ADR set itself is preserved in
 > `f4c57c5` (PHASE-10.4). This reconciliation (PHASE-10.6) records closure; the **lock-release act remains
 > reserved to the Authority Board**.
+
+
+
+### Phase 11 — Governed Construction (PI-1 Platform Foundation; Article IX lock RELEASED; subordinate to UCOS Governance Baseline 1.0.0 + Authority + Constitution Art. IX/XII; under mandatory controls IC-1..IC-8)
+
+> **Append-only registration (Phase 11A.2 / CP-1 review, `UCOS-CP1-REVIEW-001`).** This section registers
+> the Phase 11 governed construction artifacts, closing precondition **PC-3**. It records **no** change to
+> any prior row, ADR, architecture, or frozen baseline (`UCOS-PEA-001..007`, Baseline 1.0.0, ratified
+> domains/entities/matrices) — **registration only** (the sole registry mutation authorized this phase).
+> The Article IX lock is **RELEASED** (`UCOS-ART9-REL-001`, 2026-06-30) and construction is **AUTHORIZED
+> WITHIN SCOPE** (`UCOS-CONSTR-AUTH-001`) under IC-1..IC-8 and non-waivable S1/S3/S4. The 21 WI-SEED
+> deliverables are registered as the deliverable set of `UCOS-IMP-SEED-PI1-001` (seed; superseded
+> migration-only by the full platform WPs in later PIs, IC-7).
+
+| Artifact ID | Name | Path | Layer | Type | Status | Refines | Refined by |
+|-------------|------|------|-------|------|--------|---------|------------|
+| UCOS-IMP-MOB-001 | Phase 11.0 Construction Mobilization (PI-1 plan; WPB; dep graph; construction sequence; resource model; risk register R-1..R-9; milestones M0..M7; `TM-IMP-MOB-001..004`) | `PHASE-11.0-CONSTRUCTION-MOBILIZATION.md` | IMP | MOBILIZATION PLAN | **CREATED — MOBILIZATION DEFINED v1.0.0** (IMPLEMENTATION NOT BEGUN) | UCOS-CONSTR-AUTH-001, UCOS-ART9-REL-001, UCOS-IMP-PI-001 (PI-1), UCOS-IMP-WPS-001, UCOS-IMP-DEP-001, UCOS-IMP-DELIV-001, UCOS-IMP-GOV-001, UCOS-PLAT-ADR-001/002/004/005/006/007, UCOS-CONTRACT-CAT-001, UCOS-SEC-CONTROL-001, UCOS-PEA-001..007 | UCOS-IMP-RDY-PI1-001 |
+| UCOS-IMP-RDY-PI1-001 | Phase 11.1 PI-1 Construction Readiness Assessment (10 criteria; 0 blocking; 6 non-blocking; 4 preconditions PC-1..PC-4) | `PHASE-11.1-PI1-READINESS-ASSESSMENT.md` | IMP | READINESS ASSESSMENT | **FINAL — READY WITH PRECONDITIONS v1.0.0** | UCOS-IMP-MOB-001, UCOS-CONSTR-AUTH-001, UCOS-ART9-REL-001 | UCOS-IMP-KICK-PI1-001 |
+| UCOS-IMP-KICK-PI1-001 | Phase 11.2 PI-1 Construction Kickoff (execution baseline; WI-SEED.1..5; WP-PLT-01/03 authorization; sequence; S1/S3/S4 enforcement; CP-0..CP-6; R-1..R-9) | `PHASE-11.2-PI1-CONSTRUCTION-KICKOFF.md` | IMP | EXECUTION BASELINE / AUTHORIZATION | **FINAL — PI-1 AUTHORIZED TO COMMENCE v1.0.0** | UCOS-IMP-MOB-001, UCOS-IMP-RDY-PI1-001, UCOS-CONSTR-AUTH-001, UCOS-ART9-REL-001, UCOS-IMP-PI-001, UCOS-IMP-WPS-001, UCOS-IMP-DEP-001, UCOS-IMP-DELIV-001, UCOS-IMP-GOV-001, UCOS-PLAT-ADR-001/002/004/005/006/007, UCOS-PEA-001..007, UCOS-CONTRACT-CAT-001, UCOS-SEC-CONTROL-001 | UCOS-IMP-SEED-PI1-001 |
+| UCOS-IMP-SEED-PI1-001 | Phase 11.3 Construction Seed Implementation Report (WI-SEED.1–5; 21 deliverables; PASS; 0 secrets; 0 waivers; 0 drift) | `PHASE-11.3-SEED-IMPLEMENTATION-REPORT.md` | IMP | IMPLEMENTATION REPORT | **PASS v1.0.0** (SEED ESTABLISHED; apply-time reconciliation flagged) | UCOS-IMP-KICK-PI1-001, UCOS-PLAT-ADR-001/002/004/005/006/007, UCOS-SEC-CONTROL-001, UCOS-CONTRACT-CAT-001 (`API-018/027`), UCOS-PEA-001/007 | UCOS-IMP-SEEDVAL-PI1-001 |
+| UCOS-IMP-SEEDVAL-PI1-001 | Phase 11.4 Seed Validation & Acceptance Review (CP-0 PASS; independent re-read + secret re-scan; 0 blocking; 4 non-blocking VF-1..4) | `PHASE-11.4-SEED-VALIDATION-REPORT.md` | IMP | VALIDATION / CP-0 GATE | **CP-0 PASS v1.0.0** | UCOS-IMP-SEED-PI1-001, UCOS-IMP-KICK-PI1-001, UCOS-PLAT-ADR-001/002/004/005/006/007, UCOS-SEC-CONTROL-001, UCOS-IMP-GOV-001 | UCOS-CP1-REVIEW-001; WP-PLT-01/03 |
+| UCOS-ASR-NFR-001 | ASR & NFR Ratification — Foundation Permanence Baseline (INV-1..12; availability classes AC-1..4; scale tiers T1..T4; §3–§12 targets; resolves N-1) | `UCOS-ASR-NFR-RATIFICATION.md` | IMP/GOV | ASR/NFR BASELINE | **RATIFIED v1.0.0** (PC-1 CLOSED; IC-5 satisfied) | UCOS-IMP-KICK-PI1-001 (PC-1/CP-1), UCOS-CONSTR-AUTH-001 (IC-5), UCOS-CONTRACT-CAT-001 (resolves N-1), UCOS-PLAT-ADR-001..007, UCOS-SEC-CONTROL-001, UCOS-PEA-001..007, UCOS-IMP-DELIV-001 | WP-PLT-01/03 (perf-bound work); Prompt 11 |
+| UCOS-CP1-REVIEW-001 | Phase 11A.2 Foundation Governance Reconciliation & CP-1 Review (artifact inventory; registration verification; traceability/ASR/security/architecture verification; CP-1 determination) | `PHASE-11A.2-CP1-REVIEW.md` | IMP/GOV | RECONCILIATION / CP-1 GATE | **CP-1 PASS v1.0.0** (PC-3 CLOSED) | UCOS-IMP-MOB-001, UCOS-IMP-RDY-PI1-001, UCOS-IMP-KICK-PI1-001, UCOS-IMP-SEED-PI1-001, UCOS-IMP-SEEDVAL-PI1-001, UCOS-ASR-NFR-001, UCOS-IMP-GOV-001 (CP-1), CTX-REG-001, CTX-TRACE-001 | WP-PLT-01/03 execution (Prompt 10); CP-2 |
+
+#### WI-SEED deliverable set (registered under `UCOS-IMP-SEED-PI1-001`; seed — migration-only supersession by full platform WPs)
+
+| WI-SEED | Deliverable path(s) | ADR | Controls |
+|---------|---------------------|-----|----------|
+| WI-SEED.1 Repository Foundation | `services/platform/registry/README.md`, `services/platform/config-metadata/README.md`, `packages/contracts-sdk/README.md`, `packages/platform-runtime/README.md`, `infra/runtime/README.md`, `infra/networking/README.md`, `infra/persistence/README.md`, `infra/environments/README.md` | ADR-001/002/004/005/006/007 | S3 hygiene |
+| WI-SEED.2 Platform Bootstrap | `infra/environments/dev/main.tf`, `infra/environments/int/main.tf`, `infra/runtime/kubernetes-baseline.yaml` | ADR-001/007 | S1/S4 (default-deny, mTLS-ready) |
+| WI-SEED.3 Security Bootstrap | `security/bootstrap/README.md`, `security/bootstrap/mesh/mtls-strict.yaml`, `security/bootstrap/opa/deny-by-default.rego`, `security/bootstrap/boundary-enforcement-policy.md` | ADR-006 | S1 (SEC-CTL-001/002/014), S4 (008) |
+| WI-SEED.4 Delivery Bootstrap | `infra/delivery/README.md`, `infra/delivery/pipeline.yaml`, `infra/delivery/gitops/README.md` | ADR-007 | S7/FO-2 (SEC-CTL-018); signing |
+| WI-SEED.5 Secrets & Key Bootstrap | `security/bootstrap/secrets/README.md`, `security/bootstrap/secrets/secret-references.yaml`, `security/bootstrap/secrets/rotation-policy.md` | ADR-006 | S3 (SEC-CTL-005/006/007), S4 (009) |
+
+> **Phase 11 precedence & discipline.** All Phase 11 artifacts are governed-construction artifacts under the
+> released Article IX lock and `UCOS-CONSTR-AUTH-001`, bound by IC-1..IC-8 and non-waivable S1/S3/S4. They
+> introduce **no** new capability/domain/contract/event/data/metadata construct and **no** unratified
+> technology (only ADR-001/002/004/005/006/007; deferred `ADR-002A`/`PE-12`/`PE-07` untouched, IC-7). They
+> mutate **no** frozen governance construct (P2). The construction seed is declarative bootstrap-as-code
+> (IaC/policy-as-code/pipeline-as-code) with **0 secrets** (S3 scan-verified) and structure only; live
+> reconciliation is apply-time. **Checkpoints:** CP-0 **PASS** (`UCOS-IMP-SEEDVAL-PI1-001`); CP-1 **PASS**
+> (`UCOS-CP1-REVIEW-001`). **Preconditions:** PC-1 **CLOSED** (`UCOS-ASR-NFR-001`); PC-3 **CLOSED** (this
+> registration); PC-4 satisfied (authorization standing). `WP-PLT-01` (Runtime & Compute) and `WP-PLT-03`
+> (Networking & Connectivity) are **AUTHORIZED for execution**. `services/` and `infra/` contain only seed
+> scaffolding + declarative bootstrap; no service/application code generated.
+
+
+
+### Phase 11B/11C — PI-1 Foundation Implementation, AUTH-012 Amendment & Certification (registration update; append-only; INV-10)
+
+> **Append-only registration (Phase 11C.2, `UCOS-CP1-REVIEW`-lineage).** Registers the PI-1 foundation
+> implementation artifacts, the AUTH-012 Foundation Permanence Amendment, and the PI-1 re-certification.
+> **Registration only** — no prior row deleted/renamed/re-owned; no ADR/architecture/contract change; no new
+> constitutional amendment enacted here (the amendment itself was ratified by `UCOS-AUTH-012-FPA-001`).
+> Version chains and supersession are recorded (INV-10).
+
+#### §A Constitutional Baseline (version chain preserved)
+
+| Artifact ID | Name | Path | Layer | Type | Status | State | Supersedes | Refined by |
+|-------------|------|------|-------|------|--------|-------|-----------|------------|
+| UCOS-ASR-NFR-001 @ v1.0.0 | ASR/NFR Foundation Permanence Baseline (INV-1..12) | `UCOS-ASR-NFR-RATIFICATION.md` | IMP/GOV | ASR/NFR BASELINE | RATIFIED (superseded by v1.0.1) | HISTORICAL (preserved) | — | UCOS-ASR-NFR-001 @ v1.0.1 |
+| **UCOS-ASR-NFR-001 @ v1.0.1** | ASR/NFR Foundation Permanence Baseline (**INV-1..INV-13**) | `UCOS-ASR-NFR-RATIFICATION.md` | IMP/GOV | ASR/NFR BASELINE | **RATIFIED** | **ACTIVE** | **v1.0.0** | WP-PLT-01/02/03/06/11 (perf-bound); Prompt 11 |
+
+> Version chain: `v1.0.0 → v1.0.1`. v1.0.1 adds **INV-13 (Infinite Extensibility)** (§2.5) via
+> `UCOS-AUTH-012-FPA-001`; INV-1..12 unchanged (append-only). v1.0.0 preserved as the historical record.
+
+#### §B Authority Decisions
+
+| Artifact ID | Name | Path | Layer | Type | Status | State | Approval | Refines | Refined by |
+|-------------|------|------|-------|------|--------|-------|----------|---------|------------|
+| UCOS-AUTH-012-FPA-001 | Foundation Permanence Amendment (enrolls INV-13) | `AUTH-012-FOUNDATION-PERMANENCE-AMENDMENT.md` | GOV | DECISION RECORD / AMENDMENT | **RATIFIED** | **ACTIVE** | **Constitutional Majority** (Authority Board) | AUTH-012, UCOS-ASR-NFR-001 (→v1.0.1), UCOS-IMP-WPPLT06/11-001, UCOS-IMP-EVID-PI1-003/004, UCOS-IMP-CERT-PI1-001 | UCOS-ASR-NFR-001 v1.0.1; future architecture reviews (C-EX1..5) |
+
+#### §C PI-1 Foundation Implementation Artifacts (status IMPLEMENTED · DEFINITION-LEVEL CERTIFIED)
+
+| Artifact ID | WP | Report path | Evidence pack | Deliverable set (paths) | Status | Certification |
+|-------------|:--:|-------------|---------------|-------------------------|:------:|---------------|
+| UCOS-IMP-WPPLT01-001 | WP-PLT-01 Runtime & Compute | `WP-PLT-01-IMPLEMENTATION-REPORT.md` | `UCOS-IMP-EVID-PI1-001` (`WP-PLT-01-WP-PLT-03-EVIDENCE-PACK.md`) | `infra/runtime/{namespaces,resource-governance,workload-baseline,autoscaling,cluster-baseline}.yaml` | IMPLEMENTED (PASS) | DEFINITION-LEVEL CERTIFIED |
+| UCOS-IMP-WPPLT03-001 | WP-PLT-03 Networking & Connectivity | `WP-PLT-03-IMPLEMENTATION-REPORT.md` | `UCOS-IMP-EVID-PI1-001` | `infra/networking/{network-policies,ingress-egress,traffic-governance,mesh-authorization}.yaml` | IMPLEMENTED (PASS) | DEFINITION-LEVEL CERTIFIED |
+| UCOS-IMP-WPPLT02-001 | WP-PLT-02 Persistence & Storage | `WP-PLT-02-IMPLEMENTATION-REPORT.md` | `UCOS-IMP-EVID-PI1-002` (`WP-PLT-02-EVIDENCE-PACK.md`) | `infra/persistence/{postgresql-ha,backup-restore,encryption-connection,storage-substrate}.yaml`, `infra/persistence/sor-lifecycle.md` | IMPLEMENTED (PASS) | DEFINITION-LEVEL CERTIFIED |
+| UCOS-IMP-WPPLT11-001 | WP-PLT-11 Config & Metadata | `WP-PLT-11-IMPLEMENTATION-REPORT.md` | `UCOS-IMP-EVID-PI1-003` (`WP-PLT-11-EVIDENCE-PACK.md`) | `services/platform/config-metadata/{api/api-018-realization.yaml,schema/metadata-model.yaml,schema/configuration-model.yaml,migrations/V001__config_metadata_sor.sql,governance/metadata-governance.md,deploy/deployment.yaml}` | IMPLEMENTED (PASS; INV-13 support confirmed) | DEFINITION-LEVEL CERTIFIED |
+| UCOS-IMP-WPPLT06-001 | WP-PLT-06 Registry & Discovery | `WP-PLT-06-IMPLEMENTATION-REPORT.md` | `UCOS-IMP-EVID-PI1-004` (`WP-PLT-06-EVIDENCE-PACK.md`) | `services/platform/registry/{api/api-027-realization.yaml,schema/registry-model.yaml,schema/composition-model.yaml,migrations/V001__registry_sor.sql,integration/config-metadata-integration.yaml,federation/federation-model.md,governance/registry-governance.md,deploy/deployment.yaml}` | IMPLEMENTED (PASS; INV-13 operationalized; **BF-1 remediated**) | DEFINITION-LEVEL CERTIFIED |
+
+> All five WPs realize only ratified ADRs (ADR-001/002/004/005/006/007) + `UCOS-ASR-NFR-001` v1.0.1; 0 drift,
+> 0 ADR violation, 0 contract mutation, 0 unratified tech, 0 secrets, 0 waivers. `API-018`/`API-027` realized
+> contract-first (1:1 operations); DOM-018/DOM-027 SoR schemas forward-only (migration-only).
+
+#### §D Certification Artifacts (version chain preserved)
+
+| Artifact ID | Name | Path | Layer | Type | Status | Determination | Supersedes |
+|-------------|------|------|-------|------|--------|---------------|-----------|
+| UCOS-IMP-CERT-PI1-001 | PI-1 Foundation Certification (initial) | `PHASE-11C.0-PI1-FOUNDATION-CERTIFICATION.md` | IMP/GOV | CERTIFICATION | SUPERSEDED (preserved) | NOT CERTIFIED (BF-1) | — |
+| **UCOS-IMP-CERT-PI1-002** | PI-1 Foundation Re-Certification | `PHASE-11C.1-PI1-FOUNDATION-RECERTIFICATION.md` | IMP/GOV | CERTIFICATION | **ACTIVE** | **PI-1 FOUNDATION CERTIFIED (Definition Level); Operational PENDING CP-2/CP-3** | UCOS-IMP-CERT-PI1-001 |
+
+#### §E Phase Artifact Sets
+
+| Set | Artifacts | Status |
+|-----|-----------|:------:|
+| **Phase 11B** (foundation implementation) | UCOS-IMP-WPPLT01-001, UCOS-IMP-WPPLT03-001 (11B.0); UCOS-IMP-WPPLT02-001 (11B.1); UCOS-IMP-WPPLT11-001 (11B.2); UCOS-IMP-WPPLT06-001 (11B.3); evidence UCOS-IMP-EVID-PI1-001..004 | **ACTIVE** |
+| **Phase 11C** (certification) | UCOS-IMP-CERT-PI1-001 (11C.0, superseded); UCOS-AUTH-012-FPA-001 (AUTH-012 amendment); UCOS-IMP-CERT-PI1-002 (11C.1, active) | **ACTIVE** |
+| **Phase 11C.2** (this registration) | `CTX-REG-001-UPDATE-REPORT` (`UCOS-CTXREG-UPD-001`); `CTX-REG-001-EVIDENCE-PACK` (`UCOS-CTXREG-EVID-001`) | **ACTIVE** |
+
+> **Phase 11B/11C precedence & discipline.** Registration-only, append-only (INV-10). PI-1 foundation
+> **complete** (5/5 WPs; dependency graph complete). `UCOS-ASR-NFR-001` **v1.0.1** ACTIVE (INV-1..INV-13).
+> INV-13 CERTIFIED. PI-1 **CERTIFIED (Definition Level)**; **Operational Certification PENDING CP-2/CP-3**
+> (apply-time evidence). BF-1 remediated. 0 drift / 0 ADR violation / 0 contract mutation / 0 unratified tech
+> / 0 secrets / 0 waivers. No prior registry row altered.

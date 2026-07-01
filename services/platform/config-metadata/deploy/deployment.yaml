@@ -1,0 +1,65 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-11 Config & Metadata — Service Deployment Descriptor
+# ADR-001/005/006. Inherits the WP-PLT-01 runtime workload baseline (non-root,
+# read-only rootfs, drop ALL caps, per-workload ServiceAccount = mTLS identity).
+# Runs in ucos-platform (AC-1); SoR is dom_018 in the WP-PLT-02 cluster.
+# NO secrets inline (S3): DB credential by reference (WI-SEED.5).
+# Also populates the WP-PLT-03 mesh allow-rule for THIS boundary (closes VF-4
+# for config-metadata) — least privilege, deny-by-default elsewhere.
+# Traceability: ADR-001/005/006; UCOS-ASR-NFR-001 §3 (AC-1); SEC-CTL-001/002/014.
+# =============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: config-metadata                # workload identity for mTLS (S1)
+  namespace: ucos-platform
+  labels: { ucos.io/contract: "UCOS-API-CONTRACT-018", ucos.io/control-s1: "SEC-CTL-014" }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-metadata
+  namespace: ucos-platform
+  labels:
+    ucos.io/service: "UCOS-SVC-018"
+    ucos.io/availability-class: "AC-1"
+    ucos.io/template: "runtime-baseline"     # inherits workload-baseline + PDB + HPA (WP-PLT-01)
+spec:
+  replicas: 3                          # N+1 for AC-1
+  strategy: { type: RollingUpdate, rollingUpdate: { maxUnavailable: 0, maxSurge: 1 } }
+  selector: { matchLabels: { ucos.io/service: "UCOS-SVC-018" } }
+  template:
+    metadata:
+      labels: { ucos.io/service: "UCOS-SVC-018", ucos.io/template: "runtime-baseline" }
+    spec:
+      serviceAccountName: config-metadata
+      securityContext: { runAsNonRoot: true, seccompProfile: { type: RuntimeDefault } }
+      containers:
+        - name: config-metadata
+          image: "OCI_IMAGE_BUILT_BY_DELIVERY_PIPELINE"   # built/signed via WI-SEED.4; set at apply-time
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }
+          resources:
+            requests: { cpu: "100m", memory: "128Mi" }
+            limits:   { cpu: "500m", memory: "512Mi" }
+          env:
+            - name: SOR_DSN_REF
+              value: "external://secrets/pi1/config-db"   # by reference only (S3) — NO inline credential
+          # NO secret env values; TLS 1.3 to SoR (S4); config store excludes secrets (ADR-005).
+---
+# Mesh authorization allow-rule for the config-metadata boundary (populates WP-PLT-03 VF-4).
+apiVersion: ucos.security/v1
+kind: MeshAuthorizationAllow
+metadata:
+  name: allow-config-metadata
+  namespace: ucos-platform
+spec:
+  target: { service: "UCOS-SVC-018", contract: "UCOS-API-CONTRACT-018" }
+  transport: { mutualTls: STRICT }                 # S4/S1
+  allowFrom:
+    principalType: workload-identity               # mTLS SA identities only (S1)
+    workloads: ["*/ucos-platform"]                 # intra-platform consumers (least privilege, internal-only)
+  authz: deny-by-default                            # everything else denied (S1)
+  externalOrigin: DENY                              # internal-only (R-2)

@@ -1,0 +1,65 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-06 Registry & Discovery — Service Deployment Descriptor
+# ADR-001/004/006. Inherits the WP-PLT-01 runtime workload baseline (non-root,
+# read-only rootfs, drop ALL caps, per-workload ServiceAccount = mTLS identity).
+# Runs in ucos-platform (AC-1); SoR is dom_027 in the WP-PLT-02 cluster.
+# NO secrets inline (S3): DB credential by reference (WI-SEED.5).
+# Populates the WP-PLT-03 mesh allow-rule for the Registry boundary (closes the
+# open registry-boundary VF-4/NF-2) — least privilege, deny-by-default elsewhere.
+# Traceability: ADR-001/004/006; UCOS-ASR-NFR-001 §3 (AC-1); SEC-CTL-001/002/014.
+# =============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: registry                       # workload identity for mTLS (S1)
+  namespace: ucos-platform
+  labels: { ucos.io/contract: "UCOS-API-CONTRACT-027", ucos.io/control-s1: "SEC-CTL-014" }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry
+  namespace: ucos-platform
+  labels:
+    ucos.io/service: "UCOS-SVC-027"
+    ucos.io/availability-class: "AC-1"
+    ucos.io/template: "runtime-baseline"     # inherits workload-baseline + PDB + HPA (WP-PLT-01)
+spec:
+  replicas: 3                          # N+1 for AC-1; stateless (no single-instance assumption — federation)
+  strategy: { type: RollingUpdate, rollingUpdate: { maxUnavailable: 0, maxSurge: 1 } }
+  selector: { matchLabels: { ucos.io/service: "UCOS-SVC-027" } }
+  template:
+    metadata:
+      labels: { ucos.io/service: "UCOS-SVC-027", ucos.io/template: "runtime-baseline" }
+    spec:
+      serviceAccountName: registry
+      securityContext: { runAsNonRoot: true, seccompProfile: { type: RuntimeDefault } }
+      containers:
+        - name: registry
+          image: "OCI_IMAGE_BUILT_BY_DELIVERY_PIPELINE"   # built/signed via WI-SEED.4; set at apply-time
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }
+          resources:
+            requests: { cpu: "100m", memory: "128Mi" }
+            limits:   { cpu: "500m", memory: "512Mi" }
+          env:
+            - name: SOR_DSN_REF
+              value: "external://secrets/pi1/registry-db"   # by reference only (S3) — NO inline credential
+          # TLS 1.3 to SoR (S4); consumes API-018 over mTLS (config integration).
+---
+# Mesh authorization allow-rule for the registry boundary (closes registry VF-4/NF-2).
+apiVersion: ucos.security/v1
+kind: MeshAuthorizationAllow
+metadata:
+  name: allow-registry
+  namespace: ucos-platform
+spec:
+  target: { service: "UCOS-SVC-027", contract: "UCOS-API-CONTRACT-027" }
+  transport: { mutualTls: STRICT }                 # S4/S1
+  allowFrom:
+    principalType: workload-identity               # mTLS SA identities only (S1)
+    workloads: ["*/ucos-platform"]                 # consumed-by-all intra-platform (least privilege, internal-only)
+  authz: deny-by-default                            # everything else denied (S1)
+  externalOrigin: DENY                              # internal-only (R-2)

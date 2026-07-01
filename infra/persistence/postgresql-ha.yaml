@@ -1,0 +1,40 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-02 Persistence & Storage — PostgreSQL HA Topology
+# ADR-002 (PostgreSQL SoR; single-SoR PEP-005). Declarative (neutral cluster CRD
+# bound to the ratified PostgreSQL operator at apply-time — IC-7/PEP-010).
+# SEED→WP: deploys into ucos-data namespace (WP-PLT-01), mTLS/segmented (WP-PLT-03).
+#
+# HA + multi-zone for AC-1 (UCOS-ASR-NFR-001 §3): primary + 2 synchronous replicas
+# spread across 3 zones; automated failover; quorum. NO domain schemas here
+# (registry/config schemas are WP-PLT-06/11 — "no registry/config implementation yet").
+# NO SECRETS (S3): credentials by reference (WI-SEED.5).
+# Traceability: ADR-002; UCOS-ASR-NFR-001 §3 (AC-1), §7 (N+1/quorum), §8 (RPO/RTO);
+#   INV-5 (single SoR), INV-7; SEC-CTL-003 (tenancy).
+# =============================================================================
+apiVersion: ucos.persistence/v1        # bound to ratified PostgreSQL operator at apply-time
+kind: PostgresCluster
+metadata:
+  name: ucos-sor
+  namespace: ucos-data
+  labels:
+    ucos.io/pi: "PI-1"
+    ucos.io/availability-class: "AC-1"
+    ucos.io/engine: "postgresql"
+spec:
+  engine:
+    type: postgresql                   # ratified SoR engine (ADR-002)
+    versionFloor: "16"                 # pinned floor; upgrades migration-only (IC-7)
+  highAvailability:
+    instances: 3                       # primary + 2 replicas (N+1, quorum)
+    replication: synchronous           # sync replica ⇒ RPO-A ≤ 1 min capable (ASR §8)
+    failover: automatic
+    topologySpread:
+      topologyKey: topology.kubernetes.io/zone
+      maxSkew: 1                        # one instance per zone (multi-AZ, AC-1)
+  singleSoRPerDomain: true             # INV-5 / PEP-005 — enforced by allocation policy (sor-lifecycle.md)
+  storage:
+    class: "SET_AT_APPLY_TIME"         # cloud-neutral storage class (PEP-010)
+    encryptedAtRest: true              # S4 (SEC-CTL-009); keys externalized (WI-SEED.5)
+  credentials:
+    secretRef: "external://secrets/pi1/sor-admin"   # by reference only (S3) — NO inline creds
+  externalExposure: false              # internal-only (R-2); reachable only within ucos-data via mesh

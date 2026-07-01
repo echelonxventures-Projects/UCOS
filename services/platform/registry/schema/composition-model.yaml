@@ -1,0 +1,47 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-06 Registry & Discovery — Composition Model (JSON Schema in YAML)
+# ADR-004. Composition = assembling registered artifacts into higher-order
+# constructs via dependency edges, WITHOUT code/architecture change (INV-13).
+#
+# Supports capability, service, workflow, and event composition. Composition is a
+# declarative graph over RegistryArtifacts; the acyclic discipline mirrors the
+# ratified service-relationship DAG (PSR-001..017). No shared mutable model (INV-1).
+# Traceability: ADR-004; DOM-027; PSR-001..017; INV-1/INV-13.
+# =============================================================================
+$schema: "json-schema-draft-2020-12"
+title: "UCOS Composition (Registry)"
+type: object
+required: [compositionId, kind, members, edges]
+additionalProperties: false
+properties:
+  compositionId: { type: string }
+  kind:
+    type: string
+    enum: [capability-composition, service-composition, workflow-composition, event-composition]
+    description: "Composition kinds supported by the Registry foundation."
+  members:
+    type: array
+    items: { type: string }
+    description: "artifactIds participating in the composition (registered artifacts)."
+  edges:
+    type: array
+    items:
+      type: object
+      required: [from, to, relation]
+      properties:
+        from: { type: string }
+        to: { type: string }
+        relation:
+          type: string
+          enum: [depends-on, consumes-contract, emits-event, orchestrates, composes]
+    description: "Directed dependency/relationship edges (MUST remain acyclic — PSR discipline)."
+  acyclic:
+    type: boolean
+    const: true
+    description: "Composition graph is acyclic (INV consistency with PSR-001..017)."
+  governance:
+    type: object
+    required: [owner]
+    properties:
+      owner: { type: string }
+      traceTo: { type: array, items: { type: string } }

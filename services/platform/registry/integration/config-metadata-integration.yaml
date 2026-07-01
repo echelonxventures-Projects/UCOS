@@ -1,0 +1,31 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-06 Registry — Registry ↔ Config/Metadata Integration
+# CONTRACT-FIRST (IC-2): the Registry consumes Config/Metadata ONLY via the
+# ratified UCOS-API-CONTRACT-018 (WP-PLT-11). No private coupling; no shared
+# mutable model (INV-1). Realizes kickoff §5 step [5] (registry↔config integration).
+#
+# The Registry references governing metadata records (DOM-018) by metadataRef;
+# it resolves config/variability via API-018. Config remains the SoR for
+# metadata/config (DOM-018); Registry is the SoR for artifacts/wiring (DOM-027).
+# Traceability: ADR-004/005; UCOS-API-CONTRACT-018; DOM-018/DOM-027; INV-1/INV-5/INV-13.
+# =============================================================================
+apiVersion: ucos.integration/v1
+kind: ContractConsumption
+metadata:
+  name: registry-consumes-config-metadata
+  namespace: ucos-platform
+spec:
+  consumer: { service: "UCOS-SVC-027", contract: "UCOS-API-CONTRACT-027" }
+  provider: { service: "UCOS-SVC-018", contract: "UCOS-API-CONTRACT-018" }
+  transport:
+    mutualTls: STRICT                    # S4/S1 — mesh-mediated
+    minVersion: "TLSv1_3"
+  consumes:
+    - operation: getMetadata             # resolve governing metadata for an artifact (metadataRef → DOM-018)
+      usage: "bind RegistryArtifact.metadataRef to its DOM-018 metadata record"
+    - operation: getConfiguration        # resolve registry variability/config (hierarchical)
+      usage: "environment/tenant-scoped registry behavior"
+  authorityBoundary:
+    registrySoR: "DOM-027 (artifacts, wiring, dependency edges)"
+    configSoR: "DOM-018 (config, metadata, feature flags)"
+    note: "single SoR each (INV-5); no shared mutable model (INV-1); coupling via published contract only (IC-2)"

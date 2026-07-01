@@ -1,0 +1,36 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-02 Persistence & Storage — Supporting Storage Substrate
+# ADR-002 (S3-compatible object store + OpenSearch + Redis). Declarative (neutral).
+#
+# Provisions the non-SoR storage tiers ADR-002 selects. EXCLUDES the analytical/
+# OLAP store (deferred → ADR-002A; IC-7 — NOT provisioned in PI-1).
+# All tiers: TLS 1.3 in transit, encryption at rest, credentials by reference.
+# Traceability: ADR-002; UCOS-ASR-NFR-001 §5 (capacity tiers), §9 (encryption);
+#   IC-7 (ADR-002A excluded); INV-5 (SoR authority remains PostgreSQL).
+# =============================================================================
+apiVersion: ucos.persistence/v1
+kind: StorageSubstrate
+metadata:
+  name: ucos-storage
+  namespace: ucos-data
+  labels: { ucos.io/pi: "PI-1" }
+spec:
+  objectStore:
+    type: s3-compatible                 # documents/artifacts/backups (ADR-002)
+    encryptionAtRest: "AES-256"
+    credentialsRef: "external://secrets/pi1/object-store"   # by reference (S3)
+    tls: "TLSv1_3"
+  searchIndex:
+    type: opensearch                    # read/search projections (ADR-002); NOT a SoR
+    encryptionAtRest: "AES-256"
+    credentialsRef: "external://secrets/pi1/search"
+    tls: "TLSv1_3"
+    authorityNote: "read model only — source of truth remains PostgreSQL SoR (INV-5)"
+  cache:
+    type: redis                         # cache/ephemeral (ADR-002); NOT a SoR
+    encryptionInTransit: "TLSv1_3"
+    credentialsRef: "external://secrets/pi1/cache"
+    persistence: "ephemeral"
+  analyticalStore:
+    provisioned: false                  # DEFERRED → ADR-002A (IC-7) — NOT in PI-1
+    note: "OLAP/analytical store awaits ADR-002A ratification; excluded from this WP."

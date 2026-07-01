@@ -1,0 +1,35 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-03 Networking & Connectivity — Traffic Governance
+# ADR-006 (mesh traffic policy — NEUTRAL). Declarative defaults.
+#
+# Reliability defaults applied to every intra-mesh call (UCOS-ASR-NFR-001 §7):
+#   timeouts, bounded retries (idempotent only) + backoff, circuit breaking,
+#   and rate limiting (SEC-CTL-020). Timeouts sized within the API latency
+#   budget (ASR §4: read p99 ≤ 200ms, write p99 ≤ 500ms).
+# Concrete mesh product bound at apply-time (IC-7/PEP-010).
+# Traceability: ADR-006; UCOS-ASR-NFR-001 §4 (latency), §7 (reliability);
+#   SEC-CTL-016 (idempotency/replay), SEC-CTL-020 (rate limit/DoS).
+# =============================================================================
+apiVersion: ucos.security/v1
+kind: MeshTrafficPolicy
+metadata:
+  name: platform-traffic-defaults
+  namespace: ucos-platform
+spec:
+  timeout:
+    request: "800ms"        # within write p99 ≤ 500ms budget + margin (ASR §4)
+  retries:
+    attempts: 3             # capped (ASR §7)
+    perTryTimeout: "250ms"
+    retryOn: "idempotent-5xx,connect-failure"   # idempotent operations only (INV-6)
+    backoff: "exponential-jitter"
+    budgetPercent: 20       # retry budget — prevents retry storms (ASR §7)
+  circuitBreaker:
+    consecutiveErrors: 5
+    interval: "10s"
+    baseEjectionTime: "30s"
+    maxEjectionPercent: 50  # bulkhead: never eject the whole pool
+  rateLimit:
+    enabled: true           # SEC-CTL-020 (DoS resistance); thresholds bound to ASR §5 tier
+  loadShedding:
+    enabled: true           # graceful degradation at capacity (ASR §7)

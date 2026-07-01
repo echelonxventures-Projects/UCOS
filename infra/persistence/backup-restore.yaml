@@ -1,0 +1,44 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-02 Persistence & Storage — Backup & Restore Architecture
+# ADR-002 (PostgreSQL + S3-compatible object store). Declarative (neutral CRD).
+#
+# Backup: continuous WAL archiving + daily full base backup → S3-compatible object
+# store (encrypted, versioned, replicated). Restore: point-in-time recovery (PITR).
+# Targets bound to UCOS-ASR-NFR-001 §8:
+#   RPO-A ≤ 1 min (financial/order) via sync replication + WAL streaming;
+#   RPO-B ≤ 5 min (standard); RTO-A ≤ 30 min in-region / ≤ 60 min cross-region.
+# Restore is rehearsed (validation strategy) — see WP-PLT-02-EVIDENCE-PACK.md.
+# NO SECRETS (S3): object-store credentials + encryption keys by reference (WI-SEED.5).
+# Traceability: ADR-002; UCOS-ASR-NFR-001 §8 (backup/RPO/RTO/DR); SEC-CTL-009.
+# =============================================================================
+apiVersion: ucos.persistence/v1
+kind: BackupPolicy
+metadata:
+  name: ucos-sor-backup
+  namespace: ucos-data
+  labels: { ucos.io/pi: "PI-1", ucos.io/availability-class: "AC-1" }
+spec:
+  target:
+    type: s3-compatible                 # ADR-002 object store
+    bucketRef: "external://secrets/pi1/backup-bucket"   # reference only (S3)
+    encryption: AES-256                 # S4 at rest; key externalized (WI-SEED.5)
+    versioned: true
+    crossRegionReplication: true        # DR (ASR §8)
+  walArchiving:
+    enabled: true                       # continuous WAL → RPO-A ≤ 1 min capable
+    mode: streaming
+  fullBackup:
+    cadence: "daily"                    # daily base backup
+    retention: "35d"                    # rolling; evidentiary sets per PD-10 handled by governance
+  pointInTimeRecovery:
+    enabled: true                       # PITR to any timestamp within retention
+  recoveryTargets:                      # bound to ASR §8 classes
+    rpo:
+      classA: "60s"                     # financial/order (RPO-A ≤ 1 min)
+      classB: "300s"                    # standard (RPO-B ≤ 5 min)
+    rto:
+      classA: "30m"                     # in-region
+      classAcrossRegion: "60m"          # DR failover
+  drValidation:
+    cadence: "quarterly"                # DR game day; measured vs targets (ASR §8)
+    recordAppendOnly: true              # results append-only (INV-10)

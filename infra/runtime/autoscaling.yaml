@@ -1,0 +1,36 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-01 Runtime & Compute — Horizontal Scaling Controls
+# ADR-001 (Kubernetes HPA). Declarative template.
+#
+# Horizontal-scale-first (INV-7): foundation services scale OUT, not up. HPA
+# template holds min=3 (N+1/AC-1) and a max sized with headroom for the current
+# scale tier (ASR §5 T1..T4); raising max is a governed per-tier revision, not a
+# redesign (Foundation Permanence).
+# Traceability: ADR-001; UCOS-ASR-NFR-001 §5 (capacity tiers), §6.1 (horizontal), §7.
+# =============================================================================
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: platform-hpa-template
+  namespace: ucos-platform
+  labels:
+    ucos.io/scale-tier: "T1"
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: workload-baseline-template
+  minReplicas: 3          # N+1 floor for AC-1 (ASR §3/§7)
+  maxReplicas: 20         # T1 headroom (≥3x burst, ASR §5); raised per tier via governed revision
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300   # avoid flapping; protect availability
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: { type: Utilization, averageUtilization: 65 }
+    - type: Resource
+      resource:
+        name: memory
+        target: { type: Utilization, averageUtilization: 70 }

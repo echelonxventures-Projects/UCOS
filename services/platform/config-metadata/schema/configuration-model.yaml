@@ -1,0 +1,51 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-11 Config & Metadata — Configuration Model (JSON Schema in YAML)
+# ADR-005 (Config/Metadata API + hierarchical config + JSON Schema; SECRETS EXCLUDED).
+# DOM-018 / DATA-018 (ConfigurationValue). Hierarchical, environment-scoped, versioned,
+# change-tracked. S3: config MUST NOT hold secret material — references only.
+# Traceability: ADR-005; UCOS-DATA-CONTRACT-018; UCOS-ASR-NFR-001 §6.4 (env model), §9.
+# =============================================================================
+$schema: "json-schema-draft-2020-12"
+title: "UCOS ConfigurationValue (DOM-018)"
+type: object
+required: [scope, key, value, version, environment, changeTracking]
+additionalProperties: false
+properties:
+  scope:
+    type: string
+    description: "Hierarchical scope path (resolution precedence: global < domain < service < environment < tenant)."
+    examples: ["global", "domain/DOM-005", "service/UCOS-SVC-018", "env/ENV-INT", "tenant/{tenantId}"]
+  key: { type: string }
+  value:
+    description: "Config value (scalar/object). MUST NOT be secret material (ADR-005 / S3)."
+    oneOf:
+      - { type: string }
+      - { type: number }
+      - { type: boolean }
+      - { type: object }
+  secretReference:
+    type: string
+    pattern: "^external://"
+    description: "When a value depends on a secret, store an external:// REFERENCE resolved by WI-SEED.5 — never the secret (S3)."
+  environment:
+    type: string
+    enum: [ENV-DEV, ENV-INT, ENV-STAGE, ENV-PROD]
+    description: "Environment scope (UCOS-IMP-DELIV-001 §4). Hierarchical override per environment."
+  version:
+    type: integer
+    minimum: 1
+    description: "Monotonic version; supersede-not-overwrite (change history retained)."
+  hierarchy:
+    type: object
+    properties:
+      inheritsFrom: { type: string, description: "Parent scope this value overrides." }
+    description: "Hierarchical/layered configuration (INV-13 composition)."
+  changeTracking:
+    type: object
+    required: [changedBy, changedAt, reason]
+    additionalProperties: false
+    properties:
+      changedBy: { type: string, description: "Workload/admin identity (S1)." }
+      changedAt: { type: string, format: date-time }
+      reason: { type: string }
+      previousVersion: { type: integer, description: "Append-only change chain (INV-10)." }

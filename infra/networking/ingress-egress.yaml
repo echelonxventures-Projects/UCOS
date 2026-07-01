@@ -1,0 +1,31 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-03 Networking & Connectivity — Ingress / Egress Strategy
+# ADR-006 (zero-trust boundary). Declarative.
+#
+# PI-1 posture (R-2): foundation boundaries are INTERNAL-ONLY. No external
+# ingress is created. An internal ingress (mesh gateway) is declared for
+# in-cluster/cross-namespace access ONLY, mTLS-terminated and authorized
+# deny-by-default. Egress is default-deny with explicit least-privilege allows
+# (DNS + secrets resolver, see network-policies.yaml).
+# External exposure requires PE-08 OIDC identity (PI-2) BEFORE any public surface.
+# Traceability: ADR-006; UCOS-ASR-NFR-001 §9; SEC-CTL-008/014/017; R-2; INV-4.
+# =============================================================================
+apiVersion: ucos.security/v1          # neutral gateway CRD (bound to ratified mesh gateway at apply-time)
+kind: MeshGateway
+metadata:
+  name: platform-internal-gateway
+  namespace: ucos-system
+  labels: { ucos.io/pi: "PI-1" }
+spec:
+  exposure: INTERNAL                   # in-cluster only; NO external/public listener (R-2, P5)
+  tls:
+    mode: MUTUAL                       # mTLS termination (S4/S1)
+    minVersion: "TLSv1_3"              # ASR §9 (TLS 1.3)
+  authorization:
+    default: DENY                      # deny-by-default (S1)
+  egress:
+    default: DENY                      # default-deny egress (SEC-CTL-017)
+    allow:
+      - "kube-dns"                     # DNS resolution
+      - "ucos-system/secrets-resolver" # WI-SEED.5 reference resolution (S3)
+  externalListeners: []                # explicitly none in PI-1 (R-2)

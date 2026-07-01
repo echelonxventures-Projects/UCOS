@@ -1,0 +1,31 @@
+# =============================================================================
+# UCOS PI-1 — WI-SEED.3 Security Bootstrap — mTLS STRICT transport policy
+# ADR-006 (mTLS service mesh — NEUTRAL contract). Declarative seed policy.
+#
+# INTENT (mesh-neutral): every service-to-service hop in ucos-platform MUST use
+# mutual TLS (STRICT). Plaintext is rejected. This provides:
+#   - S4 encryption-in-transit on every hop            (SEC-CTL-008, non-waivable)
+#   - S1 boundary workload authentication via mTLS      (SEC-CTL-014, non-waivable)
+#
+# The CONCRETE mesh product binding (e.g., the specific service mesh) is a
+# governed WP-PLT-03 decision WITHIN ADR-006's neutral mesh contract (IC-7);
+# it is NOT selected by the seed (PEP-010). The manifest below expresses the
+# STRICT-mTLS intent in a portable form; the pipeline binds it to the ratified
+# mesh implementation at apply-time.
+# =============================================================================
+apiVersion: ucos.security/v1        # neutral seed CRD (bound to ratified mesh at apply-time)
+kind: TransportSecurityPolicy
+metadata:
+  name: mtls-strict
+  namespace: ucos-platform
+  labels:
+    ucos.io/pi: "PI-1"
+    ucos.io/control-s4: "SEC-CTL-008"
+    ucos.io/control-s1: "SEC-CTL-014"
+spec:
+  mutualTls:
+    mode: STRICT                    # reject non-mTLS; no permissive/temporary exception (P4)
+  appliesTo:
+    namespaces: ["ucos-platform"]
+  externalExposure: false           # foundation boundaries internal-only in PI-1 (R-2)
+  waiver: none                      # non-waivable (IC-1 / Const. Art. XII)

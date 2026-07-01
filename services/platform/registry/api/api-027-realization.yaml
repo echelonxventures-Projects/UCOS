@@ -1,0 +1,56 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-06 Registry & Discovery — API-027 Contract Realization
+# CONTRACT-FIRST (IC-2): realizes ONLY the ratified operations of
+# UCOS-API-CONTRACT-027 (Registry API). NO new operations. Emits
+# UCOS-EVT-CONTRACT-027. Payloads reference UCOS-DATA-CONTRACT-027
+# (RegistryArtifact, DiscoveryRecord). ADR-004 (Kubernetes discovery +
+# Schema/Contract Registry + PostgreSQL-backed Platform Registry).
+# Boundary enforces non-waivable S1.
+# Traceability: UCOS-API-CONTRACT-027/EVT-027/DATA-027, ADR-004, DOM-027, CAP-19,
+#   PRS-022..025; UCOS-ASR-NFR-001 §4 (lookup p99 ≤ 20 ms), §3.2 (AC-1), §9.
+# =============================================================================
+apiVersion: ucos.contract/v1
+kind: ApiContractRealization
+metadata:
+  name: registry-api-027
+  namespace: ucos-platform
+  labels:
+    ucos.io/contract: "UCOS-API-CONTRACT-027"
+    ucos.io/availability-class: "AC-1"
+spec:
+  contractRef: "specifications/contracts/UCOS-CONTRACT-CATALOG.md#UCOS-API-CONTRACT-027"
+  version: "v1.0"                        # ratified; evolution migration-only (UCOS-SVC-POLICY-001)
+  operations:                            # 1:1 with the ratified contract — NONE added/removed (IC-2)
+    - id: listArtifacts
+      method: GET
+      path: /registry/artifacts          # list/browse (cursor-paginated)
+      idempotent: true
+      dataOut: RegistryArtifact
+    - id: registerArtifact
+      method: POST
+      path: /registry/artifacts          # register (idempotency-key; append-only)
+      idempotent: true
+      authz: registrar                   # deny-by-default; least privilege (S1/S5)
+      dataIn: RegistryArtifact
+    - id: getArtifact
+      method: GET
+      path: /registry/artifacts/{id}
+      idempotent: true
+      dataOut: RegistryArtifact
+    - id: discover
+      method: GET
+      path: /registry/discovery          # ?type= discover wiring/services (dependency resolution)
+      idempotent: true
+      dataOut: DiscoveryRecord
+  emitsEvents:                           # EVT-027 (transport = eventing WP-PLT-04, PI-2; intent honored)
+    - ArtifactRegistered
+    - ArtifactSuperseded
+    - ArtifactDiscovered
+  nfr:                                   # resolves N-1 via UCOS-ASR-NFR-001
+    availabilityClass: "AC-1"            # 99.99% (ASR §3.2) — consumed-by-all
+    lookupLatencyP99: "20ms"             # discovery/lookup hot path (ASR §4); cache-backed
+  security:                              # was FLAGGED FOR PROMPT 09 → enforced
+    authn: mtls-workload-identity        # S1 (SEC-CTL-014)
+    authz: deny-by-default               # S1 (SEC-CTL-002); OIDC user/tenant = PE-08 (PI-2)
+    transport: "TLSv1_3"                 # S4 (SEC-CTL-008)
+    secretRef: "external://secrets/pi1/registry-db"   # S3 — DB credential by reference only

@@ -1,0 +1,46 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-01 Runtime & Compute — Resource Governance
+# ADR-001 (Kubernetes). Declarative manifest.
+#
+# Enforces bounded, requested/limited resources per namespace so no workload can
+# starve the substrate (reliability §7) and capacity is predictable across scale
+# tiers (UCOS-ASR-NFR-001 §5 T1..T4). LimitRange mandates requests+limits on
+# every container (admission-enforced); ResourceQuota caps namespace totals.
+# Traceability: ADR-001; UCOS-ASR-NFR-001 §5 (capacity), §7 (fault tolerance).
+# =============================================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: default-limits
+  namespace: ucos-platform
+spec:
+  limits:
+    - type: Container
+      default:            # applied if unspecified — forces explicit sizing
+        cpu: "500m"
+        memory: "512Mi"
+      defaultRequest:
+        cpu: "100m"
+        memory: "128Mi"
+      max:
+        cpu: "4"
+        memory: "8Gi"
+    - type: Container
+      min:
+        cpu: "50m"
+        memory: "64Mi"
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: platform-quota-t1        # T1 (1x) baseline; raised by governed revision per tier (ASR §5)
+  namespace: ucos-platform
+  labels:
+    ucos.io/scale-tier: "T1"
+spec:
+  hard:
+    requests.cpu: "20"
+    requests.memory: "40Gi"
+    limits.cpu: "40"
+    limits.memory: "80Gi"
+    pods: "100"

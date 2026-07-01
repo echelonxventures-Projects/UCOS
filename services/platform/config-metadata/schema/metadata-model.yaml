@@ -1,0 +1,56 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-11 Config & Metadata — Metadata Record Model (JSON Schema in YAML)
+# ADR-005 (JSON Schema). DOM-018 / MC-01..13. Realizes INV-13 (Infinite Extensibility).
+#
+# Any future domain, service, workflow, contract, event, policy, capability, AI system,
+# or computational engine is described as a METADATA RECORD via REGISTRATION — no
+# platform/architecture change (INV-13). The `class` vocabulary is OPEN; unknown
+# classes are accepted when they conform to this envelope (extension, not redesign).
+# S3: secrets are EXCLUDED from metadata (references only, WI-SEED.5).
+# =============================================================================
+$schema: "json-schema-draft-2020-12"     # local dialect marker (no remote fetch)
+title: "UCOS Metadata Record (DOM-018 / MC-01..13)"
+type: object
+required: [metadataId, class, version, status, payload, governance]
+additionalProperties: false
+properties:
+  metadataId:
+    type: string
+    description: "Stable identifier; append-only, never reused (INV-10)."
+  class:
+    type: string
+    description: "Metadata class. Seed vocabulary MC-01..13; OPEN for extension (INV-13) — new classes are registered, not coded."
+    examples: ["MC-01", "MC-13", "domain", "service", "workflow", "contract", "event", "policy", "capability", "ai-system", "computational-engine"]
+  version:
+    type: string
+    pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    description: "Semantic version; supersede-not-overwrite; prior versions retained (migration-only)."
+  status:
+    type: string
+    enum: [DRAFT, ACTIVE, SUPERSEDED, DEPRECATED]
+    description: "SUPERSEDED/DEPRECATED are never deleted (append-only)."
+  payload:
+    type: object
+    additionalProperties: true
+    description: "Class-specific descriptor validated against the class's registered sub-schema (composition, not code change)."
+  classification:
+    type: string
+    enum: [public, internal, confidential]
+    default: internal
+    description: "NEVER restricted/secret — secrets excluded from config/metadata (ADR-005 / S3)."
+  secretMaterialForbidden:
+    type: boolean
+    const: true
+    description: "S3 invariant: no secret material; secrets referenced (external://) via WI-SEED.5, never embedded."
+  governance:
+    type: object
+    required: [owner, registeredBy, traceTo]
+    additionalProperties: false
+    properties:
+      owner: { type: string, description: "Single accountable owner (PEO-*)." }
+      registeredBy: { type: string, description: "Registering workload identity (S1)." }
+      traceTo:
+        type: array
+        items: { type: string }
+        description: "Bidirectional traceability anchors (capability/domain/contract/ADR); IC-4, 0 orphans."
+      supersedes: { type: string, description: "metadataId this record supersedes (append-only chain)." }

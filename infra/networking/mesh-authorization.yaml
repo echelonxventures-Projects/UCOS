@@ -1,0 +1,27 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-03 Networking & Connectivity — Zero-Trust Mesh Authorization
+# ADR-006 (mTLS service mesh + policy-as-code — NEUTRAL contract). Declarative.
+#
+# Operationalizes the WI-SEED.3 posture at the mesh layer:
+#   - mTLS STRICT (references security/bootstrap/mesh/mtls-strict.yaml)  → S4/S1
+#   - Deny-by-default authorization: an empty allow-set = deny all         → S1
+#   - Authorization keyed on mTLS workload identity (ServiceAccount)       → S1/S5
+# Concrete mesh product bound at apply-time within ADR-006 (IC-7/PEP-010).
+# Traceability: ADR-006; UCOS-ASR-NFR-001 §9; SEC-CTL-002/013/014; INV-3/INV-4.
+# =============================================================================
+apiVersion: ucos.security/v1          # neutral mesh CRD (bound to ratified mesh at apply-time)
+kind: MeshAuthorizationPolicy
+metadata:
+  name: platform-deny-by-default
+  namespace: ucos-platform
+  labels:
+    ucos.io/control-s1: "SEC-CTL-002"
+spec:
+  transport:
+    mutualTls: { mode: STRICT, ref: "security/bootstrap/mesh/mtls-strict.yaml" }
+  authorization:
+    default: DENY                      # deny-by-default (non-waivable, P4/IC-1)
+    principalType: workload-identity   # mTLS SA identity (user/tenant OIDC = PE-08, PI-2)
+    allow: []                          # populated per boundary by WP-PLT-06/11 (VF-4); empty ⇒ deny-all
+  externalOrigin: DENY                 # internal-only in PI-1 (R-2)
+  waiver: none                         # non-waivable (IC-1 / Const. Art. XII)

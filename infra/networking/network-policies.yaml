@@ -1,0 +1,67 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-03 Networking & Connectivity — Segmentation Policies
+# ADR-006 (zero-trust networking). Declarative Kubernetes NetworkPolicy.
+#
+# Segmentation model (SEC-CTL-017, S5): default-deny (from WI-SEED.2 baseline) +
+# explicit least-privilege allows. Only (a) DNS, (b) intra-mesh sidecar traffic,
+# and (c) egress to the secrets/KMS reference resolver (WI-SEED.5) are permitted.
+# NO external ingress/egress in PI-1 (R-2, internal-only).
+# Traceability: ADR-006; UCOS-ASR-NFR-001 §9 (segmentation), §6 (regional/cluster);
+#   SEC-CTL-008/014/017; INV-4 zero-trust.
+# =============================================================================
+# (1) Re-assert default-deny in ucos-platform (defense-in-depth with WI-SEED.2).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: ucos-platform
+spec:
+  podSelector: {}
+  policyTypes: [Ingress, Egress]
+---
+# (2) Allow DNS egress (kube-dns) — required for service discovery resolution.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-dns-egress
+  namespace: ucos-platform
+spec:
+  podSelector: {}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - namespaceSelector: { matchLabels: { kubernetes.io/metadata.name: kube-system } }
+      ports:
+        - { protocol: UDP, port: 53 }
+        - { protocol: TCP, port: 53 }
+---
+# (3) Allow intra-namespace service-to-service traffic (mesh-mediated, mTLS enforced).
+#     Authorization is still deny-by-default at the mesh layer (mesh-authorization.yaml).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-intra-platform-mesh
+  namespace: ucos-platform
+spec:
+  podSelector: {}
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - podSelector: {}          # same namespace only (segmentation)
+  egress:
+    - to:
+        - podSelector: {}
+---
+# (4) Allow egress to the secrets/KMS reference resolver (WI-SEED.5) in ucos-system (S3).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-secrets-resolver-egress
+  namespace: ucos-platform
+spec:
+  podSelector: {}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - namespaceSelector: { matchLabels: { ucos.io/plane: system } }
+      # port intentionally unbound here; resolver endpoint set at apply-time (neutral)

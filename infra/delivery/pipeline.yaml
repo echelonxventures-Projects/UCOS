@@ -1,0 +1,60 @@
+# =============================================================================
+# UCOS PI-1 — WI-SEED.4 Delivery Bootstrap — pipeline-as-code (NEUTRAL)
+# ADR-007 (pipeline-as-code — neutral contract). Bootstrap-minimal.
+#
+# This is a technology-NEUTRAL pipeline contract (PEP-010). The concrete CI
+# product binding is a governed WP-PLT-14 decision (PI-3); the seed does NOT
+# select a CI vendor (IC-7). A conformant runner maps each stage 1:1.
+#
+# Enforces: contract-first tests (Q4/IC-2), dependency-risk (FO-2/S7),
+# artifact signing (P5), gated GitOps promotion DEV -> INT (no ENV-PROD, P5).
+# NO SECRETS: signing keys/tokens resolved BY REFERENCE from WI-SEED.5 (S3).
+# =============================================================================
+apiVersion: ucos.delivery/v1
+kind: Pipeline
+metadata:
+  name: pi1-platform-foundation
+  labels:
+    ucos.io/pi: "PI-1"
+    ucos.io/seed: "WI-SEED.4"
+spec:
+  # Trunk-governed flow; scoped commits only (IC-8). No --no-verify, no broad SCM (P7).
+  source:
+    scm: git
+    scopedCommitsOnly: true
+
+  stages:
+    - name: build
+      description: Reproducible OCI image build (ADR-001/007).
+      produces: oci-image
+      gate: [Q1, Q6]
+
+    - name: test
+      description: Unit + provider/consumer contract tests (contract-first).
+      requires: [build]
+      gate: [Q3, Q4]          # Q4 = contract tests (IC-2)
+
+    - name: scan
+      description: SAST + dependency (SCA) scan; pinned deps; vuln clean or risk-accepted.
+      requires: [build]
+      gate: [S7]              # FO-2 / SEC-CTL-018
+
+    - name: sign
+      description: Sign artifact + generate provenance (Sigstore/cosign).
+      requires: [test, scan]
+      secretRefs: ["external://kms/signing-key"]   # by-reference only (S3) — NO inline key
+      gate: [REL_R4, REL_R7]  # staged; full GATE-REL-001 enforcement in PI-7
+
+    - name: promote
+      description: GitOps gated promotion ENV-DEV -> ENV-INT. No ENV-PROD (P5).
+      requires: [sign]
+      strategy: gitops        # Argo/Flux (ADR-007), bound at apply-time
+      environments: ["ENV-DEV", "ENV-INT"]
+      forbiddenEnvironments: ["ENV-PROD"]
+      requiresGatePass: [GATE-QUAL-001, GATE-SEC-001, GATE-DOC-001]
+
+  invariants:
+    - "No unsigned artifact promoted (P5)."
+    - "No ENV-PROD promotion in PI-1 (P5)."
+    - "Non-waivable S1/S3/S4 verified before promote (IC-1)."
+    - "Every promoted artifact registered in CTX-REG-001 (IC-4)."

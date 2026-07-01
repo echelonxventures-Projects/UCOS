@@ -1,0 +1,47 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-02 Persistence & Storage — Encryption & Connection Architecture
+# ADR-002 (PostgreSQL) + ADR-006 (TLS/secrets/identity). Declarative (neutral CRD).
+#
+# Enforces non-waivable S3/S4 on the persistence tier:
+#   - S4: encryption in transit TLS 1.3; encryption at rest AES-256 (externalized keys).
+#   - S3: DB credentials by reference (WI-SEED.5); no secret material in manifests.
+#   - S1: workload-identity authentication (mTLS/cert) + least-privilege roles;
+#         NO direct human mutation of the SoR (application roles only).
+# Connection architecture: pooled connections, TLS-required, per-workload identity.
+# Traceability: ADR-002/006; UCOS-ASR-NFR-001 §9 (TLS 1.3, enc-at-rest, secrets,
+#   identity, least privilege); SEC-CTL-005/006/008/009/013/014; INV-11.
+# =============================================================================
+apiVersion: ucos.persistence/v1
+kind: DataAccessPolicy
+metadata:
+  name: ucos-sor-access
+  namespace: ucos-data
+  labels:
+    ucos.io/control-s3: "SEC-CTL-005"
+    ucos.io/control-s4: "SEC-CTL-008/009"
+    ucos.io/control-s1: "SEC-CTL-014"
+spec:
+  transport:
+    tls:
+      required: true
+      minVersion: "TLSv1_3"             # S4 in transit (ASR §9)
+    mtlsWorkloadIdentity: true          # S1 — connect only with a verified workload identity
+  encryptionAtRest:
+    algorithm: "AES-256"                # S4 at rest (SEC-CTL-009)
+    keyRef: "external://kms/pi1/persistence-atrest"   # externalized key (WI-SEED.5) — NO inline key
+  connection:
+    pooling: true                       # bounded connection pool (reliability §7)
+    poolerTls: "required"
+  accessModel:
+    directMutation: FORBIDDEN           # no direct human/ad-hoc mutation of the SoR (SoR rule)
+    roles:                              # least privilege (SEC-CTL-013) — roles only, no credentials here
+      - name: "app-writer"              # bounded write via service (contract-mediated)
+        privilege: "least"
+      - name: "app-reader"
+        privilege: "read-only"
+      - name: "migrator"                # migration-only lifecycle (see sor-lifecycle.md)
+        privilege: "ddl-forward-only"
+    humanAccess: "break-glass-only"     # Approval-Required; audited (SEC-CTL-011)
+  audit:
+    enabled: true                       # security-relevant DB events logged immutably (SEC-CTL-011/012)
+    tamperEvident: true

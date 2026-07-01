@@ -1,0 +1,32 @@
+# =============================================================================
+# UCOS PI-1 — WI-SEED.2 Platform Bootstrap — Kubernetes Conformance Baseline
+# ADR-001 (OCI + Kubernetes). Declarative manifest (seed skeleton).
+# SEED SCOPE: baseline namespaces + default-deny network posture. Applied to a
+# provisioned cluster at apply-time (not by the authoring seed).
+#
+# NON-WAIVABLE CONTROLS (IC-1): default-deny networking (S1/S5 baseline) +
+# namespace isolation seed the zero-trust posture hardened by WI-SEED.3 mesh.
+# Traceability: ADR-001, ADR-006; SEC-CTL-014/017; PEA-001 PE-01/PE-03.
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ucos-platform
+  labels:
+    ucos.io/plane: platform
+    ucos.io/pi: "PI-1"
+    ucos.io/istio-injection-note: "mTLS strict enforced by WI-SEED.3 mesh policy"
+---
+# Default-deny ingress/egress: no traffic permitted until an explicit policy
+# authorizes it (deny-by-default; S1/S5 baseline, SEC-CTL-017). Foundation
+# boundaries are internal-only in PI-1 (no external exposure — R-2).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: ucos-platform
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress

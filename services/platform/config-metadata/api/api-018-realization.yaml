@@ -1,0 +1,57 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-11 Config & Metadata — API-018 Contract Realization
+# CONTRACT-FIRST (IC-2): realizes ONLY the ratified operations of
+# UCOS-API-CONTRACT-018 (Configuration & Metadata API). NO new operations,
+# NO scope beyond the catalog. Emits UCOS-EVT-CONTRACT-018. Payloads reference
+# UCOS-DATA-CONTRACT-018 (ConfigurationValue, MetadataRecord, FeatureFlag).
+# ADR-005 (PostgreSQL SoR + Config/Metadata API + GitOps + JSON Schema;
+# SECRETS EXCLUDED). Boundary enforces non-waivable S1.
+# Traceability: UCOS-API-CONTRACT-018, UCOS-EVT-CONTRACT-018, UCOS-DATA-CONTRACT-018,
+#   ADR-005, DOM-018, CAP-10, PRS-043..046; UCOS-ASR-NFR-001 §4 (p99 ≤ 20 ms), §9.
+# =============================================================================
+apiVersion: ucos.contract/v1
+kind: ApiContractRealization
+metadata:
+  name: config-metadata-api-018
+  namespace: ucos-platform
+  labels:
+    ucos.io/contract: "UCOS-API-CONTRACT-018"
+    ucos.io/availability-class: "AC-1"
+spec:
+  contractRef: "specifications/contracts/UCOS-CONTRACT-CATALOG.md#UCOS-API-CONTRACT-018"
+  version: "v1.0"                       # ratified; evolution migration-only (UCOS-SVC-POLICY-001)
+  # Operations map 1:1 to the ratified contract — NONE added, NONE removed (IC-2).
+  operations:
+    - id: getConfiguration
+      method: GET
+      path: /configuration/{scope}      # resolve config/variability (hierarchical, §config-model)
+      idempotent: true
+      dataOut: ConfigurationValue        # DATA-018
+    - id: putConfiguration
+      method: PUT
+      path: /configuration/{scope}/{key} # admin set (versioned; change-tracked)
+      idempotent: true
+      authz: admin                       # deny-by-default; least privilege (S1/S5)
+      dataIn: ConfigurationValue
+    - id: getMetadata
+      method: GET
+      path: /metadata/{class}            # read MC-01..13 (open metadata class — INV-13)
+      idempotent: true
+      dataOut: MetadataRecord
+    - id: getFeatureFlags
+      method: GET
+      path: /feature-flags/{context}
+      idempotent: true
+      dataOut: FeatureFlag
+  emitsEvents:                           # EVT-018 (contract intent; transport = eventing WP-PLT-04, PI-2)
+    - ConfigurationChanged
+    - MetadataUpdated
+    - FeatureFlagChanged
+  nfr:                                   # resolved by UCOS-ASR-NFR-001 (was PENDING ASR RATIFICATION / N-1)
+    availabilityClass: "AC-1"            # 99.99% (ASR §3.2)
+    latencyP99: "20ms"                   # config retrieval hot path (ASR §4); cache-backed
+  security:                              # was FLAGGED FOR PROMPT 09 → now enforced
+    authn: mtls-workload-identity        # S1 (SEC-CTL-014)
+    authz: deny-by-default               # S1 (SEC-CTL-002); OIDC user/tenant = PE-08 (PI-2)
+    transport: "TLSv1_3"                 # S4 (SEC-CTL-008)
+    secretsInConfig: FORBIDDEN           # ADR-005 — secrets excluded; references only (S3)

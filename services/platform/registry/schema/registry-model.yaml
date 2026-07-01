@@ -1,0 +1,64 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-06 Registry & Discovery — Registry Model (JSON Schema in YAML)
+# ADR-004. DOM-027 / DATA-027 (RegistryArtifact, DiscoveryRecord). Realizes the
+# REGISTRATION + DISCOVERY legs of INV-13.
+#
+# The `artifactType` vocabulary is OPEN: domains, services, workflows, data models,
+# events, capabilities, AI systems, computational engines — and future types — are
+# REGISTERED, not coded (INV-13). Artifacts are append-only + versioned.
+# S3: no secret material; references only.
+# Traceability: ADR-004; UCOS-DATA-CONTRACT-027; DOM-027; INV-10/INV-13.
+# =============================================================================
+$schema: "json-schema-draft-2020-12"
+title: "UCOS RegistryArtifact / DiscoveryRecord (DOM-027)"
+type: object
+$defs:
+  RegistryArtifact:
+    type: object
+    required: [artifactId, artifactType, version, status, owner, traceTo]
+    additionalProperties: false
+    properties:
+      artifactId: { type: string, description: "Stable id; append-only, never reused (INV-10)." }
+      artifactType:
+        type: string
+        description: "OPEN vocabulary (INV-13) — registered, not coded."
+        examples: ["domain","service","workflow","data-model","event","capability","ai-system","computational-engine"]
+      version: { type: string, pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$" }
+      status: { type: string, enum: [DRAFT, ACTIVE, SUPERSEDED, DEPRECATED] }
+      owner: { type: string, description: "Single accountable owner (PEO-*)." }
+      metadataRef:
+        type: string
+        description: "Reference to the governing metadata record (DOM-018, API-018 integration)."
+      dependsOn:
+        type: array
+        items: { type: string }
+        description: "artifactIds this artifact depends on (dependency edges; acyclic — PSR discipline)."
+      traceTo:
+        type: array
+        items: { type: string }
+        description: "Traceability anchors (capability/domain/contract/ADR); IC-4, 0 orphans."
+      supersedes: { type: string, description: "artifactId superseded (append-only chain)." }
+      secretMaterialForbidden: { type: boolean, const: true, description: "S3 — no secrets; references only." }
+  DiscoveryRecord:
+    type: object
+    required: [query, results]
+    additionalProperties: false
+    properties:
+      query:
+        type: object
+        properties:
+          type: { type: string, description: "artifactType filter (or wiring query)." }
+          selector: { type: object, additionalProperties: true }
+      results:
+        type: array
+        items:
+          type: object
+          properties:
+            artifactId: { type: string }
+            artifactType: { type: string }
+            version: { type: string }
+            endpointRef: { type: string, description: "Discovered wiring reference (mesh-internal; no secret)." }
+      resolvedDependencies:
+        type: array
+        items: { type: string }
+        description: "Transitively resolved dependency artifactIds (dependency resolution)."

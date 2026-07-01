@@ -1,0 +1,43 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-01 Runtime & Compute — Namespace Strategy
+# ADR-001 (OCI + Kubernetes). Declarative manifest.
+# SEED SCOPE→WP: extends WI-SEED.2 baseline (ucos-platform) into the PI-1
+# foundation namespace strategy. Applied at apply-time (not by authoring).
+#
+# ISOLATION MODEL (INV-7 stateless + namespace isolation): one namespace per
+# foundation concern; PodSecurity "restricted" enforced at admission; every
+# namespace inherits default-deny networking (WP-PLT-03).
+# Traceability: ADR-001; UCOS-ASR-NFR-001 §3.2 (AC-1), §6 (horizontal scale);
+#   SEC-CTL-003 (tenancy/isolation), SEC-CTL-017 (segmentation).
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ucos-system          # mesh control, security bootstrap, secrets/KMS refs
+  labels:
+    ucos.io/plane: system
+    ucos.io/pi: "PI-1"
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: latest
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ucos-platform        # foundation platform services (registry/config land here in WP-PLT-06/11)
+  labels:
+    ucos.io/plane: platform
+    ucos.io/pi: "PI-1"
+    ucos.io/availability-class: "AC-1"
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: latest
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ucos-data            # persistence substrate (WP-PLT-02, PI-1 step [4])
+  labels:
+    ucos.io/plane: data
+    ucos.io/pi: "PI-1"
+    ucos.io/availability-class: "AC-1"
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: latest

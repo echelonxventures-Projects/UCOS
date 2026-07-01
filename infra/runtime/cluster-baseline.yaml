@@ -1,0 +1,34 @@
+# =============================================================================
+# UCOS PI-1 — WP-PLT-01 Runtime & Compute — Cluster Baseline Configuration
+# ADR-001 (Kubernetes conformance) + ADR-007 (declarative provisioning).
+# Declarative baseline values (cloud-neutral; no vendor selected — PEP-010).
+# Bound to the provisioned cluster at apply-time via GitOps (WI-SEED.4).
+#
+# Establishes the minimum cluster posture the runtime substrate depends on.
+# Traceability: ADR-001/007; UCOS-ASR-NFR-001 §3 (multi-AZ availability),
+#   §6 (multi-cluster), §9 (security admission); SEC-CTL-014/017; INV-8 neutrality.
+# =============================================================================
+apiVersion: ucos.runtime/v1          # neutral baseline (bound to ratified K8s distro at apply-time)
+kind: ClusterBaseline
+metadata:
+  name: pi1-cluster-baseline
+  labels: { ucos.io/pi: "PI-1" }
+spec:
+  kubernetesConformance:
+    versionFloor: "1.29"             # pinned floor; upgrades are migration-only (IC-7)
+    conformant: true                 # CNCF-conformant distro required (ADR-001, PEP-010)
+  highAvailability:
+    controlPlaneReplicas: 3          # HA control plane
+    workerZones: 3                   # multi-AZ for AC-1 (ASR §3)
+  admissionControl:                  # security posture enforced at admission (S1 baseline)
+    podSecurityAdmission: restricted
+    required:
+      - PodSecurity
+      - NodeRestriction
+      - ResourceQuota
+      - LimitRanger
+  networking:
+    defaultDenyBaseline: true        # WP-PLT-03 owns policy; runtime asserts the requirement
+    meshMtls: STRICT                 # WI-SEED.3 / WP-PLT-03 mesh (S4/S1)
+  cloudNeutral: true                 # no vendor/backend selected here (PEP-010)
+  externalExposure: false            # PI-1 internal-only (R-2)
