@@ -1,0 +1,64 @@
+# =============================================================================
+# UCOS B02 — Operational Proof Fabric — Event Contract (UCOS-EVT-CONTRACT-OPF)
+# CloudEvents 1.0 envelope. Every governed operational-proof event is (a) appended to the
+# tamper-evident hash-chained audit log AND (b) published on the event bus for real-time consumers
+# (dashboards, on-call routing, downstream fabrics). Events are FACTS (past tense), tenant-scoped.
+#
+# Delivery: at-least-once; consumers idempotent on (nodeId, seq) or (event, subject, at).
+# Ordering: per (nodeId) the `seq` is strictly monotonic and matches the audit chain position.
+# =============================================================================
+apiVersion: ucos.events/v1
+kind: EventContract
+metadata:
+  name: UCOS-EVT-CONTRACT-OPF
+  domain: operations
+  traceTo: [B02, OPF-AUD-001]
+
+envelope:                       # CloudEvents 1.0 attributes
+  specversion: "1.0"
+  source: "/ucos/operations/{nodeId}"
+  type: "io.ucos.operations.<event>"
+  subjectFormat: "{tenantId}/{subject}"
+  datacontenttype: "application/json"
+  extensions:
+    tenantid: "string (required) — routing + isolation key"
+    seq: "integer (required) — audit-chain sequence for this node"
+    entryhash: "string (required) — hash-chain entry hash (tamper-evident correlation)"
+
+events:
+  - type: OPS_PROOF_ATTESTED
+    description: "A proof record was signed-attested and durably persisted (via Evolution)."
+    data: { proofId: string, kind: string, version: string, stateHash: string }
+  - type: OPS_PROOF_SEALED
+    description: "A proof record was sealed under separation of duties (attester != sealer)."
+    data: { proofId: string, kind: string, version: string, stateHash: string }
+  - type: OPS_PROOF_EXCHANGED
+    description: "A signed proof bundle was imported from a federated node (trust-clamped)."
+    data: { proofId: string, issuer: string, clampedTrust: number }
+  - type: OPS_INCIDENT_OPENED
+    description: "A governed incident was opened (manually or via autoIncident alert rule)."
+    data: { incidentId: string, severity: string, title: string }
+  - type: OPS_INCIDENT_TRANSITIONED
+    description: "An incident advanced along the guarded lifecycle (open→…→resolved)."
+    data: { incidentId: string, state: string, version: string }
+  - type: OPS_INCIDENT_CLOSED
+    description: "An incident reached the terminal `closed` state."
+    data: { incidentId: string, version: string }
+  - type: OPS_ALERT_FIRED
+    description: "An alert rule crossed its threshold (firing edge)."
+    data: { ruleId: string, severity: string, observed: number, threshold: number }
+  - type: OPS_ALERT_RESOLVED
+    description: "A firing alert cleared (resolved edge)."
+    data: { ruleId: string, observed: number, threshold: number }
+  - type: OPS_HEALTH_CHANGED
+    description: "A tenant health rollup was evaluated."
+    data: { state: string, checks: integer }
+  - type: OPS_SLO_BREACH
+    description: "An SLO evaluation was non-compliant / error budget exhausted."
+    data: { sloId: string, observed: number, objective: number, budgetRemaining: number }
+  - type: OPS_RECONCILED
+    description: "A cross-node audit reconciliation completed."
+    data: { peerNodeId: string, status: string, divergences: integer }
+  - type: OPS_REVOKED
+    description: "A proof/incident/attestation/seal/authority was revoked (fail-closed)."
+    data: { kind: string, entityId: string }

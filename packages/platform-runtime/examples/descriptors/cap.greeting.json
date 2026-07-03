@@ -1,0 +1,16 @@
+{
+  "kind": "capability",
+  "id": "cap.greeting",
+  "version": "1.0.0",
+  "name": "Greeting Producer",
+  "contract": { "id": "contract.text-producer", "versionRange": "^1.0.0" },
+  "provider": { "module": "../capabilities/greeting.capability.ts", "export": "createGreeting" },
+  "configSchema": {
+    "type": "object",
+    "properties": { "salutation": { "type": "string", "minLength": 1 } },
+    "required": ["salutation"],
+    "additionalProperties": false
+  },
+  "defaults": { "salutation": "Hello" },
+  "metadata": { "classification": "example", "owner": "substrate-demo" }
+}

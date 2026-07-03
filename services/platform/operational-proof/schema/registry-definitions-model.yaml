@@ -1,0 +1,97 @@
+# =============================================================================
+# UCOS B02 — Operational Proof Fabric — Registry Definition Models (JSON Schema in YAML)
+# ADR-005. Registry-DRIVEN: tenants, metric defs, health checks, SLOs, alert rules, and proof
+# authorities are runtime DATA (no hardcoded thresholds/tenants/authorities). Mirrors the
+# packages/platform-runtime OperationsRegistry record shapes. `tenantScope` = "*" | "<tenantId>".
+# =============================================================================
+$schema: "json-schema-draft-2020-12"
+title: "UCOS Operational Proof — Registry Definitions"
+$defs:
+  Tenant:
+    type: object
+    required: [tenantId, displayName, status, maxTrustLevel, retention]
+    additionalProperties: false
+    properties:
+      tenantId: { type: string }
+      displayName: { type: string }
+      status: { type: string, enum: [active, suspended] }
+      maxTrustLevel: { type: number, minimum: 0, description: "Trust ceiling; clamps conferred proof trust." }
+      retention:
+        type: object
+        required: [metricSamples, spans, logs]
+        properties:
+          metricSamples: { type: integer, minimum: 1, description: "Bounded ring capacity (real-time plane)." }
+          spans: { type: integer, minimum: 1 }
+          logs: { type: integer, minimum: 1 }
+
+  MetricDefinition:
+    type: object
+    required: [metricId, kind, unit, tenantScope]
+    additionalProperties: false
+    properties:
+      metricId: { type: string }
+      kind: { type: string, enum: [gauge, counter, histogram] }
+      unit: { type: string }
+      description: { type: string }
+      tenantScope: { type: string }
+
+  HealthCheckDefinition:
+    type: object
+    required: [checkId, component, tenantScope, metric, aggregate, windowMs, ttlMs, severityOnFail]
+    additionalProperties: false
+    properties:
+      checkId: { type: string }
+      component: { type: string }
+      tenantScope: { type: string }
+      metric: { type: string }
+      aggregate: { type: string, enum: [count, sum, avg, min, max, p50, p95, p99, last] }
+      windowMs: { type: integer, minimum: 1 }
+      min: { type: number }
+      max: { type: number }
+      ttlMs: { type: integer, minimum: 1, description: "Fail-closed to `unknown` when no fresh sample." }
+      severityOnFail: { type: string, enum: [degraded, unhealthy] }
+
+  SloDefinition:
+    type: object
+    required: [sloId, tenantScope, metric, aggregate, comparison, objective, windowMs, budget]
+    additionalProperties: false
+    properties:
+      sloId: { type: string }
+      tenantScope: { type: string }
+      metric: { type: string }
+      aggregate: { type: string, enum: [count, sum, avg, min, max, p50, p95, p99, last] }
+      comparison: { type: string, enum: [lte, gte] }
+      objective: { type: number }
+      windowMs: { type: integer, minimum: 1 }
+      budget: { type: number, minimum: 0, maximum: 1, description: "Error budget as fraction of window." }
+
+  AlertRuleDefinition:
+    type: object
+    required: [ruleId, tenantScope, metric, aggregate, comparison, threshold, windowMs, severity]
+    additionalProperties: false
+    properties:
+      ruleId: { type: string }
+      tenantScope: { type: string }
+      metric: { type: string }
+      aggregate: { type: string, enum: [count, sum, avg, min, max, p50, p95, p99, last] }
+      comparison: { type: string, enum: [lt, lte, gt, gte, eq] }
+      threshold: { type: number }
+      windowMs: { type: integer, minimum: 1 }
+      severity: { type: string, enum: [info, warn, critical] }
+      autoIncident: { type: boolean, description: "Open a governed incident when this rule fires." }
+
+  ProofAuthority:
+    type: object
+    required: [authorityId, owner, powers, keyRef, tenantScope, status]
+    additionalProperties: false
+    properties:
+      authorityId: { type: string }
+      owner: { type: string }
+      powers:
+        type: array
+        minItems: 1
+        items: { type: string, enum: [attest, seal, revoke, audit] }
+        description: "Enumerated powers — no implicit authority."
+      keyRef: { type: string, description: "Public key by reference (S3: no key material inline)." }
+      tenantScope: { type: string }
+      status: { type: string, enum: [active, revoked] }

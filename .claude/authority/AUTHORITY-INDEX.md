@@ -42,7 +42,7 @@ Prompts are execution mechanisms, never sources of truth.
 | AUTH-009 | `AUTH-009-GOVERNANCE-CANON.md` | Governance / approval / zones | RATIFIED | 1.0.0 | all `GATE-*` |
 | AUTH-010 | `AUTH-010-TRACEABILITY-CANON.md` | Traceability rules | RATIFIED | 1.0.0 | `CTX-TRACE-001` |
 | AUTH-011 | `AUTH-011-GLOSSARY-CANON.md` | Canonical terminology | RATIFIED | 1.0.1 | `CTX-GLOSS-001` |
-| AUTH-012 | `AUTH-012-DECISION-LOG.md` | Decision repository | LIVE | 1.0.3 | program decisions |
+| AUTH-012 | `AUTH-012-DECISION-LOG.md` | Decision repository | LIVE | 1.0.13 | program decisions |
 
 ## 4. Supporting Authority Documents
 

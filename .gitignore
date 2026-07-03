@@ -1,2 +1,6 @@
 all-files.txt
 markdown-files.txt
+
+# Node / TypeScript substrate (packages/**)
+node_modules/
+*.tsbuildinfo

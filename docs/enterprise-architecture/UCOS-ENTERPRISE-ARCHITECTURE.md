@@ -1,4 +1,4 @@
-# UCOS — Enterprise Architecture
+clear# UCOS — Enterprise Architecture
 
 **Artifact ID:** UCOS-ENT-ARCH-001
 **Layer:** ARCHITECTURE (Enterprise)

@@ -1,0 +1,205 @@
+openapi: 3.1.0
+# =============================================================================
+# UCOS B02 — Operational Proof Fabric — API realization (UCOS-API-CONTRACT-OPF)
+# Contract-first. Two planes: (1) real-time INGEST + QUERY (monitoring/telemetry/observability/
+# health/slo/alert), (2) governed PROOF + INCIDENT operations (attest/seal, incident lifecycle,
+# federated bundle import, audit export). Every route is TENANT-SCOPED via the X-UCOS-Tenant header
+# and mTLS workload identity (S1). Deny-by-default: unknown/suspended tenant ⇒ 403.
+# =============================================================================
+info:
+  title: UCOS Operational Proof Fabric API
+  version: 1.0.0
+  description: >
+    Governed, tenant-scoped, tamper-evident operational proof. Real-time ingest is bounded and
+    fail-closed; durable proof/incident mutations are signed and persisted through the Evolution
+    Fabric. No custom crypto (Ed25519 reused from Federation). Secrets excluded (S3).
+servers:
+  - url: https://operational-proof.ucos-platform.svc/v1
+security:
+  - mutualTLS: []
+tags:
+  - { name: telemetry, description: "Real-time ingest (monitoring/telemetry)" }
+  - { name: observability, description: "Read-only real-time query (metrics/traces/health/slo/alerts)" }
+  - { name: proof, description: "Governed operational evidence (attest/seal, query, federation)" }
+  - { name: incident, description: "Governed incident tracking" }
+  - { name: audit, description: "Tamper-evident audit export + reconciliation" }
+
+paths:
+  /telemetry/metrics:
+    post:
+      tags: [telemetry]
+      summary: Ingest a batch of metric points (bounded; deny-by-default on unknown tenant/metric).
+      parameters: [{ $ref: '#/components/parameters/Tenant' }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                points: { type: array, items: { $ref: '#/components/schemas/MetricPoint' } }
+      responses:
+        '202': { description: "Accepted; returns accepted/dropped counts.", content: { application/json: { schema: { $ref: '#/components/schemas/IngestStats' } } } }
+        '403': { $ref: '#/components/responses/Denied' }
+
+  /telemetry/spans:
+    post:
+      tags: [telemetry]
+      summary: Ingest a trace span.
+      parameters: [{ $ref: '#/components/parameters/Tenant' }]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/TraceSpan' } } } }
+      responses: { '202': { description: accepted }, '403': { $ref: '#/components/responses/Denied' } }
+
+  /telemetry/logs:
+    post:
+      tags: [telemetry]
+      summary: Ingest a log event.
+      parameters: [{ $ref: '#/components/parameters/Tenant' }]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/LogEvent' } } } }
+      responses: { '202': { description: accepted }, '403': { $ref: '#/components/responses/Denied' } }
+
+  /observability/metrics/{metric}/aggregate:
+    get:
+      tags: [observability]
+      summary: Aggregate a metric over a trailing window (count/sum/avg/min/max/p50/p95/p99/last).
+      parameters:
+        - { $ref: '#/components/parameters/Tenant' }
+        - { name: metric, in: path, required: true, schema: { type: string } }
+        - { name: aggregate, in: query, required: true, schema: { type: string, enum: [count,sum,avg,min,max,p50,p95,p99,last] } }
+        - { name: windowMs, in: query, required: true, schema: { type: integer } }
+      responses: { '200': { description: value, content: { application/json: { schema: { type: object, properties: { value: { type: number } } } } } } }
+
+  /observability/health:
+    get:
+      tags: [observability]
+      summary: Evaluate the tenant health rollup (fail-closed to `unknown` without fresh data).
+      parameters: [{ $ref: '#/components/parameters/Tenant' }]
+      responses: { '200': { description: rollup, content: { application/json: { schema: { $ref: '#/components/schemas/HealthRollup' } } } } }
+
+  /observability/slos:
+    get:
+      tags: [observability]
+      summary: Evaluate all in-scope SLOs (compliance + remaining error budget).
+      parameters: [{ $ref: '#/components/parameters/Tenant' }]
+      responses: { '200': { description: results } }
+
+  /observability/alerts/evaluate:
+    post:
+      tags: [observability]
+      summary: Evaluate alert rules; returns phase-change events + any auto-opened incidents.
+      parameters: [{ $ref: '#/components/parameters/Tenant' }]
+      responses: { '200': { description: "{ events, opened }" } }
+
+  /proof:
+    post:
+      tags: [proof]
+      summary: Attest/seal a proof record (governed; persisted via Evolution). Fail-closed on bad signature/SoD.
+      parameters: [{ $ref: '#/components/parameters/Tenant' }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [record]
+              properties:
+                record: { $ref: '#/components/schemas/ProofRecord' }
+                attestation: { $ref: '#/components/schemas/ProofAttestation' }
+                seal: { $ref: '#/components/schemas/ProofSeal' }
+      responses:
+        '201': { description: "Persisted; returns unitHash + evolutionUnitHash." }
+        '403': { $ref: '#/components/responses/Denied' }
+    get:
+      tags: [proof]
+      summary: Query latest non-revoked proof records for the tenant.
+      parameters:
+        - { $ref: '#/components/parameters/Tenant' }
+        - { name: kind, in: query, schema: { type: string } }
+        - { name: state, in: query, schema: { type: string } }
+      responses: { '200': { description: "ProofRecord[]" } }
+
+  /proof/import:
+    post:
+      tags: [proof]
+      summary: Import a signed federated proof bundle (verify + sovereignty + trust-clamp + persist).
+      parameters: [{ $ref: '#/components/parameters/Tenant' }]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/ProofBundle' } } } }
+      responses: { '200': { description: "{ ok, reason }" }, '403': { $ref: '#/components/responses/Denied' } }
+
+  /incidents:
+    post:
+      tags: [incident]
+      summary: Open a governed incident (persisted via Evolution).
+      parameters: [{ $ref: '#/components/parameters/Tenant' }]
+      responses: { '201': { description: IncidentRecord } }
+    get:
+      tags: [incident]
+      summary: Query latest non-revoked incidents for the tenant.
+      parameters:
+        - { $ref: '#/components/parameters/Tenant' }
+        - { name: state, in: query, schema: { type: string } }
+        - { name: openOnly, in: query, schema: { type: boolean } }
+      responses: { '200': { description: "IncidentRecord[]" } }
+
+  /incidents/{incidentId}/transition:
+    post:
+      tags: [incident]
+      summary: Advance an incident along the guarded lifecycle (open→…→resolved→closed).
+      parameters:
+        - { $ref: '#/components/parameters/Tenant' }
+        - { name: incidentId, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content: { application/json: { schema: { type: object, required: [to, actor], properties: { to: { type: string }, actor: { type: string }, note: { type: string } } } } }
+      responses: { '200': { description: IncidentRecord }, '409': { description: "Illegal transition" } }
+
+  /audit/export:
+    get:
+      tags: [audit]
+      summary: Export the node's hash-chained audit log (independently verifiable offline).
+      responses: { '200': { description: "{ nodeId, chain, headHash }" } }
+
+  /audit/reconcile:
+    post:
+      tags: [audit]
+      summary: Reconcile against a peer node's exported chain (distributed capable).
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: "{ status, divergences, failClosed }" } }
+
+components:
+  parameters:
+    Tenant:
+      name: X-UCOS-Tenant
+      in: header
+      required: true
+      schema: { type: string }
+      description: "Tenant isolation key; deny-by-default when unknown/suspended."
+  responses:
+    Denied:
+      description: "Deny-by-default (unknown/suspended tenant, missing power, bad signature, partition)."
+      content: { application/json: { schema: { type: object, properties: { code: { type: string }, reason: { type: string } } } } }
+  securitySchemes:
+    mutualTLS: { type: mutualTLS }
+  schemas:
+    MetricPoint:
+      type: object
+      required: [tenantId, metric, value, at]
+      properties: { tenantId: { type: string }, metric: { type: string }, value: { type: number }, at: { type: integer }, labels: { type: object }, source: { type: string } }
+    TraceSpan:
+      type: object
+      required: [tenantId, traceId, spanId, name, startedAt, endedAt, status]
+      properties: { tenantId: { type: string }, traceId: { type: string }, spanId: { type: string }, parentSpanId: { type: string }, name: { type: string }, startedAt: { type: integer }, endedAt: { type: integer }, status: { type: string, enum: [ok, error] } }
+    LogEvent:
+      type: object
+      required: [tenantId, at, level, message]
+      properties: { tenantId: { type: string }, at: { type: integer }, level: { type: string, enum: [debug, info, warn, error, fatal] }, message: { type: string }, component: { type: string }, traceId: { type: string } }
+    IngestStats:
+      type: object
+      properties: { acceptedMetrics: { type: integer }, acceptedSpans: { type: integer }, acceptedLogs: { type: integer }, droppedUnknownTenant: { type: integer }, droppedUnknownMetric: { type: integer }, droppedSuspended: { type: integer } }
+    HealthRollup:
+      type: object
+      properties: { tenantId: { type: string }, state: { type: string, enum: [healthy, degraded, unhealthy, unknown] }, at: { type: integer }, checks: { type: array, items: { type: object } } }
+    ProofRecord: { type: object, description: "See schema/proof-record-model.yaml" }
+    ProofAttestation: { type: object, description: "Ed25519-signed attestation bound to unitHash" }
+    ProofSeal: { type: object, description: "Ed25519-signed seal (SoD: sealer != attester)" }
+    ProofBundle: { type: object, description: "Signed cross-node evidence bundle" }

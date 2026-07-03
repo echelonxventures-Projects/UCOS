@@ -1,0 +1,81 @@
+# =============================================================================
+# UCOS B02 — Operational Proof Fabric — Service Deployment Descriptor
+# Inherits the platform runtime workload baseline (non-root, read-only rootfs, drop ALL caps,
+# per-workload ServiceAccount = mTLS identity). Runs in ucos-platform; SoR is dom_ops.
+# NO secrets inline (S3): DB credential + audit-signing key by reference only.
+# Also populates the mesh allow-rule for THIS boundary (least privilege, deny-by-default elsewhere).
+# Traceability: B02; OPF-ARCH-001; ADR-005/006; SEC-CTL-001/002/014.
+# =============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: operational-proof
+  namespace: ucos-platform
+  labels: { ucos.io/contract: "UCOS-API-CONTRACT-OPF", ucos.io/control-s1: "SEC-CTL-014" }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: operational-proof
+  namespace: ucos-platform
+  labels:
+    ucos.io/service: "UCOS-SVC-OPF"
+    ucos.io/availability-class: "AC-1"
+    ucos.io/template: "runtime-baseline"
+spec:
+  replicas: 3                          # N+1 for AC-1; each replica is a distinct audit-chain node
+  strategy: { type: RollingUpdate, rollingUpdate: { maxUnavailable: 0, maxSurge: 1 } }
+  selector: { matchLabels: { ucos.io/service: "UCOS-SVC-OPF" } }
+  template:
+    metadata:
+      labels: { ucos.io/service: "UCOS-SVC-OPF", ucos.io/template: "runtime-baseline" }
+    spec:
+      serviceAccountName: operational-proof
+      securityContext: { runAsNonRoot: true, seccompProfile: { type: RuntimeDefault } }
+      containers:
+        - name: operational-proof
+          image: "OCI_IMAGE_BUILT_BY_DELIVERY_PIPELINE"   # built/signed by the delivery pipeline; set at apply-time
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }
+          resources:
+            requests: { cpu: "250m", memory: "256Mi" }     # real-time ring buffers are bounded per-tenant
+            limits:   { cpu: "1000m", memory: "1Gi" }
+          env:
+            - name: UCOS_NODE_ID
+              valueFrom: { fieldRef: { fieldPath: metadata.name } }   # per-replica audit-chain node id
+            - name: SOR_DSN_REF
+              value: "external://secrets/opf/ops-db"        # by reference only (S3)
+            - name: AUDIT_SIGNING_KEY_REF
+              value: "external://secrets/opf/audit-ed25519"  # key by reference (S3); Ed25519 (no custom crypto)
+          # NO secret env values; TLS 1.3 to SoR (S4).
+---
+# Mesh authorization allow-rule for the operational-proof boundary.
+apiVersion: ucos.security/v1
+kind: MeshAuthorizationAllow
+metadata:
+  name: allow-operational-proof
+  namespace: ucos-platform
+spec:
+  target: { service: "UCOS-SVC-OPF", contract: "UCOS-API-CONTRACT-OPF" }
+  transport: { mutualTls: STRICT }                 # S4/S1
+  allowFrom:
+    principalType: workload-identity               # mTLS SA identities only (S1)
+    workloads: ["*/ucos-platform"]                 # intra-platform emitters/consumers (least privilege)
+  authz: deny-by-default
+  externalOrigin: DENY
+---
+# Horizontal autoscaling on ingest pressure (real-time plane); PDB inherited from runtime-baseline.
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: operational-proof
+  namespace: ucos-platform
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: operational-proof }
+  minReplicas: 3
+  maxReplicas: 12
+  metrics:
+    - type: Resource
+      resource: { name: cpu, target: { type: Utilization, averageUtilization: 70 } }

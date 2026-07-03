@@ -1,0 +1,68 @@
+# =============================================================================
+# UCOS B02 — Operational Proof Fabric — Proof Record Model (JSON Schema in YAML)
+# ADR-005 (JSON Schema). Mirrors packages/platform-runtime ProofRecord / PROOF_RECORD_SCHEMA.
+#
+# A ProofRecord is an immutable, versioned, tenant-scoped, provenance-bearing wrapper around a
+# ProofUnit (operational evidence). Records are append-only (supersede-not-overwrite). The
+# `unitHash` binds every downstream signature (attestation, seal, bundle). S3: no secret material.
+# =============================================================================
+$schema: "json-schema-draft-2020-12"
+title: "UCOS Operational Proof Record (OPF-GOV-002)"
+type: object
+required: [proofId, version, tenantId, namespace, unitHash, kind, state, trustLevel, unit, provenance, source]
+additionalProperties: false
+properties:
+  proofId:
+    type: string
+    description: "Stable proof identifier (append-only; superseded by new versions, never reused)."
+  version:
+    type: string
+    pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+  tenantId:
+    type: string
+    description: "Owning tenant; keyspace is tenant-partitioned (multi-tenant isolation)."
+  namespace:
+    type: string
+    pattern: "^operations:"
+    description: "Reserved operations namespace (e.g. operations:proof:<tenant>)."
+  unitHash:
+    type: string
+    description: "sha256(canonical(unit)); tamper-evident binding for attestation/seal/bundle."
+  kind:
+    type: string
+    enum: [telemetry-snapshot, health-attestation, slo-attestation, incident-evidence, custom]
+  state:
+    type: string
+    enum: [draft, attested, sealed]
+    description: "attested requires a valid attestation; sealed additionally requires an SoD seal."
+  trustLevel:
+    type: number
+    minimum: 0
+    description: "Clamped to the tenant's maxTrustLevel on federated import."
+  stateHash:
+    type: string
+    description: "Operational state hash captured at attestation (binds proof to observed state)."
+  unit:
+    type: object
+    required: [unitId, tenantId, kind, namespace, payload, capturedAt]
+    additionalProperties: false
+    properties:
+      unitId: { type: string }
+      tenantId: { type: string }
+      kind: { type: string, enum: [telemetry-snapshot, health-attestation, slo-attestation, incident-evidence, custom] }
+      namespace: { type: string, pattern: "^operations:" }
+      payload: { description: "Evidence content (aggregates / health rollup / slo status / incident summary)." }
+      capturedAt: { type: integer, description: "epoch ms at capture." }
+  provenance:
+    type: object
+    description: "Origin/provenance envelope (local | { nodeId }); assertion evidence for federated proof."
+    properties:
+      origin: {}
+      assertedBy: { type: string }
+      signatureRef: { type: string }
+  source:
+    type: object
+    required: [kind]
+    properties:
+      kind: { type: string, enum: [local, federated, import] }
+      nodeId: { type: string }

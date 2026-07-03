@@ -3,7 +3,7 @@
 **Authority ID:** AUTH-012
 **Layer:** AUTHORITY
 **Status:** LIVE (canonical architectural decision repository)
-**Version:** 1.0.3
+**Version:** 1.0.13
 **Supersedes:** Establishes the canonical decision repository for the UCOS program.
 **Immutability:** Append-only immutable record. Decisions are never deleted; superseded only by new, linked decisions.
 
@@ -323,6 +323,313 @@ alternatives, consequences, traceability, approval, and version impact for each.
 
 ---
 
+#### AD-0014 — Ω∞ Universal Existential Architecture Program Disposition (BOARD-DECISION-001)
+- **Decision Date:** 2026-07-01
+- **Decision Owner:** UCOS Authority Board
+- **Decision Context:** Phase 11D.1 generated the Ω∞ Universal Existential Architecture **proposal package**
+  (`UCOS-AUTH-013-INIT-001`, `UCOS-AUTH-013-AMD-001` proposing INV-14..20, `UCOS-UEA-0001..0013`,
+  `UCOS-UEA-PKG-001`), all **CREATED — READY FOR RATIFICATION**. Phase 11D.2 produced an independent
+  constitutional review (`UCOS-UEA-REV-001`, verdict **READY WITH CONDITIONS**, **SPLIT** recommended, **0**
+  items ready for immediate enrollment): INV-14/INV-19/INV-20 largely redundant with the ratified INV-13;
+  INV-17/INV-18 carry latent conflicts with INV-5 (single-SoR scope) and INV-6 (determinism); INV-15/INV-16
+  genuinely additive but with unresolved clarifications; AUTH-012 finding F-A12-1 (canon-tier label "AUTH-013"
+  for a proposal is ambiguous). The repository is at PI-1 foundation (`pi1-foundation-v1.0.1`); per
+  `UCOS-UEA-0012`, existential scope is overwhelmingly Missing/Referenced.
+- **Decision Statement:** The Authority Board disposes of the Ω∞ package as follows, **enrolling no invariant**:
+  (1) **RECLASSIFY AUTH-013** — accept the research *initiative* but reclassify "AUTH-013" as a **non-canonical
+  proposal identifier anchored to this AD-0014**; `AUTH-001..012` remain the complete ratified Authority Layer;
+  no new Authority-canon document is created. (2) **INV-15 / INV-16 — APPROVE WITH AMENDMENTS, enrollment
+  DEFERRED** pending clarifications (identity floor; partition window/fallback) and federation-maturity
+  evidence. (3) **INV-17 / INV-18 — DEFER** pending revision of their INV-5 / INV-6 conflict surfaces (INV-6
+  remains supreme; a determinism-quarantine contract must be defined for any computation realizer). (4)
+  **INV-14 / INV-19 / INV-20 — designate for future MERGER** into INV-13 (INV-14/20) and INV-16/federation
+  (INV-19) as interpretive clarifications rather than standalone invariants. (5) **`UCOS-UEA-0001..0013` —
+  accept as REFERENCE / RESEARCH ARCHITECTURE / FUTURE PROGRAM INPUT** (0001/0011 reference; 0002/0003/0004
+  research; 0008/0013 future input; 0012 evidence of record; 0005/0006/0007/0009/0010 deferred); **none
+  rejected or archived** (INV-10). (6) Ratify **foundation-first priority**: Phase 12 Operational Validation →
+  Article IX Release Review → PI-2 Meta-Core → Federation Maturity → Ω∞ Evolution; Ω∞ remains
+  Conceptual/Research/Planning/Governance-Reference until those gates are met.
+- **Alternatives Considered:** (a) **Enroll INV-14..20 en bloc** — rejected: review found redundancy, latent
+  INV-5/INV-6 conflicts, and unmet conditions; would inflate the invariant set. (b) **Reject the package
+  outright** — rejected: the research has long-horizon merit and honest gap analysis; append-only preservation
+  is preferred. (c) **Mint AUTH-013 as a ratified Authority-canon tier now** — rejected: premature; ambiguity
+  finding F-A12-1. (d) **Authorize an Ω∞ implementation increment** — rejected: Article IX ACTIVE; foundation
+  immature.
+- **Consequences:** INV-1..INV-13 unchanged; `UCOS-ASR-NFR-001` remains **v1.0.1** (not version-incremented; no
+  invariant enrolled). AUTH-013 reclassified (non-canonical proposal identifier). Ω∞ artifacts preserved as
+  governed research/reference. **Article IX generation lock REMAINS ACTIVE**; `UCOS-CONSTRUCTION-BLOCKED`
+  unchanged; **PI-2 NOT authorized**; no code/infrastructure/runtime/Meta-Core implementation authorized. CAP-
+  01..19, DOM, and PEA-001..007 unchanged. Future governance actions FGA-1..8 and deferred items registered in
+  `UCOS-AUTH-BOARD-OMEGA-001` §8–§9.
+- **Traceability References:** `UCOS-CONST-001` Art. IX/XI/XII; AUTH-002 (Art. XI), AUTH-009 (§6.1–6.6),
+  AUTH-012 (§6/§8/§9); `UCOS-ASR-NFR-001` §2 (INV-1..13); `UCOS-AUTH-013-INIT-001`, `UCOS-AUTH-013-AMD-001`,
+  `UCOS-UEA-0001..0013`, `UCOS-UEA-PKG-001`, `UCOS-UEA-REV-001`; decision artifact `UCOS-AUTH-BOARD-OMEGA-001`
+  (`PHASE-11D.3-AUTHORITY-BOARD-OMEGA-DECISION.md`).
+- **Approval Requirements:** Authority Board — **Constitutional Majority** (disposition of a proposed
+  invariant-set amendment). Recording the decision is a Trusted Operation (AUTH-012 §8); the disposition
+  enrolls no amendment, so no `UCOS-ASR-NFR-001` change takes effect. **APPROVED (foundation-first
+  disposition).**
+- **Version Impact:** Decision Log v1.0.3 → **v1.0.4** (append AD-0014). No Authority-canon version change; no
+  `UCOS-ASR-NFR-001` change; no INV-1..13 change; Article IX unchanged.
+
+---
+
+#### AD-0015 — Article IX Limited Evidence Authorization (A9-REL-001)
+- **Decision Date:** 2026-07-01
+- **Decision Owner:** UCOS Authority Board
+- **Decision Context:** Phase 12.0 (`UCOS-P12-CERT-001`) certified PI-1 at definition level and found
+  Operational Certification PENDING on apply-time evidence (gaps G12-1/2/3). RA-1 (`UCOS-RA1-ENV-001`) confirmed
+  ENV-DEV/INT are READY TO PROVISION but 0 provisioned. FGA-2 (`UCOS-A9-REL-001`) established a **circular
+  deadlock**: Operational Certification requires apply-time evidence; that evidence requires a running
+  non-production substrate; and `UCOS-CONSTRUCTION-BLOCKED` §3 prohibits "deployment / infrastructure
+  provisioning" and "technology/vendor/cloud binding" under the active Article IX lock. Implementation
+  conditions **C-1..C-5 are CLOSED** (PHASE-10.6); only the C-6 lock-release act was pending. 5 of 6 Article IX
+  objectives are ACHIEVED (certification framework PARTIAL — the target of this authorization).
+- **Decision Statement:** Grant a **LIMITED EVIDENCE AUTHORIZATION** — a narrow, revocable, audited,
+  **Approval-By-Exception** carve-out (Constitution Art. XII; AD-0002) permitting **non-production** ENV-DEV and
+  ENV-INT provisioning, CI-runner binding, pipeline execution, `API-018`/`API-027` contract-test execution, DR
+  drill, and audit/availability/metrics evidence collection **solely** to generate operational-certification
+  evidence. Article IX is **NOT fully released**. Conditions: ENV-DEV/INT only; internal-only
+  (`external_exposure=false`); non-waivable S1/S3/S4 enforced identically; secrets by-reference (S3); every
+  provisioned/promoted artifact registered in `CTX-REG-001`; immutable audit trail; time-boxed, auto-expiring on
+  Operational Certification issuance or Board revocation.
+- **Alternatives Considered:** (a) **Maintain Lock** — rejected: permanent deadlock; Operational Certification
+  could never complete. (b) **Full Article IX Release** — rejected: premature; would expose PI-2/Meta-Core/
+  production construction before operational proof exists. (c) **Defer** — rejected: analysis complete; deferral
+  equals maintain-lock by inertia.
+- **Consequences:** The circular deadlock is resolved for evidence generation only. **NO** PI-2, Meta-Core,
+  ENV-STAGE/PROD, production deployment, business/domain/service code, or platform-implementation authority is
+  granted — all remain locked pending a separate future full-release review (FGA-2b) after Operational
+  Certification. This authorization sanctions an **activity class**, not autonomous execution: each concrete
+  cloud/CI/secrets/KMS binding or external-account creation remains an **Approval-Required Operation** (AD-0009)
+  requiring explicit human approval and real spend at execution time; the agent performs no provisioning/
+  deployment. INV-1..13 and `UCOS-ASR-NFR-001` v1.0.1 unchanged; no constitutional/invariant modification; the
+  Constitution and all ratified architectures are preserved.
+- **Traceability References:** `UCOS-CONST-001` (Art. IX Governed Generation; Art. XII Approval-By-Exception);
+  AUTH-002 (Art. XII), AUTH-009 (§6.4 Trusted/Approval-Required catalogs; AD-0009 external-account/vendor/
+  financial), AUTH-012 (§6/§8); `UCOS-P12-CERT-001`, `UCOS-RA1-ENV-001`, `UCOS-CONSTRUCTION-BLOCKED`,
+  PHASE-10.6; decision artifact `UCOS-A9-REL-001` (`FGA-2-ARTICLE-IX-RELEASE-REVIEW.md`).
+- **Approval Requirements:** Authority Board — a governed Approval-By-Exception authorization that partially and
+  temporarily relaxes an Article IX prohibition for a bounded non-production evidence purpose (not a
+  constitutional amendment). **APPROVED (limited, revocable).** Concrete execution steps remain Approval-Required
+  (AD-0009) with human sign-off.
+- **Version Impact:** Decision Log v1.0.4 → **v1.0.5** (append AD-0015). No Constitution/invariant change; no
+  `UCOS-ASR-NFR-001` change; Article IX not fully released (`UCOS-CONSTRUCTION-BLOCKED` remains in force except
+  the bounded evidence carve-out recorded here).
+
+---
+
+> **PHASE 21.1 — AUTHORITY CHAIN RESTORATION (AUTH-REST-001..004).** The eight scoped Article IX
+> release acts **AD-0016..AD-0023** were authored and made effective as standalone on-disk decision
+> records of record (repository root) but were **not enrolled** in this canonical Decision Log
+> (which had terminated at AD-0015 / v1.0.5). Per AUTH-012 §6 (every architecturally significant
+> decision MUST be recorded here) and §9 (append-only sequential enrollment), the following eight
+> records are hereby **enrolled append-only** to restore ledger continuity. No prior record
+> (AD-0001..AD-0015) is altered. The reconciliation is documented in `AUTH-REST-001` (Authority Chain
+> Verification), `AUTH-REST-002` (Ledger Reconciliation), `AUTH-REST-003` (Conflict Resolution), and
+> `AUTH-REST-004` (Final Authority State). Enrollment of a decision is a Trusted Operation (AUTH-012
+> §8); each enrolled decision's *subject* (the scoped Article IX release) was itself approved by the
+> Authority Board at authoring time, as recorded in each AD.
+
+---
+
+#### AD-0016 — Scoped Article IX Release: PI-2/PI-3 Foundational Substrate Construction
+- **Decision Date:** 2026-07-01
+- **Decision Owner:** UCOS Authority Board
+- **Decision Context:** Design conditions C-1..C-5 and conditions-precedent CP-1..CP-3 were CLOSED
+  (PHASE-10.6; `UCOS-ART9-REL-001`); only the Board's explicit Article IX lock-release act (C-6)
+  remained before governed construction of the minimum foundational substrate could begin.
+- **Decision Statement:** RELEASE the Article IX generation lock **for the substrate scope only** —
+  PI-2 Meta-Core Runtime and PI-3 Registry/Metadata/Configuration Runtimes (`UCOS-PEA-001/002/004/005/006`;
+  ADR-001/004/005). TypeScript on Node.js under the `UCOS-PLAT-ADR-001` polyglot allowance. Supersedes
+  `UCOS-CONSTRUCTION-BLOCKED` for the substrate scope only; every other scope remains LOCKED.
+- **Alternatives Considered:** (a) Maintain full lock — rejected: foundation-first priority (AD-0014)
+  requires a substrate before any further increment; (b) Broad release — rejected: violates minimal-scope
+  and Ω∞ deferral.
+- **Consequences:** Substrate construction AUTHORIZED and begun under `packages/platform-runtime/`
+  (38/38 tests, `tsc` clean). No domain/service/business logic; no Ω∞; IC-1..IC-8 and S1/S3/S4 preserved.
+- **Traceability References:** `UCOS-ART9-REL-001`, `UCOS-CONSTR-AUTH-001`, AD-0014, `UCOS-IMP-PI-001`,
+  `UCOS-PLAT-ADR-001/004/005/006`, `UCOS-CONST-001` (Art. IX/XII), AUTH-008, AUTH-009; artifact
+  `UCOS-AUTH-BOARD-AD-0016`.
+- **Approval Requirements:** Authority Board — Article IX lock-release (Approval-Required). **APPROVED (scoped).**
+- **Version Impact:** Decision Log v1.0.5 → **v1.0.6** (enrolled retroactively in Phase 21.1).
+
+---
+
+#### AD-0017 — Scoped Article IX Release: PI-4 Control Fabrics Construction
+- **Decision Date:** 2026-07-01
+- **Decision Owner:** UCOS Authority Board
+- **Decision Context:** The AD-0016 substrate was implemented and validated; the control fabrics realizing
+  `UCOS-PEA-007` and non-waivable `UCOS-SEC-ARCH-001` (S1/S3/S4) were required before federation or Ω∞ work.
+- **Decision Statement:** EXTEND the AD-0016 release to the **PI-4 control-fabric scope only** — Identity,
+  Trust, Policy, Governance runtimes + Control Plane (PEP), built additively over the substrate wrapping the
+  Meta-Core public API. **No modification of `src/meta-core`, `src/registry-runtime`, `src/metadata-runtime`,
+  `src/configuration-runtime`, `src/contracts`.** Deny-by-default; 0 hardcoded identities/permissions/policies.
+- **Alternatives Considered:** (a) Fold control into the substrate release — rejected: distinct scope and
+  risk; (b) Defer control fabrics — rejected: prerequisite for PI-5+.
+- **Consequences:** PI-4 control fabrics constructed additively (65/65 tests). S1/S3/S4 designed and enforced
+  by the control plane; core dirs untouched.
+- **Traceability References:** `UCOS-AUTH-BOARD-AD-0016`, `UCOS-ART9-REL-001`, `UCOS-PEA-007`,
+  `UCOS-SEC-ARCH-001`, AD-0014, `UCOS-CONST-001` (Art. IX/XII), AUTH-008/009; artifact `UCOS-AUTH-BOARD-AD-0017`.
+- **Approval Requirements:** Authority Board — scoped Article IX extension. **APPROVED (scoped).**
+- **Version Impact:** Decision Log v1.0.6 → **v1.0.7** (enrolled retroactively in Phase 21.1).
+
+---
+
+#### AD-0018 — Scoped Article IX Release: PI-5 Federation Fabric Construction
+- **Decision Date:** 2026-07-01
+- **Decision Owner:** UCOS Authority Board
+- **Decision Context:** PHASE 11.3 closed the PHASE 11.2 federation gaps at the design level
+  (`FED-GOV/SEC/PROV/AUD/ARCH-001`, `FED-RAT-001` 7/7 PASS, 0 residual High/High across T1–T12); PHASE 11.4
+  Board review confirmed spec completeness and zero prohibited-core-dir change.
+- **Decision Statement:** EXTEND to the **PI-5 federation-fabric scope only** — new `src/control/federation/*`
+  + additive async evolution of `src/control/types.ts`, `identity/identity-resolver.ts`, `control-plane.ts`,
+  `audit-log.ts` + tests. Additive-only (65/65 stay green); provenance by FED-PROV convention (no core-port
+  fields); deny-by-default, local sovereignty, clamped trust, signed assertions, replay protection, fail-closed.
+- **Alternatives Considered:** (a) First-class provenance on core ports — rejected: requires prohibited
+  `src/meta-core/ports.ts` change; (b) Broader release — rejected.
+- **Consequences:** PI-5 federation fabric authorized and implemented (90/90 tests; 16/16 adversarial blocked).
+  Concrete membership/authority/key/cert/revocation acts remain Approval-Required (AD-0009).
+- **Traceability References:** `FED-GOV/SEC/PROV/AUD/ARCH-001`, `FED-RAT-001`, `PI5-REV-001..004`,
+  `UCOS-AUTH-BOARD-AD-0016/0017`, `UCOS-ART9-REL-001`, `UCOS-SEC-ARCH-001`, AD-0014, AUTH-008/009; artifact
+  `UCOS-AUTH-BOARD-AD-0018`.
+- **Approval Requirements:** Authority Board — scoped Article IX extension. **APPROVED (scoped).**
+- **Version Impact:** Decision Log v1.0.7 → **v1.0.8** (enrolled retroactively in Phase 21.1).
+
+---
+
+#### AD-0019 — Scoped Article IX Release: PI-6 Evolution Fabric Construction
+- **Decision Date:** 2026-07-01
+- **Decision Owner:** UCOS Authority Board
+- **Decision Context:** PHASE 13.1 closed the PI-6 gaps at design level (`EVO-GOV/SEC/ARCH/GOVERNOR/FED/AUD-001`,
+  0 residual High/High E6/E10/E11/E12); PHASE 13.2 Board review (`PI6-AUTH-REV-001/002`) confirmed compliance.
+  The Evolution Fabric operationalizes ratified IP-14 (Migration-Only) / IP-15 (Backward-Compatibility),
+  categorically distinct from the AD-0014-deferred Ω∞ self-evolution.
+- **Decision Statement:** EXTEND to the **PI-6 evolution-fabric scope only** — new `src/control/evolution/*`
+  + tests. Additive (existing tests green); orchestrates only public seams; separation of duties; atomic
+  apply + deterministic rollback; governor invariants non-waivable (no self-modification, depth=0, single
+  in-flight, rate limits, halt); federation boundaries never silently mutated (re-ratification token).
+- **Alternatives Considered:** (a) Allow evolution to target its own/core namespaces — rejected: governor
+  structurally prohibits; (b) Treat as Ω∞ self-evolution — rejected: governed change-management only.
+- **Consequences:** PI-6 evolution fabric authorized; becomes the sole governed mutation path for later
+  fabrics. Apply-time acts remain Approval-Required (AD-0009).
+- **Traceability References:** `EVO-GOV/SEC/ARCH/GOVERNOR/FED/AUD-001`, `PI6-REV-001..004`,
+  `PI6-AUTH-REV-001/002`, `UCOS-AUTH-BOARD-AD-0016/0017/0018`, `UCOS-ART9-REL-001`, AUTH-003 (IP-14/IP-15),
+  AD-0014, AUTH-008/009; artifact `UCOS-AUTH-BOARD-AD-0019`.
+- **Approval Requirements:** Authority Board — scoped Article IX extension. **APPROVED (scoped).**
+- **Version Impact:** Decision Log v1.0.8 → **v1.0.9** (enrolled retroactively in Phase 21.1).
+
+---
+
+#### AD-0020 — Scoped Article IX Release: PI-7 Knowledge Fabric Construction
+- **Decision Date:** 2026-07-01
+- **Decision Owner:** UCOS Authority Board
+- **Decision Context:** PHASE 15 produced the ratifiable `KNOW-*` set (K1–K12 at 0 residual High/High);
+  PHASE 15.1 Board review (`PI7-AUTH-REV-001..004`) confirmed cross-spec consistency and additivity over
+  AD-0016..0019.
+- **Decision Statement:** EXTEND to the **PI-7 knowledge-fabric scope only** — new `src/control/knowledge/*`
+  + tests. Additive (185/185 stay green); public seams + federation primitives + Evolution Fabric only; all
+  governed knowledge mutation routes through the Evolution Fabric (`knowledge:` namespace); no custom
+  cryptography; deny-by-default; SoD; federation may never override local `active` without local ratification.
+- **Alternatives Considered:** (a) Independent knowledge mutation path — rejected: must route through
+  Evolution; (b) Custom crypto — rejected: reuse `federation/assertions.ts`.
+- **Consequences:** PI-7 knowledge fabric authorized and implemented (185-test baseline). Concrete knowledge
+  authority/certification/import acts remain Approval-Required (AD-0009).
+- **Traceability References:** `KNOW-GOV-001/002`, `KNOW-ARCH-001`, `KNOW-SEC-001`, `KNOW-FED-001`,
+  `KNOW-AUD-001`, `KNOW-THREAT-001`, `PI7-AUTH-001`, `PI7-AUTH-REV-001..004`,
+  `UCOS-AUTH-BOARD-AD-0016/0017/0018/0019`, AD-0014, AUTH-003 (IP-01..17), AUTH-008/009; artifact
+  `UCOS-AUTH-BOARD-AD-0020`.
+- **Approval Requirements:** Authority Board — scoped Article IX extension. **APPROVED (scoped).**
+- **Version Impact:** Decision Log v1.0.9 → **v1.0.10** (enrolled retroactively in Phase 21.1).
+
+---
+
+#### AD-0021 — Scoped Article IX Release: PI-8 Ontology Fabric Construction
+- **Decision Date:** 2026-07-01
+- **Decision Owner:** UCOS Authority Board
+- **Decision Context:** PHASE 17 produced the ratifiable `ONTO-*` set (O1–O12 at 0 residual High/High);
+  PHASE 17.1 Board review (`ONTO-AUTH-REV-001..004`) confirmed the five binding constraints (no custom
+  crypto, no prohibited-core modification, additive-only, Federation reuse, Evolution reuse) feasible against
+  the ratified `src/control/*` codebase.
+- **Decision Statement:** EXTEND to the **PI-8 ontology-fabric scope only** — new `src/control/ontology/*`
+  (entity/relationship/taxonomy/constraint models, ontology graph, semantic-integrity gate SI-1..SI-7,
+  certification/ratification/revocation authorities, federation guard, audit) + tests. Additive (185/185 stay
+  green); all governed ontology mutation routes through the Evolution Fabric (`ontology:` namespace); no custom
+  crypto; meaning ≠ authority (no ontology construct grants identity/trust/permission/execution). **Advisory:
+  reconcile the `proposed` lifecycle-state name with the ratified PI-7 `validated`.**
+- **Alternatives Considered:** (a) Ontology constructs conferring authority — rejected (meaning ≠ authority);
+  (b) Independent mutation path — rejected: Evolution-only.
+- **Consequences:** PI-8 ontology fabric authorized and implemented (23 modules; 213/213 tests: 185 baseline +
+  28 new; `tsc` clean); the `proposed`→`validated` advisory was applied. Deliverables `ONTO-IMP-001`,
+  `ONTO-VAL-001`, `ONTO-SEC-001`, `ONTO-AUD-001`.
+- **Traceability References:** `ONTO-ARCH-001`, `ONTO-GOV-001/002`, `ONTO-SEC-001`, `ONTO-FED-001`,
+  `ONTO-AUD-001`, `ONTO-THREAT-001`, `ONTO-READINESS-001`, `ONTO-AUTH-REV-001..004`,
+  `UCOS-AUTH-BOARD-AD-0016/0017/0018/0019/0020`, AD-0014, AUTH-003 (IP-01..17), AUTH-008/009; artifact
+  `UCOS-AUTH-BOARD-AD-0021`.
+- **Approval Requirements:** Authority Board — scoped Article IX extension. **APPROVED (scoped).**
+- **Numbering Reconciliation (Phase 21.1):** AD-0021 **IS assigned** to the PI-8 Ontology Fabric (this
+  record; on-disk `UCOS-AUTH-BOARD-AD-0021`, effective 2026-07-01, implemented). The "AD-0021 is not
+  assigned / reserved" statement in **AD-0022 §0** is a point-in-time authoring note that is **factually
+  superseded** by this enrollment; AD-0023 correctly treats AD-0021 as an effective authorization. See
+  `AUTH-REST-003`.
+- **Version Impact:** Decision Log v1.0.10 → **v1.0.11** (enrolled retroactively in Phase 21.1).
+
+---
+
+#### AD-0022 — Scoped Article IX Release: PI-11 Simulation Fabric Construction (Conditional)
+- **Decision Date:** 2026-07-01
+- **Decision Owner:** UCOS Authority Board
+- **Decision Context:** PHASE 20 produced the ratifiable `SIM-*` set (S1–S12 at 0 residual High/High); PHASE
+  20.1 (`SIM-AUTH-REV-001..004`, `SIM-AUTH-001`) established that Simulation's hard dependencies (substrate,
+  control, evolution, federation, Knowledge PI-7) are implemented, and that PI-10 is **not** a prerequisite
+  (the Simulation↔Intelligence coupling is advisory, verifier-gated, off-commit-path).
+- **Decision Statement:** EXTEND to the **PI-11 simulation-fabric scope only (CONDITIONAL)** — new
+  `src/control/simulation/*` + tests, under SIM-COND-1..7 (zero prohibited-core-dir change; additive/baseline
+  green; non-actuation/sandbox with Evolution-only commit; determinism; S1/S3/S4; no Ω∞; approval-required
+  acts). Intelligence (PI-10), Memory (PI-9), Ontology (PI-8) couplings **deferred** behind forward-dependency
+  gates FDG-INT/FDG-MEM/FDG-ONT.
+- **Alternatives Considered:** (a) Require PI-10 first — rejected: not a prerequisite; (b) Maintain lock —
+  rejected: dependencies satisfied; (c) Unconditional release — rejected: FDG gates required.
+- **Consequences:** PI-11 simulation fabric authorized (conditional); construction blueprint prepared
+  (PHASE 20.2, SIM-PLAN-001..003). Non-actuation guaranteed; projects/proposes, never acts.
+- **Traceability References:** `SIM-GOV-001/002`, `SIM-ARCH-001`, `SIM-SEC-001`, `SIM-FED-001`, `SIM-AUD-001`,
+  `SIM-THREAT-001`, `SIM-READINESS-001`, `SIM-AUTH-REV-001..004`, `SIM-AUTH-001`,
+  `UCOS-AUTH-BOARD-AD-0016/0017/0018/0019/0020`, AD-0014, AUTH-008/009; artifact `UCOS-AUTH-BOARD-AD-0022`.
+- **Approval Requirements:** Authority Board — scoped Article IX extension (conditional). **APPROVED (scoped, conditional).**
+- **Numbering Reconciliation (Phase 21.1):** AD-0022 §0's "on-disk records run AD-0016..AD-0020; AD-0021 not
+  assigned" continuity note reflected the authoring moment (PI-8 recorded ~9 minutes earlier) and is
+  **superseded**: AD-0021 IS assigned (PI-8 Ontology). AD-0022 remains validly the PI-11 Simulation record;
+  no renumbering occurs. See `AUTH-REST-003`.
+- **Version Impact:** Decision Log v1.0.11 → **v1.0.12** (enrolled retroactively in Phase 21.1).
+
+---
+
+#### AD-0023 — Scoped Article IX Release: PI-9 Memory Fabric Construction
+- **Decision Date:** 2026-07-01
+- **Decision Owner:** UCOS Authority Board
+- **Decision Context:** PHASE 18 produced the ratifiable `MEM-*` set (M1–M12 at 0 residual High/High); PHASE
+  18.1 (`MEM-AUTH-REV-001..004`, `MEM-AUTH-001`) confirmed Memory's hard dependencies (Federation AD-0018,
+  Evolution AD-0019, Knowledge AD-0020) are satisfied and Ontology (PI-8) is enrichment-class/deferrable;
+  PHASE 22 Board review (`MEM-AUTH-BOARD-001..003`) found 0 blocking findings (C-1..C-5, CL-1).
+- **Decision Statement:** EXTEND to the **PI-9 memory-fabric scope only** — new `src/control/memory/*` (six
+  tiers Working/Short-Term/Long-Term/Semantic/Episodic/Federated; capture/consolidation/promotion; recall;
+  retention & governed forgetting; classification-monotonic gate; federated-memory guard; audit) + tests.
+  Additive (185/185 stay green); all durable memory mutation routes through the Evolution Fabric (`memory:`
+  namespace); Semantic co-ratified via Knowledge; no custom crypto; memory ≠ authority. **Semantic↔Ontology
+  binding deferred/inert until PI-8 implemented (C-1 + CL-1)** — construction may proceed in parallel with PI-8.
+- **Alternatives Considered:** (a) Require PI-8 first — rejected: ontology coupling is deferrable/by-reference;
+  (b) Activate `ontologyRef` on PI-8 authorization — rejected: activation is a separate later integration.
+- **Consequences:** PI-9 memory fabric authorized; parallel construction with PI-8 permitted; disjoint
+  namespaces (`memory:*` vs `ontology:*` vs `knowledge:*`). Concrete memory acts remain Approval-Required (AD-0009).
+- **Traceability References:** `MEM-GOV-001/002`, `MEM-ARCH-001`, `MEM-SEC-001`, `MEM-FED-001`, `MEM-AUD-001`,
+  `MEM-THREAT-001`, `MEM-READINESS-001`, `MEM-AUTH-REV-001..004`, `MEM-AUTH-001`, `MEM-AUTH-BOARD-001..003`,
+  `UCOS-AUTH-BOARD-AD-0016..0022` (esp. AD-0021 PI-8 Ontology), AD-0014, AUTH-003 (IP-01..17), AUTH-008/009;
+  artifact `UCOS-AUTH-BOARD-AD-0023`.
+- **Approval Requirements:** Authority Board — scoped Article IX extension. **APPROVED (scoped).**
+- **Version Impact:** Decision Log v1.0.12 → **v1.0.13** (enrolled retroactively in Phase 21.1).
+
+---
+
 ## 7. Compliance Rules
 - Every decision record MUST carry all ten required fields; missing fields are a documentation gap.
 
@@ -350,3 +657,13 @@ alternatives, consequences, traceability, approval, and version impact for each.
 | 1.0.1 | 2026-06-29 | Chief Governance Auditor | Appended AD-0011 (Phase 0.5B placeholder-language correction). | AD-0011 |
 | 1.0.2 | 2026-06-29 | Authority Board | Appended AD-0012 (Platform Governance Capability Expansion): ratified CAP-15..19; AUTH-006 → v1.1.0; CTX-CAP-001 updated; UCOS-DOM-DISC-001 → v1.0.1; DF-001 RESOLVED. | AD-0012 |
 | 1.0.3 | 2026-06-29 | Trusted Operations Authority | Appended AD-0013 (TO-001): OBS-1 Policy domain principle anchor documentation correction IP-04 → IP-05 in `UCOS-DOM-TRACE-001`; OBS-1 CLOSED; no architecture/governance/ownership/capability impact; Phase 3.1 remains RATIFIED. | AD-0013 / TO-001 |
+| 1.0.4 | 2026-07-01 | Authority Board | Appended AD-0014 (BOARD-DECISION-001): Ω∞ Universal Existential Architecture program disposition — 0 invariants enrolled (INV-1..13 / `UCOS-ASR-NFR-001` v1.0.1 unchanged); AUTH-013 reclassified as non-canonical proposal identifier; INV-15/16 approved-with-amendments (enrollment deferred); INV-17/18 deferred pending revision; INV-14/19/20 designated for future merger into INV-13/INV-16; `UCOS-UEA-0001..0013` accepted as research/reference/future-input (none rejected); Article IX ACTIVE; PI-2 not authorized. | AD-0014 / BOARD-DECISION-001 |
+| 1.0.5 | 2026-07-01 | Authority Board | Appended AD-0015 (A9-REL-001): Article IX **Limited Evidence Authorization** — bounded, revocable, Approval-By-Exception carve-out for non-production ENV-DEV/INT provisioning + pipeline/contract/DR/audit/availability evidence, solely to generate Operational Certification evidence (closes G12-1/2/3 path). Article IX NOT fully released; NO PI-2 / Meta-Core / ENV-PROD / production / code; INV-1..13 & Constitution unchanged; concrete execution remains Approval-Required (AD-0009) with human sign-off. | AD-0015 / A9-REL-001 |
+| 1.0.6 | 2026-07-01 | Authority Board | **Enrolled (Phase 21.1)** AD-0016 — scoped Article IX release: PI-2/PI-3 foundational substrate construction (Meta-Core + Registry/Metadata/Configuration). | AD-0016 / `UCOS-AUTH-BOARD-AD-0016` |
+| 1.0.7 | 2026-07-01 | Authority Board | **Enrolled (Phase 21.1)** AD-0017 — scoped Article IX release: PI-4 control fabrics (Identity/Trust/Policy/Governance + Control Plane); additive; no prohibited-core-dir change. | AD-0017 / `UCOS-AUTH-BOARD-AD-0017` |
+| 1.0.8 | 2026-07-01 | Authority Board | **Enrolled (Phase 21.1)** AD-0018 — scoped Article IX release: PI-5 federation fabric (`src/control/federation/*` + additive async control evolution). | AD-0018 / `UCOS-AUTH-BOARD-AD-0018` |
+| 1.0.9 | 2026-07-01 | Authority Board | **Enrolled (Phase 21.1)** AD-0019 — scoped Article IX release: PI-6 evolution fabric (`src/control/evolution/*`); governed migration-only change management. | AD-0019 / `UCOS-AUTH-BOARD-AD-0019` |
+| 1.0.10 | 2026-07-01 | Authority Board | **Enrolled (Phase 21.1)** AD-0020 — scoped Article IX release: PI-7 knowledge fabric (`src/control/knowledge/*`); Evolution-routed mutation; no custom crypto. | AD-0020 / `UCOS-AUTH-BOARD-AD-0020` |
+| 1.0.11 | 2026-07-01 | Authority Board | **Enrolled (Phase 21.1)** AD-0021 — scoped Article IX release: PI-8 ontology fabric (`src/control/ontology/*`); SI-1..SI-7; Evolution-routed; meaning ≠ authority. Confirms AD-0021 is assigned to PI-8 (supersedes AD-0022 §0 note). | AD-0021 / `UCOS-AUTH-BOARD-AD-0021` |
+| 1.0.12 | 2026-07-01 | Authority Board | **Enrolled (Phase 21.1)** AD-0022 — scoped Article IX release (conditional): PI-11 simulation fabric (`src/control/simulation/*`); SIM-COND-1..7; FDG-INT/MEM/ONT deferred; PI-10 not a prerequisite. | AD-0022 / `UCOS-AUTH-BOARD-AD-0022` |
+| 1.0.13 | 2026-07-01 | Authority Board | **Enrolled (Phase 21.1)** AD-0023 — scoped Article IX release: PI-9 memory fabric (`src/control/memory/*`); six tiers; Evolution-routed; Semantic↔Ontology binding deferred/inert (C-1/CL-1); parallel with PI-8. Completes AUTH-012 ledger restoration (AUTH-REST-001..004). | AD-0023 / `UCOS-AUTH-BOARD-AD-0023` |

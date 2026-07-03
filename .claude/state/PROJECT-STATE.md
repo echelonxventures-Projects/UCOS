@@ -2102,3 +2102,1682 @@ a Git `origin` remote is provisioned.
 > **Net status after Phase 10.6:** Implementation conditions **C-1..C-5 = CLOSED**; **C-6 conditions
 > precedent CP-1/CP-2/CP-3 = CLOSED**; **C-6 lock-release act = PENDING (Authority Board)**; Article IX lock
 > **ACTIVE**; construction **BLOCKED** pending the release act.
+
+
+
+---
+
+## 0G. Phase 11D.1 — Ω∞ Universal Existential Architecture Proposal Package (CURRENT — supersedes prior sections for the Ω∞ design-proposal workstream only)
+
+> **Append-only.** This section records the Phase 11D.1 generation of the Ω∞ (Universal Existential
+> Architecture) **governed proposal package**. It adds **no** code, infrastructure, deployment asset, or
+> construction schema; it **ratifies nothing**, **enrolls no invariant**, **releases no lock**, and **mutates no**
+> frozen construct (`UCOS-PEA-001..007`, Governance Baseline 1.0.0, ratified architectures, `UCOS-ASR-NFR-001`).
+> It is the CURRENT status for the Ω∞ proposal workstream only; all prior program status is preserved.
+
+| Field | Value |
+|-------|-------|
+| Phase | **Phase 11D.1 — Ω∞ Governed Proposal Package Generation** (COMPLETE — generation) |
+| Mode | **DESIGN / PROPOSAL ONLY** — no code, no infra, no deployment, no construction schema, no technology selection |
+| Sponsoring instrument | `UCOS-AUTH-013-INIT-001` (AUTH-013 Initiative — proposal) |
+| Amendment proposal | `UCOS-AUTH-013-AMD-001` — **INV-14..INV-20 PROPOSED — PENDING AUTHORITY BOARD REVIEW** (not enrolled) |
+| Design artifacts | `UCOS-UEA-0001..0013` (13 artifacts) — all **CREATED — READY FOR RATIFICATION** |
+| Package report | `UCOS-UEA-PKG-001` (`PHASE-11D.1-OMEGA-PROPOSAL-PACKAGE-REPORT.md`) |
+| Total artifacts | **16** (registered append-only in `CTX-REG-001`, Ω∞ Existential Architecture section) |
+| Binding invariant set | **INV-1..INV-13** (`UCOS-ASR-NFR-001` v1.0.1 — UNCHANGED) |
+| Article IX lock | **REMAINS ACTIVE** — construction BLOCKED; `UCOS-CONSTRUCTION-BLOCKED` unchanged |
+| PI-2 authorization | **NOT AUTHORIZED** (roadmap `UCOS-UEA-0013` is PLANNING ONLY) |
+| Gap analysis verdict | `UCOS-UEA-0012` — Layers(15): Impl 0 / Partial 5 / Defined 4 / Ref 2 / Missing 4; Capabilities(19): Impl 1 (governance only) / Partial 6 / Defined 5 / Ref 2 / Missing 5; **no optimistic classification** |
+| Ratification readiness | **READY FOR AUTHORITY BOARD REVIEW** (proposal only; confers no authority) |
+| Conflicts / leakage | 0 code · 0 infra · 0 deployment · 0 construction schema · 0 frozen-construct mutation · 0 prior-row/section deletion · CAP-01..19 unchanged · INV-1..13 unchanged |
+| Next Step | Independent proposal review, then Authority Board deliberation of `UCOS-AUTH-013-AMD-001` (INV-14..20; Constitutional Majority) and disposition of `UCOS-UEA-0001..0013`. Any enrollment requires a **separate** AUTH-012 decision record; Article IX release and PI-2 remain independently gated. |
+
+> **Phase 11D.1 — Ω∞ Universal Existential Architecture Proposal Package (COMPLETE — generation).** On explicit
+> authorization to proceed with **Path A (governed proposal package)**, generated the complete Ω∞ design/proposal
+> set under the ratified governance model: the **AUTH-013 Initiative** (`UCOS-AUTH-013-INIT-001`) sponsoring the
+> workstream; the **AUTH-013 Amendment Proposal** (`UCOS-AUTH-013-AMD-001`) proposing seven existential
+> invariants **INV-14 (No Existential Scale Ceiling)**, **INV-15 (No Species Assumption)**, **INV-16 (No Habitat
+> Assumption)**, **INV-17 (No Reality Assumption)**, **INV-18 (No Computation Assumption)**, **INV-19 (No
+> Cosmological Assumption)**, **INV-20 (Unknown Future Compatibility)** — each framed as an *additive
+> specialization* of INV-13 and marked **PROPOSED — PENDING AUTHORITY BOARD REVIEW** (not Ratified/Approved/
+> Adopted/Enacted); and thirteen conceptual design artifacts: **`UCOS-UEA-0001`** Universal Existential Reference
+> Architecture (layers **L0–L14**: Mathematical, Ontological, Meta-Core, Fabric, Engine, Runtime, Platform,
+> Intelligence, Economic, Federation, Domain, Civilization, Existential, Cosmological, Unknown Future + a
+> core-mechanism invariance map for Registry/Metadata/Configuration/Identity/Policy/Governance/Composition/
+> Execution/Federation/Knowledge/Economics), **`UCOS-UEA-0002`** Universal Ontology (16 constructs O-01..O-16),
+> **`UCOS-UEA-0003..0006`** Species/Habitat/Computation/Reality-Agnostic architectures, **`UCOS-UEA-0007`**
+> Cosmological architecture (conceptual, no implementation assumptions), **`UCOS-UEA-0008..0010`** Universal
+> Federation/Intelligence/Economic architectures, **`UCOS-UEA-0011`** Universal Capability Taxonomy (UEC-01..19
+> in a distinct `UEC-*` namespace tracing *down to* CAP-01..19/PEA-001..007 — **CAP-01..19 unchanged**),
+> **`UCOS-UEA-0012`** Reality-Based Gap Analysis (honest; most existential scope **Missing/Referenced**), and
+> **`UCOS-UEA-0013`** Long-Term Program Roadmap (PI-2..PI-14, every item **PLANNING ONLY / NOT AUTHORIZED**,
+> planetary-first, existential increments amendment-gated). The package report `UCOS-UEA-PKG-001` renders the
+> artifact inventory, traceability matrix, generation sequence, registry update requirements (REG-UEA-01..04 +
+> STATE-UEA-01), governance review checklist (GRC-1..12 all satisfied), and ratification readiness
+> (**READY FOR AUTHORITY BOARD REVIEW**). Every artifact carries the mandatory disclaimer (**CREATED — READY FOR
+> RATIFICATION · NOT RATIFIED · NOT CONSTITUTIONAL LAW · NOT IMPLEMENTATION AUTHORIZED · DOES NOT MODIFY INV-1
+> THROUGH INV-13 · DOES NOT OVERRIDE AUTH-012 · DOES NOT RELEASE ARTICLE IX · REQUIRES AUTHORITY BOARD REVIEW**).
+> All 16 artifacts registered append-only in `CTX-REG-001`. **Implementation leakage NONE**; **0 code / infra /
+> deployment / construction schema**; **0 frozen-construct mutation**; **INV-1..INV-13, AUTH-012, and the Article
+> IX generation lock untouched**; PI-2 **NOT** authorized; `UCOS-CONSTRUCTION-BLOCKED` unchanged. **Work stops
+> here; the next governed step is independent proposal review and Authority Board deliberation.** Outstanding
+> governed Trusted Operations (N-1 CAP-01..14 attributes under Prompt 02; canonical "Party" glossary term under
+> Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0H. Phase 11D.2 — Ω∞ Independent Constitutional Review (CURRENT — supersedes §0G for the Ω∞ review workstream only)
+
+> **Append-only.** Records the Phase 11D.2 independent constitutional review of the Phase 11D.1 Ω∞ proposal
+> package. Adds no code/infra/deployment/schema; ratifies nothing; enrolls no invariant; releases no lock;
+> mutates no frozen construct. Binding invariant set remains **INV-1..INV-13**; Article IX **ACTIVE**.
+
+| Field | Value |
+|-------|-------|
+| Phase | **Phase 11D.2 — Ω∞ Independent Constitutional Review** (COMPLETE — review) |
+| Mode | **AUDIT / VALIDATE / CHALLENGE ONLY** — no rewrite, no expansion, no ratification, no amendment, no lock release |
+| Artifact | `UCOS-UEA-REV-001` (`PHASE-11D.2-OMEGA-CONSTITUTIONAL-REVIEW.md`) |
+| Verdict | **READY WITH CONDITIONS** (ready for Board deliberation; NOT ready for enrollment) |
+| Amendment recommendation | **SPLIT** — do not vote INV-14..20 en bloc |
+| Per-invariant | INV-15/16 APPROVE WITH AMENDMENTS; INV-17/18 DEFER (require revision — INV-5/INV-6 conflict); INV-14/19/20 DEFER (redundant with INV-13 → fold as clarifications) |
+| Article IX exposure | **PASS 16/16** |
+| Model integrity | CAP/DOM/PEA verified **unchanged**; federation flagged for future generalization (Foundational impact) |
+| Governance complexity | HIGH → CRITICAL (federation/certification axes) |
+| Top residual risks | CR-1 certification-oracle (High); CE-1 invariance-thesis unproven (Med-High) |
+| Open issues | OI-1 certification test is hypothesis not method; OI-2 L0 Mathematical only Referenced; OI-3 L7/L8 Missing/Referenced |
+| Items approved for immediate enrollment | **0** |
+| Next Step | Optional Phase 11D.3 Authority Board deliberation using `UCOS-UEA-REV-001` decision matrix; resolve RC-1..2 / CL-1..4 / AM-1..2 / RV-1..2 / OI-1..3 before any enrollment. Article IX release and PI-2 remain independently gated. |
+
+> **Phase 11D.2 — Ω∞ Independent Constitutional Review (COMPLETE).** Acting as an independent constitutional
+> review authority (not author/ratifier/implementer), audited the entire Phase 11D.1 package against AUTH-012,
+> `UCOS-ASR-NFR-001` v1.0.1 (INV-1..13), ADR-001/002/004/005/006/007, Article IX, and the CAP/DOM/PEA models.
+> Produced the twelve required outputs (Constitutional Compatibility Review + Matrix; AUTH-012 Compliance;
+> INV-13 Relationship Analysis; Architecture Impact; Governance Complexity; Article IX Exposure; Taxonomy
+> Impact; Risk Register; Authority Board Decision Matrix; Ratification Readiness; Executive Summary). Key
+> evidence-based findings: (1) **procedurally sound & Article IX-clean (PASS 16/16)**; (2) **substantive
+> redundancy** — INV-14/INV-19/INV-20 are largely specializations/restatements of the ratified INV-13 and are
+> recommended to be folded in as clarifications rather than enrolled as separate invariants; (3) **genuine
+> additive content** in INV-15 (species/actor abstraction) and INV-16 (autonomous/disconnected operation),
+> recommended APPROVE WITH AMENDMENTS; (4) **latent conflict surfaces** — INV-17 reinterprets INV-5 single-SoR
+> scope and INV-18 admits non-deterministic computation without a defined determinism-quarantine contract vs
+> INV-6, both recommended DEFER pending revision; (5) **AUTH-012 compliance finding F-A12-1** — minting the
+> canon-tier label "AUTH-013" for a *proposal* introduces governance ambiguity; recommended re-designation as
+> an AUTH-012 decision-log initiative; (6) **federation** is the only ratified-model area requiring future
+> generalization (Foundational impact); CAP-01..19 and DOM/PEA verified unchanged. Overall **READY WITH
+> CONDITIONS**, **SPLIT recommended**, **0 items approved for immediate enrollment**. Registered append-only in
+> `CTX-REG-001`. **No ratification / no amendment / no implementation authorization; INV-1..13, AUTH-012, and
+> Article IX untouched; PI-2 NOT authorized; `UCOS-CONSTRUCTION-BLOCKED` unchanged.** Work stops here; the next
+> governed step is optional Authority Board deliberation.
+
+
+
+---
+
+## 0I. Phase 11D.3 — Ω∞ Authority Board Deliberation & Disposition (CURRENT — supersedes §0G/§0H for the Ω∞ program disposition)
+
+> **Append-only.** Records the Authority Board's terminal disposition of the Ω∞ program (Phases 11D.1 proposal +
+> 11D.2 review). Recorded canonically as AUTH-012 **AD-0014** (Decision Log → v1.0.4). Enrolls no invariant;
+> releases no lock; authorizes no construction/PI-2; modifies no ratified architecture. INV set remains
+> **INV-1..INV-13**; Article IX **ACTIVE**.
+
+| Field | Value |
+|-------|-------|
+| Phase | **Phase 11D.3 — Authority Board Deliberation (Ω∞ Program Disposition)** (COMPLETE) |
+| Decision | **BOARD-DECISION-001** = AUTH-012 **AD-0014** (Constitutional Majority; foundation-first disposition) |
+| Decision artifact | `UCOS-AUTH-BOARD-OMEGA-001` (`PHASE-11D.3-AUTHORITY-BOARD-OMEGA-DECISION.md`) |
+| Invariants enrolled | **0** — `UCOS-ASR-NFR-001` remains **v1.0.1 (INV-1..13)**, unchanged |
+| AUTH-013 | **RECLASSIFIED** — non-canonical proposal identifier anchored to AD-0014; `AUTH-001..012` remain the complete Authority Layer |
+| INV-15 / INV-16 | **APPROVE WITH AMENDMENTS — enrollment DEFERRED** (clarifications + federation-maturity) |
+| INV-17 / INV-18 | **DEFER** — require revision (INV-5 single-SoR scope; INV-6 determinism / quarantine contract) |
+| INV-14 / INV-19 / INV-20 | **MERGE INTO INV-13 / INV-16** (future interpretive clarifications; deferred) |
+| `UCOS-UEA-0001..0013` | Accepted as REFERENCE / RESEARCH / FUTURE PROGRAM INPUT / EVIDENCE; 0005/0006/0007/0009/0010 DEFERRED; **none rejected or archived** |
+| Program priority (ratified) | 1) Phase 12 Operational Validation · 2) Article IX Release Review · 3) PI-2 Meta-Core · 4) Federation Maturity · 5) Ω∞ Evolution |
+| Article IX | **REMAINS ACTIVE** — construction BLOCKED; `UCOS-CONSTRUCTION-BLOCKED` unchanged; PI-2 NOT authorized |
+| Model integrity | INV-1..13, AUTH-012 substance, CAP-01..19, DOM, PEA-001..007 all preserved |
+| Future actions | FGA-1..8 (Phase 12; Article IX review; federation-generalization study; certification-oracle study; resubmit revised INV-15/16; draft INV-13 clarifications; formalize L0; honor N-1 / Party TOs) |
+| Version impact | AUTH-012 Decision Log v1.0.3 → **v1.0.4** (AD-0014); AUTHORITY-INDEX AUTH-012 cell → 1.0.4; CTX-REG-001 append-only |
+| Next Step | Execute FGA-1 (Phase 12 operational validation) and, on its own track, the Article IX Release Review. Ω∞ remains Conceptual/Research/Planning/Governance-Reference until maturity gates are met. |
+
+> **Phase 11D.3 — Authority Board Deliberation & Ω∞ Disposition (COMPLETE).** The UCOS Authority Board, acting
+> as terminal authority (AUTH-009) at **Constitutional Majority**, deliberated the Ω∞ proposal package informed
+> by the independent review (`UCOS-UEA-REV-001`, READY WITH CONDITIONS) and issued **BOARD-DECISION-001**,
+> recorded canonically as AUTH-012 **AD-0014** (Decision Log v1.0.3 → **v1.0.4**). The Board adopted a
+> conservative, **foundation-first** disposition: (1) **enrolled no invariant** — INV-1..INV-13 and
+> `UCOS-ASR-NFR-001` **v1.0.1** are unchanged; (2) **reclassified AUTH-013** as a non-canonical research-
+> initiative identifier (resolving review finding F-A12-1); (3) **INV-15/INV-16 approved with amendments but
+> enrollment deferred** pending clarifications (identity floor; partition window/fallback) and federation-
+> maturity evidence; (4) **INV-17/INV-18 deferred** pending revision of their INV-5 (single-SoR scope) and INV-6
+> (determinism / undefined quarantine contract) conflict surfaces; (5) **INV-14/INV-19/INV-20 designated for
+> future merger** into INV-13 (INV-14/20) and INV-16/federation (INV-19) as interpretive clarifications rather
+> than standalone invariants; (6) **accepted `UCOS-UEA-0001..0013` as governed research/reference/future program
+> input** (0001/0011 reference; 0002/0003/0004 research; 0008/0013 future input; 0012 evidence of record;
+> 0005/0006/0007/0009/0010 deferred) — **nothing rejected or archived** (INV-10); and (7) **ratified a
+> foundation-first program priority** (Phase 12 Operational Validation → Article IX Release Review → PI-2
+> Meta-Core → Federation Maturity → Ω∞ Evolution), keeping Ω∞ Conceptual/Research/Planning/Governance-Reference
+> until maturity gates are met. **Article IX findings: NO release, NO construction, NO PI-2, NO runtime, NO
+> Meta-Core authorization** — the generation lock REMAINS ACTIVE and `UCOS-CONSTRUCTION-BLOCKED` is unchanged.
+> CAP-01..19, DOM, PEA-001..007 verified unchanged. Future governance actions FGA-1..8 and the deferred-items
+> register are recorded in `UCOS-AUTH-BOARD-OMEGA-001`. Registered append-only in `CTX-REG-001`; AUTHORITY-INDEX
+> AUTH-012 version cell updated to 1.0.4. **No code / infrastructure / deployment generated; no ratified
+> architecture modified; no implementation authorization granted.** Work stops here; the next governed steps are
+> FGA-1 (Phase 12 validation) and the independent Article IX Release Review. Outstanding standing Trusted
+> Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be
+> honored at their next touch.
+
+
+
+---
+
+## 0J. Phase 12.0 — PI-1 Foundation Operational Validation (FGA-1) (CURRENT — supersedes §0I for foundation-validation status)
+
+> **Append-only.** Records Phase 12.0 operational validation (Board Priority #1, AUTH-012 AD-0014). Evidence-only;
+> adds no code/implementation/deployment; authorizes no PI-2; releases no Article IX; modifies no ratified
+> artifact. INV set remains INV-1..13; Article IX ACTIVE.
+
+| Field | Value |
+|-------|-------|
+| Phase | **Phase 12.0 — Operational Validation (FGA-1)** (COMPLETE) |
+| Artifact | `UCOS-P12-CERT-001` (`PHASE-12.0-FOUNDATION-VALIDATION-CERTIFICATION.md`) |
+| Method | Direct repository inspection (`infra/**`, `services/platform/**`) + ratified-artifact review + PI-1 certification lineage |
+| Inventory (P12-INV-001) | 12/14 categories PRESENT; 2 INCOMPLETE (environment provisioning, delivery execution — operational); **0 MISSING / 0 CONFLICTING** |
+| Traceability (P12-INV-002) | 0 broken chains; 0 orphan foundations; every foundation → PEA domain + ADR + INV/ASR anchor |
+| Architecture (P12-ARC-001) | 6 COMPLETE (definition) + Security design-complete/operational-partial + Environment/Delivery PARTIALLY DEFINED; **0 BLOCKED**; 0 drift/ADR-violation/contract-mutation |
+| Operational (P12-OPS-001) | 4 READY (governance/lifecycle/dependency/audit-definition) / 4 CONDITIONALLY READY (operational/failure/recovery/certification) / **0 NOT READY** |
+| Gaps (P12-GAP-001) | **0 CRITICAL** / 3 HIGH (G12-1/2/3 — one operational cluster: provision ENV-DEV/INT + CI runner → apply-time evidence) / 1 MEDIUM (deferred tech ADRs) / 2 LOW |
+| Readiness score | ≈**82%** — Definition-level 100%; Operational ≈35% (definitions present, live evidence absent) |
+| Article IX (P12-A9-001) | **SUBSTANTIAL EVIDENCE** — sufficient to *initiate* the Article IX Release Review; insufficient to *conclude in release* until operational evidence (G12-1/2/3) closes. **No release decision.** |
+| Determination | **PI-1 FOUNDATION VALIDATED (Definition Level) · Operational Certification PENDING CP-2/CP-3** |
+| Article IX / PI-2 | **Article IX REMAINS ACTIVE**; **PI-2 UNAUTHORIZED**; `UCOS-CONSTRUCTION-BLOCKED` unchanged |
+| Recommended actions | RA-1 provision ENV-DEV/INT + CI runner; RA-2 execute pipeline, capture HA/mTLS/backup/DR + measured RPO/RTO/p99; RA-3 run API-018/API-027 contract tests; RA-4 issue Operational Certification then convene Article IX Release Review; RA-5 record deferred ADR sub-decisions when needed |
+| Next Step | Execute RA-1..RA-3 (CP-2/CP-3 operational evidence) → Operational Certification; then FGA-2 Article IX Release Review (Board Priority #2). Ω∞ remains research/reference (AD-0014). |
+
+> **Phase 12.0 — PI-1 Foundation Operational Validation (COMPLETE).** Executed Board Priority #1 (AUTH-012
+> AD-0014, FGA-1) as an **evidence-only** validation of the PI-1 Foundation Baseline (`pi1-foundation-v1.0.1`;
+> `WP-PLT-01/02/03/06/11`; `UCOS-ASR-NFR-001` v1.0.1, INV-1..13). By direct inspection of `infra/**`
+> (runtime/networking/persistence/environments/delivery) and `services/platform/**` (registry, config-metadata),
+> confirmed all five foundations exist on disk as governed, ADR-compliant, S1/S3/S4-enforcing definitions
+> realizing INV-13, consistent with the prior definition-level certification `UCOS-IMP-CERT-PI1-002`. Produced
+> the seven required outputs — Foundation Inventory Matrix (`P12-INV-001`; 12/14 PRESENT, 0 missing/conflicting),
+> Traceability Matrix (`P12-INV-002`; 0 broken chains/orphans), Architectural Completeness Report (`P12-ARC-001`;
+> 6 COMPLETE + Security design-complete + Environment/Delivery PARTIALLY DEFINED; 0 BLOCKED), Operational
+> Readiness Report (`P12-OPS-001`; 4 READY / 4 CONDITIONALLY READY / 0 NOT READY), Gap Register (`P12-GAP-001`;
+> 0 CRITICAL / 3 HIGH / 1 MEDIUM / 2 LOW), Article IX Readiness Assessment (`P12-A9-001`; **SUBSTANTIAL
+> EVIDENCE**), and the consolidated Certification Package (`P12-CERT-001`; readiness ≈82%). **Determination: PI-1
+> FOUNDATION VALIDATED at definition level; Operational Certification PENDING CP-2/CP-3** — the single material
+> gap is apply-time operational evidence (no provisioned ENV-DEV/INT, no CI execution, no measured
+> RPO/RTO/p99/availability, no live HA/DR/mTLS, no API-018/API-027 contract-test runs; G12-1/2/3, HIGH). Article
+> IX finding **SUBSTANTIAL EVIDENCE**: sufficient to *initiate* the Article IX Release Review (Priority #2) but
+> **not** to release — release is gated on closing G12-1/2/3. **No code/implementation/construction/deployment/
+> PI-2/runtime authorized; Article IX REMAINS ACTIVE; `UCOS-CONSTRUCTION-BLOCKED` unchanged; INV-1..13, AUTH-012,
+> CAP-01..19, DOM, PEA-001..007 all preserved.** Registered append-only in `CTX-REG-001`. Work stops here; next
+> governed steps are RA-1..RA-3 (operational evidence → Operational Certification) and then FGA-2 (Article IX
+> Release Review). Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary
+> term, Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0K. RA-1 — Environment Provisioning Evidence (Phase 12 Operational Certification Track) (CURRENT — supersedes §0J for environment-provisioning-evidence status)
+
+> **Append-only.** Records RA-1 (Phase 12 operational-certification track; G12-1 closure program per
+> `UCOS-P12-CERT-001`; Board Priority #1, AUTH-012 AD-0014). Evidence/planning-only; no apply/deploy/runtime
+> activation; no PI-2 authorization; no Article IX release; no ratified-artifact modification. INV set remains
+> INV-1..13; Article IX ACTIVE.
+
+| Field | Value |
+|-------|-------|
+| Program | **RA-1 — Environment Provisioning Evidence** (COMPLETE) |
+| Artifact | `UCOS-RA1-ENV-001` (`RA-1-ENVIRONMENT-PROVISIONING-EVIDENCE.md`) |
+| Method | Direct inspection of `infra/environments/{dev,int}/main.tf`, `infra/delivery/pipeline.yaml`, `infra/{runtime,networking,persistence}`, `services/platform/**` |
+| Environment inventory (RA1-ENV-001) | ENV-DEV/INT defined; ENV-LOCAL not present (no asset); ENV-STAGE deferred; ENV-PROD governance-blocked in PI-1 (P5; pipeline `forbiddenEnvironments:[ENV-PROD]`) |
+| Provisioning architecture (RA1-ENV-002) | Terraform/OpenTofu (ADR-007), cloud-neutral (PEP-010); secrets by-reference (WI-SEED.5, S3); config hierarchical (WP-PLT-11); deny-by-default + mTLS STRICT (ADR-006); backend/provider/IdP bound at apply-time — **DEFINED, not applied** |
+| Readiness matrix (RA1-ENV-003) | ENV-DEV/INT **READY TO PROVISION**; ENV-LOCAL/STAGE PARTIALLY DEFINED; ENV-PROD BLOCKED (governance); **0 PROVISIONED** |
+| Dependency validation (RA1-ENV-004) | 6 READY (networking/registry/metadata/config/persistence + def) / 4 CONDITIONAL (secrets/identity/audit/backup/recovery) / **1 NOT READY (Observability, PE-12 undecided)** |
+| Evidence closure plan (RA1-ENV-005) | Required: live apply logs, running baseline, enforced mTLS/authz, DEV→INT GitOps promotion, backup/restore + DR drill (measured RPO/RTO), immutable audit trail — via governed provisioning act + WI-SEED.4 (not performed here) |
+| Certification impact (RA1-ENV-006) | Operational Certification **HIGH**; Article IX review **MEDIUM**; PI-2 **MEDIUM**; Federation **LOW** |
+| **G12-1 status** | **OPEN** — definitions READY TO PROVISION; provisioning/apply evidence NOT YET CAPTURED (requires a governed deployment act not authorized here) |
+| Article IX / PI-2 | **Article IX REMAINS ACTIVE**; **PI-2 UNAUTHORIZED**; `UCOS-CONSTRUCTION-BLOCKED` unchanged |
+| Next Step | Governed provisioning prerequisites (provision cloud-neutral K8s; bind CI runner WP-PLT-14/PI-3; bind secrets/KMS WI-SEED.5; decide observability PE-12) → execute WI-SEED.4 → capture G12-1/G12-2/G12-3 evidence → Operational Certification → FGA-2 Article IX Release Review |
+
+> **RA-1 — Environment Provisioning Evidence (COMPLETE).** Executed the RA-1 recommendation from
+> `UCOS-P12-CERT-001` as an **evidence/planning-only** assessment of whether UCOS environments are ready to be
+> provisioned and audited. By direct inspection, confirmed a complete, governed, technology-neutral provisioning
+> architecture: **ENV-DEV** (`infra/environments/dev/main.tf`) and **ENV-INT** (`int/main.tf`) are
+> **READY TO PROVISION** (runtime baseline module, non-waivable S1/S3/S4 from day one, `external_exposure=false`
+> internal-only, secrets strictly by-reference), promoted DEV→INT by a neutral, unbound delivery pipeline
+> (`infra/delivery/pipeline.yaml`; CI vendor deferred to WP-PLT-14/PI-3; ENV-PROD forbidden in PI-1, P5).
+> Produced the six required outputs — Environment Inventory (`RA1-ENV-001`), Provisioning Architecture Report
+> (`RA1-ENV-002`), Environment Readiness Matrix (`RA1-ENV-003`), Dependency Validation Report (`RA1-ENV-004`;
+> 6 READY / 4 CONDITIONAL / 1 NOT READY — Observability/PE-12), Evidence Closure Plan (`RA1-ENV-005`), and
+> Certification Impact Assessment (`RA1-ENV-006`; Operational HIGH / Article IX MEDIUM / PI-2 MEDIUM / Federation
+> LOW). **Determination: ENV-DEV/INT READY TO PROVISION; 0 PROVISIONED; G12-1 remains OPEN** — provisioning/apply
+> evidence requires a governed deployment act (provision cluster + bind CI/secrets/IdP + execute pipeline + DR
+> drill + audit capture) that is a deployment/runtime activity outside RA-1's evidence-only scope and outside the
+> active Article IX lock. **No apply/deploy/runtime activation performed; no PI-2 or Article IX release; no
+> governance modified; INV-1..13, AUTH-012, CAP-01..19, DOM, PEA-001..007 preserved.** Registered append-only in
+> `CTX-REG-001`. Work stops here; the next governed steps are the provisioning prerequisites and WI-SEED.4
+> execution to close G12-1/2/3 toward Operational Certification, then FGA-2. Standing Trusted Operations (N-1
+> CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their
+> next touch.
+
+
+
+---
+
+## 0L. FGA-2 — Article IX Release Review · Limited Evidence Authorization (CURRENT — supersedes §0K for Article IX / operational-certification-path status)
+
+> **Append-only.** Records the FGA-2 Article IX Release Review (Board Priority #2, AUTH-012 AD-0014) and its
+> Board Resolution **A9-REL-001**, recorded canonically as AUTH-012 **AD-0015** (Decision Log → v1.0.5).
+> Disposition: **LIMITED EVIDENCE AUTHORIZATION** (bounded, non-production, revocable). Article IX is **NOT
+> fully released**; no PI-2 / Meta-Core / production / code; INV-1..13 and the Constitution are unchanged.
+> Incorporates the Phase 12.1 Article IX interpretation substance (the discrete `A9-GOV-001..005` were not
+> separately generated; folded into FGA-2 with a transparency note).
+
+| Field | Value |
+|-------|-------|
+| Phase / Program | **FGA-2 — Article IX Release Review** (COMPLETE) |
+| Decision | **A9-REL-001** = AUTH-012 **AD-0015** (Approval-By-Exception; limited, revocable) |
+| Decision artifact | `UCOS-A9-REL-001` (`FGA-2-ARTICLE-IX-RELEASE-REVIEW.md`) |
+| Disposition | **LIMITED EVIDENCE AUTHORIZATION** — non-production ENV-DEV/INT evidence generation only |
+| Article IX objectives | 5 ACHIEVED / 1 PARTIAL (certification framework — the authorization target) |
+| Key finding | Circular deadlock: Operational Certification needs apply-time evidence; evidence needs a non-prod runtime substrate that `UCOS-CONSTRUCTION-BLOCKED` §3 prohibits. C-1..C-5 CLOSED (PHASE-10.6); only C-6 remained. |
+| Authorized (limited; human-executed) | ENV-DEV/INT non-prod provisioning; CI runner binding; pipeline execution; API-018/API-027 contract tests; DR drill; audit/availability/metrics evidence |
+| Prohibited (unchanged) | PI-2; Meta-Core implementation; ENV-STAGE/ENV-PROD; production deployment; business/domain/service/code generation; constitutional/invariant modification |
+| Execution gating | Authorizes an **activity class**, not autonomous execution; concrete cloud/CI/secrets/KMS bindings + external-account creation remain **Approval-Required Operations** (AD-0009) requiring explicit human approval and real spend. **Agent performs no provisioning/deployment.** |
+| Conditions | ENV-DEV/INT only; internal-only; S1/S3/S4 enforced identically; secrets by-reference; register all artifacts in CTX-REG-001; immutable audit trail; time-boxed/auto-expiring on Operational Certification or Board revocation |
+| Open issue | Observability `PE-12` undecided (`UCOS-RA1-ENV-004` NOT READY) — governed ADR sub-decision needed |
+| Article IX / PI-2 | **Article IX NOT fully released** (bounded carve-out only); `UCOS-CONSTRUCTION-BLOCKED` remains in force except the recorded evidence carve-out; **PI-2 UNAUTHORIZED** |
+| Version impact | AUTH-012 v1.0.4 → **v1.0.5** (AD-0015); AUTHORITY-INDEX + CTX-REG-001 AUTH-012 cell → 1.0.5 |
+| Next Step | Under this authorization **and human Approval-Required sign-off**: execute RA-2 (pipeline evidence) + RA-3 (contract/metrics/DR/audit evidence) → close G12-1/2/3 → issue Operational Certification → convene **FGA-2b** (full Article IX release review for PI-2). Decide `PE-12` observability ADR. |
+
+> **FGA-2 — Article IX Release Review (COMPLETE).** The Authority Board reviewed whether limited,
+> evidence-generating construction may proceed under the active lock. It found **5 of 6 Article IX objectives
+> ACHIEVED** (Foundation/Governance/Constitutional/Architectural/Traceability), with the Certification Framework
+> **PARTIAL** because Operational Certification is blocked by a **circular dependency** — it requires apply-time
+> evidence (G12-1/2/3), which requires a running non-production substrate whose creation `UCOS-CONSTRUCTION-BLOCKED`
+> §3 prohibits (deployment/provisioning/vendor-binding). With implementation conditions **C-1..C-5 already
+> CLOSED** (PHASE-10.6), the Board issued **A9-REL-001 (AUTH-012 AD-0015): LIMITED EVIDENCE AUTHORIZATION** — a
+> bounded, revocable, audited **Approval-By-Exception** carve-out (Constitution Art. XII) permitting **non-
+> production** ENV-DEV/INT provisioning, CI-runner binding, pipeline execution, `API-018`/`API-027` contract
+> tests, DR drill, and audit/availability/metrics evidence collection, **solely** to generate operational-
+> certification evidence. Article IX is **NOT fully released**: **NO** PI-2, Meta-Core, ENV-STAGE/PROD,
+> production deployment, business/domain/service/code generation, or constitutional/invariant modification is
+> authorized — all remain locked pending a separate future full-release review (FGA-2b) after Operational
+> Certification. The authorization sanctions an **activity class only**; each concrete cloud/CI/secrets/KMS
+> binding or external-account creation remains an **Approval-Required Operation** (AD-0009) requiring **explicit
+> human approval and real spend at execution time**, and **the agent will not execute provisioning or
+> deployment**. Conditions: ENV-DEV/INT only, internal-only, non-waivable S1/S3/S4 enforced identically, secrets
+> by-reference, full CTX-REG-001 registration, immutable audit trail, time-boxed/auto-expiring. Open issue:
+> observability `PE-12` undecided. Recorded as **AD-0015** (AUTH-012 → v1.0.5); AUTHORITY-INDEX and CTX-REG-001
+> updated; FGA-2 artifact registered append-only. **INV-1..13, `UCOS-ASR-NFR-001` v1.0.1, the Constitution, and
+> all ratified architectures preserved.** Note: the discrete Phase 12.1 artifacts (`A9-GOV-001..005`) were not
+> separately generated; their required interpretation substance is incorporated into `UCOS-A9-REL-001` with a
+> transparency note. Work stops here; next governed steps are human-approved RA-2/RA-3 evidence execution under
+> this authorization, then Operational Certification and FGA-2b. Standing Trusted Operations (N-1 CAP-01..14
+> attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0M. RA-2 — Operational Evidence Execution Package (CURRENT — supersedes §0L for operational-evidence-execution status)
+
+> **Append-only.** Records RA-2 (authorized by AUTH-012 AD-0015, Limited Evidence Authorization). **Preparation
+> only** — the agent generated runbooks/procedures/evidence model; it performed **no** provisioning, apply, CI
+> execution, vendor binding, or account creation. Article IX (full) intact; PI-2 UNAUTHORIZED; INV-1..13 &
+> Constitution unchanged.
+
+| Field | Value |
+|-------|-------|
+| Program | **RA-2 — Operational Evidence Execution (Environment & Pipeline)** (COMPLETE — package ready) |
+| Artifact | `UCOS-RA2-EXEC-001` (`RA-2-OPERATIONAL-EVIDENCE-EXECUTION-PACKAGE.md`) |
+| Authority | AUTH-012 **AD-0015** (`UCOS-A9-REL-001`) |
+| Packages (5/5) | RA2-ENV-001 (ENV-DEV/INT runbooks) · RA2-CI-001 (pipeline) · RA2-API-001 (API-018/027 contract tests) · RA2-DR-001 (backup/restore/RPO/RTO) · RA2-AUD-001 (audit + certification-evidence matrix + chain of custody) |
+| Readiness | **G12-1 READY FOR EXECUTION**; **G12-2 READY FOR EXECUTION**; feeds G12-3 (DR/metrics) |
+| Execution model | Every live step marked `[HAR]` = Approval-Required Operation (AD-0009); requires explicit human approval + real spend; **agent executes none of them** |
+| Infrastructure created | **NONE** — 0 apply / 0 K8s deploy / 0 CI run / 0 vendor binding / 0 account creation |
+| Scope | Non-production, internal-only (ENV-DEV/INT); ENV-PROD forbidden (P5); non-waivable S1/S3/S4 embedded |
+| Carried blocker | Observability `PE-12` undecided (`UCOS-RA1-ENV-004` NOT READY) — governed ADR needed before G12-3/RA-3 completes |
+| Article IX / PI-2 | Article IX **NOT fully released** (only AD-0015 bounded carve-out); **PI-2 UNAUTHORIZED**; `UCOS-CONSTRUCTION-BLOCKED` in force except the recorded evidence carve-out |
+| Next Step | **Human operator** executes the `[HAR]` runbook steps under AD-0015 + AD-0009 approvals (bind provider/CI/secrets, `terraform apply` ENV-DEV/INT, deploy seeds, run pipeline + contract/DR tests, capture evidence) → G12-1/G12-2 closed → RA-3 (with `PE-12` decided) → Operational Certification → FGA-2b (full Article IX release review for PI-2) |
+
+> **RA-2 — Operational Evidence Execution Package (COMPLETE — preparation).** Under the AD-0015 Limited Evidence
+> Authorization, produced the complete, human-executable operational-evidence package to close G12-1 (environment
+> provisioning) and G12-2 (pipeline execution), grounded in the actual on-disk assets
+> (`infra/environments/{dev,int}/main.tf`, `infra/delivery/pipeline.yaml`, `services/platform/{registry,
+> config-metadata}`, `API-018`/`API-027`, `infra/persistence/backup-restore`). Five packages delivered —
+> **RA2-ENV-001** (ENV-DEV/INT provisioning runbooks with prerequisites, approval points, rollback, audit &
+> evidence capture, success criteria), **RA2-CI-001** (build→test→scan→sign→promote pipeline procedure with
+> signature validation, failure handling, promotion rules DEV→INT, ENV-PROD forbidden), **RA2-API-001**
+> (provider/consumer/compatibility contract validation for API-018 Config/Metadata and API-027 Registry with
+> pass criteria and 100% op coverage), **RA2-DR-001** (backup/restore/failover + RPO/RTO validation against
+> `UCOS-ASR-NFR-001` §3 floors — no numbers fabricated), and **RA2-AUD-001** (immutable audit-trail
+> requirements, evidence registry, certification-evidence matrix, chain of custody, append-only retention). The
+> RA2-EXECUTION-REPORT confirms the package is READY FOR EXECUTION. **Critically, every live step is marked
+> `[HAR]` (human Approval-Required, AD-0009) and the agent executed none of them: 0 infrastructure created, 0
+> `terraform apply`, 0 Kubernetes deployment, 0 CI execution, 0 vendor binding, 0 account creation.** Scope is
+> strictly non-production/internal-only with non-waivable S1/S3/S4 embedded. Article IX is **not fully released**
+> (only the AD-0015 bounded carve-out); PI-2 remains UNAUTHORIZED; INV-1..13, `UCOS-ASR-NFR-001` v1.0.1, and the
+> Constitution are unchanged. Registered append-only in `CTX-REG-001`. **Explicit hand-off:** closing
+> G12-1/G12-2/G12-3 now requires a human operator to perform the `[HAR]` steps (real cloud spend on an ephemeral
+> non-prod substrate); this cannot be completed by the agent. Carried blocker: observability `PE-12` ADR
+> sub-decision. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary
+> term, Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0N. PI-2/PI-3 — Foundational Substrate Implementation (AD-0016) (CURRENT — supersedes prior sections for substrate build status only)
+
+> **Append-only.** Records the scoped Article IX release (**AD-0016**) and the first executable UCOS
+> implementation: the foundational substrate (Meta-Core + Registry + Metadata + Configuration runtimes).
+> This is code, not a planning artifact. It does **not** implement any domain, service, business logic, or
+> Ω∞ existential system, and mutates no frozen governance construct. INV-1..13 unchanged. All non-substrate
+> generation remains LOCKED.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PI-2 Meta-Core + PI-3 Registry/Metadata/Configuration — Substrate Implementation** (COMPLETE — build + tests) |
+| Authorizing act | **AD-0016** (`AD-0016-PI2-PI3-SUBSTRATE-CONSTRUCTION-AUTHORIZATION.md`) — scoped Article IX release, substrate only |
+| Location | `packages/platform-runtime/` (`@ucos/platform-runtime` v0.1.0) |
+| Language / runtime | TypeScript on Node.js ≥ 23.6 (native type-strip; zero-install run/test), under `UCOS-PLAT-ADR-001` polyglot allowance |
+| Meta-Core (PI-2) | Kernel + Artifact/Contract/Capability loaders, Dependency Resolver (cycle detection), Composition Engine, Execution Engine, Lifecycle Engine, Validation Engine, Plugin Runtime, semver |
+| Registry (PI-3) | `InMemoryRegistry` implements `RegistryPort` — register/discover/resolve(range)/version/unregister |
+| Metadata (PI-3) | `InMemoryMetadataStore` + JSON-schema-subset validator implements `MetadataPort` |
+| Configuration (PI-3) | `LayeredConfigurationStore` (default→environment→instance, deep-merge) implements `ConfigurationPort` |
+| Contracts | Descriptor + runtime contract types in `src/contracts/`; built-in descriptor schemas; example `contract.text-producer` |
+| Runtime artifact | CLI `bin/ucos-substrate.ts` (loads descriptor dir → resolve → compose → report → execute) |
+| No-hardcoded-logic proof | `test/dynamic-capability.test.ts` — a new capability is introduced purely via descriptor + provider with 0 core changes |
+| Verification | **38/38 tests pass** (`npm test`, Node built-in runner); **`tsc --noEmit` exit 0**; CLI demo `cap.shout.produce` => `"HELLO, UCOS!"` |
+| Scope discipline | 0 domain/service/business logic; 0 Ω∞ existential systems; 0 frozen-construct mutation; contract-first (IC-2); traceable (IC-4) |
+| Next Step | Optional: persistence adapters behind the ports; federation/evolution engines; independent ratification of the substrate. All further Ω∞ scope remains lock-gated per AD-0014/AD-0016. |
+
+> **PI-2/PI-3 Substrate Implementation (COMPLETE — build + tests).** Under the scoped Article IX release
+> **AD-0016**, generated the first working UCOS software: a metadata-driven foundational substrate at
+> `packages/platform-runtime/`. The **Meta-Core kernel** composes capabilities through the **Registry**,
+> **Metadata**, and **Configuration** runtimes via dependency-inverted ports, executing the flow
+> load → validate → resolve → compose → execute. Behavior is contributed exclusively by external providers
+> referenced from descriptors (filesystem modules or in-memory `plugin:` factories); the core carries no
+> business logic (Constitution "configuration over customization", IP-04). Verified: 38/38 unit +
+> integration + end-to-end tests pass on the Node built-in runner, `tsc --noEmit` is clean, and the CLI
+> runtime artifact composes and executes the example capability graph (`cap.greeting` → `cap.shout`).
+> Governance: authorized by AD-0016 only; no domain/service/business/Ω∞ generation; no frozen artifact
+> mutated; INV-1..13 and the Constitution preserved. Not committed/pushed/tagged.
+
+
+
+---
+
+## 0O. PI-4 — Control Fabrics Implementation (AD-0017) (CURRENT — supersedes §0N for control-plane build status only)
+
+> **Append-only.** Records the scoped Article IX release (**AD-0017**) and the PI-4 control fabrics:
+> Identity, Trust, Policy, and Governance runtimes plus the Control Plane (Policy Enforcement Point),
+> built **additively** on the AD-0016 substrate. This is code, not a planning artifact. It implements
+> **no** domain, business logic, or Ω∞ existential system, and **mutates no** file under
+> `src/meta-core`, `src/registry-runtime`, `src/metadata-runtime`, `src/configuration-runtime`, or
+> `src/contracts`, and no frozen governance construct. INV-1..13 unchanged. All non-substrate/
+> non-control generation remains LOCKED.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PI-4 Identity / Trust / Policy / Governance Runtimes + Control Plane** (COMPLETE — build + tests) |
+| Authorizing act | **AD-0017** (`AD-0017-PI4-CONTROL-FABRICS-CONSTRUCTION-AUTHORIZATION.md`) — scoped Article IX release, control-fabric scope only |
+| Location | `packages/platform-runtime/src/control/` (additive over `@ucos/platform-runtime` v0.1.0) |
+| Identity Runtime (C-A) | `identity/identity-registry.ts` (metadata-stored identities, schema-validated, lifecycle active→suspended→retired, federation providers), `identity/identity-resolver.ts` (authn + credential verify + federated resolution), `identity/credential-verifier.ts` (pluggable; default token) |
+| Trust Runtime (C-B) | `trust/trust-evaluator.ts` (runtime trust level + attribute requirements; federated trust authorities raise effective level, max-wins) |
+| Policy Runtime (C-C) | `policy/policy-registry.ts` (metadata-stored `PolicyRecord`s) + **NEW** `policy/policy-evaluator.ts` (pure interpreter; deny-by-default; deny-overrides-allow; priority; glob permissions; require-permission/trust/attribute/governance-approval/certification rules) |
+| Governance Runtime (C-D) | `governance/governance-registry.ts` (processes, runtime approvals, certifications; nothing pre-approved in code) |
+| Control Plane (C-E) | **NEW** `control-plane.ts` — PEP over the Meta-Core public API: authenticate → resolve trust → evaluate policy → (governance gates as policy rules) → `kernel.execute` (contract-enforced); `authorize()` (dry decision) + `execute()`; every decision written to an **append-only immutable audit log** (**NEW** `audit-log.ts`, realizing S6) |
+| Assembly | **NEW** `control/bootstrap.ts` `createControlPlane(substrate)`; **NEW** `control/index.ts` barrel; `src/index.ts` +1 additive re-export line |
+| Registry/Metadata/Config-first | All identities, policies, governance processes/approvals/certifications are runtime records in the substrate Metadata runtime; capability config resolved from the Configuration runtime; **0 hardcoded identities / permissions / policies** (IP-04; deny-by-default) |
+| Non-waivable controls | **S1** (authn + deny-by-default authz), **S3** (secrets by-reference; credentials pluggable, no secrets in code), **S4** (data protection via metadata classification inheritance) designed & enforced by the control plane |
+| Files created | 6 (`policy/policy-evaluator.ts`, `audit-log.ts`, `control-plane.ts`, `bootstrap.ts`, `index.ts`, +5 test files) |
+| Files modified (additive) | 2 — `src/index.ts` (+1 export), `src/control/types.ts` (`PolicyRecord.target` made optional to match schema + evaluator) |
+| Tests added | 27 (control-identity 7, control-trust 4, control-policy 6, control-governance 4, control-plane.e2e 6) |
+| Tests passed | **65 / 65** (38 substrate + 27 control); `tsc --noEmit` exit 0 |
+| Coverage (control layer) | all-files **94.46% line / 87.70% branch / 93.12% func**; control-plane.ts 100% line; identity-resolver / trust-evaluator 100% line/branch/func |
+| Phase 11 audit | 11A independent substrate audit PASS; 11B scalability PASS (load 5k=25ms, resolve 5k-deep chain=10ms, compose 5k=13ms, registry resolve ~1.34M/s, execute ~525k ops/s, metadata put ~4.6M/s); 11C resilience PASS (cycle/missing-dep/bad-config/invalid-input/execute-before-compose/provider-fault/duplicate-registration all rejected with typed codes) |
+| Scope discipline | 0 domain/service/business logic; 0 Ω∞ existential systems; 0 modification of `src/meta-core`/`src/registry-runtime`/`src/metadata-runtime`/`src/configuration-runtime`/`src/contracts`; 0 frozen-construct mutation; CLI demo intact (`cap.shout.produce` ⇒ `"HELLO, UCOS!"`) |
+| Git | Not committed / not pushed / not tagged (branch `phase-10-implementation-readiness`) |
+| Article IX / PI-5 | Article IX remains scoped-release only (AD-0016 substrate + AD-0017 control fabrics); **PI-5 Federation Authorization NOT granted** — federation seams (`IdentityProvider`, `TrustAuthority`) exist but cross-fabric federation authorization is a separate future act |
+| Next Step | Independent ratification of the PI-4 control fabrics; optional durable Metadata/Configuration/audit adapters behind the ports; then Authority Board review for PI-5 Federation Authorization |
+
+> **PI-4 Control Fabrics (COMPLETE — build + tests).** Under the scoped Article IX release **AD-0017**,
+> completed the UCOS control plane additively over the AD-0016 substrate. A prior session had generated
+> partial control modules (identity registry/resolver/verifier, trust evaluator, policy registry,
+> governance registry); this session added the missing **Policy Evaluation Engine** (pure, data-driven,
+> deny-by-default, deny-overrides-allow, priority-ordered; interprets require-permission/trust/attribute/
+> governance-approval/certification rules with glob permission matching), the **Control Plane / Policy
+> Enforcement Point** (single controlled entry point wrapping the Meta-Core public API:
+> authenticate → resolve trust → evaluate policy → governance-gated → contract-enforced execute), an
+> **append-only immutable audit log**, the **control-plane assembly** (`createControlPlane`), and the
+> **control barrel export**. All control state lives in the substrate Metadata runtime and capability
+> config in the Configuration runtime (registry/metadata/configuration-first); there are **0 hardcoded
+> identities, permissions, or policies**, and authorization is **deny-by-default** with **S1/S3/S4**
+> enforced by the plane. Verified: **65/65 tests pass** (38 substrate + 27 new control incl. an
+> end-to-end PEP suite covering allow, deny-by-default, authn-denied, insufficient-trust, runtime
+> governance-gate open/close, and contract-validation defense-in-depth), `tsc --noEmit` clean, control-layer
+> coverage 94.46% line. Independent Phase 11 audit (11A structure/no-hardcoded-logic/lifecycle; 11B
+> scalability to 5k capabilities and 20k metadata/config records; 11C failure/resilience) PASS. Governance:
+> authorized by AD-0017 only; **no** file under the five prohibited substrate core dirs modified; **no**
+> domain/service/business/Ω∞ generation; **no** frozen construct mutated; INV-1..13 and the Constitution
+> preserved. Not committed/pushed/tagged. **Work stops here; the next governed step is independent
+> ratification of the control fabrics and Authority Board review for PI-5 Federation Authorization.**
+> Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term,
+> Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0P. PHASE 11.3 — PI-5.0 Federation Foundations (Design & Ratification) (CURRENT — supersedes §0O for federation-foundations status only)
+
+> **Append-only.** Records PHASE 11.3 (PI-5.0 Federation Foundations). **Design & ratification only** — no
+> source code, runtime, infrastructure, services, or implementation; **no** modification of the substrate,
+> the PI-4 control fabrics, or any prohibited core dir. Closes the PHASE 11.2 (PI5-REV) authorization gaps
+> at the design level. PI-5 implementation remains **NOT authorized** (separate Authority Board act
+> required). INV-1..13 and Article IX unchanged.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 11.3 — PI-5.0 Federation Foundations** (COMPLETE — specification & ratification) |
+| Predecessor | PHASE 11.2 (PI-5 NOT AUTHORIZED; PI5-REV-001..004) |
+| Location | `architecture/federation/` (design specs only) |
+| Deliverables (6) | `FED-GOV-001` (governance; 11 constructs), `FED-SEC-001` (security; signed assertions/crypto/replay/authority/boundary), `FED-PROV-001` (provenance; 6 kinds, zero core-dir change), `FED-AUD-001` (hash-chain/reconciliation/divergence/export/verify), `FED-ARCH-001` (async seam evolution; zero core-dir change), `FED-RAT-001` (ratification) |
+| Governance | 11/11 constructs defined (Node, Membership, Authority, Trust Boundary, Trust/Policy Delegation, Certification/Revocation/Audit Authority, Suspension, Expulsion); metadata-record based; single-owner; local sovereignty; deny-by-default; fail-closed |
+| Security | Signed identity/trust assertions via pluggable `CredentialVerifier`; clamped trust (replaces max-wins); nonce+freshness replay protection; enumerated-power authority verification; trust-boundary enforcement; non-waivable S1/S3/S4 preserved |
+| Provenance | id-namespacing `nodeId::localId`, `descriptor.metadata.provenance`, `IdentityRecord.attributes.provenance`, `federation:<nodeId>:<kind>:<id>` disjoint metadata keys, separate federated `RegistryPort` instance; local-shadows-foreign; **feasibility proof: 0 prohibited-core-dir change for all 6 provenance kinds** |
+| Audit | Hash-chained `ChainedEntry` around unchanged PI-4 `AuditEntry`; signed checkpoints; cross-node reconciliation via `assertionRef`; fail-closed divergence handling; offline export/verify; implemented behind existing `AuditSink` seam via `createControlPlane({ auditSink })` |
+| Async evolution | Async-ingestion + sync-decision pattern; additive `AsyncIdentityProvider`/`AsyncTrustAuthority` in `src/control/types.ts`; new `src/control/federation/*`; `execute()` already async; **decision path unchanged (65/65 tests remain valid)**; **0 prohibited-core-dir change** |
+| Threat ledger | T1–T12 re-scored: **0 residual High/High** (prior High/High T1/T2/T11/T12 → Low / Low–Med); residual Med for T2/T6/T10/T11 bounded by fail-closed + reconciliation |
+| Ratification | `FED-RAT-001` — **7/7 criteria PASS** |
+| Determination | **PI-5 READY FOR AUTHORIZATION REVIEW** (design foundations ratified; implementation NOT authorized) |
+| Prohibited-dir impact | **NONE** — all future federation work confined to `src/control/*`; `src/meta-core`/`src/registry-runtime`/`src/metadata-runtime`/`src/configuration-runtime`/`src/contracts` untouched |
+| Git | Not committed/pushed/tagged |
+| Next Step | Authority Board authorization review of the five specs; if adopted, a scoped generation-lock release for `src/control/federation/*` enables PI-5 implementation. Article IX otherwise unchanged. |
+
+> **PHASE 11.3 — PI-5.0 Federation Foundations (COMPLETE).** Produced the five federation design
+> specifications and a ratification record under `architecture/federation/`, closing every PHASE 11.2
+> authorization gap at the design level: **FED-GOV-001** defines all 11 federation governance constructs as
+> runtime metadata records under local sovereignty and deny-by-default; **FED-SEC-001** replaces PI-4's
+> plaintext credential model at the boundary with cryptographically signed, replay-resistant, in-boundary
+> identity/trust assertions (bounded/clamped trust, enumerated authority powers), preserving non-waivable
+> S1/S3/S4; **FED-PROV-001** proves origin/provenance for all six artifact kinds is expressible by
+> convention (id-namespacing, `descriptor.metadata`, `IdentityRecord.attributes`, disjoint `federation:`
+> metadata key prefixes, a separate federated `RegistryPort` instance) with **zero** modification of the
+> five prohibited core dirs, and enforces local-shadows-foreign to defeat registry poisoning / capability
+> impersonation; **FED-AUD-001** adds hash-chained, signed, reconcilable, independently-verifiable audit
+> behind the existing `AuditSink` seam; and **FED-ARCH-001** specifies an async-ingestion + sync-decision
+> evolution confined to `src/control/*` (additive async provider interfaces + new `federation/` modules)
+> that keeps the ratified decision path and 65/65 tests unchanged. **FED-RAT-001** re-scores T1–T12 to **0
+> residual High/High** and records **7/7 ratification criteria PASS**, determining **PI-5 READY FOR
+> AUTHORIZATION REVIEW**. This phase created specifications only — **no source code, runtime, infrastructure,
+> services, or implementation; no substrate/PI-4/core-dir modification; INV-1..13, AUTH-012, and the Article
+> IX generation lock unchanged.** PI-5 implementation remains NOT authorized pending a separate Authority
+> Board act. Not committed/pushed/tagged. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02;
+> canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0Q. PHASE 11.4 — PI-5 Federation Fabric Authorization Determination (AD-0018) (CURRENT — supersedes §0P for PI-5 authorization status)
+
+> **Append-only.** Records the Authority Board determination authorizing PI-5 federation-fabric
+> construction, scoped to the control layer only. Recorded canonically as AUTH-012 **AD-0018**. No
+> implementation performed in this phase (determination only). Article IX remains a scoped release
+> (AD-0016 substrate + AD-0017 control + AD-0018 federation); all other generation LOCKED. INV-1..13,
+> AD-0014 (Ω∞ deferral), and the five substrate core dirs unchanged.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 11.4 — PI-5 Federation Fabric Authorization Review & Board Determination** (COMPLETE) |
+| Decision | **AD-0018** (`AD-0018-PI5-FEDERATION-FABRIC-CONSTRUCTION-AUTHORIZATION.md`; `UCOS-AUTH-BOARD-AD-0018`) |
+| Inputs | FED-GOV/SEC/PROV/AUD/ARCH-001 + FED-RAT-001 (PHASE 11.3); PI5-REV-001..004 (PHASE 11.2); AD-0016/AD-0017 |
+| Part A artifact review | Complete/consistent/compliant — 6/6 specs PASS (governance/security/architecture/audit) |
+| Part B impact | Authorized target = `src/control/federation/*` + async evolution of control-layer files; core dirs remain prohibited; deny-by-default/S1/S3/S4/AD-0009/AD-0014 remain binding |
+| **Determination** | **PI-5 AUTHORIZED** — RELEASE LOCK · PI-5 FEDERATION-FABRIC SCOPE ONLY |
+| Authorized scope | New `src/control/federation/*`; additive async evolution of `src/control/types.ts`, `identity/identity-resolver.ts`, `control-plane.ts`, `audit-log.ts`; federation tests under `test/` |
+| Prohibited (preserved) | `src/meta-core/*`, `src/registry-runtime/*`, `src/metadata-runtime/*`, `src/configuration-runtime/*`, `src/contracts/*`; domains; services; business logic; Ω∞ systems; production deployment; first-class core-port provenance fields |
+| Binding constraints | Additive only (65/65 tests stay green); provenance by convention (FED-PROV-001); deny-by-default + local sovereignty + clamped trust + crypto assertions + replay protection + fail-closed; S1/S3/S4 non-waivable; concrete membership/authority/key/cert/revocation acts remain Approval-Required (AD-0009) |
+| Revocation | Any change to the five core dirs, or any domain/service/business/Ω∞ scope, voids AD-0018 and re-imposes the full lock (`UCOS-ART9-REL-001` §6) |
+| Version impact | AUTH-012 Decision Log → AD-0018 (recommend AUTHORITY-INDEX AUTH-012 cell increment on adoption) |
+| Git | Not committed/pushed/tagged |
+| Next Step | PI-5 implementation under AD-0018: build `src/control/federation/*` + additive async control evolution + adversarial federation tests; keep substrate/PI-4 and 65 tests green; then independent PI-5 validation/ratification |
+
+> **PHASE 11.4 — PI-5 Federation Fabric Authorization Determination (COMPLETE).** The Authority Board
+> reviewed the six PHASE 11.3 federation specifications (Part A: complete, mutually consistent, and
+> compliant — governance AUTH-009, security AUTH-008 S1/S3/S4, architecture zero prohibited-core-dir
+> change), analyzed the authorization impact (Part B), and designed the scoped authorization (Part C).
+> With `FED-RAT-001` recording 7/7 criteria PASS and 0 residual High/High across T1–T12, the Board issued
+> **AD-0018: RELEASE LOCK — PI-5 FEDERATION-FABRIC SCOPE ONLY**, authorizing construction of the federation
+> fabric **restricted** to new `src/control/federation/*` modules and additive async evolution of
+> `src/control/types.ts`, `src/control/identity/identity-resolver.ts`, `src/control/control-plane.ts`, and
+> `src/control/audit-log.ts` — built additively with **no modification of any of the five substrate core
+> dirs**, no domain/service/business logic, and no Ω∞ scope. Deny-by-default, local sovereignty,
+> clamped/bounded federated trust, cryptographic assertion verification, replay protection, fail-closed
+> partition behavior, and non-waivable S1/S3/S4 are mandatory; provenance is carried by the FED-PROV-001
+> convention (no first-class core-port fields); concrete membership/authority/key/certification/revocation
+> acts remain Approval-Required (AD-0009). Any breach of the prohibited scope voids the act
+> (`UCOS-ART9-REL-001` §6). **No implementation was performed in this phase** (determination only); the
+> substrate, PI-4 control fabrics, and the 65/65 test baseline are unchanged; INV-1..13, AUTH-012 substance,
+> AD-0014 Ω∞ deferral, and frozen architectures are preserved. Recorded canonically as AUTH-012 **AD-0018**;
+> registered append-only. Not committed/pushed/tagged. Standing Trusted Operations (N-1 CAP-01..14
+> attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next
+> touch.
+
+
+
+---
+
+## 0R. PHASE 12 — PI-5 Federation Fabric Implementation (AD-0018 execution) (CURRENT — supersedes §0Q for federation build status)
+
+> **Append-only.** Records the first authorized federation construction (AD-0018). Additive over the
+> PI-4 control fabrics; **no** modification of any prohibited substrate core dir; no domain/service/
+> business/Ω∞ scope. INV-1..13 and Article IX (scoped release only) unchanged. This is code + tests.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 12 — PI-5 Federation Fabric Implementation** (COMPLETE — build + tests) |
+| Authorizing act | **AD-0018** (scoped Article IX release — federation-fabric scope only) |
+| Location | `packages/platform-runtime/src/control/federation/` (19 modules) |
+| Files created | 19 federation modules (types, assertions[Ed25519], federation-node/membership/authority, trust-boundary, trust-delegation, policy-delegation, certification-authority, revocation-authority, audit-authority, partition-handling, federated-audit-log, federated-identity-provider, federated-trust-authority, federated-credential-verifier, federation-resolver, federated-control-plane, index) + 3 test files (federation-harness, federation.test, federation-adversarial.test) |
+| Files modified (additive) | `src/control/types.ts` (AsyncIdentityProvider, AsyncTrustAuthority, Provenance), `src/control/index.ts` (federation re-export) |
+| Files NOT modified | `control-plane.ts`, `audit-log.ts`, `identity-resolver.ts` (async evolution realized via FederatedControlPlane wrapper + FederationResolver ingestion; PI-4 decision path unchanged) |
+| Async pattern | Async-ingestion + sync-decision (FED-ARCH-001): resolver verifies+clamps+materializes into `federation:<nodeId>:identity:<localId>`; existing sync PI-4 providers resolve it |
+| Security (FED-SEC-001) | Ed25519 signed identity/trust assertions (node:crypto), keys by reference (S3), nonce replay + freshness, enumerated-power authority verification, trust-boundary enforcement, clamped federated trust, fail-closed partition, local sovereignty (deny-only foreign policy), local-shadows-foreign |
+| Provenance (FED-PROV-001) | id-namespacing `nodeId::localId` + `attributes.provenance` + disjoint `federation:` metadata keys + no core-port fields — verified no local-keyspace leak |
+| Audit (FED-AUD-001) | Hash-chained FederatedAuditLog (SHA-256), tamper-evident, export + offline verify, cross-node reconcile w/ effect-mismatch/hash-break divergence, fail-closed |
+| Tests | **90/90 pass** (65 baseline preserved + 9 functional + 16 adversarial); tsc exit 0 |
+| Adversarial | 16/16 attack vectors blocked (T1 spoofing, T2 trust poisoning, T3 deny-only, T4/T11/T12 namespace isolation, T6 partition, T7 replay/stale, T8 authority escalation/boundary/unknown-issuer, T9 cert revocation, lifecycle suspend/revoke, tampered claims) — 0 residual High/High |
+| Coverage | Federation security-critical paths ~100% line (resolver/providers/audit-log 100%; control-plane wrapper 98.7%; assertions 96%); repo all-files 94.42% line |
+| Prohibited-dir integrity | VERIFIED — all `src/meta-core`/`src/registry-runtime`/`src/metadata-runtime`/`src/configuration-runtime`/`src/contracts` files retain build-time mtimes (13:13–13:24); 0 modified |
+| Deliverables | `PI5-IMP-001`, `PI5-VAL-001`, `PI5-SEC-001`, `PI5-AUD-001` (repository root) |
+| Git | Not committed/pushed/tagged |
+| Next Step | Independent PI-5 validation/ratification of the federation fabric; optional signed audit checkpoints + durable adapters; concrete membership/authority/key/cert acts remain Approval-Required (AD-0009) |
+
+> **PHASE 12 — PI-5 Federation Fabric Implementation (COMPLETE).** Executed AD-0018 by constructing the
+> federation fabric entirely within control territory: 19 new modules under
+> `packages/platform-runtime/src/control/federation/` plus additive async seams in `src/control/types.ts`
+> and a re-export in `src/control/index.ts`. The design follows FED-ARCH-001's async-ingestion +
+> sync-decision pattern — a `FederationResolver` cryptographically verifies signed identity/trust
+> assertions (Ed25519 via `node:crypto`), enforces authority/trust-boundary/replay/freshness/partition
+> checks, clamps federated trust to the delegation/boundary ceiling, and materializes a provenance-tagged
+> identity into the `federation:` metadata keyspace; the UNCHANGED synchronous PI-4 decision path
+> (IdentityResolver → TrustEvaluator → PolicyEvaluator → kernel) then resolves it via the registered
+> `FederatedIdentityProvider`/`FederatedTrustAuthority`. All 11 FED-GOV-001 governance constructs are
+> implemented as metadata-backed registries; foreign policies are deny-only (local sovereignty); foreign
+> identities are namespace-isolated (local-shadows-foreign, no local-keyspace leak); audit is hash-chained,
+> tamper-evident, exportable, offline-verifiable, and cross-node reconcilable with fail-closed divergence.
+> Verification: `tsc --noEmit` exit 0; **90/90 tests pass** (65 baseline preserved + 25 federation incl. a
+> 16-vector T1–T12 adversarial suite, all blocked, 0 residual High/High); federation security-critical
+> coverage ~100% line. **No prohibited substrate core dir was modified** (mtime + content evidence);
+> `control-plane.ts`/`audit-log.ts`/`identity-resolver.ts` were left unchanged (wrapper approach); no
+> domain/service/business/Ω∞ scope; INV-1..13 and frozen architectures preserved. Deliverables
+> `PI5-IMP-001`/`PI5-VAL-001`/`PI5-SEC-001`/`PI5-AUD-001` at repository root. Not committed/pushed/tagged.
+> Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term,
+> Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0S. PHASE 18 — PI-9.0 Memory Fabric Foundations (Design & Ratification) (CURRENT — supersedes prior sections for the memory-foundations workstream only)
+
+> **Append-only.** Records PHASE 18 (PI-9.0 Memory Fabric Foundations). **Design & ratification only** — no
+> source code, runtime, infrastructure, services, or implementation; **no** modification of the substrate,
+> PI-4 control, PI-5 federation, PI-6 evolution, PI-7 knowledge fabrics, or any prohibited core dir. PI-9
+> implementation remains **NOT authorized** (a separate Authority Board act is required). INV-1..13, AD-0014
+> (Ω∞ deferral), and the Article IX generation lock (as scoped by AD-0016..0020) are unchanged.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 18 — PI-9.0 Memory Fabric Foundations** (COMPLETE — specification & ratification) |
+| Predecessors (RATIFIED) | AD-0016 substrate · AD-0017 control · AD-0018 federation · AD-0019 evolution · AD-0020 knowledge |
+| Location | `architecture/memory/` (design specifications only) |
+| Deliverables (8) | `MEM-GOV-001` (governance; 6 tiers + 12 constructs), `MEM-GOV-002` (lifecycle/retention/reconciliation/evolution governance), `MEM-ARCH-001` (architecture; zero-core-dir-change proof), `MEM-SEC-001` (security; S1/S3/S4), `MEM-FED-001` (federated memory), `MEM-AUD-001` (audit & reconciliation), `MEM-THREAT-001` (STRIDE M1–M12), `MEM-READINESS-001` (readiness/ratification) |
+| Memory tiers | 6 — Working (WM) · Short-Term (STM) · Long-Term (LTM) · Semantic (SEM, Knowledge-linked) · Episodic (EPI, audit-linked) · Federated (FED-MEM) |
+| Governance constructs | 12 (`MEM-GOV-C1..C12`); single-owner; SoD (Consolidation ≠ Certification ≠ Ratification); deny-by-default; fail-closed |
+| Concept coverage | 10/10 mandated — Working/Short-Term/Long-Term/Semantic/Episodic/Federated memory + Lifecycle/Retention/Reconciliation/Evolution |
+| Durable-mutation discipline | All durable memory mutation (LTM promotion, semantic consolidation, supersession, forgetting) routes through the ratified **Evolution Fabric** (AD-0019); no independent mutation/rollback path |
+| Knowledge linkage | Semantic memory co-ratified through the **Knowledge Fabric** (AD-0020); no memory-side back door into knowledge (closes M11) |
+| Security | Signed memory assertions reusing federation crypto (**no custom cryptography**); monotonic classification across tiers (MGP-3); deny-by-default recall/write; replay nonce+freshness; no-synthesis recall; non-waivable **S1/S3/S4** preserved |
+| Retention/forgetting | Mandatory retention class per record; fail-closed expiry; **audit-preserving** governed forgetting (two-sided M9 guard: value unrecallable, audit fact retained) |
+| Federation | Deny-only shadow; namespace isolation `federation:<nodeId>:memory:*`; local-shadows-foreign; fail-closed partition; LTM+SEM federatable (classification-gated), WM+STM node-local, EPI export-only |
+| Audit | Reuses hash-chained `FederatedAuditLog` via `AuditSink`; within/cross-node reconciliation; divergence fail-closed; episodic↔audit two-way linkage |
+| Threat model | `MEM-THREAT-001` — M1–M12 STRIDE; **0 residual High/High**; 12/12 threats mapped; every boundary covered |
+| Ratification | `MEM-READINESS-001` — **10/10 criteria PASS** |
+| Determination | **PI-9 READY FOR AUTHORIZATION REVIEW** (design foundations ratified; implementation NOT authorized) |
+| Prohibited-dir impact | **NONE** — all future memory work confined to `src/control/memory/*`; `src/meta-core`/`src/registry-runtime`/`src/metadata-runtime`/`src/configuration-runtime`/`src/contracts` untouched; existing **185/185** tests remain valid |
+| Sequencing note | Fabric-construction **PI-9 Memory** (additive on AD-0016..0020) is distinct from the Ω∞ existential-roadmap "PI-9 Civilization layer" (`UCOS-UEA-0013`), which remains PLANNING ONLY under AD-0014 |
+| Git | Not committed / not pushed / not tagged |
+| Next Step | Authority Board authorization review of the seven `MEM-*` specifications; if adopted, a scoped Article IX generation-lock release for `src/control/memory/*` enables PI-9 implementation (analogous to AD-0018/0019/0020). Article IX otherwise unchanged. |
+
+> **PHASE 18 — PI-9.0 Memory Fabric Foundations (COMPLETE).** Produced the eight `MEM-*` design deliverables
+> under `architecture/memory/`, mirroring the ratified `FED-*`/`KNOW-*` design-phase pattern. The Memory
+> Fabric is a governed **capture → consolidate → index → recall → reconcile → retain → forget** layer across
+> six governed tiers (Working, Short-Term, Long-Term, Semantic, Episodic, Federated), built **additively** on
+> the AD-0016 substrate and the AD-0017 control / AD-0018 federation / AD-0019 evolution / AD-0020 knowledge
+> fabrics. `MEM-GOV-001` defines the 6 tiers and 12 metadata-backed governance constructs (single-owner;
+> Consolidation/Certification/Ratification separation of duties; deny-by-default; fail-closed);
+> `MEM-GOV-002` governs the memory lifecycle, retention classes (mandatory; fail-closed expiry;
+> audit-preserving governed forgetting), within/cross-node reconciliation (local sovereignty), and routes
+> **all** durable memory mutation through the ratified Evolution Fabric; `MEM-ARCH-001` realizes every tier
+> metadata-first through existing substrate ports with an async-capture/sync-recall pattern and a
+> zero-prohibited-core-dir-change proof (all work confined to `src/control/memory/*`); `MEM-SEC-001`
+> establishes signed memory assertions (reusing federation cryptography — no custom crypto), monotonic
+> classification across tiers, deny-by-default recall/write, replay protection, no-synthesis recall, and
+> non-waivable S1/S3/S4; `MEM-FED-001` specifies deny-only, namespace-isolated, local-shadows-foreign,
+> fail-closed federated memory reusing the AD-0018 boundary/authority/audit primitives without altering them;
+> `MEM-AUD-001` reuses the hash-chained `FederatedAuditLog` for tamper-evident memory events, episodic↔audit
+> linkage, reconciliation/divergence handling, and audit-preserving forgetting; `MEM-THREAT-001` scores the
+> M1–M12 STRIDE surface at **0 residual High/High**; and `MEM-READINESS-001` records **10/10 ratification
+> criteria PASS** with the determination **PI-9 READY FOR AUTHORIZATION REVIEW**. This phase created
+> specifications only — **no source code, runtime, infrastructure, services, or implementation; no
+> substrate/PI-4/PI-5/PI-6/PI-7/core-dir modification; INV-1..13, AUTH-012, AD-0014, and the Article IX
+> generation lock unchanged; existing 185/185 tests remain valid.** PI-9 implementation remains NOT authorized
+> pending a separate Authority Board act. Not committed/pushed/tagged. Standing Trusted Operations (N-1
+> CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their
+> next touch.
+
+
+
+---
+
+## 0S. PHASE 19 — PI-10 Intelligence Fabric Foundations (Design & Readiness) (CURRENT — supersedes prior sections for the Intelligence-Fabric design workstream only)
+
+> **Append-only.** Records PHASE 19 (PI-10 Intelligence Fabric Foundations). **Design & ratification-readiness
+> only** — no source code, runtime, infrastructure, services, model weights, cryptography, or authorization; no
+> modification of any prohibited substrate core dir, the PI-4 control / PI-5 federation / PI-6 evolution / PI-7
+> knowledge fabrics, or any frozen governance construct. PI-10 implementation remains **NOT authorized** (a
+> separate Authority Board act is required). INV-1..13, AD-0014 (Ω∞ deferral), and the Article IX generation
+> lock are unchanged.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 19 — PI-10 Intelligence Fabric Foundations** (COMPLETE — specification & readiness) |
+| Mode | **DESIGN & RATIFICATION ONLY** — no code, runtime, infrastructure, services, model weights, crypto, or authorization |
+| Location | `architecture/intelligence/` (design specs only) |
+| Deliverables (8) | `INT-GOV-001` (governance; IGP-1..8, 12 constructs), `INT-GOV-002` (lifecycle & decision-rights; D1..D10, commit pipeline, A1..A8), `INT-ARCH-001` (reference architecture; 4 engines + subsystems + determinism quarantine + reuse map), `INT-SEC-001` (security; ISP-1..5, S1/S3/S4, signed assertions), `INT-FED-001` (federated intelligence; FIP-1..6, advisory-only), `INT-AUD-001` (audit & explainability; IAP-1..6, INT_* events, rationale chain), `INT-THREAT-001` (STRIDE I1–I12; 0 residual High/High), `INT-READINESS-001` (readiness determination) |
+| Objective coverage | Reasoning / Inference / Planning / Decision engines; Goal Management; Policy Evaluation; Constraint Solving; Knowledge Utilization; Memory Utilization; Federated Intelligence — **10/10 covered** |
+| Governance | Governed cognition (no self-authored goals); propose-not-act (no independent write path); deny-by-default; SoD (proposer ≠ certifier ≠ committer); bounded cognition; mandatory explainability; all mutation via Evolution Fabric |
+| Determinism (INV-6) | **Determinism-by-default + non-determinism quarantine** — non-deterministic model inference is sandboxed, advisory, and deterministic-verifier-gated; committed decisions are deterministic functions of recorded evidence; reproducibility-by-record (`resultHash`) |
+| Security | Non-waivable **S1/S3/S4** designed & enforced; signed assertions reuse federation Ed25519 (**no custom crypto**); secrets/model refs by reference only; S4 classification inheritance + inference exfiltration control |
+| Federation | Foreign intelligence advisory-only / deny-only / clamped / fail-closed / namespace-isolated; local re-ratification required; reuses AD-0018 constructs |
+| Audit | Hash-chained INT_* audit (reuse `FederatedAuditLog`); mandatory rationale chain (evidence→inference→constraints→policy→conclusion); reproducibility; cross-node reconciliation; export/offline verify |
+| Threat model | STRIDE; I1–I12; **0 residual High/High** (I3/I4/I6/I7/I8/I9/I10/I11 → Low/Low; I1/I2/I5/I12 → Low–Med bounded) |
+| Reuse (no re-implementation) | PI-4 policy evaluator; PI-6 Evolution (sole commit path); PI-7 Knowledge (evidence read); PI-5 Federation (assertions/trust/audit); PI-2/3 substrate ports |
+| Prohibited-dir impact | **NONE** — additive; all future PI-10 work confined to `src/control/intelligence/*`; `src/meta-core`/`src/registry-runtime`/`src/metadata-runtime`/`src/configuration-runtime`/`src/contracts` untouched |
+| Ω∞ boundary | **PRESERVED** — no self-direction, no self-modification, no autonomous actuation; **no existential invariant (INV-14..20) enrolled or required**; AD-0014 stands |
+| Ratification readiness | `INT-READINESS-001` — **10/10 criteria PASS; 8/8 deliverables; 14/14 consistency checks PASS** |
+| **Determination** | **PI-10 READY FOR AUTHORIZATION REVIEW** (design foundations ratifiable; implementation NOT authorized) |
+| Article IX / PI-10 | **Article IX generation lock REMAINS ACTIVE**; `UCOS-CONSTRUCTION-BLOCKED` unchanged; PI-10 implementation NOT authorized |
+| Registration | 8 `INT-*` artifacts registered append-only in `CTX-REG-001` (Intelligence Fabric Foundations section) |
+| Git | Not committed / not pushed / not tagged |
+| Next Step | Independent constitutional review of the `INT-*` set (analogous to federation PHASE 11.2 / knowledge PHASE 15.1); then an Authority Board PI-10 authorization determination (a prospective `AD-00xx`) scoped to `src/control/intelligence/*` only; on authorization, PI-10 implementation + the I1–I12 adversarial suite keeping the substrate/control/federation/evolution/knowledge test baseline green |
+
+> **PHASE 19 — PI-10 Intelligence Fabric Foundations (COMPLETE).** Produced the eight `INT-*` design
+> specifications and readiness determination under `architecture/intelligence/`, defining the UCOS **Intelligence
+> Fabric** as a **governed cognition layer** built additively on the ratified substrate/control/federation/
+> evolution/knowledge fabrics. `INT-GOV-001` establishes eight intelligence principles (governed cognition / no
+> self-direction; determinism-by-default with non-determinism quarantine; deny-by-default *propose-not-act*
+> actuation; human/Board-in-the-loop; bounded cognition; mandatory explainability; single accountable authority;
+> read-governed knowledge/memory) and twelve metadata-record governance constructs (`intelligence:<kind>:<id>`).
+> `INT-GOV-002` defines the lifecycles (Goal, Inference Model, Reasoning Session, Decision, Plan, Memory), a
+> ten-class decision-rights matrix, the governed decision-commit pipeline (proposal → PI-4 policy → hard
+> constraints → SoD certification → quorum ratification → **Evolution Fabric commit** → Control Plane + audit),
+> and eight assurance dimensions. `INT-ARCH-001` specifies the four engines (Reasoning, Inference, Planning,
+> Decision), the supporting subsystems (Goal Management, Policy Evaluation via the unchanged PI-4 evaluator,
+> Constraint Solving, Knowledge Utilization via the Knowledge Fabric, Memory Utilization, Federated
+> Intelligence), the **determinism quarantine** for non-deterministic inference (INV-6), and a prospective
+> public-seam-only module map at `packages/platform-runtime/src/control/intelligence/*`. `INT-SEC-001` designs
+> and enforces non-waivable **S1/S3/S4**, signed assertions (reusing federation Ed25519 — no custom crypto),
+> secrets/model refs by reference only, and classification-preserving cognition with inference-exfiltration
+> control. `INT-FED-001` makes foreign intelligence advisory-only, deny-only, trust-clamped, fail-closed, and
+> namespace-isolated, requiring **local re-ratification** before any local effect. `INT-AUD-001` mandates a
+> hash-chained, tamper-evident, reproducible, cross-node-reconcilable audit (reusing `FederatedAuditLog`) plus a
+> mandatory **rationale chain** (no unexplained decision). `INT-THREAT-001` (STRIDE) closes **12/12 threats
+> (I1–I12) to 0 residual High/High** — structurally, a cognition compromise can only produce rejected proposals
+> and audit noise, never autonomous action. `INT-READINESS-001` records **10/10 ratification criteria PASS**
+> and determines **PI-10 READY FOR AUTHORIZATION REVIEW**. **No code / runtime / infrastructure / services /
+> model weights / cryptography / authorization was produced; no prohibited core dir, ratified fabric, or frozen
+> construct was modified; INV-1..13, AD-0014 (Ω∞ deferral), and the Article IX generation lock are unchanged;
+> `UCOS-CONSTRUCTION-BLOCKED` is unchanged.** All 8 artifacts registered append-only in `CTX-REG-001`. Not
+> committed/pushed/tagged. **Work stops here; the next governed step is independent constitutional review and an
+> Authority Board PI-10 authorization determination.** Standing Trusted Operations (N-1 CAP-01..14 attributes,
+> Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0S. PHASE 17 — PI-8.0 Ontology Fabric Foundations (Design & Ratification) (CURRENT — supersedes prior sections for the ontology-foundations workstream only)
+
+> **Append-only.** Records PHASE 17 (PI-8.0 Ontology Foundations). **Design & ratification only** — no
+> source code, runtime, infrastructure, services, or implementation; **no** modification of the substrate,
+> the PI-4 control fabrics, the PI-5 federation fabric, the PI-6 evolution fabric, the PI-7 knowledge
+> fabric, or any prohibited core dir. PI-8 implementation remains **NOT authorized** (separate Authority
+> Board act required). INV-1..13, AD-0014 (Ω∞ deferral), and the Article IX generation lock unchanged.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 17 — PI-8.0 Ontology Fabric Foundations** (COMPLETE — specification & ratification) |
+| Predecessor fabrics | AD-0016 (substrate), AD-0017 (control), AD-0018 (federation), AD-0019 (evolution), AD-0020 (knowledge) — all RATIFIED |
+| Location | `architecture/ontology/` (design specs only) |
+| Deliverables (8) | `ONTO-ARCH-001` (architecture; ONTO-C1..C8), `ONTO-GOV-001` (governance; OG-C1..C11), `ONTO-GOV-002` (semantic integrity SI-1..SI-7 + evolution), `ONTO-SEC-001` (security; reuse PI-5 Ed25519), `ONTO-FED-001` (federation; OFP-1..6), `ONTO-AUD-001` (audit; hash-chain + graph checkpoints), `ONTO-THREAT-001` (O1..O12), `ONTO-READINESS-001` (ratification) |
+| Structural model | Ontology Unit · Ontology Record · Ontology Namespace · Ontology Graph · Entity · Relationship · Taxonomy · Semantic Constraints (metadata-first, reserved `ontology:*` keyspace) |
+| Governance | 11/11 constructs (single-owner namespaces, enumerated authorities, SoD propose≠certify≠ratify≠revoke, quorum ratification, trust boundaries, revocation, federation authority, evolution binding) |
+| Semantic integrity | SI-1 referential integrity · SI-2 domain/range · **SI-3 taxonomy DAG (acyclic)** · SI-4 disjointness · SI-5 uniqueness · SI-6/SI-7 constraint precedence & non-contradiction; pre-commit + atomic apply re-validation, fail-closed |
+| Evolution | All governed ontology mutation routed through the ratified Evolution Fabric (`ontology:` allowlist); migration-only (IP-14) + backward-compat (IP-15); no bypass; no evolution/governor code modified |
+| Security | Signed ontology certification/ratification/trust assertions; reuse PI-5 `assertions.ts` (Ed25519); **no custom cryptography**; keys by-reference (S3); non-waivable S1/S3/S4 preserved; content-hash tamper protection for constraints/taxonomy |
+| Federation | Local semantic sovereignty; deny-by-default import; disjoint `ontology:federation:*` keyspace; local-shadows-foreign; trust clamping; import-time SI conformance; new guard confined to `src/control/ontology/*` |
+| Audit | Hash-chained ontology audit (reuse FED-AUD `ChainedEntry`); signed reproducible graph checkpoints (drift O7); cross-node reconciliation + fail-closed divergence; offline verification |
+| Threat ledger | O1–O12; **0 residual High/High** |
+| Ratification | `ONTO-READINESS-001` — **9/9 criteria PASS** |
+| Determination | **PI-8 READY FOR AUTHORIZATION REVIEW** (design foundations ratified; implementation NOT authorized) |
+| Prohibited-dir impact | **NONE** — all future ontology work confined to `src/control/ontology/*`; the five substrate core dirs and PI-4/PI-5/PI-6/PI-7 behavior untouched; existing 185/185 tests remain the additive baseline |
+| Ω∞ boundary | Governed semantic-schema layer only; **not** the deferred Ω∞ existential/self-directed ontology (AD-0014 stands) |
+| Git | Not committed/pushed/tagged |
+| Next Step | Authority Board authorization review of the eight `ONTO-*` specs; if adopted, a scoped generation-lock release (analogous to AD-0016..0020) for `src/control/ontology/*` enables PI-8 implementation. Article IX otherwise unchanged. |
+
+> **PHASE 17 — PI-8.0 Ontology Fabric Foundations (COMPLETE).** Produced the eight ontology design
+> specifications and a ratification determination under `architecture/ontology/`, defining the PI-8
+> Ontology Fabric as a governed **semantic-schema layer** built additively over the ratified PI-7
+> Knowledge Fabric. **ONTO-ARCH-001** defines the structural model (Ontology Unit, Record, Namespace,
+> Graph, Entity, Relationship, Taxonomy, Semantic Constraints) as metadata-stored records under a reserved
+> `ontology:*` keyspace, with a pure/deterministic graph projection and a zero-prohibited-core-dir
+> feasibility proof. **ONTO-GOV-001** defines 11 governance constructs (single-owner namespaces,
+> enumerated authorities, separation of duties, quorum ratification, trust boundaries, revocation,
+> federation authority, evolution binding). **ONTO-GOV-002** enforces semantic integrity (referential
+> integrity, taxonomy acyclicity/DAG, domain/range, disjointness, uniqueness, non-contradiction) as a
+> fail-closed pre-commit + atomic-apply gate and routes **all** governed ontology mutation through the
+> ratified Evolution Fabric (migration-only, no bypass, no evolution-code change). **ONTO-SEC-001** signs
+> ontology certifications/ratifications/trust assertions by reusing the PI-5 Ed25519 primitives (no custom
+> cryptography), preserving non-waivable S1/S3/S4 with keys by-reference and content-hash tamper protection
+> for constraints/taxonomy. **ONTO-FED-001** federates ontology under local semantic sovereignty
+> (deny-by-default, disjoint `ontology:federation:*` keyspace, local-shadows-foreign, trust clamping,
+> import-time semantic conformance), confined to a new `src/control/ontology/*` guard reusing PI-5
+> federation machinery unchanged. **ONTO-AUD-001** adds hash-chained, tamper-evident, reconcilable,
+> offline-verifiable ontology audit plus signed reproducible graph checkpoints to detect semantic drift.
+> **ONTO-THREAT-001** enumerates O1–O12 with residual scoring and **0 residual High/High**.
+> **ONTO-READINESS-001** records **9/9 ratification criteria PASS** and determines **PI-8 READY FOR
+> AUTHORIZATION REVIEW**. This phase created specifications only — **no source code, runtime,
+> infrastructure, services, or implementation; no substrate/PI-4/PI-5/PI-6/PI-7/core-dir modification;
+> INV-1..13, AUTH-012, AD-0014, and the Article IX generation lock unchanged.** PI-8 implementation remains
+> NOT authorized pending a separate Authority Board act. Not committed/pushed/tagged. Standing Trusted
+> Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to
+> be honored at their next touch.
+
+
+
+---
+
+## 0S. PHASE 20 — PI-11 Simulation Fabric Foundations (Design & Ratification) (CURRENT — supersedes prior sections for the simulation-foundations workstream only)
+
+> **Append-only.** Records PHASE 20 (PI-11 Simulation Fabric Foundations). **Design & ratification only** — no
+> source code, runtime, infrastructure, services, model weights, cryptography, or authorization; **no**
+> modification of the substrate, PI-4 control, or any prohibited core dir. PI-11 implementation remains **NOT
+> authorized** (separate Authority Board act required). INV-1..13, AD-0014 (Ω∞ deferral), and the Article IX
+> generation lock unchanged; all prior program status preserved.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 20 — PI-11 Simulation Fabric Foundations** (COMPLETE — specification & readiness) |
+| Predecessors | PI-7 Knowledge (AD-0020, implemented); design-phase PI-8 Ontology (`ONTO-*`), PI-9 Memory (`MEM-*`), PI-10 Intelligence (`INT-*`) |
+| Location | `architecture/simulation/` (design specs only) |
+| Deliverables (8) | `SIM-GOV-001` (SGP-1..9; 12 constructs C1..C12), `SIM-GOV-002` (8 lifecycles; D1..D10; promotion pipeline; assurance A1..A8), `SIM-ARCH-001` (control-layer engines; sandboxed-snapshot pattern; zero prohibited-core-dir change), `SIM-SEC-001` (signed assertions; sandbox isolation; S1/S3/S4), `SIM-FED-001` (advisory/deny-only co-simulation; local sovereignty), `SIM-AUD-001` (hash-chained; reproducible; reconcilable), `SIM-THREAT-001` (S1–S12; 0 residual High/High), `SIM-READINESS-001` (determination) |
+| Governance | 12/12 constructs defined; metadata-record based; single-owner; deny-by-default; fail-closed; SoD non-waivable; **non-actuating** (project/propose, never act) |
+| Isolation | Every run in a disposable sandbox (`simulation:sandbox:<runId>:*`) against a pinned, signed snapshot; static keyspace write-guard; no independent governed write path; Evolution-Fabric-only commit |
+| Determinism | Determinism-by-default; probabilistic/predictive inference quarantined behind a deterministic-verifier-gated adapter (INV-6); forecasts advisory, never facts |
+| Security | Signed simulation assertions (reuse PI-5 Ed25519; no custom crypto); classification inheritance (S4); replay/freshness; non-waivable S1/S3/S4 (+S6 audit) preserved |
+| Federation | Foreign twins/scenarios/projections advisory-only, deny-only, clamped, local-shadows-foreign, fail-closed on partition; no foreign-originated promotion without local ratification |
+| Objectives covered | 10/10 (Digital Twins, Scenario Engine, Predictive Models, State Projection, Impact Analysis, Policy Simulation, Knowledge Simulation, Civilization Simulation Foundations [bounded/conceptual, SGP-9], Federated Simulation, Simulation Evolution) |
+| Threat ledger | S1–S12 re-scored: **0 residual High/High**; prior High/High (S1/S2/S4/S6/S9/S10/S11/S12) → Low / Low–Med |
+| Ratification | `SIM-READINESS-001` — **10/10 criteria PASS** |
+| Determination | **PI-11 READY FOR AUTHORIZATION REVIEW** (design foundations ratified; implementation NOT authorized) |
+| Prohibited-dir impact | **NONE** — all future simulation work confined to `src/control/simulation/*`; `src/meta-core`/`src/registry-runtime`/`src/metadata-runtime`/`src/configuration-runtime`/`src/contracts` untouched; implemented PI-2..PI-7 baseline (134/134 tests) unaffected |
+| Article IX / PI-11 impl | **Article IX REMAINS ACTIVE**; **PI-11 implementation NOT authorized**; `UCOS-CONSTRUCTION-BLOCKED` unchanged; AD-0014 Ω∞ deferral stands (no INV-14..20 enrolled/required) |
+| Git | Not committed/pushed/tagged |
+| Next Step | Independent constitutional review of the seven `SIM-*` specifications, then an Authority Board authorization review; if adopted, a scoped generation-lock release for `src/control/simulation/*` (analogous to AD-0018/0019/0020) enables PI-11 implementation. Article IX otherwise unchanged. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE 20 — PI-11 Simulation Fabric Foundations (COMPLETE).** Produced the seven simulation design
+> specifications plus a readiness determination under `architecture/simulation/`, defining the governed
+> what-if / projection layer: **SIM-GOV-001** establishes nine simulation principles (SGP-1..9) and twelve
+> governance constructs (C1 Simulation Authority · C2 Digital Twin · C3 Scenario · C4 Scenario Authority ·
+> C5 Predictive Model Registry · C6 Simulation Constraint Set · C7 Simulation Run · C8 Projection Record ·
+> C9 Impact Analysis Record · C10 Simulation Revocation Authority · C11 Federated Simulation Authority ·
+> C12 Simulation Sandbox Scope) as runtime metadata records under the reserved `simulation:*` keyspace;
+> **SIM-GOV-002** defines their lifecycles, a ten-class decision-rights matrix, the sandbox→projection→
+> impact→proposal→Evolution-Unit **promotion pipeline** (the sole path to governed change), and an eight-
+> dimension assurance model; **SIM-ARCH-001** specifies the control-layer engine composition (Digital-Twin
+> manager, Scenario Engine, State-Projection Engine, quarantined Predictive Adapter, Impact Analyzer, Sandbox
+> manager) using the sandboxed-snapshot + async-ingestion/sync-decision pattern with **zero prohibited-core-
+> dir change**; **SIM-SEC-001** binds signed simulation assertions (reusing PI-5 Ed25519 — no custom crypto),
+> enforces sandbox isolation and classification inheritance, and preserves non-waivable S1/S3/S4; **SIM-FED-001**
+> governs advisory-only / deny-only / clamped / local-sovereign co-simulation; **SIM-AUD-001** provides a
+> hash-chained, reproducible, cross-node-reconcilable audit trail (reusing `FederatedAuditLog`, S6); and
+> **SIM-THREAT-001** re-scores S1–S12 to **0 residual High/High**. The determination **SIM-READINESS-001**
+> records **8/8 deliverables**, **10/10 objectives covered**, and **10/10 ratification criteria PASS**,
+> yielding **PHASE 20 COMPLETE · PI-11 READY FOR AUTHORIZATION REVIEW**. This phase created specifications
+> only — **no source code, runtime, infrastructure, services, or implementation; no substrate/PI-4/core-dir
+> modification; INV-1..13, AUTH-012, AD-0014, and the Article IX generation lock unchanged.** PI-11
+> implementation remains NOT authorized pending a separate Authority Board act. Registered append-only in
+> `CTX-REG-001`. Not committed/pushed/tagged.
+
+
+
+---
+
+## 0T. PHASE 18.1 — PI-9 Memory Fabric Authorization Review (CURRENT — supersedes §0S-Memory for PI-9 authorization status)
+
+> **Append-only.** Records PHASE 18.1 (PI-9 Memory Fabric Authorization Review). **Independent review /
+> recommendation only** — no design change, no source code, no implementation, and **no authorization act**;
+> modifies no ratified/frozen construct. Article IX remains as scoped by AD-0016..0020; AD-0014 (Ω∞ deferral)
+> and INV-1..13 unchanged. (Section letter `0T` used because prior appends reused `0S`; append-only integrity
+> preserved.)
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 18.1 — PI-9 Memory Fabric Authorization Review** (COMPLETE — review & recommendation) |
+| Location | `architecture/memory/` (review artifacts only) |
+| Inputs | PHASE 18 `MEM-*` (7 design specs + readiness); `ONTO-READINESS-001` (PI-8); AD-0016..0020; AUTH-008/009/012; Const. Art. IX/XII; AD-0009; AD-0014 |
+| Deliverables (5) | `MEM-AUTH-REV-001` (dependency analysis), `MEM-AUTH-REV-002` (threat re-review + consistency), `MEM-AUTH-REV-003` (model validation), `MEM-AUTH-REV-004` (sequencing & compliance), `MEM-AUTH-001` (consolidated determination + recommendation) |
+| Implemented baseline | Last IMPLEMENTED fabric = **PI-7 Knowledge** (AD-0020; 185/185 tests). PI-8 Ontology / PI-9 Memory / PI-10 Intelligence / PI-11 Simulation are **design-ratified, NOT implemented**. |
+| Dependencies | Federation (AD-0018) **HARD·SATISFIED** · Evolution (AD-0019) **HARD·SATISFIED** · Knowledge (AD-0020) **HARD·SATISFIED** · Ontology (PI-8) **ENRICHMENT·DEFERRABLE** (Semantic-tier only; by-reference, inert until PI-8) |
+| Threats | M1–M12 independently re-scored: **0 residual High/High** confirmed; no downgrades; no new High/High from reviewer probes |
+| Consistency | 8 PHASE 18 specs **10/10** cross-spec consistency PASS |
+| Model validation | **5/5 PASS** — Retention · Lifecycle · Federation · Security (S1/S3/S4) · Audit; 0 blocking findings |
+| Compliance | **8/8 PASS** — Article IX (no release), AD-0009 (Approval-Required acts), non-waivable S1/S3/S4, prohibited-core-dir untouched, reuse-only (no custom crypto), additive (185/185), AD-0014, SoD |
+| Sequencing answers | **Q1 Authorize immediately? YES (with conditions).** **Q2 Must PI-8 be implemented first? NO.** **Q3 Parallel construction? YES** (disjoint subtree `src/control/memory/*` vs `src/control/ontology/*`; disjoint keyspace `memory:*` vs `ontology:*`; one-way deferred coupling) |
+| Findings | 0 blocking; 1 non-blocking doc finding **F-DEP-1/F-CON-1** (formalize optional Semantic↔Ontology reference) → condition **C-1** |
+| Conditions | **C-1** ontology binding deferred (optional/read-only/by-reference/inert until PI-8) · **C-2** additive & isolated (zero core-dir change; 185/185 green) · **C-3** reuse-only, no custom crypto · **C-4** concrete memory acts Approval-Required (AD-0009) · **C-5** Ω∞ boundary (AD-0014 stands) |
+| **Determination** | **PI-9 AUTHORIZATION RECOMMENDED — WITH CONDITIONS · PARALLEL CONSTRUCTION PERMITTED · PI-8 NOT REQUIRED FIRST** |
+| Authorization status | Recommendation only — the scoped Article IX release remains a **separate future Authority Board act** (`AD-00xx`, analogous to AD-0018/0019/0020); implementation **NOT yet authorized** |
+| Git | Not committed/pushed/tagged |
+| Next Step | Authority Board deliberation of `MEM-AUTH-001`; if adopted, issue `AD-00xx` (scoped Article IX release for `src/control/memory/*` under conditions C-1..C-5) → PI-9 implementation may proceed, optionally in parallel with a PI-8 Ontology authorization/implementation. Article IX otherwise unchanged. |
+
+> **PHASE 18.1 — PI-9 Memory Fabric Authorization Review (COMPLETE).** Conducted the independent
+> authorization review of the PHASE 18 `MEM-*` design set across four streams and consolidated a
+> recommendation. **MEM-AUTH-REV-001** classified Memory's dependencies: Federation (AD-0018), Evolution
+> (AD-0019), and Knowledge (AD-0020) are **HARD** dependencies, all **SATISFIED** by implemented, ratified
+> fabrics; Ontology (PI-8) is an **ENRICHMENT** dependency of the Semantic tier only, carried by a one-way,
+> deferred, by-reference `ontologyRef` and therefore **not a hard prerequisite** (no circular dependency;
+> Intelligence/Simulation are downstream consumers, not prerequisites). **MEM-AUTH-REV-002** independently
+> re-scored the M1–M12 ledger at **0 residual High/High** with no downgrades, ran four reviewer probes
+> (finding no new High/High), and confirmed **10/10** cross-spec consistency across the eight PHASE 18 specs.
+> **MEM-AUTH-REV-003** validated all five load-bearing models (Retention, Lifecycle, Federation, Security,
+> Audit) as **PASS** with **0 blocking findings** and non-waivable S1/S3/S4 designed & enforced.
+> **MEM-AUTH-REV-004** answered the sequencing questions — authorize immediately **YES (with conditions)**,
+> PI-8-first **NO**, parallel construction **YES** (proven non-interfering) — with **8/8** compliance checks
+> PASS. **MEM-AUTH-001** consolidates these into the **PI-9 AUTHORIZATION RECOMMENDATION: AUTHORIZE WITH
+> CONDITIONS · PARALLEL CONSTRUCTION PERMITTED · PI-8 NOT REQUIRED FIRST** (conditions C-1..C-5). The single
+> non-blocking documentation finding (F-DEP-1/F-CON-1 — formalize the optional Semantic↔Ontology reference)
+> is handled by condition C-1, not a redesign. This phase produced **review artifacts only — no design
+> change, no code, no implementation, and no authorization act**; the scoped Article IX release remains a
+> separate future Board act (`AD-00xx`). **Article IX (as scoped by AD-0016..0020), AD-0014, INV-1..13, and
+> all ratified constructs are unchanged; existing 185/185 tests remain the additive baseline.** Not
+> committed/pushed/tagged. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical
+> "Party" glossary term, Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0T. PHASE 19.1 — PI-10 Intelligence Fabric Authorization Review (Recommendation) (CURRENT — supersedes §0S for the PI-10 authorization-decision status)
+
+> **Append-only.** Records the independent PI-10 authorization review (PHASE 19.1). It is a **recommendation
+> only** — it authorizes nothing, releases no lock, and modifies no design or frozen construct. It supersedes
+> §0S for the PI-10 *authorization* status (§0S remains the record of the design generation).
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 19.1 — PI-10 Intelligence Fabric Authorization Review** (COMPLETE — recommendation) |
+| Mode | **INDEPENDENT REVIEW ONLY** — audit/validate/challenge; no design, no code, no authorization, no lock release |
+| Outputs (5) | `INT-AUTH-REV-001` (dependency analysis), `INT-AUTH-REV-002` (threat review), `INT-AUTH-REV-003` (capability validation), `INT-AUTH-REV-004` (authorization determination), `INT-AUTH-001` (consolidated recommendation) — all at repository root |
+| Verified predecessors | Implemented: PI-2/3 (AD-0016), PI-4 (AD-0017), PI-5 (AD-0018), PI-6 (AD-0019), PI-7 (AD-0020); **185/185 tests green**. **NOT implemented:** PI-8 Ontology (`ONTO-*`; no AD-0021), PI-9 Memory (`MEM-*`; no AD-0022) |
+| Dependency verdict | Knowledge (PI-7) ✅ + Evolution (PI-6) ✅ **SATISFIED**; **Ontology (PI-8) BLOCKED**; **Memory (PI-9) BLOCKED** (both unimplemented + under-specified in INT design) |
+| Binding defects | **F-2** Reasoning/Inference do not consume `ONTO-*` (no semantic grounding); **F-4** `INT-GOV-C12` defines a competing internal Memory Scope instead of consuming the PI-9 Memory Fabric |
+| Threat verdict | Design-level **0 residual High/High** CONFIRMED; **I2/I3 operationally conditional** on PI-8/PI-9; I4 (Ω∞ escape) structurally closed |
+| Capability verdict | 8/8 design-complete; **Policy Evaluation + Constraint Solving constructible NOW**; Reasoning **BLOCKED**; Inference/Planning/Decision/Goal/Federated **PARTIAL** (scaffolding NOW, cognition core BLOCKED) |
+| **Recommendation** | **PI-10 CONSTRUCTION AUTHORIZATION — DEFERRED · CONDITIONAL (NOT YET AUTHORIZED)** |
+| Prerequisites | **P-1** PI-8 authorized+implemented+validated (AD-0021); **P-2** PI-9 authorized+implemented+validated (AD-0022); **P-3** revise `INT-*` to consume `ONTO-*` + PI-9 Memory (fix F-2/F-4); **P-4** re-run review then AD-0023; **P-5** invariants preserved |
+| Can construction begin before PI-9 implementation? | **NO (recommended)** — cognition core BLOCKED; Ontology/Memory-independent subset is technically buildable but recommended against (dangling deps, F-4 entrenchment risk, no standalone value) |
+| Recommended sequence | **PI-8 (Ontology) → PI-9 (Memory) → revise INT-* → re-review (PHASE 19.2) → AD-0023 (PI-10)** |
+| Article IX / PI-10 | **Article IX generation lock REMAINS ACTIVE**; `UCOS-CONSTRUCTION-BLOCKED` unchanged; PI-10 NOT authorized; AD-0014 Ω∞ boundary + INV-1..13 preserved |
+| Registration | 5 artifacts registered append-only in `CTX-REG-001` (Intelligence Fabric Authorization Review section) |
+| Git | Not committed / not pushed / not tagged |
+| Next Step | Board disposition: ratify `INT-*` design (subject to P-3) if desired, but **withhold AD-0023**; advance PI-8 Ontology authorization (`ONTO-AUTH-001`/AD-0021) and PI-9 Memory authorization (AD-0022) in dependency order first |
+
+> **PHASE 19.1 — PI-10 Intelligence Fabric Authorization Review (COMPLETE — recommendation).** Independently
+> reviewed the PHASE 19 `INT-*` design against its predecessors and produced five review artifacts.
+> **Determination: DEFER PI-10 construction authorization.** The Intelligence design is *ratifiable*
+> (`INT-READINESS-001`: 10/10; threat posture design-sound at 0 residual High/High), but PI-10 construction is
+> **not authorizable today** because two of its four dependency axes — **Ontology (PI-8)** and **Memory
+> (PI-9)** — rest on fabrics that are **designed but neither authorized (no AD-0021/AD-0022) nor implemented**
+> (no `src/control/ontology`/`src/control/memory`; only PI-2..7 exist, 185/185 tests green), and because the
+> Intelligence design carries two binding defects against those predecessors (**F-2** ontology not consumed for
+> semantic grounding; **F-4** a competing internal Memory Scope that must be redefined as a view over the PI-9
+> Memory Fabric). The cognition core (Reasoning, semantic Inference, typed/stateful Planning, rationale-complete
+> Decision, goal semantics, Memory Utilization) is **BLOCKED**; only Policy Evaluation and Constraint Solving
+> are fully constructible now. **No construction — including any Ontology/Memory-independent subset — should
+> begin before PI-9 implementation**, to preserve the program's additive, dependency-gated sequencing.
+> Prerequisites **P-1..P-4** and the recommended sequence **PI-8 → PI-9 → revise INT-* → re-review → AD-0023**
+> are recorded in `INT-AUTH-001`. This review authorizes nothing: **Article IX REMAINS ACTIVE**,
+> `UCOS-CONSTRUCTION-BLOCKED` is unchanged, and **AD-0014** / **INV-1..13** stand. Registered append-only in
+> `CTX-REG-001`. Not committed/pushed/tagged. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02;
+> canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0T. PHASE 20.1 — PI-11 Simulation Fabric Authorization Review & Decision (AD-0022) (CURRENT — supersedes §0S for PI-11 authorization status)
+
+> **Append-only.** Records the PHASE 20.1 authorization review of the PI-11 Simulation Fabric and the Authority
+> Board decision **AD-0022** (conditional, scoped Article IX release). No implementation performed in this
+> phase (review + determination only). Article IX remains a scoped release (AD-0016 substrate + AD-0017 control
+> + AD-0018 federation + AD-0019 evolution + AD-0020 knowledge + **AD-0022 simulation, conditional**); all
+> other generation LOCKED. INV-1..13, AD-0014 (Ω∞ deferral), and the five substrate core dirs unchanged.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 20.1 — PI-11 Simulation Fabric Authorization Review** (COMPLETE) |
+| Decision | **AD-0022** (`AD-0022-PI11-SIMULATION-FABRIC-CONSTRUCTION-AUTHORIZATION.md`; `UCOS-AUTH-BOARD-AD-0022`) |
+| Review artifacts | `SIM-AUTH-REV-001` (dependencies), `SIM-AUTH-REV-002` (threats), `SIM-AUTH-REV-003` (capabilities), `SIM-AUTH-REV-004` (options/scope); determination `SIM-AUTH-001` |
+| Dependency finding | HARD deps (substrate/control/evolution/federation/**Knowledge PI-7**) **implemented & satisfied**; Ontology (PI-8)/Memory (PI-9)/Intelligence (PI-10) are **SOFT**, fail-closed-degradable |
+| Threat finding | S1–S12 hold at **0 residual High/High** under real partial-fabric availability; fabric deferral is **threat-reducing** |
+| Capability finding | **7/7** mandated capabilities validated; 0 blocked; Sandbox Architecture (non-actuation guarantee) fully buildable; Predictive Models scoped (deterministic now, Intelligence-backed deferred) |
+| Q1 Can PI-11 be authorized? | **YES — conditionally (scoped)** |
+| Q2 Must PI-10 be implemented first? | **NO** (sole coupling is advisory, verifier-gated, off-commit-path) |
+| Q3 Can construction proceed conditionally? | **YES** (Option C) |
+| **Determination** | **RELEASE LOCK — PI-11 SIMULATION-FABRIC SCOPE ONLY (CONDITIONAL)** |
+| Authorized scope | New `src/control/simulation/*` modules + tests realizing `SIM-GOV-001/002`, `SIM-ARCH-001`, `SIM-SEC-001`, `SIM-FED-001`, `SIM-AUD-001`; additive async interfaces in `src/control/simulation/types.ts` |
+| Conditions | SIM-COND-1..7 (zero prohibited-core-dir change; additive/134-green; non-actuation/sandbox; determinism; S1/S3/S4; no Ω∞; approval-required acts) |
+| Forward-dependency gates (deferred) | **FDG-INT** (Intelligence-backed non-deterministic predictive models → PI-10), **FDG-MEM** (`memory:*` reads → PI-9), **FDG-ONT** (`ontology:*` semantic validation → PI-8) — each requires its own authorization + adversarial tests before binding |
+| Prohibited (preserved) | substrate core dirs; federation/evolution/knowledge behavior; premature FDG binding; independent commit path; custom crypto; authority escalation; domain/business logic; Ω∞ scope; production deployment |
+| Decision-log continuity | On-disk records run AD-0016..AD-0020; **AD-0021 reserved/unassigned** (PI-8/9/10 design-only); PI-11 recorded as **AD-0022** per directive (noted in AD-0022 §0, SIM-AUTH-001 §5) |
+| Readiness criteria | `SIM-AUTH-001` — **10/10 PASS** |
+| Article IX / other PIs | Article IX released **only** for the PI-11 simulation scope (conditional); all other scope LOCKED; PI-8/9/10 implementation still unauthorized; AD-0014 Ω∞ deferral stands (no INV-14..20) |
+| Git | Not committed/pushed/tagged |
+| Next Step | PI-11 implementation under AD-0022: build `src/control/simulation/*` + additive async interfaces + adversarial S1–S12 tests; keep substrate/PI-4/5/6/7 and the 134/134 baseline green; respect FDG-INT/MEM/ONT; then independent PI-11 validation/ratification. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE 20.1 — PI-11 Simulation Fabric Authorization Review & Decision (COMPLETE).** The Authority Board
+> reviewed the PHASE 20 `SIM-*` foundations against the true cross-fabric dependency structure and issued
+> **AD-0022: RELEASE LOCK — PI-11 SIMULATION-FABRIC SCOPE ONLY (CONDITIONAL)**. Four reviews established the
+> decisive facts: (`SIM-AUTH-REV-001`) the Simulation Fabric's **hard** dependencies — substrate, control/
+> policy, evolution, federation, and the **Knowledge Fabric (PI-7)** — are all **implemented and satisfied**,
+> while Ontology (PI-8), Memory (PI-9), and Intelligence (PI-10) are **soft**, fail-closed-degradable couplings;
+> (`SIM-AUTH-REV-002`) the S1–S12 threat ledger holds at **0 residual High/High** and deferring the
+> unimplemented fabrics is **threat-reducing** (fail-closed narrows inputs; the non-determinism quarantine
+> surface is simply not exercised without a bound Intelligence model); (`SIM-AUTH-REV-003`) **7/7** mandated
+> capabilities (Digital Twins, Scenario Engine, Predictive Models, Impact Analysis, Policy Simulation,
+> Federated Simulation, Sandbox Architecture) are validated and 0 blocked, with the Sandbox Architecture — the
+> load-bearing non-actuation guarantee — fully buildable on implemented fabrics; and (`SIM-AUTH-REV-004`)
+> **Option C (conditional/scoped)** is recommended. The determination `SIM-AUTH-001` records **10/10**
+> authorization-readiness criteria PASS and answers the three questions: **Q1 YES (conditionally)**, **Q2 NO
+> (PI-10 not a prerequisite)**, **Q3 YES**. AD-0022 authorizes construction of new `src/control/simulation/*`
+> modules + tests additively over AD-0016..0020 under **SIM-COND-1..7**, deferring the Intelligence/Memory/
+> Ontology couplings behind forward-dependency gates **FDG-INT/FDG-MEM/FDG-ONT** (each gated on its own PI
+> implementation + authorization + adversarial tests). **No implementation was performed** (determination
+> only); the substrate, PI-4/5/6/7 fabrics, and the **134/134** test baseline are unchanged; INV-1..13,
+> AUTH-012 substance, AD-0014 Ω∞ deferral, and frozen architectures are preserved. Decision-log continuity:
+> **AD-0021 is reserved/unassigned** (PI-8/9/10 remain design-only); PI-11 is recorded as **AD-0022** per the
+> PHASE 20.1 directive. Registered append-only in `CTX-REG-001`. Not committed/pushed/tagged.
+
+
+
+---
+
+## 0U. PHASE 20.2 — PI-11 Simulation Fabric Implementation Planning (Construction Blueprint) (CURRENT — supersedes §0T-Simulation for the PI-11 construction-planning workstream only)
+
+> **Append-only.** Records PHASE 20.2 (PI-11 Simulation Fabric Implementation Planning) under **AD-0022**.
+> **Planning artifacts only** — no source code, runtime, infrastructure, services, or implementation; **no**
+> modification of the substrate, PI-4 control, PI-5 federation, PI-6 evolution, PI-7 knowledge fabrics, or any
+> prohibited core dir; **no** wiring of any forward-dependency gate. The scoped Article IX release (AD-0022)
+> authorizes construction of `src/control/simulation/*`; this phase produces the construction blueprint that
+> governs that construction. INV-1..13, AD-0014 (Ω∞ deferral; no INV-14..20), and the **134/134** implemented
+> test baseline are unchanged; all prior program status preserved.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 20.2 — PI-11 Simulation Fabric Implementation Planning** (COMPLETE — construction blueprint) |
+| Authorizing act | **AD-0022** (RELEASE LOCK — PI-11 SIMULATION-FABRIC SCOPE ONLY, CONDITIONAL; effective 2026-07-01) |
+| Mode | **IMPLEMENTATION PLANNING ONLY** — construction blueprint; no source code / runtime / infrastructure / services in this phase |
+| Location | `architecture/simulation/` (planning artifacts) |
+| Deliverables (3) | `SIM-PLAN-001` (Construction Blueprint), `SIM-PLAN-002` (Implementation Sequence & Delivery Plan), `SIM-PLAN-003` (Validation, Threat-Verification & Test Architecture) |
+| Module topology | 14 modules **M0..M14** under `src/control/simulation/*` (types · registry · sandbox · digital-twin · scenario-engine · projection-engine · predictive-adapter[iface] · constraint-evaluator · impact-analyzer · revocation-authority · federation-guard · promotion-pipeline · simulation-audit-log · assembly · barrel); acyclic dependency order |
+| Package boundaries | **B1..B6** — core-dir isolation; control-only surface; fabric reuse (no re-implementation); namespace confinement; **no commit power**; additive-async |
+| Control interfaces | Additive async seams in `src/control/simulation/types.ts` — `SnapshotSource`, `PredictiveModel`, `DeterministicVerifier`, `SimulationSink`; `createSimulationFabric(substrate, control, fabrics, options)` (options additive; defaults fail-closed) |
+| Integration points | **Knowledge (PI-7)** read-only baseline · **Evolution (PI-6) = the ONLY commit path** · **Federation (PI-5)** Ed25519 crypto + hash-chained `FederatedAuditLog` + co-simulation · **PI-4 PEP** deny-by-default authorization |
+| FDG binding points | **FDG-INT** (M6 non-deterministic model registration DENIED; adapter iface only) · **FDG-MEM** (M3 `memoryRef` hook UNBOUND) · **FDG-ONT** (M7 `ontologyRef` hook; constraint citing absent `ontology:*` ⇒ DENY) — all inert deny/absent seams; real binding = separate future authorization + adversarial tests |
+| Implementation sequence | 6 build waves **W0..W5** (foundations → baseline binding → deterministic projection → impact/federation/revocation → promotion/assembly → adversarial); linear wave dependency graph; **additive-only**; **134-baseline-green at every wave boundary** (SIM-COND-2); approval-required acts D1..D10 deferred to runtime (AD-0009 / SIM-COND-7) |
+| Validation strategy | 5 streams **V-A** structural / **V-B** functional / **V-C** security (S1/S3/S4/S6) / **V-D** threat / **V-E** assurance (A1..A8) |
+| Threat verification | **S1–S12**, one adversarial test each; determination gate **0 residual High/High** empirically reproduced |
+| Test architecture | 13 files (`simulation-harness.ts` + per-wave suites + `simulation-adversarial.test.ts`), naming aligned to implemented `knowledge-*`/`federation-*`/`evolution-*` suites; Node built-in runner |
+| Exit gates | **10** — G-BUILD · G-BASELINE · G-FUNC · G-THREAT · G-COV (~100% deny/verify paths; ≥90% subtree) · G-DIR (0 core-dir change) · G-ADDITIVE (14 modules + 1 re-export) · G-FDG (seams inert) · G-CRYPTO (no custom crypto) · G-ASSURE (A1..A8) |
+| PI-11 output set (future) | `PI11-IMP-001` / `PI11-VAL-001` / `PI11-SEC-001` / `PI11-AUD-001` (mirrors ratified PI5-* deliverables) |
+| Prohibited-dir impact | **NONE (planned)** — all construction confined to `src/control/simulation/*` + 1 additive re-export in `src/control/index.ts`; five substrate core dirs untouched (SIM-COND-1) |
+| Article IX / scope | Article IX release remains **scoped/conditional** (AD-0016 substrate + AD-0017 control + AD-0018 federation + AD-0019 evolution + AD-0020 knowledge + **AD-0022 simulation, conditional**); all other generation LOCKED; AD-0014 Ω∞ deferral stands |
+| Git | Not committed / not pushed / not tagged |
+| **Determination** | **PHASE 20.2 COMPLETE · PI-11 IMPLEMENTATION READY** (construction blueprint ratifiable; construction of `src/control/simulation/*` may proceed under AD-0022 governed by SIM-PLAN-001..003) |
+| Next Step | Execute PI-11 construction per SIM-PLAN-002 waves W0→W5 (additive; 134 baseline green at each gate; FDG-INT/MEM/ONT inert), verifying S1–S12 (0 residual High/High) per SIM-PLAN-003; then produce `PI11-IMP/VAL/SEC/AUD-001` and convene independent PI-11 validation/ratification. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE 20.2 — PI-11 Simulation Fabric Implementation Planning (COMPLETE).** Under the conditional scoped
+> Article IX release **AD-0022**, produced the three-artifact **construction blueprint** for the PI-11
+> Simulation Fabric under `architecture/simulation/`, translating the seven ratified `SIM-*` design
+> specifications into a construction-ready plan without writing any source code. **`SIM-PLAN-001`**
+> (Construction Blueprint) fixes the fourteen-module topology (M0..M14) entirely within
+> `packages/platform-runtime/src/control/simulation/*`, six package boundaries (core-dir isolation,
+> control-only surface, fabric reuse, namespace confinement, **no commit power**, additive-async), the additive
+> async control interfaces (`SnapshotSource`/`PredictiveModel`/`DeterministicVerifier`/`SimulationSink` +
+> `createSimulationFabric(...)`), the upstream integration points (**Knowledge** read-only baseline;
+> **Evolution** as the sole commit path; **Federation** Ed25519 crypto + hash-chained `FederatedAuditLog` +
+> co-simulation; **PI-4 Control Plane** deny-by-default), and the three forward-dependency-gate binding points
+> **FDG-INT** (non-deterministic model registration denied — deterministic models only), **FDG-MEM** (`memory:*`
+> read hook unbound), and **FDG-ONT** (`ontology:*` validation hook; a constraint referencing an absent
+> `ontology:*` surface is rejected/deny, never skipped) — each an inert deny/absent seam requiring a separate
+> future authorization to bind. **`SIM-PLAN-002`** (Implementation Sequence) orders construction into six
+> additive-only build waves W0→W5 (foundations/types+registry+sandbox+audit → digital-twin+scenario-engine →
+> deterministic projection+predictive-adapter interface+constraint-evaluator → impact+federation-guard+
+> revocation → promotion-pipeline+assembly+barrel → adversarial S1–S12), with a linear wave dependency graph,
+> an additive-change discipline (14 new modules + exactly one additive re-export in `src/control/index.ts`; no
+> existing signature changes), a **134/134 baseline-green invariant** enforced at every wave gate (SIM-COND-2),
+> the Approval-Required acts (D1..D10, AD-0009 / SIM-COND-7) deferred to runtime, and a Definition of Done.
+> **`SIM-PLAN-003`** (Validation, Threat-Verification & Test Architecture) defines five validation streams
+> (V-A structural / V-B functional / V-C security / V-D threat / V-E assurance), the **S1–S12** threat-
+> verification plan (one adversarial test per threat, empirically reproducing **0 residual High/High**), a
+> thirteen-file test architecture (harness + per-wave suites + `simulation-adversarial.test.ts`, naming aligned
+> to the implemented `knowledge-*`/`federation-*`/`evolution-*` suites on the Node built-in runner), ten exit
+> gates (G-BUILD/BASELINE/FUNC/THREAT/COV/DIR/ADDITIVE/FDG/CRYPTO/ASSURE), the SIM-GOV-002 A1..A8 assurance→
+> evidence mapping, and the `PI11-IMP/VAL/SEC/AUD-001` output set feeding independent PI-11 ratification.
+> **These are planning artifacts only — no source code, runtime, infrastructure, or services were produced;
+> zero prohibited-core-dir change is planned (SIM-COND-1); no custom cryptography (reuse
+> `federation/assertions.ts`, SIM-COND-2); the fabric holds no independent commit/rollback path (Evolution-only
+> commit, SIM-COND-3); determinism-by-default with quarantined advisory non-determinism (SIM-COND-4); S1/S3/S4
+> preserved (SIM-COND-5); no Ω∞ scope and no INV-14..20 enrolled/required (SIM-COND-6, AD-0014 stands); all
+> approval-required simulation acts deferred to runtime (SIM-COND-7).** INV-1..13, AUTH-012 substance, and the
+> implemented PI-2..PI-7 fabrics + 134/134 test baseline are unchanged. Registered append-only in `CTX-REG-001`.
+> Not committed/pushed/tagged. **Determination: PHASE 20.2 COMPLETE · PI-11 IMPLEMENTATION READY** — construction
+> of `src/control/simulation/*` may proceed under AD-0022 governed by SIM-PLAN-001..003. **Work stops here; the
+> next governed step is PI-11 construction per the SIM-PLAN-002 waves, verified per SIM-PLAN-003.**
+
+
+
+---
+
+## 0V. PHASE Ω-01 — Civilization Fabric Conceptual Architecture Program (Design/Proposal only) (CURRENT — supersedes prior sections for the Civilization-Fabric conceptual workstream only)
+
+> **Append-only.** Records PHASE Ω-01 (Civilization Fabric Conceptual Architecture Program), executed under
+> explicit Authority direction (**Option A**) after two governance conflicts were surfaced and accepted: (1)
+> "PHASE 26 / PI-15" has **no ratified roadmap basis** (recorded here as **PHASE Ω-01**, a governed proposal),
+> and (2) Civilization is the **AD-0014-deferred existential subject** (constrained to Conceptual/Research/
+> Planning/Governance-Reference). **Design / proposal / authorization-readiness only** — no source code, runtime,
+> infrastructure, services, construction, runtime authority, governance override, or source/runtime change; **no**
+> modification of any ratified fabric or prohibited core dir; **no** alteration of PI-8/9/10/11 status. **AD-0014
+> preserved; INV-1..13 unchanged; INV-14..20 NOT enrolled; Article IX NOT released; no implementation/construction
+> authorized.** The implemented PI-2..PI-7 fabrics + 134/134 test baseline are unchanged; all prior program status
+> preserved. **The Civilization Fabric remains conceptual and deferred under AD-0014.**
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE Ω-01 — Civilization Fabric Conceptual Architecture Program** (COMPLETE — design/proposal) |
+| Authority direction | **Option A APPROVED** — bounded · conceptual · non-actuating · design-only; SGP-9-aligned; AD-0014 preserved; no Article IX release; no INV-14..20 enrollment; no implementation/construction authorization; no source/runtime change; no governance override |
+| Mode | **DESIGN-ONLY · PROPOSAL-ONLY · AUTHORIZATION-READINESS-ONLY** |
+| Numbering | **PHASE Ω-01** — no ratified "PI-15 / PHASE 26" slot exists (OI-1); recorded as a governed proposal, not a roadmap increment |
+| Location | `architecture/civilization/` (design/proposal artifacts) |
+| Deliverables (7) | `CIV-GOV-001`, `CIV-ARCH-001`, `CIV-SEC-001`, `CIV-FED-001`, `CIV-AUD-001`, `CIV-THREAT-001`, `CIV-READINESS-001` |
+| Modeling stance | Civilizations modeled **only** as Governed Constructs / Simulation Objects / Digital-Twin Classes / Scenario Classes / Planning-Policy-Knowledge Objects — **NOT** actuating runtime entities (CGP-1 / SGP-9) |
+| Constructs | 12 — CIV-C1 Civilization · C2 Institution · C3 Population (aggregate-only, no PII) · C4 Culture · C5 Capability (`civilization:capability:*` → CAP-01..19, no redefinition) · C6 Infrastructure · C7 Knowledge (read-only PI-7) · C8 Memory (inert/deferred, PI-9) · C9 Governance (modeled) · C10 Economy · C11 Rights (non-enforceable) · C12 Obligations |
+| Dynamics | Lifecycle · Federation · Evolution (Evolution-Fabric-only commit) · Preservation · Continuity · Resilience · Simulation (bounded/sandboxed) |
+| Civilization classes | Human · Machine · Hybrid · Collective · Unknown-Future — as **model taxonomies** (5/5) |
+| Governance | 9 principles CGP-1..9 (non-actuation; simulation-bounded; deny-by-default + Evolution-only commit; determinism; population privacy; historical integrity; single accountable authorship; local sovereignty; AD-0014 preservation); 9 decision classes CD1..9 (all Approval-Required at any future execution) |
+| Architecture | Civilization = composite Simulation object; proposed module topology CM0..CM14 under `src/control/civilization/*` layered on `src/control/simulation/*`; reuse map (SIM run/sandbox, FED crypto+audit, PI-4 policy, PI-6 Evolution commit, PI-7 Knowledge read); **zero prohibited-core-dir change (proposed)** |
+| Security | Signed CIV-SEC-AS assertions (reuse PI-5 Ed25519; **no custom crypto**); non-actuation enforcement; **population privacy** (aggregate-only, no PII, no re-identification); non-waivable **S1/S3/S4** preserved + S6 audit |
+| Federation | CFG-1..5 — local sovereignty; advisory/deny-only; clamped trust; namespace-isolated (`civilization:foreign:<nodeId>:*`); fail-closed partition; inter-civilization conflict modeling bounded/advisory |
+| Audit | Hash-chained `FederatedAuditLog` reuse; append-only anti-historical-revision; reproducibility tuple; cross-node reconciliation fail-closed; S6/S4 conformance |
+| Threat model | STRIDE; **C1–C15**; **0 residual High** (C14 Actuation Boundary Breach structurally closed; C13 population re-identification denied); residual Low / Low–Med only |
+| Readiness | **7/7** deliverables; **19/19** definitions (+ 5/5 classes); **10/10** ratification-readiness criteria PASS; constraint conformance to Authority direction PASS |
+| Open items | **OI-1** numbering (Board assigns roadmap position) · **OI-2** AD-0014 deliberation required before advancement beyond conceptual reference · **OI-3** deferred couplings (C8 Memory → PI-9; ontology-typed validation → PI-8) |
+| Frozen-artifact integrity | **0** modification of `UCOS-PEA-001..007` / Governance Baseline 1.0.0 / ratified fabrics / prohibited core dirs / PI-8/9/10/11 status; INV-1..13, AUTH-012, AD-0014 preserved |
+| Git | Not committed / not pushed / not tagged |
+| **Determination** | **PHASE Ω-01 COMPLETE · CIVILIZATION FABRIC READY FOR AUTHORIZATION REVIEW** (conceptual & deferred; confers no authority; releases no lock; enrolls no invariant) |
+| Next Step | Independent constitutional review of the `CIV-*` set and Authority Board deliberation of the AD-0014 boundary (analogous to the Ω∞ disposition) + governed roadmap assignment. Until then the Civilization Fabric remains **conceptual and deferred under AD-0014**. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE Ω-01 — Civilization Fabric Conceptual Architecture Program (COMPLETE — design/proposal).** Under
+> explicit Authority direction (Option A), produced the complete seven-artifact **conceptual Civilization Fabric
+> proposal package** under `architecture/civilization/`, modeling civilizations **strictly as bounded,
+> conceptual, non-actuating simulation objects** within the ratified Simulation Fabric envelope (SGP-9) — never
+> as actuating runtime entities. **`CIV-GOV-001`** defines the twelve governed constructs (Civilization,
+> Institution, Population [aggregate-only/no-PII], Culture, Capability, Infrastructure, Knowledge [read-only],
+> Memory [deferred], Governance, Economy, Rights [non-enforceable], Obligations), the seven dynamics (Lifecycle,
+> Federation, Evolution, Preservation, Continuity, Resilience, Simulation), nine governance principles
+> (CGP-1..9), and nine Approval-Required decision classes (CD1..9), with the five civilization classes (Human/
+> Machine/Hybrid/Collective/Unknown-Future) as model taxonomies. **`CIV-ARCH-001`** establishes that a
+> Civilization is a **composite Simulation object** (digital-twin/scenario class), proposes a control-layer
+> module topology CM0..CM14 under `src/control/civilization/*` layered on `src/control/simulation/*` with a full
+> reuse map and **zero prohibited-core-dir change**. **`CIV-SEC-001`** reuses PI-5 Ed25519 signed assertions (no
+> custom crypto), enforces non-actuation and **population privacy** (aggregate-only, PII rejected at ingress,
+> re-identification denied), and preserves non-waivable **S1/S3/S4** (+S6). **`CIV-FED-001`** governs advisory/
+> deny-only, clamped, namespace-isolated, fail-closed, locally-sovereign inter-civilization co-modeling.
+> **`CIV-AUD-001`** reuses the hash-chained `FederatedAuditLog` for tamper-evident, reproducible,
+> anti-historical-revision audit. **`CIV-THREAT-001`** closes **C1–C15 at 0 residual High** (Civilization Drift,
+> Governance Capture, Knowledge Corruption, Historical Revision Abuse, Economic Manipulation, Identity
+> Fragmentation, Federation Destabilization, Simulation Abuse, Authority Escalation, Audit Evasion, Rights Model
+> Corruption, Inter-Civilization Conflict Modeling Abuse, Population Re-identification, **Actuation Boundary
+> Breach [structurally closed]**, Continuity/Preservation Tampering). **`CIV-READINESS-001`** records **7/7**
+> deliverables, **19/19** definitions (+5/5 classes), **10/10** readiness criteria PASS, and the determination
+> **PHASE Ω-01 COMPLETE · CIVILIZATION FABRIC READY FOR AUTHORIZATION REVIEW**. **No source code, runtime,
+> infrastructure, services, construction, or runtime authority was produced; AD-0014 preserved; INV-1..13
+> unchanged; INV-14..20 NOT enrolled; Article IX NOT released; no implementation/construction authorized; no
+> ratified fabric or prohibited core dir modified; PI-8/9/10/11 status and the 134/134 baseline unaltered.**
+> Registered append-only in `CTX-REG-001`. Not committed/pushed/tagged. **The Civilization Fabric remains
+> conceptual and deferred under AD-0014.** Work stops here; the next governed step is independent constitutional
+> review and Authority Board deliberation of the AD-0014 boundary with a governed roadmap assignment.
+
+
+
+---
+
+## 0W. PHASE 18.3 (PI-9 Memory Validation) + PHASE 19.3 (PI-10 Re-Authorization) — Evidence-based determinations (CURRENT — supersedes §0S/§0T for PI-9 ratification & PI-10 re-authorization status)
+
+> **Append-only.** Records two independent, evidence-based review determinations. **No code, no authorization,
+> no lock release, no ratified-artifact mutation.** Article IX ACTIVE; INV-1..13 / AD-0014 preserved; the
+> **213/213** implemented test baseline is unchanged.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE 18.3 — PI-9 Memory Fabric Independent Validation & Ratification** (COMPLETE) |
+| Method | Direct FS inspection + `npm test` (**213/213 pass**) + workspace file search |
+| Key evidence | **No `src/control/memory/*`**; **0 memory test suites**; `AD-0023` authorizes PI-9 but construction never executed; `AD-0023` off canonical `AUTH-012` ledger (PHASE-21) |
+| Deliverables (4) | `MEM-RAT-VAL-001` (no implementation), `MEM-RAT-SEC-001` (not testable), `MEM-RAT-AUD-001` (audit not reproducible; 0 core-dir change trivially), `MEM-RAT-001` (determination) |
+| **Determination** | **PHASE 18.3 COMPLETE · PI-9 MEMORY FABRIC REJECTED** — cannot ratify an implementation that does not exist (authorized under AD-0023, never constructed; authorization off-ledger) |
+| Phase | **PHASE 19.3 — PI-10 Intelligence Fabric Re-Authorization Review (Post-Remediation)** (COMPLETE) |
+| Remediation verified | `INT-REM-001` **F-2 CLOSED** (ontology grounding IGP-9/C13); `INT-REM-002` **F-4 CLOSED** (memory single-SoR IGP-10; C12 view); `INT-REM-003` **P-3 DISCHARGED** — **6/6** review areas design-SATISFIED |
+| Gate verification | **P-1 NOT CLEANLY MET** (PI-8 implemented `src/control/ontology/*` but `AD-0021` contested/phantom per PHASE-21 F-REC-2; no independent PI-8 validation) · **P-2 FAILED** (PI-9 unimplemented; `MEM-RAT-001` REJECTED) · authority chain **DEFECTIVE** (AD-0016..0023 off-ledger) |
+| Deliverables (4) | `INT-AUTH-001` (19.3; ontology/memory + P-1/P-2), `INT-AUTH-002` (19.3; provenance/fed/gov/audit), `INT-AUTH-003` (19.3; remediation/gates), `INT-AUTH-004` (19.3; determination) |
+| **Determination** | **PHASE 19.3 COMPLETE · PI-10 NOT READY** — remediation genuine (design 6/6) but P-2 failed, P-1 contested, authority chain defective; construction DEFERRED; no AD issued |
+| ID note | `INT-AUTH-001` ID reused from PHASE 19.1; 19.3 series uses distinct filenames (append-only; 19.1 file preserved) — **OBS-19.3-ID** |
+| Cross-cutting finding | The `AD-0016..0023` authority chain is **off the canonical `AUTH-012` ledger** and `AD-0021` (PI-8) is contested (`PHASE-21-CONSTITUTIONAL-RECONCILIATION-REPORT`: "AUTHORITY CHAIN DEFECT REMAINS"). Ledger restoration is a prerequisite to any clean PI-8/PI-9/PI-10 authorization. |
+| Git | Not committed / not pushed / not tagged |
+| Next Step | Board-level: (1) execute PHASE-21 authority-chain restoration; (2) construct PI-9 Memory under a clean enrolled authorization → re-run PHASE 18.3 (supersede REJECTED `MEM-RAT-001`); (3) close P-1 with clean PI-8 authorization + independent validation; (4) re-run PHASE 19.3 → only then a PI-10 authorization at a new unused AD ID. Standing Trusted Operations (N-1 CAP-01..14; canonical "Party" glossary) remain to be honored at their next touch. |
+
+> **PHASE 18.3 + PHASE 19.3 — evidence-based determinations (COMPLETE).** Two independent validation/review
+> phases were executed strictly against on-disk evidence (no artifact ratified without reproduction).
+> **PHASE 18.3** independently attempted to reproduce and ratify the PI-9 Memory Fabric implementation and found
+> **none exists** — no `src/control/memory/*`, no memory modules, and **0 memory test suites** in a **213/213**
+> green baseline; `AD-0023` authorizes PI-9 but the construction phase was never run (authorization ≠
+> implementation), and `AD-0023` itself is off the canonical `AUTH-012` ledger (PHASE-21). Implementation,
+> Security, Federation, Audit, and Adversarial reproduction were therefore impossible; directory integrity and
+> zero prohibited-core-dir change hold trivially (nothing was built). Determination: **PHASE 18.3 COMPLETE ·
+> PI-9 MEMORY FABRIC REJECTED** (`MEM-RAT-VAL/SEC/AUD-001` + `MEM-RAT-001`). **PHASE 19.3** re-reviewed PI-10
+> after the PHASE 19.2 remediation and **verified the remediation is genuine at the design level** — `INT-REM-001`
+> closes F-2 (mandatory ontology grounding), `INT-REM-002` closes F-4 (competing memory store removed; memory
+> single-SoR under PI-9), `INT-REM-003` discharges P-3, and all six review areas (Ontology Grounding, Memory
+> Ownership, Decision Provenance, Federation Compatibility, Governance Compliance, Audit Compliance) are
+> design-SATISFIED. But implementation readiness turns on the prerequisite gates, and those FAIL: **P-2 (PI-9
+> implemented + validated) FAILED** (PI-9 unimplemented; REJECTED in PHASE 18.3), **P-1 (PI-8) NOT cleanly met**
+> (implemented but on the contested/phantom `AD-0021`; no independent validation), and the **authority chain is
+> defective** (AD-0016..0023 off-ledger). Determination: **PHASE 19.3 COMPLETE · PI-10 NOT READY**
+> (`INT-AUTH-001..004` 19.3). **No code, authorization, lock release, or ratified-artifact mutation occurred;
+> Article IX ACTIVE; `UCOS-CONSTRUCTION-BLOCKED` unchanged; INV-1..13, AD-0014, and the 213/213 baseline
+> preserved.** Registered append-only in `CTX-REG-001`. Not committed/pushed/tagged.
+
+
+
+---
+
+## 0X. PHASE UA-05 — Canonical Platform Invariants (`INV-CORE-001`) (CURRENT — supersedes prior sections for the canonical-invariant-definition workstream only)
+
+> **Append-only.** Records PHASE UA-05 (Canonical Platform Invariants). **Governed definition only** — no
+> source code, runtime, infrastructure, services, or implementation; **no** ADR/architecture/fabric
+> modification; **no** registry/state mutation of frozen constructs; **no** lock release; and **no**
+> enrollment into the constitutional invariant set (that is an Authority-Board / AUTH-012 act). `INV-1..13`
+> (`UCOS-ASR-NFR-001`), the Article IX generation lock, `UCOS-CONSTRUCTION-BLOCKED`, and AD-0014 (Ω∞
+> deferral) are unchanged. This artifact **enacts and restates** existing guarantees; it enrolls nothing.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE UA-05 — Canonical Platform Invariants** (COMPLETE — definition) |
+| Artifact | **`INV-CORE-001`** v1.0.0 (`UA-05-CANONICAL-INVARIANTS.md`, repository root) |
+| Mode | GOVERNED DEFINITION ONLY — defines canonical invariants + verification/failure/recovery semantics; no implementation, no lock release, no enrollment |
+| Relationship to `UCOS-ASR-NFR-001` | **Complementary, non-colliding.** `INV-1..13` = foundation-permanence (redesign-prohibited structural) invariants; `INV-CORE-01..14` = runtime & governance **integrity** (never-violate operational) invariants; namespaced `INV-CORE-*` (0 collision) |
+| Invariants defined | **14** (`INV-CORE-01..14`), each with **Formal Statement · Verification Method · Failure Mode · Recovery Mode**; every invariant **fail-closed** |
+| UA-05 named domains | **8/8 covered** — Authority (01) · Audit (02) · Lineage (03) · Federation (04) · Evolution (05) · Knowledge (06) · Memory (07) · Ontology (08) |
+| Constitutional-spine extensions | Determinism (09) · Security S1/S3/S4 non-waivable (10) · Isolation/Contract (11) · Non-Actuation (12) · Identity (13) · Configuration/Metadata (14) |
+| Anchors | AUTH-001..012, Const. Art. IX/X/XII, `UCOS-ASR-NFR-001` INV-1..13, AUTH-008/SEC-CTL-001..020, FED-* (AD-0018), Evolution (AD-0019), KNOW-* (AD-0020), ONTO-*, MEM-*, INT-*/SIM-*/CIV-*, PEP-001..020, IP-04/14/15, TM-*, WP-PLT-06/11 |
+| Cross-invariant properties | fail-closed everywhere · static stability · append-only correction · independent verifiability · non-collision with INV-1..13 |
+| Validation | 8/8 named domains; 14/14 with all four mandatory attributes; 14/14 fail-closed; 0 collision with INV-1..13; 0 orphan invariants; 0 frozen-construct/lock mutation |
+| Enrollment status | **PROPOSED — CANONICAL DEFINITION**; formal enrollment reserved to the Authority Board (AUTH-009 / AUTH-012) |
+| **Determination** | **DEFINED — READY FOR AUTHORITY BOARD REVIEW** |
+| Git | Not committed / not pushed / not tagged |
+| Next Step | Independent review + Authority Board deliberation on enrollment of `INV-CORE-01..14` into the constitutional invariant set (AUTH-012). Article IX, INV-1..13, and AD-0014 otherwise unchanged. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE UA-05 — Canonical Platform Invariants (COMPLETE).** Produced `INV-CORE-001`, defining the fourteen
+> canonical platform invariants that can never be violated, each with the four mandatory attributes (Formal
+> Statement, Verification Method, Failure Mode, Recovery Mode) and each **fail-closed**. The eight UA-05-named
+> integrity domains map to `INV-CORE-01..08` (Authority, Audit, Lineage, Federation, Evolution, Knowledge,
+> Memory, Ontology); the load-bearing constitutional spine is added as `INV-CORE-09..14` (Determinism,
+> Security S1/S3/S4, Isolation/Contract, Non-Actuation, Identity, Configuration/Metadata). The set is
+> deliberately namespaced `INV-CORE-*` to **complement without colliding with** the foundation-permanence
+> invariants `INV-1..13` (`UCOS-ASR-NFR-001`): INV-1..13 forbid *redesign* of the foundation; INV-CORE-01..14
+> forbid *operating in a violated state* at runtime/governance time. Every invariant traces to ≥ 1 ratified
+> Authority/Constitution/ADR/security/fabric source (0 orphans). **No code, infrastructure, services,
+> ADR/architecture/fabric change, registry/state mutation of frozen constructs, or lock release; nothing
+> enrolled into the constitutional invariant set; INV-1..13, the Article IX lock, `UCOS-CONSTRUCTION-BLOCKED`,
+> and AD-0014 preserved.** Determination: **DEFINED — READY FOR AUTHORITY BOARD REVIEW.** Not committed/
+> pushed/tagged.
+
+
+
+---
+
+## 0X. PHASE UA-06 — Civilization Stress Test (Scale Breakpoint & Bottleneck Analysis) (CURRENT — supersedes prior sections for the scale-analysis workstream only)
+
+> **Append-only.** Records PHASE UA-06 (Civilization Stress Test). **Analysis / design-reasoning only** — no
+> source code, runtime, infrastructure, services, benchmark execution, or construction; **no** modification of
+> any ratified fabric or prohibited core dir; **no** alteration of PI-8/9/10/11 status. **AD-0014 preserved;
+> INV-1..13 unchanged; INV-14..20 NOT enrolled; Article IX NOT released; no implementation/construction
+> authorized; `UCOS-CONSTRUCTION-BLOCKED` unchanged.** The implemented substrate/control/federation fabrics and
+> their test baseline are unchanged; all prior program status preserved.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE UA-06 — Civilization Stress Test** (COMPLETE — analysis / determination) |
+| Numbering | **No ratified "UA" roadmap track exists** (not in `UCOS-IMP-PI-001` PI-0..7 nor `UCOS-UEA-0013` PI-2..14); recorded as a **governed analysis phase** per the `CIV-READINESS-001` OI-1 pattern; confers no roadmap position |
+| Mode | **ANALYSIS ONLY** — no code / runtime / infrastructure / services / benchmark execution / construction |
+| Artifact | `CIV-STRESS-001` (`CIV-STRESS-001-CIVILIZATION-STRESS-TEST.md`, repository root) |
+| Basis (implemented) | PI-2/3 substrate, PI-4 control fabrics, PI-5 federation; PI-6 evolution, PI-7 knowledge; **PI-4 §11B** recorded single-process figures |
+| Basis (design-only) | `MEM-*` (PI-9, REJECTED per PHASE 18.3), `INT-*` (PI-10, NOT READY per PHASE 19.3), `ONTO-*` (PI-8, contested `AD-0021`), `SIM-*` (PI-11, AD-0022 conditional), `CIV-*` (Ω-01, conceptual/deferred) |
+| Load ladder (9 tiers) | 1 / 100 / 10⁴ / 10⁶ / 10⁹ users → 100 organizations → 100 nations → planetary federation → interplanetary federation |
+| Dimensions | D-ARCH · D-AUTH · D-GOV · D-MEM · D-KNOW (verdict scale OK / STRAIN / BREAK / WALL) |
+| First architectural break | **BP-1 at T4 (~10⁶ users)** — in-memory single-process substrate; no durable adapter behind existing ports |
+| T4 breaks | **BP-1** (ARCH), **BP-2** (GOV, single serialized Evolution commit path), **BP-3** (MEM, absent PI-9 Memory Fabric) |
+| Structural WALLs (T5+) | single terminal Authority Board (BP-5/10/12/14); global single-SoR **INV-5** serialization (BP-6/11/13); synchronous determinism **INV-6** (BP-15); distributed memory absent (BP-4) |
+| Breakpoint ledger | **15 breakpoints BP-1..BP-15** (§4) with tier, dimension, severity, root cause, future/unauthorized resolution class |
+| Bottleneck registers | **17 bottlenecks** — Authority AUTH-BN-1..4; Governance GOV-BN-1..5; Memory MEM-BN-1..4; Knowledge KNOW-BN-1..4 (§5) |
+| Federation finding | **PI-5 is the scaling asset** — its autonomy/fail-closed/local-sovereignty/namespace-isolation model is the only property letting the interplanetary tier pass on ARCH & KNOW; T9 fails only on AUTH & GOV |
+| Ω∞ corroboration | Independently reproduces the `UCOS-UEA-REV-001` **INV-17-vs-INV-5 / INV-18-vs-INV-6** conflict, deferred under **AD-0014** |
+| Prerequisite defect | Several remediations (PI-9 memory, PI-8 ontology) gated behind the **`PHASE-21`** authority-chain restoration (`AD-0016..0023` off the canonical `AUTH-012` ledger) |
+| Frozen-artifact integrity | **0** modification of ratified fabrics / prohibited core dirs / PI-8/9/10/11 status; INV-1..13, AUTH-012, AD-0014 preserved |
+| Git | Not committed / not pushed / not tagged |
+| **Determination** | **PHASE UA-06 COMPLETE** — correctness-complete T1–T3; first BREAK T4 (~10⁶); structural WALLs from 10⁹; 15 breakpoints / 17 bottlenecks catalogued; no implementation authorized |
+| Next Step | Optional Authority Board review of `CIV-STRESS-001` alongside the Ω∞ disposition (AD-0014) and `PHASE-21` authority-chain restoration; any remediation (durable/sharded substrate; partitioned Evolution ledger; delegated/federated authority; distributed memory; federated knowledge propagation) requires its own governed authorization. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE UA-06 — Civilization Stress Test (COMPLETE — analysis).** Produced `CIV-STRESS-001` at repository
+> root: an evidence-based scale analysis stressing UCOS as it exists today across a nine-tier load ladder (1
+> user → 100 → 10,000 → 1,000,000 → 1,000,000,000 users, then 100 organizations, 100 nations, planetary
+> federation, interplanetary federation) along the five mandated dimensions — architectural, authority,
+> governance, memory, and knowledge. Using only the recorded PI-4 §11B single-process figures (registry resolve
+> ~1.34M/s, execute ~525k ops/s, metadata put ~4.6M/s) plus explicit order-of-magnitude reasoning (**no
+> benchmark executed**), the analysis determines that UCOS is **correctness-complete at T1–T3** and first
+> **BREAKs at T4 (~10⁶ users)** — architecturally on the in-memory single-node substrate (**BP-1**),
+> governance-wise on the single serialized Evolution commit path (**BP-2**), and memory-wise on the absent PI-9
+> Memory Fabric (**BP-3**). From **T5 (10⁹) upward** the dominant limits are **structural WALLs**, not
+> throughput: the **single terminal Authority Board** (AUTH-009), **global single-SoR serialization (INV-5)**,
+> and the **synchronous deterministic decision path (INV-6)** — culminating at the interplanetary tier where
+> relativistic latency makes INV-5/INV-6 unachievable, independently reproducing the Ω∞ review's
+> INV-17/INV-18 conflict findings **deferred under AD-0014**. The **Federation Fabric (PI-5)** is identified as
+> the one component already shaped for the largest tiers; the interplanetary tier fails **only** on authority
+> and governance. The artifact catalogues **15 breakpoints (BP-1..BP-15)** and **17 bottlenecks** (Authority
+> ×4, Governance ×5, Memory ×4, Knowledge ×4) with future, **unauthorized** resolution classes, several gated
+> behind the `PHASE-21` authority-chain restoration (`AD-0016..0023` off the canonical `AUTH-012` ledger).
+> **PHASE UA-06 has no ratified roadmap slot** and is recorded as a governed analysis phase (CIV-READINESS-001
+> OI-1 pattern). **No source code, runtime, infrastructure, services, or benchmark execution was produced; no
+> ratified fabric or prohibited core dir modified; PI-8/9/10/11 status and the implemented test baseline
+> unaltered; INV-1..13, AUTH-012, AD-0014, and the Article IX generation lock unchanged;
+> `UCOS-CONSTRUCTION-BLOCKED` stands.** Registered append-only in `CTX-REG-001`. Not committed/pushed/tagged.
+> **Work stops here; the next governed step is optional Authority Board review alongside the AD-0014 Ω∞
+> disposition and the PHASE-21 authority-chain restoration.**
+
+
+
+---
+
+## 0Y. PHASE R7 — Civilization Governance Review · Scalable Governance Structures (CIV-GOV-001 v1.1.0) (CURRENT — supersedes §0V for the Civilization governance decision-rights model only)
+
+> **Append-only.** Records PHASE R7 (Civilization Governance Review). **Design / proposal only** — no source
+> code, runtime, infrastructure, services, construction, or runtime authority; **no** modification of any
+> ratified fabric or prohibited core dir. Delivered as a **governed revision** of `CIV-GOV-001` v1.0.0 → v1.1.0
+> (version increment + supersession link per AUTH-009 §6.6) that replaces only the bottlenecked §4–§5
+> decision-rights model; §1–§3 constructs (CIV-C1..C12), the dynamics, and principles CGP-1..9 are PRESERVED.
+> **AD-0014 preserved; INV-1..13 unchanged; INV-14..20 NOT enrolled; Article IX NOT released;
+> `UCOS-CONSTRUCTION-BLOCKED` unchanged.** The Civilization Fabric remains conceptual, non-actuating, and
+> deferred under AD-0014; this scales *model governance* only.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE R7 — Civilization Governance Review** (COMPLETE — design/proposal + ledger registration) |
+| Artifact | `CIV-GOV-001` **v1.1.0** (`PHASE-R7-CIV-GOV-001-SCALABLE-GOVERNANCE.md`) |
+| Base preserved | `CIV-GOV-001` v1.0.0 (`architecture/civilization/CIV-GOV-001-CIVILIZATION-FABRIC-DEFINITION.md`) — LINKED, not deleted; supersedes §4–§5 only |
+| Mode | ANALYSIS + DESIGN ONLY — replace governance bottlenecks; design scalable governance; no source/runtime/authorization |
+| Bottlenecks replaced | **B1** single synchronous apex on critical path · **B2** single Evolution-Governor promotion chokepoint · **B3** uniform Approval-Required (no risk-tiering) · **B4** centralized federation admission · **B5** partition-intolerant synchronous approval · **B6** no elasticity |
+| Principles added | CGP-10 Subsidiarity · CGP-11 Bounded Delegated Authority · CGP-12 Partition-Tolerant Append-Only Governance · CGP-13 Risk-Proportionate Approval (CGP-1..9 preserved) |
+| Tier model | GT-0 Authority Board (apex, singleton) · GT-1 Federation/Domain Councils · GT-2 Civilization Governance Authority · GT-3 Scenario/Run Authorities — delegated (AA-7), narrowing-only, revocable, time-boxed, non-circular |
+| Decision lanes | A Autonomous (audited Trusted Op) · B Council-ratified (GT-1 signed quorum) · C Apex-reserved (GT-0; constitutional/invariant/AD-0014/S1-S3-S4) — apex load O(all) → O(constitutional) |
+| Ratification protocol | Async signed-quorum (reuse PI-5 Ed25519); parallel/sharded certification; Evolution Fabric retained as single *integrity* commit gate; partition ⇒ Lane-A last-known-good, Lane-B/C fail-closed, FED-AUD reconciliation on heal |
+| Elasticity | Elastic council registry `authority:civilization:<scope>:*` (composes with AUTH-UNIV-001); new scopes spawn councils declaratively (INV-13; scale-free; no redesign); decentralized GT-1 federation admission |
+| Revised matrix | CD1..CD9 re-assigned lane+tier; "⇒ Board" removed from all but Lane C; SoD + non-actuation guarantees unchanged |
+| Corroboration | Independently addresses `CIV-STRESS-001` D-GOV/D-AUTH walls (BP-2/5/6/8/10..15); reproduces the Ω∞ INV-5/INV-6 vs latency tension (deferred under AD-0014) at the governance-model layer without enrolling INV-14..20 |
+| Composes with | `AUTH-UNIV-001` (UAF-SPINE, AA-0..AA-8), `AUTH-009` (Approval-By-Exception, hierarchy), `SIM-GOV-001/002` (SGP-9), `AD-0018` (federation crypto/audit), `AD-0019` (Evolution commit gate) |
+| Conditions | **SG-C1** Board-approved adoption (proposal, not enactment) · **SG-C2** Authority Board remains singular apex (councils delegated, not competing; UAF-C3) · **SG-C3** any impl additive `src/control/civilization/*` + `authority:civilization:*`, 0 prohibited-core-dir change, baseline green · **SG-C4** AD-0014 preserved (no existential invariant, no lock release) |
+| Registration | `CIV-GOV-001` v1.1.0 registered append-only in `CTX-REG-001` (PHASE R7 section) with supersession link to v1.0.0; v1.0.0 row PRESERVED (no prior row altered) |
+| Frozen-artifact integrity | 0 modification of ratified fabrics / prohibited core dirs / PI-8/9/10/11 status; INV-1..13, AUTH-012 substance, AD-0014 preserved |
+| Git | Not committed / not pushed / not tagged |
+| **Determination** | **PHASE R7 COMPLETE · BOTTLENECKS REPLACED — SCALABLE GOVERNANCE DESIGNED** (conditions SG-C1..SG-C4; confers no authority; releases no lock; enrolls no invariant) |
+| Next Step | Authority Board deliberation of the tier/lane model as an AUTH-012 decision proposal (SG-C1); optional propagation of the lane/tier pattern to sibling fabric governance reviews as a general scalable-governance template. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE R7 — Civilization Governance Review · Scalable Governance Structures (COMPLETE).** Reviewed the
+> `CIV-GOV-001` v1.0.0 governance/decision-rights model and identified six structural bottlenecks arising from a
+> single-apex, synchronous, uniform-approval design (B1 single synchronous apex on the critical path; B2 single
+> Evolution-Governor promotion chokepoint; B3 uniform Approval-Required with no risk-tiering; B4 centralized
+> federation admission; B5 partition-intolerant synchronous approval; B6 no elasticity) — independently
+> corroborated by the `CIV-STRESS-001` D-GOV/D-AUTH structural walls (BP-2/5/6/8/10..15). Delivered a **governed
+> v1.1.0 revision** (AUTH-009 §6.6; supersedes §4–§5 only, preserving §1–§3 and CGP-1..9) that replaces the
+> bottlenecks with: a **subsidiarity tier model** GT-0 (Authority Board apex, singleton) · GT-1 (Federation/
+> Domain Councils) · GT-2 (Civilization Governance Authority) · GT-3 (Scenario/Run Authorities), on **bounded,
+> delegated, narrowing-only, revocable, time-boxed, non-circular** authority (AA-7; UAF-C3); **risk-classified
+> decision lanes** (A Autonomous+audited · B Council-ratified signed quorum · C Apex-reserved), collapsing apex
+> load from O(all decisions) to O(constitutional decisions); **asynchronous partition-tolerant signed-quorum
+> ratification** (reuse PI-5 Ed25519; parallel/sharded certification; Evolution Fabric retained as the single
+> *integrity* commit gate; deny-by-default/fail-closed under partition; FED-AUD reconciliation on heal); and an
+> **elastic council registry** (`authority:civilization:<scope>:*`, composing with `AUTH-UNIV-001`) that scales
+> horizontally with civilization/federation count (INV-13) without redesign, decentralizing federation admission
+> to GT-1 councils. The CD1..CD9 matrix is re-assigned lane+tier with "⇒ Board" removed from all but Lane C,
+> while every preserved guarantee carries forward verbatim: non-actuation (CGP-1), deny-by-default +
+> Evolution-only commit (CGP-3), separation of duties (CGP-7), population privacy (CGP-5), historical integrity/
+> append-only (CGP-6), local sovereignty (CGP-8), AD-0014 preservation (CGP-9), and non-waivable S1/S3/S4; the
+> Authority Board remains the singular apex (councils delegated, not competing). **No source code, runtime,
+> infrastructure, services, construction, or runtime authority was produced; no ratified fabric or prohibited
+> core dir modified; INV-1..13, AUTH-012 substance, and AD-0014 preserved; INV-14..20 NOT enrolled; Article IX
+> NOT released; `UCOS-CONSTRUCTION-BLOCKED` unchanged.** `CIV-GOV-001` v1.1.0 registered append-only in
+> `CTX-REG-001` (PHASE R7 section) with a supersession link to the PRESERVED v1.0.0. Determination: **PHASE R7
+> COMPLETE · BOTTLENECKS REPLACED — SCALABLE GOVERNANCE DESIGNED** (conditions SG-C1..SG-C4). Not committed/
+> pushed/tagged. **Work stops here; the next governed step is Authority Board deliberation of the tier/lane
+> model as an AUTH-012 decision proposal.** The Civilization Fabric remains conceptual, non-actuating, and
+> deferred under AD-0014.
+
+
+
+---
+
+## 0Y. PHASE R10 — PI-10 Intelligence Fabric Completion (`INTEL-001`) (CURRENT — supersedes §0S-Intelligence and §0T (PHASE 19.3) for PI-10 authorization-readiness status)
+
+> **Append-only.** Records PHASE R10 (Intelligence Fabric Completion within constitutional limits). It is a
+> **readiness re-adjudication only** — it writes no Intelligence Fabric code, issues no Authority Board
+> decision, and releases no lock. Article IX generation lock **REMAINS ACTIVE**; `UCOS-CONSTRUCTION-BLOCKED`
+> unchanged; INV-1..13 and AD-0014 (Ω∞ deferral) preserved; the implemented **269/269** test baseline is
+> untouched. Supersedes §0T (PHASE 19.3 `INT-AUTH-004`, "PI-10 NOT READY") for PI-10 readiness status only.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE R10 — PI-10 Intelligence Fabric Completion** (COMPLETE — readiness determination) |
+| Artifact | **`INTEL-001`** (`INTEL-001-PI10-INTELLIGENCE-FABRIC-COMPLETION-DETERMINATION.md`, repo root) |
+| Mode | COMPLETION-WITHIN-CONSTITUTIONAL-LIMITS — no code, no AD, no lock release, no invariant enrollment |
+| Prior blocker resolution | Authority chain **RESTORED** (`AUTH-REST-004`; AUTH-012 AD-0001..0023, v1.0.13) · **P-1 PI-8 Ontology RATIFIED** (`ONTO-RAT-001`) · **P-2 PI-9 Memory RATIFIED** (`MEM-RAT-003`; 269/269) · **P-3 discharged** (`INT-REM-001/002/003`) |
+| Prerequisite scorecard | P-1 ✅ · P-2 ✅ · P-3 ✅ · P-4 ✅ (this artifact) · authority chain ✅ RESTORED · Article IX ⛔ ACTIVE (no PI-10 release) |
+| Design axis | 8/8 deliverables · 10/10 readiness · 14/14 consistency · F-2/F-4 CLOSED · STRIDE I1–I12 0 residual High/High · S1/S3/S4 enforced (`INT-READINESS-001`, `INT-REM-*`) |
+| **Determination** | **PI-10 READY FOR AUTHORIZATION** (advanced from *READY FOR AUTHORIZATION REVIEW, prerequisites unmet* → *all prerequisites satisfied*) |
+| Construction status | **NOT constructed**; no `src/control/intelligence/`; requires scoped Article IX release **AD-0024** (Authority Board, Approval-Required per AUTH-012 §8 / AD-0009) |
+| Recommended AD-0024 envelope | additive-only `src/control/intelligence/*` + 1 re-export; 269 baseline green; propose-not-act (Evolution-only commit); determinism (INV-6) quarantine; S1/S3/S4; no INV-14..20; then I1–I12 adversarial suite + independent PI-10 ratification (`PI10-*`) |
+| Article IX / PI-10 | **Article IX REMAINS ACTIVE**; `UCOS-CONSTRUCTION-BLOCKED` unchanged; PI-10 construction NOT authorized; INV-1..13 & AD-0014 preserved |
+| Registration | `INTEL-001` registered append-only in `CTX-REG-001` (Intelligence Fabric Completion section) |
+| Git | Not committed / not pushed / not tagged |
+| Next Step | Authority Board deliberation of `INTEL-001`; if adopted, issue **AD-0024** (scoped Article IX release for `src/control/intelligence/*`) → PI-10 construction per the recommended envelope → independent PI-10 validation/ratification. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE R10 — PI-10 Intelligence Fabric Completion (COMPLETE).** Re-adjudicated PI-10 authorization
+> readiness against the now-restored authority chain and the newly ratified prerequisite fabrics, executing
+> step 4 of the `INT-AUTH-004` (PHASE 19.3) "Path to READY." Every blocker that produced the prior "PI-10 NOT
+> READY" verdict is resolved: the authority chain is **RESTORED** and AUTH-012 **CLOSED** at AD-0001..0023
+> (`AUTH-REST-004`, v1.0.13); **PI-8 Ontology is RATIFIED** (`ONTO-RAT-001`; 23 modules, 213/213, SI-1..7,
+> O1..O12 closed); **PI-9 Memory is RATIFIED** (`MEM-RAT-003`; 24 modules, 269/269 green, 12/12 checks,
+> F-M-1 closed); and the `INT-*` design remediation is **DISCHARGED** (`INT-REM-001/002/003`; F-2/F-4 closed;
+> 6/6 design areas SATISFIED; `INT-READINESS-001` 10/10). Determination: **PI-10 READY FOR AUTHORIZATION —
+> all implementation prerequisites (P-1/P-2/P-3 + restored authority chain) satisfied.** The only remaining
+> gate is the **scoped Article IX release itself**, reserved to the Authority Board as the next unused
+> decision-record **AD-0024** (Approval-Required, AUTH-012 §8 / AD-0009); a recommended authorization
+> envelope (additive `src/control/intelligence/*`; propose-not-act; Evolution-only commit; determinism
+> quarantine; S1/S3/S4; no INV-14..20; I1–I12 adversarial + independent ratification) is recorded in
+> `INTEL-001` §5. **No Intelligence Fabric code was written; no AD was issued; the Article IX generation lock
+> was NOT released; `UCOS-CONSTRUCTION-BLOCKED` is unchanged; INV-1..13, AD-0014, the ratified PI-2..PI-9
+> fabrics, and the 269/269 baseline are preserved.** Registered append-only in `CTX-REG-001`. Not
+> committed/pushed/tagged. **Work stops here; the next governed step is Authority Board deliberation and,
+> if granted, AD-0024 followed by PI-10 construction and independent ratification.**
+
+
+
+---
+
+## 0Y. PHASE R12 — Civilization Fabric Runtime Realization (`CIV-001`) (CURRENT — supersedes §0V for the Civilization runtime-architecture workstream only)
+
+> **Append-only.** Records PHASE R12 (Civilization Fabric Realization). **Runtime *architecture* / design /
+> authorization-readiness only** — no source code, runtime, infrastructure, services, or construction was
+> produced or authorized; **no** modification of any ratified fabric or prohibited core dir; **no** alteration of
+> PI-8/9/10/11 status; the implemented PI-2..PI-7 + PI-11 fabrics and their test baseline are unchanged.
+> **AD-0014 preserved; INV-1..13 unchanged; INV-14..20 NOT enrolled; Article IX NOT released; no
+> implementation/construction authorized; `UCOS-CONSTRUCTION-BLOCKED` unchanged.** The Civilization Fabric
+> remains conceptual, non-actuating, and deferred under AD-0014.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE R12 — Civilization Fabric Runtime Realization** (COMPLETE — design/architecture) |
+| Numbering | "PHASE R12" has **no ratified roadmap slot** (as with PHASE R7 / Ω-01 / UA-05/06); recorded as a governed design phase; confers no roadmap position |
+| Mode | **RUNTIME ARCHITECTURE (DESIGN) ONLY** — no source code / runtime / infrastructure / services / construction |
+| Artifact | `CIV-001` v1.0.0 (`architecture/civilization/CIV-001-CIVILIZATION-RUNTIME-REALIZATION.md`) |
+| Basis | PHASE Ω-01 `CIV-GOV-001` (v1.1.0, incl. PHASE R7 scalable governance GT-0..GT-3 / Lanes A–C) … `CIV-READINESS-001`; SIM-GOV-001/002 (SGP-9); implemented PI-2..PI-7 + PI-11; AD-0014; AUTH-008/009/012; Const. Art. IX/XII |
+| Runtime topology | **14 control-layer modules** `CM0..CM14` under `src/control/civilization/*` (types · civilization/institution registries · population[aggregate-only] · culture · capability · infrastructure · knowledge-integration · memory-integration[inert] · governance · economy · rights/obligations[non-enforceable] · lifecycle · federation · barrel); acyclic |
+| Integration | Civilization = composite **Simulation** object (PI-11/AD-0022); **Evolution Fabric = sole commit path** (PI-6/AD-0019); **Federation** Ed25519 assertions (PI-5/AD-0018, no custom crypto); **Knowledge** read-only (PI-7/AD-0020); **Control Plane** deny-by-default + S1/S3/S4 + FederatedAuditLog (PI-4); **Ontology (PI-8) / Memory (PI-9)** inert fail-closed hooks |
+| Governance realized | CGP-1..9 runtime guards; CD1..CD9 approval gates (all Approval-Required, AD-0009); population privacy (aggregate-only, PII rejected at ingress, no re-identification) |
+| Security | Non-waivable **S1/S3/S4** + S6 audit; signed assertions reuse PI-5 (no custom crypto); classification inheritance |
+| Threats | **C1–C15**; **0 residual High/High** (C14 Actuation Boundary Breach structurally closed; C13 population re-identification denied) |
+| Additivity | **zero prohibited-core-dir change** (public seams only); **134/134** implemented baseline preserved (additive-only) |
+| Exit gates | G-BUILD / G-BASELINE / G-FUNC / G-THREAT / G-GOV / G-SEC / G-INTEGRATION / G-DOC specified |
+| Traceability | 7/7 PHASE Ω-01 `CIV-*` artifacts mapped; CGP 9/9, CD 9/9, C1–C15 15/15 |
+| Governance finalization | Earlier "READY FOR RUNTIME CONSTRUCTION" framing **clamped** to design-only **READY FOR AUTHORIZATION REVIEW**; governing disclaimer banner + §XV closure added; illustrative TypeScript flagged as design spec, not created source; conformed to the `CIV-*` family discipline |
+| Registration | Registered append-only in `CTX-REG-001` (Civilization Fabric section) |
+| Frozen-artifact integrity | **0** modification of ratified fabrics / prohibited core dirs / PI-8/9/10/11 status; INV-1..13, AUTH-012, AD-0014 preserved |
+| Git | Not committed / not pushed / not tagged |
+| **Determination** | **PHASE R12 COMPLETE · CIVILIZATION FABRIC RUNTIME ARCHITECTURE REALIZED (DESIGN-ONLY) · READY FOR AUTHORIZATION REVIEW** |
+| Next Step | Independent constitutional review of `CIV-001` alongside the Ω-01 `CIV-*` set; Authority Board deliberation of the AD-0014 boundary + a scoped Article IX release act (analogous to AD-0018/AD-0022) before any construction of `src/control/civilization/*`. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE R12 — Civilization Fabric Runtime Realization (COMPLETE — design/architecture).** Transformed the
+> ratified PHASE Ω-01 conceptual civilization constructs into a complete, additive **runtime architecture
+> specification**, `CIV-001` (`architecture/civilization/`). The fabric is specified as a 14-module control-layer
+> topology (`CM0..CM14` under `src/control/civilization/*`) realizing a Civilization as a **composite,
+> non-actuating Simulation object** (SGP-9): all durable state mutation routes through the **Evolution Fabric**
+> (sole commit path); inter-civilization federation reuses the PI-5 Ed25519 signed-assertion machinery
+> (advisory/deny-only/clamped/namespace-isolated/fail-closed, **no custom crypto**); Knowledge is consumed
+> read-only (PI-7); Ontology (PI-8) and Memory (PI-9) are held as **inert, fail-closed** hooks pending their own
+> authorizations; and the Control Plane enforces deny-by-default authorization, non-waivable **S1/S3/S4**, and a
+> hash-chained append-only **FederatedAuditLog** (S6). Governance is realized as runtime guards (CGP-1..9) and
+> Approval-Required decision gates (CD1..CD9, AD-0009), with **population privacy** (aggregate-only, PII rejected
+> at ingress, no re-identification). The threat model closes **C1–C15 at 0 residual High/High** — the Actuation
+> Boundary Breach (C14) is **structurally closed** (no commit/write/execute path; Evolution-only; simulation
+> sandbox). The design is proven additively realizable with **zero prohibited-core-dir change** and **0 baseline
+> regression (134/134 preserved)**, and defines eight exit gates (G-BUILD … G-DOC). During finalization the
+> artifact was reconciled to the Civilization-Fabric governing discipline: the earlier **"READY FOR RUNTIME
+> CONSTRUCTION"** determination — which conflicted with the ratified AD-0014 deferral, the active Article IX lock,
+> and `UCOS-CONSTRUCTION-BLOCKED` — was **clamped to design-only "READY FOR AUTHORIZATION REVIEW"**, a governing
+> disclaimer banner and a §XV Governance Closure were added, and the illustrative TypeScript was flagged as
+> design specification (not source created under `packages/`). `CIV-001` is thus the **runtime-layer analog of
+> `CIV-READINESS-001`**. **No source code, runtime, infrastructure, services, or construction was produced or
+> authorized; no ratified fabric or prohibited core dir modified; PI-8/9/10/11 status and the implemented
+> 134/134 test baseline unaltered; INV-1..13, AUTH-012, AD-0014, and the Article IX generation lock unchanged;
+> `UCOS-CONSTRUCTION-BLOCKED` stands.** Registered append-only in `CTX-REG-001`. Not committed/pushed/tagged.
+> **Work stops here; the next governed step is independent constitutional review and an Authority Board scoped
+> Article IX release deliberation before any construction of `src/control/civilization/*`.**
+
+
+
+
+---
+
+## 0Y. PHASE R11 — Economy Fabric Runtime Realization (`ECON-001`) (CURRENT — supersedes prior sections for the Economic-Fabric realization workstream only)
+
+> **Append-only.** Records PHASE R11 (Economy Fabric Realization): the transformation of the ratified-design
+> PI-13 Economic Fabric (`ECON-*`) into a governed **runtime-realization blueprint** (`ECON-001`), following
+> the reconciled `CIV-001` (PHASE R12) discipline. **Design/blueprint only** — no source code, runtime,
+> infrastructure, services, or construction; no modification of any prohibited substrate core dir or of the
+> PI-4 control / PI-5 federation / PI-6 evolution / PI-7 knowledge (or PI-8/PI-9) fabric behavior; **no**
+> release of the Article IX generation lock; **no** real-world financial actuation. PI-13 implementation
+> remains **NOT authorized** (a separate Authority Board scoped-release act is required). INV-1..13, AUTH-012,
+> and the AD-0014 Ω∞ deferral (no INV-14..20) are unchanged; `UCOS-CONSTRUCTION-BLOCKED` stands; all prior
+> program status preserved.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE R11 — Economy Fabric Runtime Realization** (COMPLETE — realization blueprint) |
+| Numbering | **R-series** realization track (peer of `INTEL-001` R10, `CIV-001` R12); no ratified fixed roadmap slot — recorded append-only as a governed realization phase |
+| Mode | **DESIGN / RUNTIME-REALIZATION BLUEPRINT ONLY** — no source code / runtime / infrastructure / services / construction / lock release / real actuation |
+| Artifact | `ECON-001` (`architecture/economic/ECON-001-ECONOMIC-RUNTIME-REALIZATION.md`) |
+| Input design (7/7) | `ECON-GOV-001`, `ECON-ARCH-001`, `ECON-SEC-001`, `ECON-FED-001`, `ECON-AUD-001`, `ECON-THREAT-001`, `ECON-READINESS-001` (PHASE 24 · PI-13, DESIGN — READY FOR RATIFICATION/AUTHORIZATION REVIEW) |
+| Module topology | 16 modules **EM0..EM15** under `packages/platform-runtime/src/control/economic/*` (types · economy-registry · asset-manager · valuation-engine · treasury-ledger · budget-allocation-manager · marketplace-engine · exchange-engine · settlement-engine · incentive-engine · economic-authority · revocation-authority · emergency-halt · federation-guard · economic-audit-log · index/bootstrap); acyclic; Settlement Engine (EM8) = sole conservation/commit chokepoint |
+| Governance realized | EGP-1..12 → runtime guards; D1..D10 → Approval-Required gates; ECON-C1..C12 constructs (types EM0 + owning modules); 6/6 economy types (Resource/Token/Knowledge/Energy/Hybrid/Unknown-Future) as pluggable `economic:economy:*` profiles (INV-13) |
+| Security | ESP-1..6; non-waivable **S1/S3/S4** (+S6) enforced; signed value-bearing acts reuse PI-5 Ed25519 (`assertions.ts`) — **no custom crypto** |
+| Invariants | Conservation (Σ credits = Σ debits) · non-negativity · atomicity · idempotency (nonce) · determinism (INV-6) · reversibility (compensating entries) — all fail-closed at the settlement gate |
+| Commit discipline | **Propose-not-act**; **PI-6 Evolution Fabric is the sole ledger-commit path** (`economic:` allowlist); **no real-money code path** — any real value movement is **AD-0009 Approval-Required** |
+| Federation | EFP-1..6 — advisory-only / deny-only / clamped / local-shadows-foreign / fail-closed / **no cross-node auto-settlement**; disjoint `economic:federation:<nodeId>:*` keyspace; reuse AD-0018 primitives |
+| Audit | EAP-1..6; hash-chained double-entry `ECON_*` events (thin-wrap `FederatedAuditLog`); offline ledger proof (replay reproduces balances + conservation + non-negativity + nonce-uniqueness) |
+| Threats | EC1–EC15 adversarial obligation mapped to runtime controls; **0 residual High/High** (structural blast-radius bound: rejected proposals + audit noise) |
+| Deferred gates (inert/fail-closed) | **FDG-ONT** (PI-8 Ontology, contested) · **FDG-MEM** (PI-9 Memory, contested) · **FDG-INT** (PI-10 Intelligence, not implemented; advisory/verifier-gated) · **FDG-SIM** (PI-11 Simulation, not implemented; settlement never depends on it) · **FDG-AUTO** (PI-12 Autonomy, not implemented) |
+| Integration (verified) | HARD & implemented: PI-4 Control, PI-5 Federation, PI-6 Evolution, PI-7 Knowledge (read-only), PI-2/3 Substrate. Real-world = AD-0009 human gate |
+| Traceability | 7/7 PI-13 artifacts mapped; EGP 12/12; D 10/10; ECON-C 12/12; economy types 6/6; EC 15/15; 12 exit gates (G-BUILD/BASELINE/FUNC/THREAT/GOV/SEC/CONSERVE/CRYPTO/DIR/FDG/ACTUATION/DOC) |
+| Baseline note | Additive-preservation gate expressed against the **actually reproduced** implemented baseline (**269/269 across 40 suites**, `tsc` clean, per `ARCH-GAP-001`/`MEM-RAT-003`); the `PROJECT-STATE §0W` figure (213/213) is the documented divergence `ARCH-GAP-M5`; the exact integer is re-measured at construction time and must remain green (0 regressions) |
+| Prohibited-dir impact | **NONE (planned)** — all future construction confined to `src/control/economic/*` + 1 additive re-export; the five substrate core dirs and PI-4/5/6/7 behavior untouched |
+| **Determination** | **PHASE R11 COMPLETE · ECON-001 DESIGN-COMPLETE — READY FOR AUTHORIZATION REVIEW** (runtime-layer analog of `ECON-READINESS-001`; confers no authority; releases no lock) |
+| Article IX / PI-13 | **Article IX generation lock REMAINS ACTIVE**; `UCOS-CONSTRUCTION-BLOCKED` unchanged; **PI-13 implementation NOT authorized** |
+| Registration | `ECON-001` registered append-only in `CTX-REG-001` (Economic Fabric Runtime Realization section); no prior row altered |
+| Git | Not committed / not pushed / not tagged |
+| Next Step | Independent constitutional review of `ECON-001` + the `ECON-*` design set; then the **AUTH-012 ledger restoration** (`UCOS-AUTH-REC-PKG-001`, Phase 21) — required first given value-bearing sensitivity; then an Authority Board scoped **Article IX release** (`AD-00xx`) before any construction of `src/control/economic/*`. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE R11 — Economy Fabric Runtime Realization (COMPLETE — blueprint).** Transformed the ratified-design
+> PI-13 Economic Fabric (the seven `ECON-*` artifacts) into `ECON-001`, a governed runtime-realization
+> blueprint at `architecture/economic/ECON-001-ECONOMIC-RUNTIME-REALIZATION.md`. `ECON-001` realizes the
+> Economic Fabric as **16 additive control-layer modules** (EM0..EM15) under a prospective
+> `packages/platform-runtime/src/control/economic/*` subtree with a reserved `economic:*` metadata keyspace,
+> maps every economic principle (EGP-1..12) to a runtime guard and every decision class (D1..D10) to an
+> Approval-Required gate, realizes all twelve constructs (ECON-C1..C12) and six pluggable economy types
+> (Resource/Token/Knowledge/Energy/Hybrid/Unknown-Future; INV-13), and specifies the governed economic loop
+> whose load-bearing safety property is structural: **a balance changes only via a conservation-checked,
+> deterministic, non-negative, idempotent proposal committed by the PI-6 Evolution Fabric after PI-4 policy
+> evaluation, with any real value movement gated by AD-0009** (propose-not-act; no real-money code path). It
+> reuses PI-5 Ed25519 signed assertions (no custom crypto) and the hash-chained `FederatedAuditLog` for
+> double-entry `ECON_*` audit with an offline ledger proof, keeps federation advisory-only/deny-only/clamped/
+> fail-closed (no cross-node auto-settlement), and carries the EC1–EC15 adversarial obligation at **0 residual
+> High/High**. Deferred couplings to PI-8/9/10/11/12 are inert, fail-closed forward-dependency gates. During
+> authoring the artifact was reconciled to the governing `CIV-001` discipline: the determination was **clamped
+> from "READY FOR RUNTIME CONSTRUCTION" to design-only "READY FOR AUTHORIZATION REVIEW"**, a governing
+> disclaimer banner and a §XV Governance Closure were added, and all illustrative TypeScript is flagged as
+> design specification (nothing created under `packages/`). **No source code, runtime, infrastructure, or
+> services were produced; no ratified fabric or prohibited substrate core dir modified; the Article IX
+> generation lock REMAINS ACTIVE; `UCOS-CONSTRUCTION-BLOCKED` unchanged; INV-1..13, AUTH-012, and the AD-0014
+> Ω∞ deferral preserved (no INV-14..20); no real-world financial actuation.** `ECON-001` registered
+> append-only in `CTX-REG-001`. Not committed/pushed/tagged. **Work stops here; the next governed step is
+> independent constitutional review, the AUTH-012 ledger restoration, and an Authority Board scoped Article IX
+> release deliberation before any construction of `src/control/economic/*`.**
+
+
+
+---
+
+## 0Z. PHASE U4 — Operational Certification Program (`OP-CERT-001`) (CURRENT — supersedes prior sections for the operational-certification-framework workstream only)
+
+> **Append-only.** Records PHASE U4 (Operational Certification Program). **Program definition only** — no
+> source code, runtime, infrastructure, services, or construction; **awards no** certification; **issues no**
+> verdict beyond "program defined"; **releases no** lock; **enrolls no** invariant; **modifies no** frozen
+> construct. INV-1..13, AUTH-012, AD-0014 (Ω∞ deferral), the Article IX generation lock, and
+> `UCOS-CONSTRUCTION-BLOCKED` are unchanged. The system's certification level is unchanged: it remains
+> **CONDITIONALLY CERTIFIED** (`UCOM-ULTIMATE-CERT-001`, R14).
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE U4 — Operational Certification Program** (COMPLETE — framework defined) |
+| Artifact | `OP-CERT-001` (`OP-CERT-001-OPERATIONAL-CERTIFICATION-PROGRAM.md`, repository root) |
+| Mode | **PROGRAM DEFINITION ONLY** — defines the evidence framework to upgrade CONDITIONALLY → ULTIMATE; awards nothing |
+| Baseline | `UCOM-ULTIMATE-CERT-001` (R14) — CONDITIONALLY CERTIFIED; open conditions UCC-1..UCC-7 |
+| Certification tracks (9) | Functional · Security · Governance · Federation · Economic · Intelligence · Civilization · Stress · Anti-Fragility — each with Required Evidence / Tests / Reports / Pass Criteria / Failure Criteria |
+| Universal preconditions | UPP-1 additive-only (0 core-dir change) · UPP-2 baseline green (269/269, tsc clean) · UPP-3 S1/S3/S4 · UPP-4 no custom crypto · UPP-5 fail-closed |
+| Evidence classes | E-CODE · E-OPS · E-HIST · E-DESIGN (non-optimistic; absence = FAIL) |
+| Track↔condition map | Functional→UCC-2/7 · Governance→UCC-1/5/6 · Intelligence→UCC-3 · Stress→UCC-4 · Economic→new scoped AD · Security/Federation/Anti-Fragility cross-cut · Civilization bounded (AD-0014) |
+| Current per-track standing | FAIL: Functional, Governance, Economic, Intelligence, Stress · PASS-candidate: Federation · PASS-with-conditions candidate: Security, Anti-Fragility · DEFERRED (model-level): Civilization |
+| Upgrade gate | ULTIMATE iff all 9 tracks PASS + UCC-1..7 closed + UPP-1..5 hold, within INV-1..13; existential scope (INV-14..20) out of scope per AD-0014 |
+| Critical path | Track 3 Governance (ledger restore) → PI-8 + PI-9 → Track 1 Functional → Tracks 5/6 Economic/Intelligence → Track 2 Security re-score → Track 8 Stress → Track 9 Anti-Fragility |
+| **Determination** | **PROGRAM DEFINED** — system remains CONDITIONALLY CERTIFIED; the program defines the bar, it does not clear it |
+| Article IX / level | Article IX generation lock unchanged; `UCOS-CONSTRUCTION-BLOCKED` stands; certification level unchanged (CONDITIONALLY CERTIFIED) |
+| Git | Not committed / not pushed / not tagged |
+| Next Step | Independent review of `OP-CERT-001`; then execute the critical-path tracks (starting with the PHASE-21 authority-chain restoration for Track 3 / UCC-1) and produce the per-track reports `OP-CERT-{FUNC,SEC,GOV,FED,ECON,INTEL,CIV,STRESS,AF}-001`. Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PHASE U4 — Operational Certification Program (COMPLETE — framework defined).** Produced `OP-CERT-001`, the
+> operational certification program that decomposes the upgrade from **CONDITIONALLY CERTIFIED**
+> (`UCOM-ULTIMATE-CERT-001`, R14) to **ULTIMATE CERTIFIED** into nine certification tracks — Functional,
+> Security, Governance, Federation, Economic, Intelligence, Civilization, Stress, and Anti-Fragility — each
+> specifying Required Evidence, Required Tests, Required Reports, Pass Criteria, and Failure Criteria, governed
+> by five universal preconditions (UPP-1 additive-only/0 core-dir change; UPP-2 baseline green; UPP-3 S1/S3/S4;
+> UPP-4 no custom crypto; UPP-5 fail-closed) and four evidence classes (E-CODE/E-OPS/E-HIST/E-DESIGN) under the
+> program's non-optimistic discipline (absence of evidence = FAIL). Each track is mapped to the open conditions
+> UCC-1..UCC-7 and dimensions D-1..D-12: Governance closes UCC-1 (authority-chain restoration)/UCC-5 (full
+> Article IX release)/UCC-6 (PE-12 ADR); Functional closes UCC-2 (PI-9 Memory + PI-8 Ontology)/UCC-7 (registry
+> absolutism); Intelligence closes UCC-3; Stress closes UCC-4 (operational NFR evidence); Economic requires a
+> new scoped release + construction + ratification; Security and Anti-Fragility cross-cut; Civilization is
+> bounded to non-actuating model level under AD-0014. The aggregate upgrade gate is fail-closed — ULTIMATE is
+> issued only when all nine tracks pass AND UCC-1..7 close AND UPP-1..5 hold, within the INV-1..13 envelope,
+> with the existential/reality-agnostic scope (INV-14..20) explicitly out of scope per AD-0014 and consistent
+> with `UA-10-CERT-001`. On present evidence five tracks FAIL (Functional, Governance, Economic, Intelligence,
+> Stress), Federation is a PASS-candidate, Security and Anti-Fragility are PASS-with-conditions candidates for
+> the realized fabrics, and Civilization is model-level deferred. **No code / runtime / infrastructure /
+> services / authorization was produced; no certification was awarded; no ratified fabric or frozen construct
+> modified; INV-1..13, AUTH-012, AD-0014, and the Article IX generation lock unchanged; `UCOS-CONSTRUCTION-BLOCKED`
+> stands; the certification level remains CONDITIONALLY CERTIFIED.** Registered append-only in `CTX-REG-001`
+> (Operational Certification Program section). Not committed/pushed/tagged. **Work stops here; the next governed
+> step is independent review of `OP-CERT-001` and execution of the critical-path tracks.**
+
+
+
+---
+
+## 0AA. PHASE U8.2 — Canonical Reconciliation (REAL-M-03) (CURRENT — supersedes the header/§1 and §0W for program-state truth)
+
+> **Append-only / truth reconciliation.** Records the `REAL-M-03` reconciliation of PROJECT-STATE against
+> reproduced reality and the executed acts of record (`AUTH-REST-004`, `MEM-RAT-003`, `ONTO-RAT-001`,
+> `ULT-GAP-001`). It **rewrites no prior section** (INV-10) — it declares the canonical current state and marks
+> which earlier statements are stale. **No architecture change, no governance redesign, no authorization, no
+> lock release, no invariant enrollment.** INV-1..13, AUTH-012 (canonical Decision Log **v1.0.13**), AD-0014,
+> and the Article IX generation lock are unchanged; `UCOS-CONSTRUCTION-BLOCKED` stands.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PHASE U8.2 — Canonical Reconciliation** (COMPLETE — truth reconciliation) |
+| Artifact | `REAL-M-03-RECONCILIATION-REPORT` (`REAL-M-03-LEDGER-AND-PROJECT-STATE-RECONCILIATION-REPORT.md`) |
+| Governing rule | `GOV-REC-001` — executed act > analysis; recency; reproduced live state > asserted state |
+| **Canonical current state** | Baseline **269 pass / 269** (`tsc` clean); authority chain **RESTORED** (`AUTH-012` **v1.0.13**, AD-0001..0023); **PI-2..PI-9 IMPLEMENTED** (PI-8 RATIFIED `ONTO-RAT-001`; PI-9 RATIFIED `MEM-RAT-003`); **PI-10/PI-11/Civilization/Economy NOT implemented** (design-only); product/experience/services **NOT implemented**; operational evidence **NONE** (G12-1/2/3 open); certification level **CONDITIONALLY CERTIFIED**; existential scope (INV-14..20/Ω∞) **deferred, AD-0014** |
+| Superseded as STALE | (a) header/§1 "Phase 9.0C.1D · Last Updated 2026-06-30" (latest is the tail sections through PHASE U4); (b) **§0W** "213/213", "PI-9 MEMORY FABRIC REJECTED", "no `src/control/memory/*`", "authority chain DEFECTIVE", "AD-0021 phantom" — superseded by §0Y (R10)/§0Z, `AUTH-REST-004`, `MEM-RAT-003`, and disk (`src/control/memory/` and `.../ontology/` **exist**); (c) intermediate baselines **38/65/90/134/185/213** = historical point-in-time (current = **269**) |
+| Contradictions resolved | 8 (test baseline, PI-9 status, authority chain, memory dir, current phase, R13-vs-R14, + suite-count OPEN) — see report §4 |
+| OPEN (needs independent adjudication — `REAL-C-05`) | PI-8/PI-9 ratifications (self-attested); retroactive AD-0016..0023 enrollment (Phase 21.1); R13/R14 ruling (via `REAL-C-01`) |
+| OPEN (re-measurement) | Suite count **36 (ULT-GAP live) vs 40 (OP-CERT/ECON-001)** — pass count 269 not in dispute |
+| Durability note | `origin` configured + milestone tags exist, but **151 files uncommitted** (incl. AD-0016..0023 + U-phase corpus) — governed commit/push = `REAL-M-07` |
+| Section-label collisions (non-destructive index) | `§0S` ×4 = PHASE 18 (Memory) / PHASE 19 (Intelligence) / PHASE 17 (Ontology) / PHASE 20 (Simulation); `§0T` ×3 = PHASE 18.1 / 19.1 / 20.1; `§0Y` ×4 = PHASE R7 / R10 / R12 / R11 — labels preserved as authored; this index is the canonical disambiguation |
+| **Determination** | **PARTIALLY RECONCILED** — documentary divergence (ULT-M-03 / ARCH-GAP-M5) closed at the state-of-record; full reconciliation gated on `REAL-C-01` (terminal-cert re-issue) + `REAL-C-05` (independent attestation) + suite-count re-measurement |
+| Git | Not committed / not pushed / not tagged |
+
+> **PHASE U8.2 — Canonical Reconciliation (COMPLETE).** Executed `REAL-M-03` truth reconciliation across
+> PROJECT-STATE, the canonical `AUTH-012` Decision Log (v1.0.13), R13 (`UCOM-SYN-001`), R14
+> (`UCOM-ULTIMATE-CERT-001`), `ULT-GAP-001`, `ROADMAP-ULT-001`, and `OP-CERT-001`. Under `GOV-REC-001`
+> (executed act > analysis; recency; reproduced state > asserted state), the canonical current state is fixed
+> as: **269/269** baseline, **RESTORED** authority chain (AUTH-012 v1.0.13), **PI-2..PI-9 implemented** with
+> **PI-8/PI-9 RATIFIED**, **PI-10/PI-11/Civilization/Economy unbuilt**, product layer unbuilt, **no** operational
+> evidence, **CONDITIONALLY CERTIFIED**. The stale header/§1, the §0W "213/213 / Memory REJECTED / chain
+> DEFECTIVE / AD-0021 phantom" claims, and the R14 evaluated facts (134/134, Memory REJECTED) are **superseded**
+> by the executed acts (`AUTH-REST-004`, `MEM-RAT-003`, `ONTO-RAT-001`) and reproduced disk reality (`memory/`
+> and `ontology/` control dirs exist). Determination: **PARTIALLY RECONCILED** — the documentary divergence
+> (ULT-M-03 / ARCH-GAP-M5) is closed here, while full reconciliation remains gated on `REAL-C-01` (re-issue the
+> stale terminal certification as `UCOM-ULTIMATE-CERT-002`), `REAL-C-05` (independent attestation of the
+> self-attested PI-8/PI-9 ratifications, the retroactive AD enrollment, and the R13/R14 ruling), and
+> re-measurement of the suite-count divergence (36 vs 40; pass count 269 undisputed). This subsection is
+> **append-only**; no prior section was rewritten. **No architecture change, no governance redesign, no
+> authorization, no lock release, no invariant enrollment; INV-1..13, AUTH-012 substance, AD-0014, and the
+> Article IX generation lock unchanged; `UCOS-CONSTRUCTION-BLOCKED` stands.** Full report at
+> `REAL-M-03-LEDGER-AND-PROJECT-STATE-RECONCILIATION-REPORT.md`. Standing Trusted Operations (N-1 CAP-01..14
+> attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch.

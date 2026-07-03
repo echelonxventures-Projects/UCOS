@@ -1,0 +1,16 @@
+{
+  "kind": "contract",
+  "id": "contract.text-producer",
+  "version": "1.0.0",
+  "operations": [
+    {
+      "name": "produce",
+      "input": {
+        "type": "object",
+        "properties": { "subject": { "type": "string" } },
+        "additionalProperties": false
+      },
+      "output": { "type": "string" }
+    }
+  ]
+}

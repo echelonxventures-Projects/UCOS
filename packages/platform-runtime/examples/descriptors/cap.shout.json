@@ -1,0 +1,12 @@
+{
+  "kind": "capability",
+  "id": "cap.shout",
+  "version": "1.0.0",
+  "name": "Shouting Producer",
+  "contract": { "id": "contract.text-producer", "versionRange": "^1.0.0" },
+  "provider": { "module": "../capabilities/shout.capability.ts", "export": "createShout" },
+  "dependencies": [
+    { "capabilityId": "cap.greeting", "versionRange": "^1.0.0", "as": "greeting" }
+  ],
+  "metadata": { "classification": "example" }
+}

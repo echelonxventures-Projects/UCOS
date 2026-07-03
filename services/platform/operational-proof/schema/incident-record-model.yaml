@@ -1,0 +1,49 @@
+# =============================================================================
+# UCOS B02 — Operational Proof Fabric — Incident Record Model (JSON Schema in YAML)
+# ADR-005 (JSON Schema). Mirrors packages/platform-runtime IncidentRecord.
+#
+# Versioned, append-only incident record. Each lifecycle transition bumps the version and appends
+# to an immutable timeline — the record IS the operational proof of how the incident was handled.
+# =============================================================================
+$schema: "json-schema-draft-2020-12"
+title: "UCOS Operational Incident Record (OPF-INC-003)"
+type: object
+required: [incidentId, version, tenantId, title, severity, state, openedAt, timeline, provenance]
+additionalProperties: false
+properties:
+  incidentId: { type: string }
+  version:
+    type: string
+    pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+  tenantId: { type: string }
+  title: { type: string }
+  severity: { type: string, enum: [info, warn, critical] }
+  state:
+    type: string
+    enum: [open, acknowledged, mitigated, resolved, closed]
+    description: "Guarded by the OPF-INC-001 transition table; `closed` is terminal."
+  openedAt: { type: integer, description: "epoch ms" }
+  linkedAlerts:
+    type: array
+    items: { type: string }
+    description: "AlertEvent ids that triggered / relate to this incident."
+  linkedEvidence:
+    type: array
+    items: { type: string }
+    description: "ProofRecord ids capturing evidence for this incident."
+  timeline:
+    type: array
+    description: "Append-only lifecycle events (immutable)."
+    items:
+      type: object
+      required: [at, state, actor]
+      additionalProperties: false
+      properties:
+        at: { type: integer }
+        state: { type: string, enum: [open, acknowledged, mitigated, resolved, closed] }
+        actor: { type: string }
+        note: { type: string }
+  provenance:
+    type: object
+    properties:
+      origin: {}

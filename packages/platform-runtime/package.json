@@ -1,0 +1,27 @@
+{
+  "name": "@ucos/platform-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "UCOS foundational substrate: Meta-Core + Registry + Metadata + Configuration runtimes (PI-2/PI-3, AD-0016). Metadata-driven capability loading and composition with no hardcoded business logic.",
+  "engines": {
+    "node": ">=23.6.0"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./bootstrap": "./src/bootstrap.ts"
+  },
+  "bin": {
+    "ucos-substrate": "./bin/ucos-substrate.ts"
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.ts\"",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "demo": "node bin/ucos-substrate.ts examples/descriptors --exec cap.shout.produce --input '{\"subject\":\"UCOS\"}'"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.0",
+    "typescript": "5.9.3"
+  },
+  "license": "UNLICENSED"
+}
