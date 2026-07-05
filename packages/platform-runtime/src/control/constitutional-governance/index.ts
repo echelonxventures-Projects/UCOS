@@ -1,0 +1,26 @@
+/**
+ * cg/index.ts — Constitutional Governance Runtime (CGR) top-level namespace barrel.
+ *
+ * Aggregates the complete Wave-1 propose-only substrate into one public surface:
+ *   - shared schema (types)                          — CGR-CORE-01
+ *   - append-only guards + fail-closed errors        — CGR-CORE-02
+ *   - canonical hashing + verify-on-read             — CGR-CORE-03
+ *   - deterministic test harness                     — CGR-CORE-05
+ *   - the eleven registries + generic base           — CGR-REG-*
+ *   - the audit hash-chain                           — CGR-AU-CHAIN
+ *   - the offline audit-chain verifier               — CGR-AU-VERIFY
+ *   - the deterministic composition root             — CGR-CORE-04
+ *
+ * Exposed through the platform control surface via `control/index.ts`
+ * (`export * as constitutionalGovernance`). No collisions: every re-exported name is unique
+ * within this namespace. Propose-only, append-only, fail-closed — confers NO ACTIVE state.
+ */
+
+export * from "./types.ts";
+export * from "./hashing.ts";
+export * from "./append-only.ts";
+export * from "./test-harness.ts";
+export * from "./registries/index.ts";
+export * from "./audit-chain.ts";
+export * from "./audit-verifier.ts";
+export * from "./composition-root.ts";

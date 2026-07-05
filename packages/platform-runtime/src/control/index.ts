@@ -94,3 +94,11 @@ export * as operations from "./operations/index.ts";
 // default, non-actuating, Evolution-only commit. Namespaced re-export to avoid barrel collisions with
 // the other fabrics' generic names. Import specifics from ./simulation/index.ts.
 export * as simulation from "./simulation/index.ts";
+
+// Constitutional Governance Runtime (CGR) — Wave-1 propose-only substrate (PCAMG-RUNTIME-0021/-0031).
+// The eleven append-only, content-hashed, up-traceable governance registries + the deterministic
+// composition root + the tamper-evident audit hash-chain and its offline verifier. Namespaced
+// re-export to avoid barrel collisions with the other fabrics' generic names (AuditEvent, AuditSink,
+// ConstitutionalRegistry, ...). Import specifics from ./constitutional-governance/index.ts.
+// Propose-only, append-only, fail-closed: confers NO ACTIVE state and originates NO authority.
+export * as constitutionalGovernance from "./constitutional-governance/index.ts";
