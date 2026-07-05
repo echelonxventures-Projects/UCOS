@@ -1,0 +1,177 @@
+{
+  "artifactId": "PDATA-ERR-001",
+  "errorModelRegistryVersion": "ucos-error-model/1.0.0",
+  "authority": "UCOS Contract Authority / Prompt-09 (Error Model Registry)",
+  "conformsTo": "contracts/schema/error.schema.json (transport-neutral error codes; NOT HTTP status)",
+  "description": "Canonical Error Model Registry for the compiler-authorized scope of Prompt-09 (API-018 + API-027; 8 operations, 6 events, 5 payload families). This is declarative AUTHORITY METADATA only: it defines canonical error MODELS (identity, family, severity, recoverability, description, authority source, consumer guidance) and binds each in-scope operation and event to the error models it may surface. It defines NO HTTP status codes, framework error types, DTOs, validators, handlers, or runtime behavior. Error codes are the stable, transport-neutral codes of the ratified runtime taxonomy (meta-core/errors.ts SubstrateErrorCode; control/errors.ts ControlErrorCode). No error condition is invented.",
+  "governance": {
+    "gate": "GATE-DOC-001",
+    "owner": "Prompt 07 / Contract Authority",
+    "invariants": ["IC-2 (contract-first)", "IC-4 (traceable)"],
+    "constitutionalConstraints": ["Depends on Prompt-08 bindings", "Article IX: authority metadata only, no fabric source"]
+  },
+  "severityVocabulary": ["CRITICAL", "HIGH", "MEDIUM", "LOW"],
+  "faultClassVocabulary": ["CALLER", "AUTHORITY", "RESOURCE", "SYSTEM"],
+  "recoverabilityVocabulary": ["RECOVERABLE", "CONDITIONALLY_RECOVERABLE", "NON_RECOVERABLE_BY_CALLER"],
+  "errorFamilies": [
+    { "id": "EF-VALIDATION", "name": "Validation", "description": "Caller-supplied payload/parameter violates a declared field-schema or control precondition." },
+    { "id": "EF-RESOURCE", "name": "Resource Resolution", "description": "Addressed resource does not resolve." },
+    { "id": "EF-STATE", "name": "State/Registry Conflict", "description": "Requested change conflicts with existing registered/lifecycle state." },
+    { "id": "EF-RESOLUTION", "name": "Reference Resolution", "description": "A required reference could not be resolved during layered resolution/discovery." },
+    { "id": "EF-AUTHENTICATION", "name": "Authentication", "description": "Principal is not authenticated at the boundary." },
+    { "id": "EF-AUTHORIZATION", "name": "Authorization", "description": "Deny-by-default authorization / trust failure." },
+    { "id": "EF-GOVERNANCE", "name": "Governance", "description": "Governed-change gate not satisfied." },
+    { "id": "EF-RUNTIME", "name": "Runtime Execution", "description": "Failure during capability execution after validation/authorization." }
+  ],
+  "errorModels": [
+    {
+      "id": "ERR-VALIDATION-INPUT",
+      "family": "EF-VALIDATION",
+      "code": "VALIDATION_FAILED",
+      "severity": "MEDIUM",
+      "faultClass": "CALLER",
+      "recoverability": "RECOVERABLE",
+      "description": "A request payload or path/query parameter violates the authored field-schema constraints (required / minLength / pattern / enum) for the bound payload family.",
+      "authoritySource": ["packages/platform-runtime/src/meta-core/errors.ts#ValidationError(VALIDATION_FAILED)", "SEC-CTL-015 (input/contract validation)", "contracts/field-schemas/*"],
+      "consumerGuidance": "Correct the field(s) named in error details to satisfy the field-schema constraint; do not retry unchanged.",
+      "payloadRef": { "note": "Error payload shape is transport/implementation concern (Prompt 08 / Prompt 10); not defined here." }
+    },
+    {
+      "id": "ERR-CONTROL-VALIDATION",
+      "family": "EF-VALIDATION",
+      "code": "CONTROL_VALIDATION_FAILED",
+      "severity": "MEDIUM",
+      "faultClass": "CALLER",
+      "recoverability": "RECOVERABLE",
+      "description": "A control-plane precondition or required control-context attribute is missing or malformed.",
+      "authoritySource": ["packages/platform-runtime/src/control/errors.ts#ControlValidationError(CONTROL_VALIDATION_FAILED)"],
+      "consumerGuidance": "Supply the required control context / correct the malformed control attribute; then retry."
+    },
+    {
+      "id": "ERR-NOT-FOUND",
+      "family": "EF-RESOURCE",
+      "code": "NOT_FOUND",
+      "severity": "LOW",
+      "faultClass": "CALLER",
+      "recoverability": "RECOVERABLE",
+      "description": "The addressed resource (scope, key, metadata class, feature-flag context, artifact id, or discovery type) does not resolve to a registered record.",
+      "authoritySource": ["packages/platform-runtime/src/meta-core/errors.ts#SubstrateError(NOT_FOUND)"],
+      "consumerGuidance": "Verify the identifier; absence is authoritative and is never fabricated into an empty/placeholder record."
+    },
+    {
+      "id": "ERR-REGISTRY-CONFLICT",
+      "family": "EF-STATE",
+      "code": "REGISTRY_CONFLICT",
+      "severity": "MEDIUM",
+      "faultClass": "CALLER",
+      "recoverability": "CONDITIONALLY_RECOVERABLE",
+      "description": "A write conflicts with existing registered state (duplicate id/version, supersession conflict, or concurrent modification).",
+      "authoritySource": ["packages/platform-runtime/src/meta-core/errors.ts#SubstrateError(REGISTRY_CONFLICT)", "CAP-19 registry runtime"],
+      "consumerGuidance": "Resolve the version/supersession conflict and resubmit with a new semantic version."
+    },
+    {
+      "id": "ERR-LIFECYCLE-VIOLATION",
+      "family": "EF-STATE",
+      "code": "LIFECYCLE_VIOLATION",
+      "severity": "MEDIUM",
+      "faultClass": "CALLER",
+      "recoverability": "CONDITIONALLY_RECOVERABLE",
+      "description": "The operation was invoked against a resource in an incompatible lifecycle state (e.g., mutating a superseded artifact).",
+      "authoritySource": ["packages/platform-runtime/src/meta-core/errors.ts#LifecycleViolationError(LIFECYCLE_VIOLATION)"],
+      "consumerGuidance": "Reconcile the resource lifecycle state (e.g., act on the current, non-superseded artifact)."
+    },
+    {
+      "id": "ERR-RESOLUTION-FAILED",
+      "family": "EF-RESOLUTION",
+      "code": "RESOLUTION_FAILED",
+      "severity": "MEDIUM",
+      "faultClass": "SYSTEM",
+      "recoverability": "CONDITIONALLY_RECOVERABLE",
+      "description": "A required reference could not be resolved during layered configuration/metadata/registry resolution or discovery.",
+      "authoritySource": ["packages/platform-runtime/src/meta-core/errors.ts#ResolutionError(RESOLUTION_FAILED)"],
+      "consumerGuidance": "Transient/dependency condition; a safe-read may be retried once the referenced dependency is available."
+    },
+    {
+      "id": "ERR-AUTHN-FAILED",
+      "family": "EF-AUTHENTICATION",
+      "code": "AUTHENTICATION_FAILED",
+      "severity": "HIGH",
+      "faultClass": "AUTHORITY",
+      "recoverability": "RECOVERABLE",
+      "description": "The principal is not authenticated at the boundary (missing, invalid, or expired credential/session).",
+      "authoritySource": ["packages/platform-runtime/src/control/errors.ts#AuthenticationError(AUTHENTICATION_FAILED)", "SEC-CTL-001", "SEC-CTL-004", "SEC-CTL-014", "AUTH-008 S1 (non-waivable)"],
+      "consumerGuidance": "(Re)authenticate and obtain a valid session/token before retrying."
+    },
+    {
+      "id": "ERR-AUTHZ-DENIED",
+      "family": "EF-AUTHORIZATION",
+      "code": "AUTHORIZATION_DENIED",
+      "severity": "HIGH",
+      "faultClass": "AUTHORITY",
+      "recoverability": "NON_RECOVERABLE_BY_CALLER",
+      "description": "Deny-by-default authorization: no governing policy permits the principal to perform this operation, including cross-tenant and least-privilege denials.",
+      "authoritySource": ["packages/platform-runtime/src/control/errors.ts#AuthorizationError(AUTHORIZATION_DENIED)", "SEC-CTL-002", "SEC-CTL-003", "SEC-CTL-013", "AUTH-008 S1/S4 (non-waivable)"],
+      "consumerGuidance": "Request a governed grant through the appropriate authority; do not retry unchanged."
+    },
+    {
+      "id": "ERR-TRUST-INSUFFICIENT",
+      "family": "EF-AUTHORIZATION",
+      "code": "TRUST_INSUFFICIENT",
+      "severity": "HIGH",
+      "faultClass": "AUTHORITY",
+      "recoverability": "CONDITIONALLY_RECOVERABLE",
+      "description": "The principal's trust level is below the level required for the operation (typically writes/admin).",
+      "authoritySource": ["packages/platform-runtime/src/control/errors.ts#ControlError(TRUST_INSUFFICIENT)", "SEC-CTL-002"],
+      "consumerGuidance": "Elevate trust via the governed path, then retry."
+    },
+    {
+      "id": "ERR-GOVERNANCE-BLOCKED",
+      "family": "EF-GOVERNANCE",
+      "code": "GOVERNANCE_BLOCKED",
+      "severity": "HIGH",
+      "faultClass": "AUTHORITY",
+      "recoverability": "CONDITIONALLY_RECOVERABLE",
+      "description": "A governed-change gate is not satisfied: the write requires governance approval (AD-0009) and routing through the sole Evolution commit path (PI-6).",
+      "authoritySource": ["packages/platform-runtime/src/control/errors.ts#ControlError(GOVERNANCE_BLOCKED)", "AD-0009 (Approval-Required)", "PI-6 Evolution Fabric (sole commit path)"],
+      "consumerGuidance": "Obtain the required approval and submit the change through the governed Evolution pipeline."
+    },
+    {
+      "id": "ERR-EXECUTION-FAILED",
+      "family": "EF-RUNTIME",
+      "code": "EXECUTION_FAILED",
+      "severity": "HIGH",
+      "faultClass": "SYSTEM",
+      "recoverability": "CONDITIONALLY_RECOVERABLE",
+      "description": "The operation failed during capability execution after authentication, authorization, and validation succeeded.",
+      "authoritySource": ["packages/platform-runtime/src/meta-core/errors.ts#ExecutionError(EXECUTION_FAILED)"],
+      "consumerGuidance": "Server-side condition; idempotent operations may be retried; non-idempotent creates should reconcile state before retry."
+    }
+  ],
+  "outOfBoundary": {
+    "note": "Substrate composition/loader conditions that are NOT reachable at the API-018/API-027 request boundary (they occur during capability wiring). Recorded for completeness; intentionally NOT bound to any in-scope operation to avoid orphan/over-broad error classes.",
+    "codes": ["DEPENDENCY_CYCLE", "COMPOSITION_FAILED", "PLUGIN_LOAD_FAILED", "LOADER_FAILED"]
+  },
+  "operationErrorBindings": [
+    { "operationId": "getConfigurationByScope", "contract": "API-018", "kind": "safe-read", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-NOT-FOUND", "ERR-RESOLUTION-FAILED", "ERR-AUTHN-FAILED", "ERR-AUTHZ-DENIED", "ERR-CONTROL-VALIDATION", "ERR-EXECUTION-FAILED"] },
+    { "operationId": "putConfigurationByScopeByKey", "contract": "API-018", "kind": "unsafe-idempotent", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-REGISTRY-CONFLICT", "ERR-LIFECYCLE-VIOLATION", "ERR-AUTHN-FAILED", "ERR-AUTHZ-DENIED", "ERR-TRUST-INSUFFICIENT", "ERR-GOVERNANCE-BLOCKED", "ERR-CONTROL-VALIDATION", "ERR-EXECUTION-FAILED"] },
+    { "operationId": "getMetadataByClass", "contract": "API-018", "kind": "safe-read", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-NOT-FOUND", "ERR-AUTHN-FAILED", "ERR-AUTHZ-DENIED", "ERR-CONTROL-VALIDATION", "ERR-EXECUTION-FAILED"] },
+    { "operationId": "getFeatureFlagsByContext", "contract": "API-018", "kind": "safe-read", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-NOT-FOUND", "ERR-RESOLUTION-FAILED", "ERR-AUTHN-FAILED", "ERR-AUTHZ-DENIED", "ERR-CONTROL-VALIDATION", "ERR-EXECUTION-FAILED"] },
+    { "operationId": "getRegistryArtifacts", "contract": "API-027", "kind": "safe-read", "errorModels": ["ERR-AUTHN-FAILED", "ERR-AUTHZ-DENIED", "ERR-CONTROL-VALIDATION", "ERR-EXECUTION-FAILED"] },
+    { "operationId": "postRegistryArtifacts", "contract": "API-027", "kind": "unsafe-create", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-REGISTRY-CONFLICT", "ERR-LIFECYCLE-VIOLATION", "ERR-AUTHN-FAILED", "ERR-AUTHZ-DENIED", "ERR-TRUST-INSUFFICIENT", "ERR-GOVERNANCE-BLOCKED", "ERR-CONTROL-VALIDATION", "ERR-EXECUTION-FAILED"] },
+    { "operationId": "getRegistryArtifactsById", "contract": "API-027", "kind": "safe-read", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-NOT-FOUND", "ERR-AUTHN-FAILED", "ERR-AUTHZ-DENIED", "ERR-CONTROL-VALIDATION", "ERR-EXECUTION-FAILED"] },
+    { "operationId": "getRegistryDiscovery", "contract": "API-027", "kind": "safe-read", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-NOT-FOUND", "ERR-RESOLUTION-FAILED", "ERR-AUTHN-FAILED", "ERR-AUTHZ-DENIED", "ERR-CONTROL-VALIDATION", "ERR-EXECUTION-FAILED"] }
+  ],
+  "eventErrorBindings": [
+    { "event": "ConfigurationChanged", "contract": "EVT-018", "payloadFamily": "ConfigurationValue", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-AUTHZ-DENIED", "ERR-EXECUTION-FAILED"] },
+    { "event": "MetadataUpdated", "contract": "EVT-018", "payloadFamily": "MetadataRecord", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-AUTHZ-DENIED", "ERR-EXECUTION-FAILED"] },
+    { "event": "FeatureFlagChanged", "contract": "EVT-018", "payloadFamily": "FeatureFlag", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-AUTHZ-DENIED", "ERR-EXECUTION-FAILED"] },
+    { "event": "ArtifactRegistered", "contract": "EVT-027", "payloadFamily": "RegistryArtifact", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-AUTHZ-DENIED", "ERR-EXECUTION-FAILED"] },
+    { "event": "ArtifactSuperseded", "contract": "EVT-027", "payloadFamily": "RegistryArtifact", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-AUTHZ-DENIED", "ERR-EXECUTION-FAILED"] },
+    { "event": "ArtifactDiscovered", "contract": "EVT-027", "payloadFamily": "DiscoveryRecord", "errorModels": ["ERR-VALIDATION-INPUT", "ERR-AUTHZ-DENIED", "ERR-EXECUTION-FAILED"] }
+  ],
+  "traceability": {
+    "refines": ["contracts/bindings/operation-payload-bindings.json", "contracts/field-schemas/*", "contracts/schema/error.schema.json", "packages/platform-runtime/src/meta-core/errors.ts", "packages/platform-runtime/src/control/errors.ts", "UCOS-SEC-CONTROL-001"],
+    "governedBy": "UCOS-SVC-POLICY-001",
+    "authority": ["AUTH-004", "AUTH-007", "AUTH-008", "UCOS-CONST-001 Art. IV/X"]
+  }
+}

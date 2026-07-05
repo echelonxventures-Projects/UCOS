@@ -1,0 +1,55 @@
+{
+  "fieldSchemaModelVersion": "ucos-field-schema/1.0.0",
+  "id": "UCOS-DATA-CONTRACT-018/FeatureFlag",
+  "version": "1.0.0",
+  "payloadFamily": "FeatureFlag",
+  "dataContract": "UCOS-DATA-CONTRACT-018",
+  "title": "FeatureFlag",
+  "description": "Authoritative field-level payload schema for the FeatureFlag family of UCOS-DATA-CONTRACT-018 (API-018 Configuration & Metadata, GET /feature-flags/{context}). A FeatureFlag is a context-resolved variability switch of the Configuration domain (DOM-018 / CAP-10; MC-13 variability). Field authority: UCOS-PDATA-ARCH-001. FeatureFlag has no dedicated substrate port type; its fields are established by domain-authority modeling from API-018 operation intent (context resolution), the EVT-018 FeatureFlagChanged event, and the config-variability facet of ConfigurationPort. Transport form deferred to Prompt 08; security controls deferred to Prompt 09.",
+  "schema": {
+    "kind": "object",
+    "additionalProperties": false,
+    "description": "One feature flag resolved for a context.",
+    "properties": [
+      {
+        "name": "key",
+        "required": true,
+        "schema": {
+          "kind": "primitive",
+          "type": "string",
+          "description": "Feature flag identifier. Source authority: DOM-018 / CAP-10 variability; EVT-018 FeatureFlagChanged names the changed flag (UCOS-CONTRACT-CAT-001 §A).",
+          "constraints": { "minLength": 1 }
+        }
+      },
+      {
+        "name": "context",
+        "required": false,
+        "schema": {
+          "kind": "primitive",
+          "type": "string",
+          "description": "Resolution context the flag is evaluated for. Source authority: API-018 GET /feature-flags/{context}.",
+          "constraints": { "minLength": 1 }
+        }
+      },
+      {
+        "name": "enabled",
+        "required": true,
+        "schema": {
+          "kind": "primitive",
+          "type": "boolean",
+          "description": "Whether the flag is active in the resolved context. Source authority: the defining semantics of a feature flag (a resolved on/off variability decision) per API-018 'resolve feature flags for context'."
+        }
+      },
+      {
+        "name": "value",
+        "required": false,
+        "schema": {
+          "kind": "object",
+          "additionalProperties": true,
+          "properties": [],
+          "description": "Optional variant payload for multivariate flags. Open object: variant shape is capability-defined. Source authority: MC-13 variability + ConfigurationPort value model (Record<string, unknown>)."
+        }
+      }
+    ]
+  }
+}

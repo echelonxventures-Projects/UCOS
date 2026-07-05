@@ -1,0 +1,85 @@
+{
+  "artifactId": "PROG-LOCK-001",
+  "description": "Constitutional Lock Registry (PHASE G.2, WS2/WS7). Maps constitutional closures (REAL-C-03/04/05) to release locks. The Constitutional Lock Engine computes each lock's state (OPEN | LOCKED | EXTERNAL_LOCKED | RELEASED) from the closure verdict and the external-blocker model. A lock is only RELEASED when evidence satisfies the closure criteria (closure verdict GO); a lock backed by an external blocker computes EXTERNAL_LOCKED and cannot be released by software. Append-only / migration-only per INV-10. This registry releases no lock and closes nothing.",
+  "stateVocabulary": ["OPEN", "LOCKED", "EXTERNAL_LOCKED", "RELEASED"],
+  "locks": [
+    {
+      "id": "LOCK-REAL-C-05",
+      "closure": "REAL-C-05",
+      "title": "Independent Attestation Lock",
+      "declaredState": "EXTERNAL_LOCKED",
+      "externalBlocker": "EXT-REAL-C-05",
+      "releaseConditions": [
+        "Independent adjudicator model established with registered keys (G1 + G2)",
+        "PI-8/PI-9 ratifications independently attested (proposer != attestor) (G3)",
+        "Retroactive AD-0016..0023 enrollment confirmed on canonical AUTH-012 ledger",
+        "R13/R14 ruling reconciled via REAL-C-01",
+        "Required evidence EV-REAL-C-05, EV-PI8-RAT, EV-PI9-RAT at >= VERIFIED via independent attestation"
+      ],
+      "requiredEvidence": ["EV-REAL-C-05", "EV-PI8-RAT", "EV-PI9-RAT"],
+      "requiredActor": "UCOS Authority Board (designation) + distinct Independent Adjudicator (attestation)",
+      "requiredAuthority": "Enrolled AUTH-012 Board decision; AUTH-009 Separation of Duties; AUTH-008 S1/S3/S4",
+      "releasableBySoftware": false,
+      "note": "PERMANENTLY external. Independence (proposer != attestor) cannot be satisfied by the authoring/construction chain or by any software agent. Self-closure forbidden (SIG-5)."
+    },
+    {
+      "id": "LOCK-REAL-C-03",
+      "closure": "REAL-C-03",
+      "title": "Operational Evidence Lock",
+      "declaredState": "EXTERNAL_LOCKED",
+      "externalBlocker": "EXT-REAL-C-03",
+      "releaseConditions": [
+        "ENV-DEV/INT provisioned with live apply logs (G12-1)",
+        "Delivery pipeline executed with promotion evidence (G12-2)",
+        "Contract tests pass (API-018, API-027)",
+        "DR drill with measured RPO/RTO (G12-3)",
+        "Immutable audit trail + availability/p99 metrics captured",
+        "Operational Certification issued"
+      ],
+      "requiredEvidence": ["EV-ACT-06", "EV-ACT-07", "EV-ACT-08", "EV-ACT-09", "EV-ACT-10", "EV-ACT-12"],
+      "requiredActor": "Operations (human-executed, AD-0009) + Certification Authority",
+      "requiredAuthority": "AD-0015 Limited Evidence Authorization; AD-0009 Approval-Required; GATE-SEC-001, GATE-QUAL-001, GATE-REL-001",
+      "releasableBySoftware": false,
+      "note": "Requires governed human execution of real operational acts. Software cannot fabricate apply logs, DR measurements, or a certification decision. Internally dependency-rooted at ACT-11 (observability ADR) before the human-executed acts can begin."
+    },
+    {
+      "id": "LOCK-REAL-C-04",
+      "closure": "REAL-C-04",
+      "title": "Design-Only Fabric Implementation Lock",
+      "declaredState": "EXTERNAL_LOCKED",
+      "externalBlocker": "EXT-REAL-C-04",
+      "releaseConditions": [
+        "AD-0024 scoped Article IX release issued (PI-10)",
+        "PI-10 constructed additively (propose-not-act; I1..I12 adversarial 0 residual High/High)",
+        "PI-11 constructed under AD-0022 conditional (SIM-COND-1..7)",
+        "269 baseline preserved (additive-only)",
+        "Independent PI-10 / PI-11 ratification"
+      ],
+      "requiredEvidence": ["EV-PI10-AUTH", "EV-PI10-IMP", "EV-PI10-VAL", "EV-PI10-SEC", "EV-PI10-AUD", "EV-PI11-IMP", "EV-PI11-VAL", "EV-PI11-SEC", "EV-PI11-AUD"],
+      "requiredActor": "UCOS Authority Board (AD-0024 issuance) + Independent Adjudicator (ratification)",
+      "requiredAuthority": "AD-0024 (NOT yet issued); AD-0022 conditional; AD-0014; GATE-QUAL-001, GATE-SEC-001",
+      "releasableBySoftware": false,
+      "postGateSoftwareSolvable": true,
+      "note": "The release GATE (AD-0024 issuance) is an external Board act. Once AD-0024 is issued, PI-10 construction is internally software-solvable; PI-11 is already internally constructible under AD-0022. Ratification independence remains subject to LOCK-REAL-C-05."
+    },
+    {
+      "id": "LOCK-CAP-C-01",
+      "closure": "CAP-C-01",
+      "title": "Capability Universe Authorization Lock",
+      "declaredState": "EXTERNAL_LOCKED",
+      "externalBlocker": "EXT-CAP-AUTH",
+      "releaseConditions": [
+        "implemented-invisible fabrics (Observability/Readiness/Proof) reconciled with authored evidence (CAP-RECON, software-solvable)",
+        "each design-only capability granted a scoped Article IX release, constructed additively, and independently ratified",
+        "unmodeled capabilities (Learning/Resource/Reality Graph) architected first",
+        "no capability remains outside compiler governance"
+      ],
+      "requiredEvidence": ["EV-CAP-RECON", "EV-CAP-ECON-AUTH", "EV-CAP-WORKFLOW-AUTH", "EV-CAP-EVENT-AUTH", "EV-CAP-API-AUTH", "EV-CAP-UI-AUTH", "EV-CAP-AUTON-AUTH", "EV-CAP-ECOSYS-AUTH", "EV-CAP-INFRA-AUTH", "EV-CAP-LEARN-ARCH", "EV-CAP-CIV-AUTH", "EV-CAP-REALITY-ARCH", "EV-CAP-RES-ARCH"],
+      "requiredActor": "UCOS Authority Board (per-capability scoped Article IX release) + Independent Adjudicator (ratification)",
+      "requiredAuthority": "Authority Board (AUTH-009); Constitution Article IX; AD-0014 (existential deferral); AUTH-008 S1/S3/S4",
+      "releasableBySoftware": false,
+      "postGateSoftwareSolvable": true,
+      "note": "CAP-RECON (implemented-invisible fabric reconciliation) is software-solvable now and is NOT gated by this lock. The lock's design-only construction portion is gated by Authority Board scoped releases (EXT-CAP-AUTH); Civilization/Reality Graph additionally gated by AD-0014."
+    }
+  ]
+}

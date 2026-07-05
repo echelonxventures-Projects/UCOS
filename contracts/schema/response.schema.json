@@ -1,0 +1,42 @@
+{
+  "$id": "ucos:contracts/schema/response.schema.json",
+  "dialect": "json-schema-2020-12",
+  "title": "UCOS Contract — Response Meta-Schema",
+  "description": "Meta-schema for an operation response contract. Body field-level schema is OPTIONAL and referenced (never inlined/invented). 'outcome' is a transport-neutral result category, NOT an HTTP status code. UCOS-CONTRACT-CAT-001 defines no field-level response schemas. Implementation-neutral.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "declared": {
+      "type": "boolean",
+      "description": "true when a concrete response body schema is defined; false when deferred/absent."
+    },
+    "placeholder": {
+      "$ref": "contract.schema.json#/$defs/placeholderState"
+    },
+    "outcome": {
+      "type": "string",
+      "description": "Transport-neutral result category (NOT an HTTP status). E.g. 'success', 'accepted', 'not-found'. Optional.",
+      "enum": [
+        "success",
+        "accepted",
+        "no-content",
+        "not-found",
+        "conflict",
+        "rejected"
+      ]
+    },
+    "collection": {
+      "type": "boolean",
+      "description": "OPTIONAL. true when the response is a paginated/list collection (per the catalog's cursor-pagination obligation)."
+    },
+    "bodyRef": {
+      "oneOf": [
+        { "$ref": "contract.schema.json#/$defs/placeholderState" },
+        { "$ref": "operation.schema.json#/$defs/schemaRef" }
+      ],
+      "description": "Reference to the response body schema (a payload family) OR a placeholder when the field schema is not defined in the catalog."
+    }
+  },
+  "required": ["declared"],
+  "$comment": "Additive evolution only. 'outcome' is a neutral category set, extensible additively; it MUST NOT be mapped to a concrete transport status here (deferred to Prompt 08). No implementation-specific fields."
+}

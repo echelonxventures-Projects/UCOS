@@ -1,0 +1,608 @@
+{
+  "artifactId": "PROG-EVID-001",
+  "description": "Evidence registry. Every work item requires evidence to reach COMPLETE. Evidence states progress PENDING -> SUBMITTED -> VERIFIED -> CERTIFIED. A work item declared COMPLETE whose required evidence is not at least VERIFIED is reported as an evidence-inconsistency (evidence-based completion, WS3).",
+  "evidence": [
+    {
+      "id": "EV-WI-05",
+      "workItem": "WI-05",
+      "phase": "PHASE-11",
+      "state": "VERIFIED",
+      "artifact": "PHASE-11-WI-05-CONTRACT-SDK-FOUNDATION-REPORT.md",
+      "report": "PHASE-11-WI-05-CONTRACT-SDK-FOUNDATION-REPORT.md"
+    },
+    {
+      "id": "EV-WI-06",
+      "workItem": "WI-06",
+      "phase": "PHASE-12",
+      "state": "VERIFIED",
+      "artifact": "PHASE-12-WI-06-CONTRACT-META-SCHEMA-REPORT.md",
+      "report": "PHASE-12-WI-06-CONTRACT-META-SCHEMA-REPORT.md"
+    },
+    {
+      "id": "EV-WI-07",
+      "workItem": "WI-07",
+      "phase": "PHASE-12",
+      "state": "VERIFIED",
+      "artifact": "PHASE-12-WI-07-CONTRACT-SKELETON-GENERATOR-REPORT.md",
+      "report": "PHASE-12-WI-07-CONTRACT-SKELETON-GENERATOR-REPORT.md"
+    },
+    {
+      "id": "EV-WI-08",
+      "workItem": "WI-08",
+      "phase": "PHASE-12",
+      "state": "VERIFIED",
+      "artifact": "PHASE-12-WI-08-CONTRACT-CATALOG-ENRICHMENT-REPORT.md",
+      "report": "WI08-CATALOG-ENRICHMENT-REPORT.md"
+    },
+    {
+      "id": "EV-WI-09",
+      "workItem": "WI-09",
+      "phase": "PHASE-12",
+      "state": "VERIFIED",
+      "artifact": "PHASE-12-WI-09-DTO-GENERATOR-COMPLETION-REPORT.md",
+      "report": "DTO-GENERATION-EVIDENCE.md"
+    },
+    {
+      "id": "EV-WI-10",
+      "workItem": "WI-10",
+      "phase": "PHASE-12",
+      "state": "VERIFIED",
+      "artifact": "PHASE-12-WI-10-VALIDATOR-GENERATOR-REPORT.md",
+      "report": "WI10-VALIDATOR-TEST-REPORT.md"
+    },
+    {
+      "id": "EV-PI23-BUILD",
+      "workItem": "PI-2-3",
+      "phase": "PI-2/PI-3",
+      "state": "VERIFIED",
+      "artifact": "packages/platform-runtime",
+      "report": "AD-0016-PI2-PI3-SUBSTRATE-CONSTRUCTION-AUTHORIZATION.md"
+    },
+    {
+      "id": "EV-PI4-BUILD",
+      "workItem": "PI-4",
+      "phase": "PI-4",
+      "state": "VERIFIED",
+      "artifact": "packages/platform-runtime/src/control",
+      "report": "AD-0017-PI4-CONTROL-FABRICS-CONSTRUCTION-AUTHORIZATION.md"
+    },
+    {
+      "id": "EV-PI5-IMP",
+      "workItem": "PI-5",
+      "phase": "PI-5",
+      "state": "VERIFIED",
+      "artifact": "packages/platform-runtime/src/control/federation",
+      "report": "PI5-IMP-001-FEDERATION-IMPLEMENTATION-REPORT.md"
+    },
+    {
+      "id": "EV-PI5-VAL",
+      "workItem": "PI-5",
+      "phase": "PI-5",
+      "state": "VERIFIED",
+      "artifact": "PI5-VAL-001-FEDERATION-VALIDATION-REPORT.md",
+      "report": "PI5-VAL-001-FEDERATION-VALIDATION-REPORT.md"
+    },
+    {
+      "id": "EV-PI5-SEC",
+      "workItem": "PI-5",
+      "phase": "PI-5",
+      "state": "VERIFIED",
+      "artifact": "PI5-SEC-001-FEDERATION-SECURITY-REPORT.md",
+      "report": "PI5-SEC-001-FEDERATION-SECURITY-REPORT.md"
+    },
+    {
+      "id": "EV-PI5-AUD",
+      "workItem": "PI-5",
+      "phase": "PI-5",
+      "state": "VERIFIED",
+      "artifact": "PI5-AUD-001-FEDERATION-AUDIT-REPORT.md",
+      "report": "PI5-AUD-001-FEDERATION-AUDIT-REPORT.md"
+    },
+    {
+      "id": "EV-PI6-IMP",
+      "workItem": "PI-6",
+      "phase": "PI-6",
+      "state": "VERIFIED",
+      "artifact": "PI6-IMP-001-EVOLUTION-IMPLEMENTATION-REPORT.md",
+      "report": "PI6-IMP-001-EVOLUTION-IMPLEMENTATION-REPORT.md"
+    },
+    {
+      "id": "EV-PI6-VAL",
+      "workItem": "PI-6",
+      "phase": "PI-6",
+      "state": "VERIFIED",
+      "artifact": "PI6-VAL-001-EVOLUTION-VALIDATION-REPORT.md",
+      "report": "PI6-VAL-001-EVOLUTION-VALIDATION-REPORT.md"
+    },
+    {
+      "id": "EV-PI6-SEC",
+      "workItem": "PI-6",
+      "phase": "PI-6",
+      "state": "VERIFIED",
+      "artifact": "PI6-SEC-001-EVOLUTION-SECURITY-REPORT.md",
+      "report": "PI6-SEC-001-EVOLUTION-SECURITY-REPORT.md"
+    },
+    {
+      "id": "EV-PI6-AUD",
+      "workItem": "PI-6",
+      "phase": "PI-6",
+      "state": "VERIFIED",
+      "artifact": "PI6-AUD-001-EVOLUTION-AUDIT-REPORT.md",
+      "report": "PI6-AUD-001-EVOLUTION-AUDIT-REPORT.md"
+    },
+    {
+      "id": "EV-PI7-IMP",
+      "workItem": "PI-7",
+      "phase": "PI-7",
+      "state": "VERIFIED",
+      "artifact": "PI7-IMP-001-KNOWLEDGE-IMPLEMENTATION-REPORT.md",
+      "report": "PI7-IMP-001-KNOWLEDGE-IMPLEMENTATION-REPORT.md"
+    },
+    {
+      "id": "EV-PI7-VAL",
+      "workItem": "PI-7",
+      "phase": "PI-7",
+      "state": "VERIFIED",
+      "artifact": "PI7-VAL-001-KNOWLEDGE-VALIDATION-REPORT.md",
+      "report": "PI7-VAL-001-KNOWLEDGE-VALIDATION-REPORT.md"
+    },
+    {
+      "id": "EV-PI7-SEC",
+      "workItem": "PI-7",
+      "phase": "PI-7",
+      "state": "VERIFIED",
+      "artifact": "PI7-SEC-001-KNOWLEDGE-SECURITY-REPORT.md",
+      "report": "PI7-SEC-001-KNOWLEDGE-SECURITY-REPORT.md"
+    },
+    {
+      "id": "EV-PI7-AUD",
+      "workItem": "PI-7",
+      "phase": "PI-7",
+      "state": "VERIFIED",
+      "artifact": "PI7-AUD-001-KNOWLEDGE-AUDIT-REPORT.md",
+      "report": "PI7-AUD-001-KNOWLEDGE-AUDIT-REPORT.md"
+    },
+    {
+      "id": "EV-PI7-RAT",
+      "workItem": "PI-7",
+      "phase": "PI-7",
+      "state": "CERTIFIED",
+      "artifact": "PI7-RAT-001-KNOWLEDGE-FABRIC-RATIFICATION.md",
+      "report": "PI7-RAT-001-KNOWLEDGE-FABRIC-RATIFICATION.md"
+    },
+    {
+      "id": "EV-PI8-IMP",
+      "workItem": "PI-8",
+      "phase": "PI-8",
+      "state": "VERIFIED",
+      "artifact": "ONTO-IMP-001-ONTOLOGY-IMPLEMENTATION-REPORT.md",
+      "report": "ONTO-IMP-001-ONTOLOGY-IMPLEMENTATION-REPORT.md"
+    },
+    {
+      "id": "EV-PI8-VAL",
+      "workItem": "PI-8",
+      "phase": "PI-8",
+      "state": "VERIFIED",
+      "artifact": "ONTO-VAL-001-ONTOLOGY-VALIDATION-REPORT.md",
+      "report": "ONTO-VAL-001-ONTOLOGY-VALIDATION-REPORT.md"
+    },
+    {
+      "id": "EV-PI8-SEC",
+      "workItem": "PI-8",
+      "phase": "PI-8",
+      "state": "VERIFIED",
+      "artifact": "ONTO-SEC-001-ONTOLOGY-SECURITY-REPORT.md",
+      "report": "ONTO-SEC-001-ONTOLOGY-SECURITY-REPORT.md"
+    },
+    {
+      "id": "EV-PI8-AUD",
+      "workItem": "PI-8",
+      "phase": "PI-8",
+      "state": "VERIFIED",
+      "artifact": "ONTO-AUD-001-ONTOLOGY-AUDIT-REPORT.md",
+      "report": "ONTO-AUD-001-ONTOLOGY-AUDIT-REPORT.md"
+    },
+    {
+      "id": "EV-PI8-RAT",
+      "workItem": "PI-8",
+      "phase": "PI-8",
+      "state": "SUBMITTED",
+      "artifact": "ONTO-RAT-001-ONTOLOGY-RATIFICATION-DETERMINATION.md",
+      "report": "ONTO-RAT-001-ONTOLOGY-RATIFICATION-DETERMINATION.md",
+      "note": "Self-attested; independent attestation pending REAL-C-05 (AD-0021 contested)."
+    },
+    {
+      "id": "EV-PI9-IMP",
+      "workItem": "PI-9",
+      "phase": "PI-9",
+      "state": "VERIFIED",
+      "artifact": "MEM-IMP-002-MEMORY-IMPLEMENTATION-COMPLETION-REPORT.md",
+      "report": "MEM-IMP-002-MEMORY-IMPLEMENTATION-COMPLETION-REPORT.md"
+    },
+    {
+      "id": "EV-PI9-VAL",
+      "workItem": "PI-9",
+      "phase": "PI-9",
+      "state": "VERIFIED",
+      "artifact": "MEM-VAL-002-MEMORY-VALIDATION-READINESS-REPORT.md",
+      "report": "MEM-VAL-002-MEMORY-VALIDATION-READINESS-REPORT.md"
+    },
+    {
+      "id": "EV-PI9-SEC",
+      "workItem": "PI-9",
+      "phase": "PI-9",
+      "state": "VERIFIED",
+      "artifact": "MEM-SEC-002-MEMORY-SECURITY-CLOSURE-REPORT.md",
+      "report": "MEM-SEC-002-MEMORY-SECURITY-CLOSURE-REPORT.md"
+    },
+    {
+      "id": "EV-PI9-AUD",
+      "workItem": "PI-9",
+      "phase": "PI-9",
+      "state": "VERIFIED",
+      "artifact": "MEM-AUD-002-MEMORY-AUDIT-CLOSURE-REPORT.md",
+      "report": "MEM-AUD-002-MEMORY-AUDIT-CLOSURE-REPORT.md"
+    },
+    {
+      "id": "EV-PI9-RAT",
+      "workItem": "PI-9",
+      "phase": "PI-9",
+      "state": "SUBMITTED",
+      "artifact": "MEM-RAT-003-MEMORY-FABRIC-RATIFICATION.md",
+      "report": "MEM-RAT-003-MEMORY-FABRIC-RATIFICATION.md",
+      "note": "Self-attested; independent attestation pending REAL-C-05."
+    },
+    {
+      "id": "EV-PI10-AUTH",
+      "workItem": "PI-10",
+      "phase": "PI-10",
+      "state": "PENDING",
+      "artifact": null,
+      "report": "INTEL-001-PI10-INTELLIGENCE-FABRIC-COMPLETION-DETERMINATION.md",
+      "note": "READY FOR AUTHORIZATION; requires AD-0024 (NOT issued)."
+    },
+    {
+      "id": "EV-PI10-IMP",
+      "workItem": "PI-10",
+      "phase": "PI-10",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null
+    },
+    {
+      "id": "EV-PI10-VAL",
+      "workItem": "PI-10",
+      "phase": "PI-10",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null
+    },
+    {
+      "id": "EV-PI10-SEC",
+      "workItem": "PI-10",
+      "phase": "PI-10",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null
+    },
+    {
+      "id": "EV-PI10-AUD",
+      "workItem": "PI-10",
+      "phase": "PI-10",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null
+    },
+    {
+      "id": "EV-PI11-IMP",
+      "workItem": "PI-11",
+      "phase": "PI-11",
+      "state": "SUBMITTED",
+      "artifact": "PI11-IMP-001-SIMULATION-FABRIC-IMPLEMENTATION-REPORT.md",
+      "report": "PI11-IMP-001-SIMULATION-FABRIC-IMPLEMENTATION-REPORT.md",
+      "note": "Construction complete per SIM-PLAN-001..003 (15 modules + 1 additive re-export; 0 core-dir change). Self-attested; independent PI-11 ratification pending (LOCK-REAL-C-05 independence)."
+    },
+    {
+      "id": "EV-PI11-VAL",
+      "workItem": "PI-11",
+      "phase": "PI-11",
+      "state": "SUBMITTED",
+      "artifact": "PI11-VAL-001-SIMULATION-FABRIC-VALIDATION-REPORT.md",
+      "report": "PI11-VAL-001-SIMULATION-FABRIC-VALIDATION-REPORT.md",
+      "note": "5/5 streams + 10/10 gates pass; 284 baseline preserved, 356 total green. Self-attested."
+    },
+    {
+      "id": "EV-PI11-SEC",
+      "workItem": "PI-11",
+      "phase": "PI-11",
+      "state": "SUBMITTED",
+      "artifact": "PI11-SEC-001-SIMULATION-FABRIC-SECURITY-REPORT.md",
+      "report": "PI11-SEC-001-SIMULATION-FABRIC-SECURITY-REPORT.md",
+      "note": "S1-S12 12/12 mitigated, 0 residual High/High; S1/S3/S4/S6 enforced; no custom crypto. Self-attested."
+    },
+    {
+      "id": "EV-PI11-AUD",
+      "workItem": "PI-11",
+      "phase": "PI-11",
+      "state": "SUBMITTED",
+      "artifact": "PI11-AUD-001-SIMULATION-FABRIC-AUDIT-REPORT.md",
+      "report": "PI11-AUD-001-SIMULATION-FABRIC-AUDIT-REPORT.md",
+      "note": "Hash-chain integrity + reproducibility + tamper-evidence verified. Self-attested."
+    },
+    {
+      "id": "EV-PROMPT-05",
+      "workItem": "Prompt-05",
+      "phase": "Contract Authoring",
+      "state": "VERIFIED",
+      "artifact": "contracts/field-schemas/*.fieldschema.json",
+      "report": "FIELD-AUTHORITY-SPECIFICATION.md",
+      "note": "UCOS-PDATA-ARCH-001 (PHASE D.1) authored 5 field schemas (ConfigurationValue, MetadataRecord, FeatureFlag, RegistryArtifact, DiscoveryRecord). Registry validate PASS; generator Stage-3 SUFFICIENT for API-018 + API-027; 65 generator tests green. Field authority = data architecture (domain authority); GATE-DOC-001; no external independence requirement."
+    },
+    {
+      "id": "EV-PROMPT-08",
+      "workItem": "Prompt-08",
+      "phase": "Contract Authoring",
+      "state": "VERIFIED",
+      "artifact": "contracts/bindings/operation-payload-bindings.json",
+      "report": "PROMPT08-BINDING-SPECIFICATION.md",
+      "note": "Prompt-08 (Operation-Payload Binding): authoritative operation->payload bindings for API-018 + API-027 (8 operations request+response, 6 events) bound to the 5 Prompt-05 field-schema families. Validation PASS: all operations bound, 0 dangling refs, 0 orphans, 0 duplicates, 0 circular; operationIds match deriveOperationId. GATE-DOC-001; depends on Prompt-05 (COMPLETE). Binding data only; transport=Prompt08 platform, security=Prompt09."
+    },
+    {
+      "id": "EV-PROMPT-09",
+      "workItem": "Prompt-09",
+      "phase": "Contract Authoring",
+      "state": "VERIFIED",
+      "artifact": "contracts/errors/error-model-registry.json + contracts/security/security-authority-registry.json",
+      "report": "PROMPT09-ERROR-REGISTRY.md",
+      "note": "Prompt-09 (Error Model & Security Authority Registry): canonical Error Model Registry (11 error models across 8 families; codes = ratified meta-core/control error taxonomy; transport-neutral, no HTTP status) with operationErrorBindings 8/8 + eventErrorBindings 6/6; canonical Security Authority Registry (3 profiles SP-READ/SP-WRITE/SP-EVENT; 8/8 ops + 6/6 events + 5/5 payload families) referencing UCOS-SEC-CONTROL-001 SEC-CTL-* and TB-01/02/08/09, non-waivable S1/S3/S4. Validation PASS (PROMPT09-VALIDATION.md): 8/8 ops, 6/6 events, 5/5 families covered; 0 orphan error classes; 0 duplicate authorities; 0 dangling refs; 0 circular refs; 0 invented codes/controls. GATE-DOC-001; depends on Prompt-08 (COMPLETE). Authority metadata only; no DTO/validator/runtime/control/authorization logic; catalog 'security: FLAGGED FOR PROMPT 09' resolved by reference (catalog unmodified). No external independence requirement."
+    },
+    {
+      "id": "EV-ACT-06",
+      "workItem": "ACT-06",
+      "phase": "Operational Certification",
+      "state": "PENDING",
+      "artifact": null,
+      "report": "RA-1-ENVIRONMENT-PROVISIONING-EVIDENCE.md"
+    },
+    {
+      "id": "EV-ACT-07",
+      "workItem": "ACT-07",
+      "phase": "Operational Certification",
+      "state": "PENDING",
+      "artifact": null,
+      "report": "RA-2-OPERATIONAL-EVIDENCE-EXECUTION-PACKAGE.md"
+    },
+    {
+      "id": "EV-ACT-08",
+      "workItem": "ACT-08",
+      "phase": "Operational Certification",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null
+    },
+    {
+      "id": "EV-ACT-09",
+      "workItem": "ACT-09",
+      "phase": "Operational Certification",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null
+    },
+    {
+      "id": "EV-ACT-10",
+      "workItem": "ACT-10",
+      "phase": "Operational Certification",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null
+    },
+    {
+      "id": "EV-ACT-11",
+      "workItem": "ACT-11",
+      "phase": "Operational Certification",
+      "state": "VERIFIED",
+      "artifact": "ADR-PE12.md",
+      "report": "ACT11-COMPLETION-REPORT.md",
+      "note": "PHASE G.3 / ACT-11: governed observability technology-selection ADR ADR-PE12.md (UCOS-PLAT-ADR-008) authored and validated (ACT11-VALIDATION.md, GATE-DOC-001 PASS; AC 6/6; 0 unmet deps; 0 frozen mutation; 0 code/infra/lock release). Open/neutral contract (OTel/OTLP/OpenMetrics/W3C Trace Context; backend pluggable). Decision/design artifact under active Article IX lock (same class as UCOS-PLAT-ADR-001..007). No external independence requirement (GATE-DOC-001, Platform Governance / PEO-012)."
+    },
+    {
+      "id": "EV-ACT-12",
+      "workItem": "ACT-12",
+      "phase": "Operational Certification",
+      "state": "PENDING",
+      "artifact": null,
+      "report": "OP-CERT-001-OPERATIONAL-CERTIFICATION-PROGRAM.md"
+    },
+    {
+      "id": "EV-AUTH-REST",
+      "workItem": "GOV-LEDGER-RESTORE",
+      "phase": "Governance",
+      "state": "VERIFIED",
+      "artifact": "AUTH-REST-004-FINAL-AUTHORITY-STATE.md",
+      "report": "AUTH-REST-004-FINAL-AUTHORITY-STATE.md"
+    },
+    {
+      "id": "EV-REAL-C-01",
+      "workItem": "REAL-C-01",
+      "phase": "Governance",
+      "state": "SUBMITTED",
+      "artifact": "REAL-C-01-CERTIFICATION-RECONCILIATION-REPORT.md",
+      "report": "REAL-C-01-CERTIFICATION-RECONCILIATION-REPORT.md"
+    },
+    {
+      "id": "EV-REAL-C-05",
+      "workItem": "REAL-C-05",
+      "phase": "Governance",
+      "state": "SUBMITTED",
+      "artifact": "REAL-C-05-ATTESTATION-PACKAGE.md",
+      "report": "REAL-C-05-CLOSURE-REPORT.md"
+    },
+
+    {
+      "id": "EV-CAP-OPS-IMP",
+      "workItem": "CAP-OPS",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "SUBMITTED",
+      "artifact": "packages/platform-runtime/src/control/operations",
+      "report": "B02-OPF-OPERATIONAL-PROOF-FABRIC-IMPLEMENTATION-PACKAGE.md",
+      "note": "control/operations (23 modules) implemented + exported + contributes to 356-test baseline (operations.test.ts). Implementation exists; validation/audit evidence + authorizing scoped-release reconciliation pending (CAP-RECON)."
+    },
+    {
+      "id": "EV-CAP-OPS-RECON",
+      "workItem": "CAP-OPS",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null,
+      "note": "Governance reconciliation (VAL/AUD evidence + AD reconciliation) — produced by CAP-RECON."
+    },
+    {
+      "id": "EV-CAP-RDY-IMP",
+      "workItem": "CAP-RDY",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "SUBMITTED",
+      "artifact": "packages/platform-runtime/src/control/readiness",
+      "report": "CONST-READY-002-FINAL-CONSTRUCTION-READINESS-DETERMINATION.md",
+      "note": "control/readiness (17 modules) implemented + exported. Verification via readiness-harness (dedicated test suite pending). Reconciliation via CAP-RECON."
+    },
+    {
+      "id": "EV-CAP-RDY-RECON",
+      "workItem": "CAP-RDY",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null
+    },
+    {
+      "id": "EV-CAP-PROOF-IMP",
+      "workItem": "CAP-PROOF",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "SUBMITTED",
+      "artifact": "packages/platform-runtime/src/control/operations (proof-authority/record/unit)",
+      "report": "PROOF-IMPL-001-INDEPENDENT-PROOF-FABRIC-IMPLEMENTATION-PACKAGE.md"
+    },
+    {
+      "id": "EV-CAP-PROOF-RECON",
+      "workItem": "CAP-PROOF",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null
+    },
+    {
+      "id": "EV-CAP-RECON",
+      "workItem": "CAP-RECON",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null,
+      "note": "Software-solvable (GATE-DOC-001) reconciliation of the implemented-but-invisible operability fabrics. This work item is READY; producing this evidence advances CAP-OPS/RDY/PROOF implementation evidence toward VERIFIED."
+    },
+    {
+      "id": "EV-CAP-ECON-AUTH",
+      "workItem": "CAP-ECON",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": "ECON-001-ECONOMIC-RUNTIME-REALIZATION.md",
+      "note": "ECON-* design ratifiable; requires Authority Board scoped Article IX release before construction (EXT-CAP-AUTH)."
+    },
+    {
+      "id": "EV-CAP-RES-ARCH",
+      "workItem": "CAP-RES",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null,
+      "note": "No distinct model; subsumed in Economic. Requires architecture then scoped release."
+    },
+    {
+      "id": "EV-CAP-WORKFLOW-AUTH",
+      "workItem": "CAP-WORKFLOW",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null,
+      "note": "Platform PWF/PE-07 design; requires scoped Article IX release."
+    },
+    {
+      "id": "EV-CAP-EVENT-AUTH",
+      "workItem": "CAP-EVENT",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null,
+      "note": "Platform PEV design; requires scoped Article IX release."
+    },
+    {
+      "id": "EV-CAP-API-AUTH",
+      "workItem": "CAP-API",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": "UCOS-SERVICE-API-CONTRACT-ARCHITECTURE.md",
+      "note": "Contract toolchain WI-05..10 COMPLETE; service runtime requires scoped Article IX release."
+    },
+    {
+      "id": "EV-CAP-UI-AUTH",
+      "workItem": "CAP-UI",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null,
+      "note": "EXP-* ratified design (C-1/D-1); construction gated; apps/ EMPTY."
+    },
+    {
+      "id": "EV-CAP-AUTON-AUTH",
+      "workItem": "CAP-AUTON",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": "AUTO-ARCH-001-AUTONOMY-REFERENCE-ARCHITECTURE.md"
+    },
+    {
+      "id": "EV-CAP-ECOSYS-AUTH",
+      "workItem": "CAP-ECOSYS",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": "ECO-ARCH-001-ECOSYSTEM-REFERENCE-ARCHITECTURE.md"
+    },
+    {
+      "id": "EV-CAP-INFRA-AUTH",
+      "workItem": "CAP-INFRA",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": "infra/",
+      "report": "OPS-ENVIRONMENT-PROGRAM.md",
+      "note": "IaC authored; provisioning-gated via ACT-06 (operational evidence, EXT-REAL-C-03)."
+    },
+    {
+      "id": "EV-CAP-LEARN-ARCH",
+      "workItem": "CAP-LEARN",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": null,
+      "note": "UNMODELED: architecture must be authored before any scoped release."
+    },
+    {
+      "id": "EV-CAP-CIV-AUTH",
+      "workItem": "CAP-CIV",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": "CIV-001-CIVILIZATION-RUNTIME-REALIZATION.md",
+      "note": "CIV-* design; AD-0014 deferred (conceptual/non-actuating)."
+    },
+    {
+      "id": "EV-CAP-REALITY-ARCH",
+      "workItem": "CAP-REALITY",
+      "phase": "PHASE-X.1 Capability Universe",
+      "state": "PENDING",
+      "artifact": null,
+      "report": "UCOS-UEA-0006-REALITY-AGNOSTIC.md",
+      "note": "Existential; AD-0014 deferred (INV-14..20 NOT enrolled)."
+    }
+  ]
+}

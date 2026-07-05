@@ -88,3 +88,9 @@ export * as readiness from "./readiness/index.ts";
 // federation + evolution. Namespaced re-export to avoid barrel collisions with other fabrics' generic
 // names (unitHash, createUnit, canTransition, ...). Import specifics from ./operations/index.ts.
 export * as operations from "./operations/index.ts";
+
+// PI-11 Simulation Fabric (AD-0022, conditional scoped Article IX release) — additive governed what-if
+// / projection layer over substrate + control + federation + evolution + knowledge. Deterministic-by-
+// default, non-actuating, Evolution-only commit. Namespaced re-export to avoid barrel collisions with
+// the other fabrics' generic names. Import specifics from ./simulation/index.ts.
+export * as simulation from "./simulation/index.ts";

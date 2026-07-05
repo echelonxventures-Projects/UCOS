@@ -1,0 +1,21 @@
+{
+  "name": "@ucos/contracts-sdk",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "UCOS contract-first SDK. Reserved for GENERATED clients/servers/DTOs derived from UCOS-CONTRACT-CAT-001 (never hand-authored). Foundation scaffold only (WI-05); no generated code yet.",
+  "engines": {
+    "node": ">=23.6.0"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.0",
+    "typescript": "5.9.3"
+  },
+  "license": "UNLICENSED"
+}

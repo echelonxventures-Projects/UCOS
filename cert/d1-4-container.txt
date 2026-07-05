@@ -1,0 +1,2 @@
+CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS         PORTS                                           NAMES
+38c699c09a3f   postgres:16   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:55432->5432/tcp, [::]:55432->5432/tcp   ucos-cert-pg

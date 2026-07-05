@@ -1,0 +1,97 @@
+{
+  "artifactId": "PDATA-SEC-001",
+  "securityAuthorityRegistryVersion": "ucos-security-authority/1.0.0",
+  "authority": "UCOS Contract Authority / Prompt-09 (Security Authority Registry), consuming ratified UCOS-SEC-ARCH-001",
+  "description": "Canonical Security Authority Registry for the compiler-authorized scope of Prompt-09 (API-018 + API-027; 8 operations, 6 events, 5 payload families). This is declarative AUTHORITY METADATA only: it maps each in-scope operation and event to its security-authority requirements (authentication, authorization, trust boundary, audit, integrity, non-repudiation, separation-of-duty) BY REFERENCE to the ratified control catalog SEC-CTL-001..020, trust boundaries TB-01..10, checkpoints S1..S7, and non-waivable S1/S3/S4. It IMPLEMENTS NO CONTROL, defines NO authorization logic, mints NO new control, and generates NO runtime code. It resolves the catalog placeholder 'security: FLAGGED FOR PROMPT 09' by reference (the catalog contract itself is left unmodified; authority now lives here).",
+  "governance": {
+    "gate": "GATE-DOC-001",
+    "owner": "Prompt 07 / Contract Authority; security authority owner UCOS-DOM-024 / CAP-17",
+    "nonWaivable": ["S1", "S3", "S4"],
+    "constitutionalConstraints": ["AUTH-008 (Security Canon)", "UCOS-CONST-001 Part X", "Article IX: authority metadata only, no fabric source, no control implementation"]
+  },
+  "controlReference": {
+    "source": "UCOS-SEC-CONTROL-001",
+    "boundedControls": ["SEC-CTL-001", "SEC-CTL-002", "SEC-CTL-003", "SEC-CTL-004", "SEC-CTL-008", "SEC-CTL-009", "SEC-CTL-010", "SEC-CTL-011", "SEC-CTL-012", "SEC-CTL-013", "SEC-CTL-014", "SEC-CTL-015", "SEC-CTL-016", "SEC-CTL-017"],
+    "platformScoped": ["SEC-CTL-005", "SEC-CTL-006", "SEC-CTL-007", "SEC-CTL-018", "SEC-CTL-019", "SEC-CTL-020"],
+    "note": "platformScoped controls (secrets/key lifecycle/rotation, dependency-risk, threat-modeling, rate-limiting) apply at the platform/process level and are not bound to individual operation authority here; they remain governed by UCOS-SEC-CONTROL-001."
+  },
+  "trustBoundaries": {
+    "TB-01": "client <-> platform (all API operations)",
+    "TB-02": "event fabric (all events)",
+    "TB-08": "<-> registry (API-027 operations)",
+    "TB-09": "<-> config (API-018 operations)"
+  },
+  "securityProfiles": [
+    {
+      "id": "SP-READ",
+      "appliesToKind": "safe-read",
+      "authentication": { "required": true, "controls": ["SEC-CTL-001", "SEC-CTL-004", "SEC-CTL-014"], "checkpoint": "S1", "nonWaivable": "S1" },
+      "authorization": { "model": "deny-by-default", "controls": ["SEC-CTL-002", "SEC-CTL-003", "SEC-CTL-013"], "checkpoint": ["S1", "S5"], "nonWaivable": "S1 (S4 tenancy)" },
+      "integrity": { "controls": ["SEC-CTL-008", "SEC-CTL-015"], "checkpoint": ["S2", "S4"], "nonWaivable": "S4 (transit)" },
+      "dataProtection": { "controls": ["SEC-CTL-009", "SEC-CTL-010"], "checkpoint": "S4", "nonWaivable": "S4", "classification": "inherited from UCOS-PDATA-ARCH-001" },
+      "audit": { "controls": ["SEC-CTL-011"], "checkpoint": "S6" },
+      "nonRepudiation": { "required": false, "note": "reads are not governed writes" },
+      "separationOfDuty": { "required": false },
+      "nonWaivable": ["S1", "S3", "S4"]
+    },
+    {
+      "id": "SP-WRITE",
+      "appliesToKind": ["unsafe-idempotent", "unsafe-create"],
+      "authentication": { "required": true, "controls": ["SEC-CTL-001", "SEC-CTL-004", "SEC-CTL-014"], "checkpoint": "S1", "nonWaivable": "S1" },
+      "authorization": { "model": "deny-by-default + elevated write scope + trust floor", "controls": ["SEC-CTL-002", "SEC-CTL-003", "SEC-CTL-013"], "checkpoint": ["S1", "S5"], "nonWaivable": "S1 (S4 tenancy)" },
+      "integrity": { "controls": ["SEC-CTL-008", "SEC-CTL-015", "SEC-CTL-016"], "checkpoint": ["S2", "S4"], "nonWaivable": "S4 (transit)", "note": "SEC-CTL-016 idempotency/replay protection on writes" },
+      "dataProtection": { "controls": ["SEC-CTL-009", "SEC-CTL-010"], "checkpoint": "S4", "nonWaivable": "S4", "classification": "inherited from UCOS-PDATA-ARCH-001" },
+      "audit": { "controls": ["SEC-CTL-011", "SEC-CTL-012"], "checkpoint": "S6" },
+      "nonRepudiation": { "required": true, "controls": ["SEC-CTL-012", "SEC-CTL-011"], "note": "tamper-evident, attestable audit of the governed write" },
+      "separationOfDuty": { "required": true, "authority": ["AD-0009 (Approval-Required)", "PI-6 Evolution Fabric commit path"], "rule": "proposer != approver != committer", "controls": ["SEC-CTL-002", "SEC-CTL-013"] },
+      "nonWaivable": ["S1", "S3", "S4"]
+    },
+    {
+      "id": "SP-EVENT",
+      "appliesToKind": "event",
+      "authentication": { "required": true, "controls": ["SEC-CTL-014"], "checkpoint": "S1", "nonWaivable": "S1", "note": "boundary authn/authz on event ingress/egress" },
+      "authorization": { "model": "deny-by-default publish authorization", "controls": ["SEC-CTL-002"], "checkpoint": ["S1", "S5"], "nonWaivable": "S1" },
+      "integrity": { "controls": ["SEC-CTL-008", "SEC-CTL-016"], "checkpoint": ["S2", "S4"], "nonWaivable": "S4 (transit)", "note": "SEC-CTL-016 replay/duplicate rejection on the event fabric" },
+      "dataProtection": { "controls": ["SEC-CTL-010"], "checkpoint": "S4", "nonWaivable": "S4", "classification": "inherited from UCOS-PDATA-ARCH-001" },
+      "audit": { "controls": ["SEC-CTL-011", "SEC-CTL-012"], "checkpoint": "S6" },
+      "nonRepudiation": { "required": true, "controls": ["SEC-CTL-011", "SEC-CTL-012"] },
+      "separationOfDuty": { "required": false },
+      "nonWaivable": ["S1", "S3", "S4"]
+    }
+  ],
+  "operationAuthorityBindings": [
+    { "operationId": "getConfigurationByScope", "contract": "API-018", "kind": "safe-read", "profile": "SP-READ", "trustBoundaries": ["TB-01", "TB-09"] },
+    { "operationId": "putConfigurationByScopeByKey", "contract": "API-018", "kind": "unsafe-idempotent", "profile": "SP-WRITE", "trustBoundaries": ["TB-01", "TB-09"], "note": "admin intent (catalog); elevated write authz + governance approval" },
+    { "operationId": "getMetadataByClass", "contract": "API-018", "kind": "safe-read", "profile": "SP-READ", "trustBoundaries": ["TB-01", "TB-09"] },
+    { "operationId": "getFeatureFlagsByContext", "contract": "API-018", "kind": "safe-read", "profile": "SP-READ", "trustBoundaries": ["TB-01", "TB-09"] },
+    { "operationId": "getRegistryArtifacts", "contract": "API-027", "kind": "safe-read", "profile": "SP-READ", "trustBoundaries": ["TB-01", "TB-08"] },
+    { "operationId": "postRegistryArtifacts", "contract": "API-027", "kind": "unsafe-create", "profile": "SP-WRITE", "trustBoundaries": ["TB-01", "TB-08"], "note": "create-conflict governed by CAP-19 registry authority" },
+    { "operationId": "getRegistryArtifactsById", "contract": "API-027", "kind": "safe-read", "profile": "SP-READ", "trustBoundaries": ["TB-01", "TB-08"] },
+    { "operationId": "getRegistryDiscovery", "contract": "API-027", "kind": "safe-read", "profile": "SP-READ", "trustBoundaries": ["TB-01", "TB-08"] }
+  ],
+  "eventAuthorityBindings": [
+    { "event": "ConfigurationChanged", "contract": "EVT-018", "profile": "SP-EVENT", "trustBoundaries": ["TB-02"] },
+    { "event": "MetadataUpdated", "contract": "EVT-018", "profile": "SP-EVENT", "trustBoundaries": ["TB-02"] },
+    { "event": "FeatureFlagChanged", "contract": "EVT-018", "profile": "SP-EVENT", "trustBoundaries": ["TB-02"] },
+    { "event": "ArtifactRegistered", "contract": "EVT-027", "profile": "SP-EVENT", "trustBoundaries": ["TB-02"] },
+    { "event": "ArtifactSuperseded", "contract": "EVT-027", "profile": "SP-EVENT", "trustBoundaries": ["TB-02"] },
+    { "event": "ArtifactDiscovered", "contract": "EVT-027", "profile": "SP-EVENT", "trustBoundaries": ["TB-02"] }
+  ],
+  "payloadFamilyProtection": [
+    { "family": "ConfigurationValue", "dataContract": "UCOS-DATA-CONTRACT-018", "classification": "inherited (UCOS-PDATA-ARCH-001)", "controls": ["SEC-CTL-008", "SEC-CTL-009", "SEC-CTL-010", "SEC-CTL-003"] },
+    { "family": "MetadataRecord", "dataContract": "UCOS-DATA-CONTRACT-018", "classification": "inherited (UCOS-PDATA-ARCH-001)", "controls": ["SEC-CTL-008", "SEC-CTL-009", "SEC-CTL-010", "SEC-CTL-003"] },
+    { "family": "FeatureFlag", "dataContract": "UCOS-DATA-CONTRACT-018", "classification": "inherited (UCOS-PDATA-ARCH-001)", "controls": ["SEC-CTL-008", "SEC-CTL-010"] },
+    { "family": "RegistryArtifact", "dataContract": "UCOS-DATA-CONTRACT-027", "classification": "inherited (UCOS-PDATA-ARCH-001)", "controls": ["SEC-CTL-008", "SEC-CTL-009", "SEC-CTL-010", "SEC-CTL-003"] },
+    { "family": "DiscoveryRecord", "dataContract": "UCOS-DATA-CONTRACT-027", "classification": "inherited (UCOS-PDATA-ARCH-001)", "controls": ["SEC-CTL-008", "SEC-CTL-010"] }
+  ],
+  "resolvesCatalogPlaceholder": {
+    "placeholder": "security: FLAGGED FOR PROMPT 09",
+    "in": ["contracts/catalog/api-018.contract.json", "contracts/catalog/api-027.contract.json"],
+    "resolution": "Resolved BY REFERENCE in this registry. The catalog contract files are intentionally left unmodified (append-only discipline); the authoritative security metadata now resides in contracts/security/security-authority-registry.json, keyed by operationId/event."
+  },
+  "traceability": {
+    "refines": ["UCOS-SEC-ARCH-001", "UCOS-SEC-CONTROL-001", "UCOS-SEC-TRACE-001", "AUTH-008", "UCOS-CONST-001 (Part X)", "contracts/bindings/operation-payload-bindings.json", "contracts/catalog/api-018|027.contract.json"],
+    "governedBy": "UCOS-SVC-POLICY-001",
+    "owner": "Security Governance (UCOS-DOM-024; CAP-17)"
+  }
+}

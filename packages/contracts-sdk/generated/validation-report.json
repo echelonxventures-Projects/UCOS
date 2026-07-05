@@ -1,0 +1,44 @@
+{
+  "verdict": "PASS",
+  "metaSchemaVersion": "ucos-contract-meta/1.0.0",
+  "contracts": [
+    {
+      "id": "UCOS-API-CONTRACT-018",
+      "sourceId": "contracts/catalog/api-018.contract.json",
+      "stage1_schema": "PASS",
+      "stage2_model": "PASS",
+      "stage3_targets": {
+        "dtos": "BLOCKED",
+        "validators": "BLOCKED",
+        "clients": "PARTIAL",
+        "serverStubs": "PARTIAL"
+      },
+      "failures": [],
+      "notes": [
+        "DTOs BLOCKED: field-level payload schema deferred by catalog (G1: NOT DEFINED IN CATALOG; Prompt 05 / UCOS-PDATA-ARCH-001).",
+        "Validators BLOCKED: no field-level schema/constraints to validate (G1–G3).",
+        "Clients PARTIAL: path template + verb present; request/response bodies opaque until field-level schemas exist (G1–G4). operationId derived deterministically (G6).",
+        "ServerStubs PARTIAL: handler signatures with opaque payloads; no business logic."
+      ]
+    },
+    {
+      "id": "UCOS-API-CONTRACT-027",
+      "sourceId": "contracts/catalog/api-027.contract.json",
+      "stage1_schema": "PASS",
+      "stage2_model": "PASS",
+      "stage3_targets": {
+        "dtos": "BLOCKED",
+        "validators": "BLOCKED",
+        "clients": "PARTIAL",
+        "serverStubs": "PARTIAL"
+      },
+      "failures": [],
+      "notes": [
+        "DTOs BLOCKED: field-level payload schema deferred by catalog (G1: NOT DEFINED IN CATALOG; Prompt 05 / UCOS-PDATA-ARCH-001).",
+        "Validators BLOCKED: no field-level schema/constraints to validate (G1–G3).",
+        "Clients PARTIAL: path template + verb present; request/response bodies opaque until field-level schemas exist (G1–G4). operationId derived deterministically (G6).",
+        "ServerStubs PARTIAL: handler signatures with opaque payloads; no business logic."
+      ]
+    }
+  ]
+}

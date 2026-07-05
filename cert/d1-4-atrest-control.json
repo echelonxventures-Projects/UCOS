@@ -1,0 +1,40 @@
+{
+  "attestation_id": "AC-D1-D1-4-S4-ATREST",
+  "criterion": "D1-4 (S4 encryption at rest)",
+  "tier": "Tier-3 (self-managed host full-volume disk encryption)",
+  "control": "Apple FileVault (APFS full-volume encryption)",
+  "encrypted": true,
+  "control_state": {
+    "fdesetup_status": "FileVault is On",
+    "fdesetup_isactive": true
+  },
+  "storage": {
+    "device": "/dev/disk3s1",
+    "volume_name": "Macintosh HD - Data",
+    "mount_point": "/System/Volumes/Data",
+    "apfs_volume_group": "2815822E-8824-40BF-869F-3533B54FA4A6",
+    "filevault": "Yes"
+  },
+  "scope_binding": {
+    "dom_ops_medium": "dom_ops.metadata_kv (PostgreSQL 16, container ucos-cert-pg)",
+    "docker_volume": "ucos_pg_enc (/var/lib/docker/volumes/ucos_pg_enc/_data, inside VM)",
+    "vm_disk_image": "~/Library/Containers/com.docker.docker/Data/vms/0/data/Docker.raw",
+    "host_device": "/dev/disk3s1 (Macintosh HD - Data, /System/Volumes/Data)",
+    "chain": "dom_ops -> ucos_pg_enc -> Docker.raw -> /dev/disk3s1 (FileVault encrypted)"
+  },
+  "key_management": {
+    "key_custody": "macOS FileVault: volume key protected by user credential and Secure Enclave; recovery/institutional key managed by OS",
+    "key_reference_only": true,
+    "key_material_disclosed": false
+  },
+  "issuer": {
+    "captured_by": "AC-D1 certification authority (host probe, read-only)",
+    "commands": [
+      "fdesetup status",
+      "fdesetup isactive",
+      "df -h ~/Library/Containers/com.docker.docker/Data/vms/0/data/Docker.raw",
+      "diskutil info /dev/disk3s1"
+    ],
+    "captured_at": "2026-07-04T17:14:40Z"
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "artifactId": "PROG-GAP-001",
+  "description": "Gap registry (WS9). All known open gaps, each linked to an owning work item or closure where applicable. autoDiscovered gaps are synthesized by the compiler (e.g. evidence inconsistencies, orphan dependencies, blocked-forever items) and merged at compile time.",
+  "gaps": [
+    {
+      "id": "GAP-PROMPT-05",
+      "description": "Prompt-05 Payload Authoring: field-level schemas for ConfigurationValue, MetadataRecord, FeatureFlag, RegistryArtifact, DiscoveryRecord not yet authored.",
+      "workItem": "Prompt-05",
+      "severity": "HIGH",
+      "category": "contract-authoring",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-PROMPT-08",
+      "description": "Prompt-08 Operation-Payload Binding: operations not yet bound to authored payloads.",
+      "workItem": "Prompt-08",
+      "severity": "HIGH",
+      "category": "contract-authoring",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-PROMPT-09",
+      "description": "Prompt-09 Error Model Registry: canonical error model registry not yet authored.",
+      "workItem": "Prompt-09",
+      "severity": "MEDIUM",
+      "category": "contract-authoring",
+      "status": "CLOSED",
+      "resolution": "CLOSED by Prompt-09 (PHASE D.3): canonical Error Model Registry (contracts/errors/error-model-registry.json) + Security Authority Registry (contracts/security/security-authority-registry.json) authored and validated (PROMPT09-VALIDATION.md PASS); EV-PROMPT-09 VERIFIED."
+    },
+    {
+      "id": "GAP-ACT-06",
+      "description": "ACT-06 ENV-DEV/INT provisioning evidence (G12-1) not captured; requires governed human-executed provisioning act.",
+      "workItem": "ACT-06",
+      "severity": "HIGH",
+      "category": "operational-evidence",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-ACT-07",
+      "description": "ACT-07 pipeline execution evidence (G12-2) not captured.",
+      "workItem": "ACT-07",
+      "severity": "HIGH",
+      "category": "operational-evidence",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-ACT-08",
+      "description": "ACT-08 contract-test execution (API-018, API-027) not captured.",
+      "workItem": "ACT-08",
+      "severity": "MEDIUM",
+      "category": "operational-evidence",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-ACT-09",
+      "description": "ACT-09 DR drill with measured RPO/RTO (G12-3) not executed.",
+      "workItem": "ACT-09",
+      "severity": "MEDIUM",
+      "category": "operational-evidence",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-ACT-10",
+      "description": "ACT-10 immutable audit trail + availability/metrics evidence not captured.",
+      "workItem": "ACT-10",
+      "severity": "MEDIUM",
+      "category": "operational-evidence",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-ACT-11",
+      "description": "ACT-11 observability PE-12 ADR sub-decision undecided; blocks environment provisioning readiness (RA-1 NOT READY).",
+      "workItem": "ACT-11",
+      "severity": "MEDIUM",
+      "category": "technology-decision",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-ACT-12",
+      "description": "ACT-12 Operational Certification not issued; system remains CONDITIONALLY CERTIFIED.",
+      "workItem": "ACT-12",
+      "severity": "HIGH",
+      "category": "certification",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-PI-10",
+      "description": "PI-10 Intelligence Fabric READY FOR AUTHORIZATION but not constructed; requires scoped release AD-0024.",
+      "workItem": "PI-10",
+      "severity": "MEDIUM",
+      "category": "fabric-implementation",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-PI-11",
+      "description": "PI-11 Simulation Fabric authorized (AD-0022 conditional) but not constructed.",
+      "workItem": "PI-11",
+      "severity": "LOW",
+      "category": "fabric-implementation",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-ATTEST",
+      "description": "PI-8/PI-9 ratifications are self-attested; independent attestation (REAL-C-05) outstanding.",
+      "workItem": "REAL-C-05",
+      "severity": "HIGH",
+      "category": "governance-attestation",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CERT-REISSUE",
+      "description": "Terminal certification stale; REAL-C-01 re-issue (UCOM-ULTIMATE-CERT-002) outstanding.",
+      "workItem": "REAL-C-01",
+      "severity": "MEDIUM",
+      "category": "certification",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-N1-CAP",
+      "description": "Standing Trusted Operation N-1: CAP-01..14 quantitative attributes (maturity/KPIs/SLAs) unauthored under Prompt 02.",
+      "workItem": null,
+      "severity": "LOW",
+      "category": "trusted-operation",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-PARTY-GLOSSARY",
+      "description": "Standing Trusted Operation: canonical 'Party' glossary term (Prompt 03) to be honored at next touch.",
+      "workItem": null,
+      "severity": "LOW",
+      "category": "trusted-operation",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-SUITE-COUNT",
+      "description": "Test-suite count divergence: 36 (ULT-GAP live) vs 40 (OP-CERT/ECON-001). Pass count 269 not in dispute; needs re-measurement.",
+      "workItem": null,
+      "severity": "LOW",
+      "category": "measurement",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-OPS-GOV",
+      "description": "UCAP-26/30 Observability & Operations Fabric is IMPLEMENTED + TESTED (control/operations, 356-test baseline) but was compiler-invisible. Registered as CAP-OPS (IN_PROGRESS); evidence reconciliation pending (CAP-RECON).",
+      "workItem": "CAP-OPS",
+      "severity": "CRITICAL",
+      "category": "implemented-ungoverned",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-RDY-GOV",
+      "description": "UCAP-31 Readiness/Certification/Meta-Governance Fabric IMPLEMENTED (control/readiness) but compiler-invisible; verification via harness only. Registered as CAP-RDY (IN_PROGRESS).",
+      "workItem": "CAP-RDY",
+      "severity": "CRITICAL",
+      "category": "implemented-ungoverned",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-PROOF-GOV",
+      "description": "UCAP-32 Proof Fabric IMPLEMENTED within control/operations but compiler-invisible. Registered as CAP-PROOF (BLOCKED on CAP-OPS).",
+      "workItem": "CAP-PROOF",
+      "severity": "HIGH",
+      "category": "implemented-ungoverned",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-RECON",
+      "description": "Implemented-invisible operability fabrics require authored validation/audit evidence + authorizing scoped-release reconciliation. Software-solvable (GATE-DOC-001). Registered as CAP-RECON (READY; next executable item).",
+      "workItem": "CAP-RECON",
+      "severity": "HIGH",
+      "category": "governance-reconciliation",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-ECON",
+      "description": "UCAP-14 Economic Engine ARCHITECTED (ECON-*) with no work item. Registered as CAP-ECON (EXTERNAL_BLOCKED; scoped release required).",
+      "workItem": "CAP-ECON",
+      "severity": "HIGH",
+      "category": "architected-unregistered",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-UI",
+      "description": "UCAP-25 Universal UI Fabric ARCHITECTED (EXP-*, ratified) but apps/ empty and no work item. Registered as CAP-UI (BLOCKED on CAP-API).",
+      "workItem": "CAP-UI",
+      "severity": "HIGH",
+      "category": "architected-unregistered",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-API-RT",
+      "description": "UCAP-24 Universal API Fabric service-runtime has no work item (only contract tooling WI-05..10). Registered as CAP-API (EXTERNAL_BLOCKED; scoped release required).",
+      "workItem": "CAP-API",
+      "severity": "HIGH",
+      "category": "architected-unregistered",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-WORKFLOW",
+      "description": "UCAP-12 Workflow Engine ARCHITECTED (PWF/PE-07) with no work item. Registered as CAP-WORKFLOW (EXTERNAL_BLOCKED).",
+      "workItem": "CAP-WORKFLOW",
+      "severity": "MEDIUM",
+      "category": "architected-unregistered",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-EVENT",
+      "description": "UCAP-13 Universal Event Fabric ARCHITECTED (PEV) with no work item. Registered as CAP-EVENT (EXTERNAL_BLOCKED).",
+      "workItem": "CAP-EVENT",
+      "severity": "MEDIUM",
+      "category": "architected-unregistered",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-AUTON",
+      "description": "UCAP-33 Autonomy Fabric ARCHITECTED (AUTO-*) with no work item. Registered as CAP-AUTON (BLOCKED on PI-10).",
+      "workItem": "CAP-AUTON",
+      "severity": "MEDIUM",
+      "category": "architected-unregistered",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-ECOSYS",
+      "description": "UCAP-34 Ecosystem Fabric ARCHITECTED (ECO-*) with no work item. Registered as CAP-ECOSYS (EXTERNAL_BLOCKED).",
+      "workItem": "CAP-ECOSYS",
+      "severity": "MEDIUM",
+      "category": "architected-unregistered",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-CIV",
+      "description": "UCAP-20 Civilization Control Plane ARCHITECTED (CIV-*), AD-0014 deferred, no work item. Registered as CAP-CIV (BLOCKED on PI-11 + CAP-ECON).",
+      "workItem": "CAP-CIV",
+      "severity": "MEDIUM",
+      "category": "architected-unregistered",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-INFRA",
+      "description": "UCAP-21 Infrastructure Fabric IaC authored (infra/) but not provisioned; no dedicated work item. Registered as CAP-INFRA (BLOCKED on ACT-06, operational).",
+      "workItem": "CAP-INFRA",
+      "severity": "MEDIUM",
+      "category": "provision-pending",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-LEARN",
+      "description": "UCAP-16 Learning Engine fully UNMODELED (no code, no design). Registered as CAP-LEARN (BLOCKED on PI-10; architecture required first).",
+      "workItem": "CAP-LEARN",
+      "severity": "MEDIUM",
+      "category": "unmodeled",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-RES",
+      "description": "UCAP-15 Resource Engine VISION (subsumed in Economic); no distinct model. Registered as CAP-RES (BLOCKED on CAP-ECON).",
+      "workItem": "CAP-RES",
+      "severity": "LOW",
+      "category": "unmodeled",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-REALITY",
+      "description": "UCAP-29 Reality Graph Runtime VISION (UEA-0006), AD-0014 deferred. Registered as CAP-REALITY (BLOCKED on CAP-CIV).",
+      "workItem": "CAP-REALITY",
+      "severity": "LOW",
+      "category": "unmodeled",
+      "status": "OPEN"
+    },
+    {
+      "id": "GAP-CAP-CLOSURE",
+      "description": "No governance closure tracked capability-universe completeness. Added CAP-C-01 (Capability Universe Governance Closure) + EXT-CAP-AUTH + LOCK-CAP-C-01 in PHASE X.1.",
+      "workItem": null,
+      "severity": "HIGH",
+      "category": "governance-closure",
+      "status": "OPEN"
+    }
+  ]
+}

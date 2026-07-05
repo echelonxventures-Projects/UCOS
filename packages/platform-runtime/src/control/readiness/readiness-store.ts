@@ -10,7 +10,7 @@
  * (certifications) and governance config carry separate integrity guarantees (signatures / SoD).
  */
 
-import type { InMemoryMetadataStore } from "../../metadata-runtime/metadata-store.ts";
+import type { MetadataPort } from "../../meta-core/ports.ts";
 import type {
   ComplianceControl,
   EvidenceRecord,
@@ -47,9 +47,9 @@ import {
 } from "./readiness-namespace.ts";
 
 export class ReadinessStore {
-  readonly #metadata: InMemoryMetadataStore;
+  readonly #metadata: MetadataPort;
 
-  constructor(metadata: InMemoryMetadataStore) {
+  constructor(metadata: MetadataPort) {
     this.#metadata = metadata;
   }
 

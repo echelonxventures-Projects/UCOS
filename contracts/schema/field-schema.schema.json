@@ -1,0 +1,148 @@
+{
+  "$id": "ucos:contracts/schema/field-schema.schema.json",
+  "dialect": "json-schema-2020-12",
+  "title": "UCOS Contract — Field Schema Meta-Schema",
+  "description": "Canonical, versioned, registry-driven meta-schema for a FIELD-LEVEL payload schema definition (WI-08). Validates the STRUCTURE of an authored field schema; it does NOT author any business payload. A definition binds to a catalog payload family via 'payloadFamily' + 'dataContract' so the generator sufficiency engine can resolve a contract's families to concrete schemas. Transport-neutral and implementation-neutral. Additive evolution only.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "fieldSchemaModelVersion": { "$ref": "#/$defs/modelVersion" },
+    "id": {
+      "type": "string",
+      "description": "Unique, deterministic registry id (e.g. 'UCOS-DATA-CONTRACT-018/ConfigurationValue').",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "description": "Definition version. Multiple versions of one id may coexist; the registry resolves the highest by default.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "payloadFamily": {
+      "type": "string",
+      "description": "Bound catalog payload family name (e.g. 'ConfigurationValue')."
+    },
+    "dataContract": {
+      "type": "string",
+      "description": "Owning data contract id (e.g. 'UCOS-DATA-CONTRACT-018')."
+    },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "schema": { "$ref": "#/$defs/fieldSchemaNode" }
+  },
+  "required": ["fieldSchemaModelVersion", "id", "version", "schema"],
+  "$comment": "Additive evolution only. Uses the offline JSON-Schema draft-2020-12 subset supported by the UCOS generator engine (type, properties, required, additionalProperties:false, enum, const, pattern, minLength, items, oneOf, $ref). No implementation-specific fields (no wire encoding, no framework binding).",
+  "$defs": {
+    "modelVersion": {
+      "type": "string",
+      "const": "ucos-field-schema/1.0.0",
+      "description": "Version of the UCOS field-schema meta-model family. Bumped only additively."
+    },
+    "constraints": {
+      "type": "object",
+      "description": "Transport-neutral constraint set. Every member is OPTIONAL and additive.",
+      "additionalProperties": false,
+      "properties": {
+        "minLength": { "type": "integer" },
+        "maxLength": { "type": "integer" },
+        "pattern": { "type": "string" },
+        "format": { "type": "string" },
+        "minimum": { "type": "number" },
+        "maximum": { "type": "number" },
+        "minItems": { "type": "integer" },
+        "maxItems": { "type": "integer" },
+        "uniqueItems": { "type": "boolean" }
+      }
+    },
+    "primitiveNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "type": "string", "const": "primitive" },
+        "type": {
+          "type": "string",
+          "enum": ["string", "number", "integer", "boolean"]
+        },
+        "nullable": { "type": "boolean" },
+        "description": { "type": "string" },
+        "constraints": { "$ref": "#/$defs/constraints" }
+      },
+      "required": ["kind", "type"]
+    },
+    "enumNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "type": "string", "const": "enum" },
+        "base": {
+          "type": "string",
+          "enum": ["string", "integer", "number"]
+        },
+        "values": {
+          "type": "array",
+          "items": {}
+        },
+        "nullable": { "type": "boolean" },
+        "description": { "type": "string" }
+      },
+      "required": ["kind", "base", "values"]
+    },
+    "arrayNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "type": "string", "const": "array" },
+        "items": { "$ref": "#/$defs/fieldSchemaNode" },
+        "nullable": { "type": "boolean" },
+        "description": { "type": "string" },
+        "constraints": { "$ref": "#/$defs/constraints" }
+      },
+      "required": ["kind", "items"]
+    },
+    "objectProperty": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "schema": { "$ref": "#/$defs/fieldSchemaNode" },
+        "required": { "type": "boolean" }
+      },
+      "required": ["name", "schema", "required"]
+    },
+    "objectNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "type": "string", "const": "object" },
+        "properties": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/objectProperty" }
+        },
+        "additionalProperties": { "type": "boolean" },
+        "nullable": { "type": "boolean" },
+        "description": { "type": "string" }
+      },
+      "required": ["kind", "properties"]
+    },
+    "referenceNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "type": "string", "const": "reference" },
+        "ref": { "type": "string", "minLength": 1 },
+        "version": { "type": "string" },
+        "nullable": { "type": "boolean" },
+        "description": { "type": "string" }
+      },
+      "required": ["kind", "ref"]
+    },
+    "fieldSchemaNode": {
+      "oneOf": [
+        { "$ref": "#/$defs/primitiveNode" },
+        { "$ref": "#/$defs/enumNode" },
+        { "$ref": "#/$defs/arrayNode" },
+        { "$ref": "#/$defs/objectNode" },
+        { "$ref": "#/$defs/referenceNode" }
+      ]
+    }
+  }
+}

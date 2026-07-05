@@ -3781,3 +3781,130 @@ a Git `origin` remote is provisioned.
 > Article IX generation lock unchanged; `UCOS-CONSTRUCTION-BLOCKED` stands.** Full report at
 > `REAL-M-03-LEDGER-AND-PROJECT-STATE-RECONCILIATION-REPORT.md`. Standing Trusted Operations (N-1 CAP-01..14
 > attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch.
+
+
+
+---
+
+## 0AB. PCAMG — Principle-Centric Adaptive Meta-Governance Foundation (Design/Proposal only) (CURRENT — supersedes prior sections for the PCAMG meta-governance-doctrine workstream only)
+
+> **Append-only.** Records the PCAMG Foundation Implementation Program (Phases 0–7) as a **governed proposal
+> package** under `architecture/pcamg/`, following the ratified Ω∞ `UCOS-UEA-*` proposal-package pattern.
+> **Design/doctrine/authorization-readiness only** — no source code, runtime, infrastructure, services, or
+> construction; **no** modification of `AUTH-001..012`, `UCOS-CONST-001`, `AUTH-INDEX-001`, any ratified
+> fabric, or any prohibited core dir; **no** version increment of any ratified artifact. **INV-1..13,
+> `INV-CORE-001`, AUTH-012, and AD-0014 unchanged; INV-14..20 NOT enrolled; PCAMG NOT enrolled; Article IX NOT
+> released; `UCOS-CONSTRUCTION-BLOCKED` unchanged.** All prior program status preserved.
+
+| Field | Value |
+|-------|-------|
+| Phase | **PCAMG Foundation — Phases 0–7** (COMPLETE — design/proposal package) |
+| Mode | **GOVERNANCE-DOCTRINE DESIGN / PROPOSAL ONLY** — no code / infra / services / enrollment / lock release |
+| Numbering | PCAMG has **no ratified roadmap slot**; recorded as a governed proposal (analog of Ω∞ PHASE 11D.1); confers no roadmap position |
+| Location | `architecture/pcamg/` |
+| Deliverables (9) | `PCAMG-0001` Charter · `PCAMG-0002` Universal Principle Registry (PRIN-001..015 + UUIDs) · `PCAMG-0003` Meta-Constitution (M-I..M-XII) · `PCAMG-0004` Governance Generation Framework · `PCAMG-0005` Polycentric Governance Network (PGD-01..08) · `PCAMG-0006` Adaptive Evolution Framework · `PCAMG-0007` Compliance Engine · `PCAMG-0008` Authority Hierarchy (Layer 0–8) · `PCAMG-INDEX` package/readiness |
+| Layer-0 principles | 15 invariant principles (`PCAMG-PRIN-001..015`: Human Sovereignty · Human Agency · Consent · Transparency · Accountability · Auditability · Non-Coercion · Truth Preservation · Separation of Duties · Durability · Rights Protection · Sustainability · Federation Integrity · Evolution Safety · Machine Alignment), each with all 9 mandated attributes (UUID/Name/Description/Rationale/Constraints/Validation/Compliance/Amendment/Audit); IDs namespaced (0 collision with P/IP/INV/INV-CORE) |
+| Governance domains | 8 (`PGD-01..08`: Identity/Federation/Economic/Infrastructure/Knowledge/Security/AI/Civilization), each self-governing, principle-bound, constitution-bound, **no absolute authority**, terminal human escalation (AUTH-009); mapped 1:1 to existing fabrics/architectures |
+| Compliance chain | Principle → Constitutional → Governance → Operational (`PCAMG-0007`); fail-closed; non-waivable **S1/S3/S4** + PRIN-001/006 preserved |
+| Authority hierarchy | Layer 0 Invariant Principles → L1 Meta-Constitution → L2 Generation → L3 Polycentric Network → L4 Domain Constitutions → L5 Policies → L6 Capabilities → L7 Execution → L8 Infrastructure; **re-roots (does not invert)** `AUTH-INDEX-001` §1/§2; non-inversion G-1..G-5 |
+| Preservation | `AUTH-001..012`/`UCOS-CONST-001`/`AUTH-INDEX-001` unchanged; INV-1..13, `INV-CORE-001`, AD-0014 unchanged; Article IX ACTIVE; S1/S3/S4 non-waivable |
+| Governance review | GRC-1..12 all satisfied (`PCAMG-INDEX` §5) |
+| Registration | 9 artifacts registered append-only in `CTX-REG-001` (PCAMG section) |
+| Advisory sequencing | Enrollment best sequenced **after** the authority-chain reconciliation (`REAL-C-05` / PHASE-21) so a *supreme* doctrine binds to a restored `AUTH-012` ledger |
+| Git | Not committed / not pushed / not tagged |
+| **Determination** | **PCAMG FOUNDATION DESIGNED — READY FOR AUTHORITY BOARD REVIEW** (confers no authority; enrolls nothing; releases no lock) |
+| Next Step | Independent constitutional review of the `PCAMG-0001..0008` set + Authority Board deliberation (adopt / adopt-subset / defer / reject per `PCAMG-INDEX` §6); any adoption requires a **separate** AUTH-012 decision record reconciling `AUTH-INDEX-001`/`UCOS-CONST-001` (append-only). Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PCAMG Foundation Implementation Program (COMPLETE — design/proposal).** Executed the seven-phase PCAMG
+> program as a governance-consistent proposal package under `architecture/pcamg/`, transforming the intent to
+> re-found UCOS on Principle-Centric Adaptive Meta-Governance into ratifiable design artifacts **without any
+> authority bypass** (as the program itself mandates). `PCAMG-0001` charters PCAMG as the *proposed* supreme
+> governance doctrine; `PCAMG-0002` establishes the Layer-0 Universal Principle Registry (15 invariant
+> principles with UUIDs and the full nine-attribute schema, each up-traced to existing `AUTH-003` P/IP
+> principles, INV-1..13, and `INV-CORE-001` — mapped, never replaced); `PCAMG-0003` defines the Meta-Constitution
+> that governs governance (Articles M-I..M-XII, principle supremacy, derivation of authority, creation/
+> evolution/validation/retirement of governance, fail-closed, reconciliation with `UCOS-CONST-001`);
+> `PCAMG-0004` specifies the Governance Generation Framework (Generate/Validate/Compare/Simulate/Evolve/Retire;
+> deterministic, traceable, no-hardcoding, SoD, anti-privilege); `PCAMG-0005` defines the Polycentric Governance
+> Network of 8 self-governing, principle-bound domains with no absolute authority and terminal human escalation,
+> each anchored 1:1 to an existing UCOS fabric/architecture; `PCAMG-0006` specifies the Adaptive Evolution
+> Framework (measure/detect/propose/simulate/validate/migrate) under the invariant *principles immutable /
+> governance evolvable* (migration-only, reversible, backward-compatible, append-only, fail-closed); `PCAMG-0007`
+> defines the Compliance Engine's four-stage proof (Principle→Constitutional→Governance→Operational; fail-closed;
+> non-waivable S1/S3/S4 + PRIN-001/006; subsumes existing gates as evidence sources); and `PCAMG-0008` defines
+> the Layer 0–8 authority order that **re-roots but does not invert** `AUTH-INDEX-001`. `PCAMG-INDEX` consolidates
+> the package, maps all program success criteria to design coverage, and records GRC-1..12 satisfied. **No source
+> code, runtime, infrastructure, services, or construction was produced; no ratified artifact was modified or
+> version-incremented; nothing was enrolled or made supreme; the Article IX generation lock was NOT released;
+> INV-1..13, `INV-CORE-001`, AUTH-012, and AD-0014 are preserved; `UCOS-CONSTRUCTION-BLOCKED` stands.** All 9
+> artifacts registered append-only in `CTX-REG-001`. Not committed/pushed/tagged. **Work stops here; the next
+> governed step is independent constitutional review and Authority Board deliberation — with the advisory that
+> enrolling a supreme doctrine be sequenced after the `AUTH-012` authority-chain restoration (`REAL-C-05` /
+> PHASE-21).**
+
+
+
+---
+
+## 0AC. PCAMG Constitutional Refoundation Corpus (Design/Proposal only) (CURRENT — supersedes §0AB for the PCAMG refoundation workstream only)
+
+> **Append-only.** Records the PCAMG Constitutional Refoundation Program corpus under
+> `architecture/pcamg/refoundation/`, following the ratified Ω∞ `UCOS-UEA-*` and foundation `PCAMG-0001..0008`
+> proposal-package patterns. **Design/doctrine/authorization-readiness only** — no source code, runtime,
+> infrastructure, services, or construction; **no** modification of `AUTH-001..012`, `UCOS-CONST-001`,
+> `AUTH-INDEX-001`, `AUTH-009/010`, any ratified fabric, or any prohibited core dir; **no** version increment
+> of any ratified artifact; **no** deletion of the `PCAMG-0001..0008` foundation package (re-rooted, preserved).
+> **INV-1..13, `INV-CORE-001`, AUTH-012, and AD-0014 unchanged; INV-14..20 NOT enrolled; PCAMG NOT enrolled or
+> made supreme; Article IX NOT released; `UCOS-CONSTRUCTION-BLOCKED` unchanged.** All prior program status
+> preserved.
+
+| Field | Value |
+|-------|-------|
+| Phase | **Constitutional Refoundation Program — Corpus Generation** (COMPLETE — design/proposal) |
+| Mode | **GOVERNANCE-DOCTRINE DESIGN / PROPOSAL ONLY** — no code / infra / services / enrollment / lock release |
+| Numbering | No ratified roadmap slot; recorded as a governed proposal corpus (analog of Ω∞ PHASE 11D.1 / PCAMG Foundation) |
+| Location | `architecture/pcamg/refoundation/` |
+| Deliverables (20 + index) | Doctrine: `GD-0001` (Governance Doctrine — proposed Supreme), `GD-0002` (Sovereignty Origin). Layers: `PCAMG-0000` (Invariant Principles Registry, PRIN-001..015), `PCAMG-1000` (Meta-Constitution, M-I..M-XII), `PCAMG-2000` (Governance Generation, GEN-1..6), `PCAMG-3000` (Polycentric Network, `PGC-01..08` open), `PCAMG-4000` (Federated Domain Governance, F-1..9), `PCAMG-5000` (Autonomous Execution Fabric Constitution, E-I..E-X). Frameworks: `PCAMG-6000` (Interpretation, C-1..8), `PCAMG-7000` (Conflict Resolution, precedence 1–11), `PCAMG-8000` (Legitimacy & Consent, L-1..7). Specs: `SPEC-AUTHORITY-INDEX-REFACTORING`, `SPEC-AUTH-009-MIGRATION`, `SPEC-GOVERNANCE-REGISTRIES` (11 registries), `SPEC-CONSTITUTIONAL-VALIDATION-RULES`, `SPEC-GOVERNANCE-COMPILER-RULES`, `SPEC-TRACEABILITY-FRAMEWORK`, `SPEC-CONSTITUTIONAL-COMPLIANCE-FRAMEWORK` (four-stage proof), `SPEC-REPOSITORY-STRUCTURE`. Program: `PROG-MIGRATION-AND-ADOPTION` (A-0..A-7). Index: `REFOUNDATION-INDEX`. |
+| Sovereignty origin | Invariant Principles only (`GD-0002` S-I); **no sovereignty from execution (S-IV) / AI (S-V) / organizations (S-VI)** — non-waivable |
+| Authority flow | Principles → Meta-Constitution → Generation → Polycentric → Federated Domains → Organizations → Implementations → Executions; never the reverse (`GD-0001` §4) |
+| Principle supremacy | `PCAMG-0000` §4 + `PCAMG-1000` M-I: no artifact may violate a registered invariant principle |
+| Determinism / no-ambiguity | `PCAMG-6000` (single deterministic meaning) + `SPEC-GOVERNANCE-COMPILER-RULES` (pure/reproducible; INV-6) |
+| No hierarchy inversion | `PCAMG-7000` precedence + `SPEC-AUTHORITY-INDEX-REFACTORING` (non-inverting re-root; pre-enrollment ratified override CR-8) |
+| Infinite extensibility | `PCAMG-3000`/`PCAMG-4000` open governance-center/domain/federation namespaces (INV-13) |
+| Preservation | `PCAMG-0001..0008` re-rooted (not deleted); `AUTH-003`/INV-1..13/`INV-CORE-001` mapped up (not replaced); `AUTH-009/010` migrated (all guarantees preserved) |
+| Registration | 20 artifacts + index registered append-only in `CTX-REG-001` (PCAMG Refoundation section) and this file |
+| Frozen-artifact integrity | 0 modification of ratified artifacts / prohibited core dirs / PI status; INV-1..13, `INV-CORE-001`, AUTH-012, AD-0014 preserved |
+| Git | Not committed / not pushed / not tagged |
+| **Determination** | **PCAMG CONSTITUTIONAL REFOUNDATION CORPUS DESIGNED — READY FOR AUTHORITY BOARD REVIEW** (confers no authority; enrolls nothing; releases no lock; makes nothing supreme) |
+| Article IX / enrollment | **Article IX generation lock REMAINS ACTIVE**; `UCOS-CONSTRUCTION-BLOCKED` unchanged; PCAMG NOT enrolled |
+| Next Step | Independent constitutional review of the `GD-*` / `PCAMG-*` / `SPEC-*` / `PROG-*` corpus; then Authority Board deliberation (adopt / adopt-subset / defer / reject per `REFOUNDATION-INDEX` §6). Advisory: sequence any *supreme*-doctrine enrollment after the `AUTH-012` authority-chain restoration (`REAL-C-05` / PHASE-21). Standing Trusted Operations (N-1 CAP-01..14 attributes, Prompt 02; canonical "Party" glossary term, Prompt 03) remain to be honored at their next touch. |
+
+> **PCAMG Constitutional Refoundation — Corpus Generation (COMPLETE — design/proposal).** Generated the
+> complete 20-artifact Constitutional Refoundation corpus (+ index) under `architecture/pcamg/refoundation/`,
+> proposing Principle-Centric Adaptive Meta-Governance (PCAMG) as the **Supreme Governance Doctrine** of UCOS
+> Ω∞ while honoring the program's own requirements — principle supremacy, no sovereignty from execution/AI/
+> organizations, no hierarchy inversion, no constitutional ambiguity, full traceability, full auditability —
+> and the repository's ratified discipline. `GD-0001` charters the corpus and `GD-0002` fixes the sovereignty
+> origin (invariant principles only). `PCAMG-0000` re-issues the 15 invariant principles (`PRIN-001..015`,
+> preserved UUIDs) as the Layer-0 registry with a nine-attribute schema and a supremacy rule; `PCAMG-1000`
+> establishes the Meta-Constitution (M-I..M-XII); `PCAMG-2000` the deterministic Governance Generation
+> Framework (GEN-1..6, anti-privilege, generation record); `PCAMG-3000` the open Polycentric Governance
+> Network (governance centers `PGC-*`, no absolute authority, terminal human escalation); `PCAMG-4000`
+> Federated Domain Governance (domain constitutions + `FED-*`-aligned integrity F-1..9; infinite domains/
+> federations); `PCAMG-5000` the Autonomous Execution Fabric Constitution (E-I..E-X; no sovereignty from
+> execution; propose-not-act; Evolution-only commit; non-actuation; S1/S3/S4; Article IX preserved);
+> `PCAMG-6000` deterministic interpretation (no ambiguity); `PCAMG-7000` deterministic conflict resolution
+> (no hierarchy inversion; pre-enrollment ratified override); `PCAMG-8000` legitimacy & consent. The eight
+> `SPEC-*` artifacts specify the AUTHORITY-INDEX re-rooting (non-inverting), the AUTH-009 migration
+> (all guarantees preserved, coexistence window), the governance registries (11; registry-driven/no-hardcoding),
+> the constitutional validation rules (VR families; principle/security failures non-waivable), the governance
+> compiler rules (pure/deterministic; CR-1..12), the traceability framework (full up-trace; 0 orphans; refines
+> `AUTH-010`), the constitutional compliance framework (four-stage proof; subsumes `GATE-*`; Article IX
+> preserved), and the repository structure (target layer-ordered layout; nothing moved). `PROG-MIGRATION-AND-
+> ADOPTION` defines the phased, reversible, Board-gated adoption program (A-0..A-7) with coexistence, rollback,
+> success criteria, and risk mitigations. **No source code, runtime, infrastructure, services, or construction
+> was produced; no ratified artifact modified or version-incremented; the `PCAMG-0001..0008` foundation package
+> preserved (re-rooted, not deleted); nothing enrolled or made supreme; the Article IX generation lock NOT
+> released; INV-1..13, `INV-CORE-001`, AUTH-012, and AD-0014 preserved; `UCOS-CONSTRUCTION-BLOCKED` stands.**
+> All 20 artifacts + index registered append-only in `CTX-REG-001`. Not committed/pushed/tagged. **Work stops
+> here; the next governed step is independent constitutional review and Authority Board deliberation.**

@@ -1,0 +1,1100 @@
+{
+  "artifactId": "PROG-WI-001",
+  "description": "Program work-item registry. Every executable unit of the program is represented here. Registry-driven and extensible: adding a work item requires ONLY appending an object here (plus its edges/evidence) - no compiler code changes.",
+  "workItems": [
+    {
+      "id": "WI-05",
+      "title": "Contract SDK Foundation",
+      "type": "work-item",
+      "phase": "PHASE-11",
+      "declaredStatus": "COMPLETE",
+      "owner": "Contract Toolchain",
+      "priority": 10,
+      "acceptanceCriteria": [
+        "contracts-sdk package scaffold exists",
+        "transport-neutral foundation, no generated code yet"
+      ],
+      "requiredEvidence": [
+        "EV-WI-05"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Article IX (design/tooling only)"
+      ]
+    },
+    {
+      "id": "WI-06",
+      "title": "Contract Meta-Schema",
+      "type": "work-item",
+      "phase": "PHASE-12",
+      "declaredStatus": "COMPLETE",
+      "owner": "Contract Toolchain",
+      "priority": 11,
+      "acceptanceCriteria": [
+        "canonical contract meta-schema defined"
+      ],
+      "requiredEvidence": [
+        "EV-WI-06"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Article IX (design/tooling only)"
+      ]
+    },
+    {
+      "id": "WI-07",
+      "title": "Contract Skeleton Generator",
+      "type": "work-item",
+      "phase": "PHASE-12",
+      "declaredStatus": "COMPLETE",
+      "owner": "Contract Toolchain",
+      "priority": 12,
+      "acceptanceCriteria": [
+        "deterministic fail-closed generator emits Stage-3 skeletons",
+        "never invents deferred field schemas"
+      ],
+      "requiredEvidence": [
+        "EV-WI-07"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Article IX (design/tooling only)"
+      ]
+    },
+    {
+      "id": "WI-08",
+      "title": "Contract Catalog Enrichment",
+      "type": "work-item",
+      "phase": "PHASE-12",
+      "declaredStatus": "COMPLETE",
+      "owner": "Contract Toolchain",
+      "priority": 13,
+      "acceptanceCriteria": [
+        "catalog gap inventory closed",
+        "schema registry populated"
+      ],
+      "requiredEvidence": [
+        "EV-WI-08"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Article IX (design/tooling only)"
+      ]
+    },
+    {
+      "id": "WI-09",
+      "title": "DTO Generator",
+      "type": "work-item",
+      "phase": "PHASE-12",
+      "declaredStatus": "COMPLETE",
+      "owner": "Contract Toolchain",
+      "priority": 14,
+      "acceptanceCriteria": [
+        "DTO generation deterministic",
+        "coverage + fail-closed + determinism evidence produced"
+      ],
+      "requiredEvidence": [
+        "EV-WI-09"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Article IX (design/tooling only)"
+      ]
+    },
+    {
+      "id": "WI-10",
+      "title": "Validator Generator",
+      "type": "work-item",
+      "phase": "PHASE-12",
+      "declaredStatus": "COMPLETE",
+      "owner": "Contract Toolchain",
+      "priority": 15,
+      "acceptanceCriteria": [
+        "validator architecture defined",
+        "validator test + regression reports produced"
+      ],
+      "requiredEvidence": [
+        "EV-WI-10"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Article IX (design/tooling only)"
+      ]
+    },
+    {
+      "id": "PI-2-3",
+      "title": "Foundational Substrate (Meta-Core + Registry + Metadata + Configuration)",
+      "type": "program-increment",
+      "phase": "PI-2/PI-3",
+      "declaredStatus": "COMPLETE",
+      "owner": "Platform Runtime",
+      "priority": 20,
+      "acceptanceCriteria": [
+        "substrate build + tests green",
+        "no hardcoded business logic",
+        "tsc clean"
+      ],
+      "requiredEvidence": [
+        "EV-PI23-BUILD"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0016 scoped Article IX release",
+        "INV-1..13"
+      ]
+    },
+    {
+      "id": "PI-4",
+      "title": "Control Fabrics (Identity / Trust / Policy / Governance + Control Plane)",
+      "type": "program-increment",
+      "phase": "PI-4",
+      "declaredStatus": "COMPLETE",
+      "owner": "Platform Runtime",
+      "priority": 21,
+      "acceptanceCriteria": [
+        "control plane deny-by-default",
+        "S1/S3/S4 enforced",
+        "tests green"
+      ],
+      "requiredEvidence": [
+        "EV-PI4-BUILD"
+      ],
+      "governanceGates": [
+        "GATE-SEC-001",
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0017 scoped Article IX release",
+        "S1",
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "id": "PI-5",
+      "title": "Federation Fabric",
+      "type": "program-increment",
+      "phase": "PI-5",
+      "declaredStatus": "COMPLETE",
+      "owner": "Platform Runtime",
+      "priority": 22,
+      "acceptanceCriteria": [
+        "Ed25519 signed assertions",
+        "adversarial suite 0 residual High/High",
+        "tests green"
+      ],
+      "requiredEvidence": [
+        "EV-PI5-IMP",
+        "EV-PI5-VAL",
+        "EV-PI5-SEC",
+        "EV-PI5-AUD"
+      ],
+      "governanceGates": [
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0018 scoped Article IX release",
+        "no custom crypto"
+      ]
+    },
+    {
+      "id": "PI-6",
+      "title": "Evolution Fabric (sole commit path)",
+      "type": "program-increment",
+      "phase": "PI-6",
+      "declaredStatus": "COMPLETE",
+      "owner": "Platform Runtime",
+      "priority": 23,
+      "acceptanceCriteria": [
+        "migration-only mutation",
+        "evolution is the single commit gate"
+      ],
+      "requiredEvidence": [
+        "EV-PI6-IMP",
+        "EV-PI6-VAL",
+        "EV-PI6-SEC",
+        "EV-PI6-AUD"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0019 scoped Article IX release",
+        "IP-14",
+        "IP-15"
+      ]
+    },
+    {
+      "id": "PI-7",
+      "title": "Knowledge Fabric",
+      "type": "program-increment",
+      "phase": "PI-7",
+      "declaredStatus": "COMPLETE",
+      "owner": "Platform Runtime",
+      "priority": 24,
+      "acceptanceCriteria": [
+        "knowledge fabric ratified",
+        "185+ tests green"
+      ],
+      "requiredEvidence": [
+        "EV-PI7-IMP",
+        "EV-PI7-VAL",
+        "EV-PI7-SEC",
+        "EV-PI7-AUD",
+        "EV-PI7-RAT"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0020 scoped Article IX release"
+      ]
+    },
+    {
+      "id": "PI-8",
+      "title": "Ontology Fabric",
+      "type": "program-increment",
+      "phase": "PI-8",
+      "declaredStatus": "COMPLETE",
+      "owner": "Platform Runtime",
+      "priority": 25,
+      "acceptanceCriteria": [
+        "ontology fabric implemented + ratified",
+        "SI-1..7 enforced",
+        "O1..O12 closed"
+      ],
+      "requiredEvidence": [
+        "EV-PI8-IMP",
+        "EV-PI8-VAL",
+        "EV-PI8-SEC",
+        "EV-PI8-AUD",
+        "EV-PI8-RAT"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0021 scoped Article IX release (contested - see REAL-C-05)"
+      ]
+    },
+    {
+      "id": "PI-9",
+      "title": "Memory Fabric",
+      "type": "program-increment",
+      "phase": "PI-9",
+      "declaredStatus": "COMPLETE",
+      "owner": "Platform Runtime",
+      "priority": 26,
+      "acceptanceCriteria": [
+        "memory fabric implemented + ratified",
+        "269 tests green",
+        "M1..M12 closed"
+      ],
+      "requiredEvidence": [
+        "EV-PI9-IMP",
+        "EV-PI9-VAL",
+        "EV-PI9-SEC",
+        "EV-PI9-AUD",
+        "EV-PI9-RAT"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0023 scoped Article IX release"
+      ]
+    },
+    {
+      "id": "PI-10",
+      "title": "Intelligence Fabric",
+      "type": "program-increment",
+      "phase": "PI-10",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Runtime",
+      "priority": 27,
+      "acceptanceCriteria": [
+        "scoped Article IX release AD-0024 issued",
+        "additive src/control/intelligence/*",
+        "propose-not-act",
+        "I1..I12 adversarial 0 residual High/High",
+        "269 baseline preserved"
+      ],
+      "requiredEvidence": [
+        "EV-PI10-AUTH",
+        "EV-PI10-IMP",
+        "EV-PI10-VAL",
+        "EV-PI10-SEC",
+        "EV-PI10-AUD"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "Requires AD-0024 (NOT yet issued)",
+        "INV-6 determinism quarantine",
+        "AD-0014 (no INV-14..20)"
+      ]
+    },
+    {
+      "id": "PI-11",
+      "title": "Simulation Fabric",
+      "type": "program-increment",
+      "phase": "PI-11",
+      "declaredStatus": "IN_PROGRESS",
+      "owner": "Platform Runtime",
+      "priority": 28,
+      "acceptanceCriteria": [
+        "build src/control/simulation/* additively per SIM-PLAN-001..003",
+        "S1..S12 0 residual High/High",
+        "baseline green",
+        "FDG-INT/MEM/ONT inert"
+      ],
+      "requiredEvidence": [
+        "EV-PI11-IMP",
+        "EV-PI11-VAL",
+        "EV-PI11-SEC",
+        "EV-PI11-AUD"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0022 conditional release (SIM-COND-1..7)",
+        "non-actuation"
+      ],
+      "note": "Construction COMPLETE (PI11-IMP/VAL/SEC/AUD-001; 15 modules + 1 additive re-export; 0 core-dir change; 284 baseline preserved, 356 total green; S1-S12 12/12 blocked). IN_PROGRESS pending independent PI-11 ratification (external, LOCK-REAL-C-05 independence)."
+    },
+    {
+      "id": "Prompt-05",
+      "title": "Payload Authoring (ConfigurationValue, MetadataRecord, FeatureFlag, RegistryArtifact, DiscoveryRecord)",
+      "type": "prompt",
+      "phase": "Contract Authoring",
+      "declaredStatus": "COMPLETE",
+      "owner": "Prompt 07 / Contract Authority",
+      "priority": 40,
+      "acceptanceCriteria": [
+        "field-level payload schemas authored for the 5 named constructs",
+        "no fabricated schemas beyond contract authority"
+      ],
+      "requiredEvidence": [
+        "EV-PROMPT-05"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Payload authority = Prompt 07"
+      ]
+    },
+    {
+      "id": "Prompt-08",
+      "title": "Operation-Payload Binding",
+      "type": "prompt",
+      "phase": "Contract Authoring",
+      "declaredStatus": "COMPLETE",
+      "owner": "Prompt 07 / Contract Authority",
+      "priority": 41,
+      "acceptanceCriteria": [
+        "operations bound to authored payloads",
+        "0 dangling operation references"
+      ],
+      "requiredEvidence": [
+        "EV-PROMPT-08"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Depends on Prompt-05 payloads"
+      ]
+    },
+    {
+      "id": "Prompt-09",
+      "title": "Error Model Registry",
+      "type": "prompt",
+      "phase": "Contract Authoring",
+      "declaredStatus": "COMPLETE",
+      "owner": "Prompt 07 / Contract Authority",
+      "priority": 42,
+      "acceptanceCriteria": [
+        "canonical error model registry authored",
+        "operations reference error models"
+      ],
+      "requiredEvidence": [
+        "EV-PROMPT-09"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Depends on Prompt-08 bindings"
+      ],
+      "note": "PHASE D.3 COMPLETE. Canonical Error Model Registry (contracts/errors/error-model-registry.json) + Security Authority Registry (contracts/security/security-authority-registry.json) authored; both acceptance criteria satisfied (registry authored; 8/8 operations + 6/6 events reference error models). Authority metadata only (no DTO/validator/runtime/control). Validation PASS. EV-PROMPT-09 VERIFIED."
+    },
+    {
+      "id": "ACT-06",
+      "title": "Provision ENV-DEV / ENV-INT (governed, non-production)",
+      "type": "activity",
+      "phase": "Operational Certification",
+      "declaredStatus": "OPEN",
+      "owner": "Operations (human-executed, AD-0009)",
+      "priority": 50,
+      "acceptanceCriteria": [
+        "ENV-DEV + ENV-INT provisioned",
+        "internal-only",
+        "S1/S3/S4 enforced",
+        "live apply logs captured (G12-1)"
+      ],
+      "requiredEvidence": [
+        "EV-ACT-06"
+      ],
+      "governanceGates": [
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0015 Limited Evidence Authorization",
+        "AD-0009 Approval-Required"
+      ]
+    },
+    {
+      "id": "ACT-07",
+      "title": "Bind CI runner + execute delivery pipeline",
+      "type": "activity",
+      "phase": "Operational Certification",
+      "declaredStatus": "OPEN",
+      "owner": "Operations (human-executed, AD-0009)",
+      "priority": 51,
+      "acceptanceCriteria": [
+        "pipeline build->test->scan->sign->promote executed",
+        "DEV->INT GitOps promotion evidence (G12-2)"
+      ],
+      "requiredEvidence": [
+        "EV-ACT-07"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0015",
+        "AD-0009"
+      ]
+    },
+    {
+      "id": "ACT-08",
+      "title": "Run contract tests (API-018 Config/Metadata, API-027 Registry)",
+      "type": "activity",
+      "phase": "Operational Certification",
+      "declaredStatus": "OPEN",
+      "owner": "Operations (human-executed, AD-0009)",
+      "priority": 52,
+      "acceptanceCriteria": [
+        "provider/consumer/compat contract tests pass",
+        "100% op coverage"
+      ],
+      "requiredEvidence": [
+        "EV-ACT-08"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0015",
+        "AD-0009"
+      ]
+    },
+    {
+      "id": "ACT-09",
+      "title": "Backup/restore + DR drill (measured RPO/RTO)",
+      "type": "activity",
+      "phase": "Operational Certification",
+      "declaredStatus": "OPEN",
+      "owner": "Operations (human-executed, AD-0009)",
+      "priority": 53,
+      "acceptanceCriteria": [
+        "backup/restore/failover executed",
+        "measured RPO/RTO vs INV floors (G12-3)"
+      ],
+      "requiredEvidence": [
+        "EV-ACT-09"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0015",
+        "AD-0009"
+      ]
+    },
+    {
+      "id": "ACT-10",
+      "title": "Capture immutable audit trail + availability/metrics evidence",
+      "type": "activity",
+      "phase": "Operational Certification",
+      "declaredStatus": "OPEN",
+      "owner": "Operations (human-executed, AD-0009)",
+      "priority": 54,
+      "acceptanceCriteria": [
+        "append-only audit trail",
+        "availability + p99 metrics captured",
+        "chain of custody recorded"
+      ],
+      "requiredEvidence": [
+        "EV-ACT-10"
+      ],
+      "governanceGates": [
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "AD-0015",
+        "S6 audit"
+      ]
+    },
+    {
+      "id": "ACT-11",
+      "title": "Decide observability PE-12 ADR sub-decision",
+      "type": "activity",
+      "phase": "Operational Certification",
+      "declaredStatus": "COMPLETE",
+      "owner": "Platform Governance",
+      "priority": 55,
+      "acceptanceCriteria": [
+        "PE-12 observability product selected via governed ADR"
+      ],
+      "requiredEvidence": [
+        "EV-ACT-11"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Blocks RA-1 NOT-READY dependency"
+      ],
+      "note": "PHASE G.3 / ACT-11 COMPLETE. Governed observability technology-selection ADR authored: ADR-PE12.md (artifact UCOS-PLAT-ADR-008, Observability & Telemetry). Selects an open/neutral contract (OpenTelemetry + OTLP + OpenMetrics/Prometheus + W3C Trace Context; backend pluggable; deferred concrete backend = ADR-PE12-A). Owner PEO-012/PEG-012, CAP-11; GATE-DOC-001 PASS; S4 preserved; PE-10 audit + PE-16 analytics boundaries respected; 0 frozen-artifact mutation; 0 code/infra; Article IX lock unchanged. Clears RA1-ENV-004 observability NOT-READY at the decision level. Internally unblocks ACT-06, which REMAINS EXTERNAL_BLOCKED under EXT-REAL-C-03 (operational evidence). Deliverables ACT11-ADR-DISCOVERY/PE12-INVENTORY/DECISION-ANALYSIS/VALIDATION + ADR-PE12 + ACT11-COMPLETION-REPORT. EV-ACT-11 VERIFIED. Program verdict NO_GO unchanged."
+    },
+    {
+      "id": "ACT-12",
+      "title": "Issue Operational Certification (upgrade CONDITIONAL -> ULTIMATE track)",
+      "type": "activity",
+      "phase": "Operational Certification",
+      "declaredStatus": "OPEN",
+      "owner": "Certification Authority",
+      "priority": 56,
+      "acceptanceCriteria": [
+        "G12-1/2/3 closed",
+        "OP-CERT tracks pass",
+        "operational certification issued"
+      ],
+      "requiredEvidence": [
+        "EV-ACT-12"
+      ],
+      "governanceGates": [
+        "GATE-REL-001"
+      ],
+      "constitutionalConstraints": [
+        "Precedes FGA-2b full Article IX release review"
+      ]
+    },
+    {
+      "id": "GOV-LEDGER-RESTORE",
+      "title": "Authority-chain / AUTH-012 ledger restoration",
+      "type": "governance",
+      "phase": "Governance",
+      "declaredStatus": "COMPLETE",
+      "owner": "Authority Board",
+      "priority": 5,
+      "acceptanceCriteria": [
+        "AD-0016..0023 enrolled on canonical AUTH-012 ledger",
+        "authority chain RESTORED"
+      ],
+      "requiredEvidence": [
+        "EV-AUTH-REST"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "AUTH-009",
+        "AUTH-012"
+      ]
+    },
+    {
+      "id": "REAL-C-01",
+      "title": "Terminal certification re-issue (UCOM-ULTIMATE-CERT-002)",
+      "type": "governance",
+      "phase": "Governance",
+      "declaredStatus": "IN_PROGRESS",
+      "owner": "Certification Authority",
+      "priority": 60,
+      "acceptanceCriteria": [
+        "stale terminal cert re-issued against 269 baseline + restored chain"
+      ],
+      "requiredEvidence": [
+        "EV-REAL-C-01"
+      ],
+      "governanceGates": [
+        "GATE-REL-001"
+      ],
+      "constitutionalConstraints": [
+        "Depends on REAL-M-03 reconciliation"
+      ]
+    },
+    {
+      "id": "REAL-C-05",
+      "title": "Independent attestation of self-attested PI-8/PI-9 ratifications + retroactive AD enrollment + R13/R14 ruling",
+      "type": "governance",
+      "phase": "Governance",
+      "declaredStatus": "IN_PROGRESS",
+      "owner": "Independent Adjudicator",
+      "priority": 61,
+      "acceptanceCriteria": [
+        "independent attestation issued",
+        "adjudicator keys registered",
+        "closure report produced"
+      ],
+      "requiredEvidence": [
+        "EV-REAL-C-05"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Independence required (proposer != attestor)"
+      ]
+    },
+
+    {
+      "id": "CAP-OPS",
+      "title": "Observability & Operations Fabric (UCAP-26/30)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "IN_PROGRESS",
+      "owner": "Platform Runtime / PEO-012",
+      "priority": 70,
+      "acceptanceCriteria": [
+        "control/operations fabric implemented + exported (observability, telemetry, SLO, incident, metrics)",
+        "operations tests green within the platform baseline",
+        "authorizing scoped Article IX release reconciled on AUTH-012 ledger",
+        "independent ratification"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-OPS-IMP",
+        "EV-CAP-OPS-RECON"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "Article IX (implemented under operability scope; authorization to be reconciled via CAP-RECON)",
+        "ADR-PE12 observability contract",
+        "S4"
+      ],
+      "note": "PHASE X.1 discovery: control/operations (23 modules) is IMPLEMENTED, exported from control/index.ts, and contributes to the 356-test baseline, but was compiler-invisible (no work item). Registered here to bring it under governance. IN_PROGRESS: implementation exists (EV-CAP-OPS-IMP SUBMITTED); validation/audit evidence + authorizing scoped-release reconciliation pending (CAP-RECON). No implementation performed by registration."
+    },
+    {
+      "id": "CAP-RDY",
+      "title": "Readiness / Certification / Meta-Governance Fabric (UCAP-31)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "IN_PROGRESS",
+      "owner": "Platform Runtime",
+      "priority": 71,
+      "acceptanceCriteria": [
+        "control/readiness fabric implemented + exported (certification, compliance, meta-governance, self-inspection, gap-detection)",
+        "readiness verification suite authored",
+        "authorizing scoped release reconciled",
+        "independent ratification"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-RDY-IMP",
+        "EV-CAP-RDY-RECON"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "Article IX (implemented under operability scope; reconcile via CAP-RECON)"
+      ],
+      "note": "PHASE X.1 discovery: control/readiness (17 modules) IMPLEMENTED + exported but compiler-invisible. Verification is currently via harness only (dedicated test suite pending). IN_PROGRESS pending evidence reconciliation (CAP-RECON)."
+    },
+    {
+      "id": "CAP-PROOF",
+      "title": "Proof Fabric (UCAP-32)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Runtime",
+      "priority": 72,
+      "acceptanceCriteria": [
+        "proof-authority / proof-record / proof-unit implemented within control/operations",
+        "proof fabric evidence authored",
+        "independent ratification"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-PROOF-IMP",
+        "EV-CAP-PROOF-RECON"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "Article IX (implemented within operations scope)",
+        "PROOF-IMPL-001 / B02-OPF / B03-SCALE design"
+      ],
+      "note": "PHASE X.1 discovery: proof fabric (proof-authority/record/unit) IMPLEMENTED within control/operations but compiler-invisible. Depends on CAP-OPS ratification ordering; computes BLOCKED until CAP-OPS COMPLETE."
+    },
+    {
+      "id": "CAP-RECON",
+      "title": "Reconcile compiler-invisible implemented fabrics (Observability/Readiness/Proof) into the registry with authored evidence + AD reconciliation",
+      "type": "governance",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Governance",
+      "priority": 69,
+      "acceptanceCriteria": [
+        "author validation/audit evidence for CAP-OPS/CAP-RDY/CAP-PROOF (advance IMP evidence to VERIFIED)",
+        "reconcile authorizing scoped Article IX release(s) for operations/readiness on the AUTH-012 ledger",
+        "register any residual operability gaps"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-RECON"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001"
+      ],
+      "constitutionalConstraints": [
+        "Documentation/governance only (no implementation)",
+        "No independent-attestation requirement (GATE-DOC-001)"
+      ],
+      "note": "PHASE X.1: software-solvable governance/documentation reconciliation of the implemented-but-invisible operability fabrics. Analogous to ACT-11 / Prompt-09 (GATE-DOC-001, internally solvable). Deps: PI-4 (COMPLETE). This is the compiler-resolved NEXT EXECUTABLE work item after registration."
+    },
+    {
+      "id": "CAP-ECON",
+      "title": "Economic Engine (UCAP-14)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Runtime",
+      "priority": 80,
+      "acceptanceCriteria": [
+        "scoped Article IX release issued for src/control/economic/*",
+        "conservation/non-negativity/atomicity invariants; Evolution-only commit",
+        "EC1..EC15 adversarial 0 residual High/High",
+        "baseline preserved"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-ECON-AUTH"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "Requires scoped Article IX release (NOT issued)",
+        "Evolution-only commit (PI-6)",
+        "no real-world financial actuation (AD-0009)"
+      ],
+      "note": "ECON-* design (ECON-001 realization, ECON-B05 program). Design-only; construction gated by an Authority Board scoped release (EXT-CAP-AUTH)."
+    },
+    {
+      "id": "CAP-RES",
+      "title": "Resource Engine (UCAP-15)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Runtime",
+      "priority": 81,
+      "acceptanceCriteria": [
+        "distinct resource model architected (currently subsumed in Economic)",
+        "scoped release + construction + ratification"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-RES-ARCH"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "Subset of Economic; requires distinct model then scoped release"
+      ],
+      "note": "VISION: no distinct model (exists as ECON resource economy type). Depends on CAP-ECON."
+    },
+    {
+      "id": "CAP-WORKFLOW",
+      "title": "Workflow Engine (UCAP-12)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Runtime",
+      "priority": 82,
+      "acceptanceCriteria": [
+        "scoped Article IX release for workflow runtime",
+        "orchestration only; no embedded business logic (PWF)",
+        "Evolution-only commit for durable state"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-WORKFLOW-AUTH"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "Requires scoped Article IX release (NOT issued)",
+        "PE-07 workflow engine deferred"
+      ],
+      "note": "Platform PWF design (PE-07). Design-only; gated by EXT-CAP-AUTH."
+    },
+    {
+      "id": "CAP-EVENT",
+      "title": "Universal Event Fabric (UCAP-13)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Runtime",
+      "priority": 83,
+      "acceptanceCriteria": [
+        "scoped Article IX release for the universal event runtime",
+        "realizes platform event catalog (PEV) with CloudEvents/PRD-004 transport",
+        "signed, replay-resistant event assertions (reuse PI-5)"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-EVENT-AUTH"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "Requires scoped Article IX release (NOT issued)",
+        "PEV design; PE-04"
+      ],
+      "note": "Platform PEV design; partial runtime via audit/event chains. Design-only; gated by EXT-CAP-AUTH."
+    },
+    {
+      "id": "CAP-API",
+      "title": "Universal API Fabric — service runtime (UCAP-24)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Runtime",
+      "priority": 84,
+      "acceptanceCriteria": [
+        "scoped Article IX release for the service/API runtime",
+        "realizes ratified contracts (contracts/catalog) via the contract toolchain (WI-05..10)",
+        "deny-by-default authorization; S1/S3/S4"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-API-AUTH"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "Requires scoped Article IX release (NOT issued)",
+        "Contract toolchain complete (WI-05..10); service runtime gated"
+      ],
+      "note": "SVC-* design + contract tooling (WI-05..10 COMPLETE). Service runtime is the gap. Design-only; gated by EXT-CAP-AUTH."
+    },
+    {
+      "id": "CAP-UI",
+      "title": "Universal UI Fabric (UCAP-25)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Experience",
+      "priority": 85,
+      "acceptanceCriteria": [
+        "scoped Article IX release for experience surfaces (apps/)",
+        "realizes ratified EXP-* surfaces/journeys; WCAG 2.2 AA",
+        "consumes CAP-API contracts"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-UI-AUTH"
+      ],
+      "governanceGates": [
+        "GATE-DOC-001",
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "Requires scoped Article IX release (NOT issued)",
+        "EXP-* ratified design (C-1/D-1); apps/ EMPTY"
+      ],
+      "note": "Experience EXP-* ratified design. Construction gated; depends on CAP-API."
+    },
+    {
+      "id": "CAP-AUTON",
+      "title": "Autonomy Fabric (UCAP-33)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Runtime",
+      "priority": 86,
+      "acceptanceCriteria": [
+        "scoped Article IX release for src/control/autonomy/*",
+        "governed, propose-not-act autonomy; deny-by-default",
+        "adversarial suite 0 residual High/High"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-AUTON-AUTH"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "Requires scoped Article IX release (NOT issued)",
+        "Depends on Intelligence (PI-10)",
+        "AD-0014 boundary (no INV-14..20)"
+      ],
+      "note": "AUTO-* design. Depends on PI-10 (not complete) -> BLOCKED. Gated by EXT-CAP-AUTH."
+    },
+    {
+      "id": "CAP-ECOSYS",
+      "title": "Ecosystem Fabric (UCAP-34)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Runtime",
+      "priority": 87,
+      "acceptanceCriteria": [
+        "scoped Article IX release for src/control/ecosystem/*",
+        "federation-of-federations; local sovereignty; fail-closed",
+        "reuse PI-5 federation primitives"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-ECOSYS-AUTH"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "Requires scoped Article IX release (NOT issued)",
+        "Reuses Federation (PI-5)"
+      ],
+      "note": "ECO-* design. Design-only; gated by EXT-CAP-AUTH."
+    },
+    {
+      "id": "CAP-INFRA",
+      "title": "Infrastructure Fabric (UCAP-21)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Operations",
+      "priority": 88,
+      "acceptanceCriteria": [
+        "infra/ IaC provisioned (ENV-DEV/INT) with live apply logs",
+        "internal-only; S1/S3/S4 enforced"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-INFRA-AUTH"
+      ],
+      "governanceGates": [
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "Provisioning-gated (AD-0015 / AD-0009)",
+        "PEP-010 platform independence"
+      ],
+      "note": "infra/ IaC authored (runtime/networking/persistence/delivery/environments), not provisioned. Depends on ACT-06 (EXTERNAL_BLOCKED) -> computes BLOCKED (transitively external, operational evidence)."
+    },
+    {
+      "id": "CAP-LEARN",
+      "title": "Learning Engine (UCAP-16)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Runtime",
+      "priority": 89,
+      "acceptanceCriteria": [
+        "architecture specification authored (currently unmodeled)",
+        "scoped Article IX release; propose-not-act; determinism quarantine (INV-6)",
+        "consumes Intelligence (PI-10) + Memory (PI-9)"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-LEARN-ARCH"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "UNMODELED - requires architecture first",
+        "Depends on Intelligence (PI-10) + Memory (PI-9)",
+        "AD-0014 boundary"
+      ],
+      "note": "VISION: no code, no design spec, no prior WI. Depends on PI-10 (not complete) -> BLOCKED. Architecture must precede any scoped release."
+    },
+    {
+      "id": "CAP-CIV",
+      "title": "Civilization Control Plane (UCAP-20)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Governance",
+      "priority": 90,
+      "acceptanceCriteria": [
+        "scoped Article IX release for src/control/civilization/*",
+        "non-actuating simulation-object model (SGP-9); population privacy",
+        "C1..C15 0 residual High/High"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-CIV-AUTH"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001",
+        "GATE-SEC-001"
+      ],
+      "constitutionalConstraints": [
+        "Requires scoped Article IX release (NOT issued)",
+        "AD-0014 deferred (conceptual/non-actuating)",
+        "Depends on Simulation (PI-11) + Economic (CAP-ECON)"
+      ],
+      "note": "CIV-* design (CIV-001 runtime realization, design-only). Depends on PI-11 (IN_PROGRESS) + CAP-ECON -> BLOCKED. AD-0014 deferred."
+    },
+    {
+      "id": "CAP-REALITY",
+      "title": "Reality Graph Runtime (UCAP-29)",
+      "type": "program-increment",
+      "phase": "PHASE-X.1 Capability Universe",
+      "declaredStatus": "OPEN",
+      "owner": "Platform Governance",
+      "priority": 91,
+      "acceptanceCriteria": [
+        "architecture beyond UEA-0006 reality-agnostic proposal",
+        "AD-0014 deliberation (existential invariants) before any construction"
+      ],
+      "requiredEvidence": [
+        "EV-CAP-REALITY-ARCH"
+      ],
+      "governanceGates": [
+        "GATE-QUAL-001"
+      ],
+      "constitutionalConstraints": [
+        "Existential; AD-0014 deferred (INV-14..20 NOT enrolled)",
+        "Depends on Civilization (CAP-CIV)"
+      ],
+      "note": "UEA-0006 reality-agnostic proposal (existential). Depends on CAP-CIV -> BLOCKED. Deferred under AD-0014."
+    }
+  ]
+}

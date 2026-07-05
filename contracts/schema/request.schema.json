@@ -1,0 +1,36 @@
+{
+  "$id": "ucos:contracts/schema/request.schema.json",
+  "dialect": "json-schema-2020-12",
+  "title": "UCOS Contract — Request Meta-Schema",
+  "description": "Meta-schema for an operation request contract. Body/parameter field-level schemas are OPTIONAL and referenced (never inlined/invented), because UCOS-CONTRACT-CAT-001 defines no field-level request schemas. Transport-neutral, implementation-neutral.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "declared": {
+      "type": "boolean",
+      "description": "true when a concrete request body/parameter schema is defined; false when deferred/absent."
+    },
+    "placeholder": {
+      "$ref": "contract.schema.json#/$defs/placeholderState"
+    },
+    "pathParameters": {
+      "type": "array",
+      "description": "OPTIONAL. Path parameters surfaced from the path template; TYPES deferred unless defined.",
+      "items": { "$ref": "operation.schema.json#/$defs/parameter" }
+    },
+    "queryParameters": {
+      "type": "array",
+      "description": "OPTIONAL query parameters; TYPES deferred unless defined.",
+      "items": { "$ref": "operation.schema.json#/$defs/parameter" }
+    },
+    "bodyRef": {
+      "oneOf": [
+        { "$ref": "contract.schema.json#/$defs/placeholderState" },
+        { "$ref": "operation.schema.json#/$defs/schemaRef" }
+      ],
+      "description": "Reference to the request body schema (a payload family) OR a placeholder when the field schema is not defined in the catalog."
+    }
+  },
+  "required": ["declared"],
+  "$comment": "Additive evolution only. All field-level detail is OPTIONAL and reference-based. No implementation-specific fields (no content-type, no serialization, no framework binding)."
+}

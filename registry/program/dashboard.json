@@ -1,0 +1,135 @@
+{
+  "artifactId": "PROG-DASH-001",
+  "program": "UCOS Omega-Infinity",
+  "computedAt": "2026-07-05T08:49:40.577Z",
+  "currentPhase": {
+    "id": "PHASE-P.1",
+    "title": "Constitutional Program Compiler & Autonomous Execution Governor",
+    "status": "IN_PROGRESS"
+  },
+  "completionPercent": 36.4,
+  "counts": {
+    "total": 44,
+    "complete": 16,
+    "inProgress": 4,
+    "ready": 1,
+    "blocked": 14,
+    "externalBlocked": 9,
+    "open": 0
+  },
+  "nextExecutableWorkItem": "CAP-RECON",
+  "readyItems": [
+    "CAP-RECON"
+  ],
+  "blockedItems": [
+    "PI-10",
+    "ACT-07",
+    "ACT-08",
+    "ACT-09",
+    "ACT-10",
+    "ACT-12",
+    "CAP-PROOF",
+    "CAP-RES",
+    "CAP-UI",
+    "CAP-AUTON",
+    "CAP-INFRA",
+    "CAP-LEARN",
+    "CAP-CIV",
+    "CAP-REALITY"
+  ],
+  "externalBlockedItems": [
+    "PI-8",
+    "PI-9",
+    "ACT-06",
+    "REAL-C-05",
+    "CAP-ECON",
+    "CAP-WORKFLOW",
+    "CAP-EVENT",
+    "CAP-API",
+    "CAP-ECOSYS"
+  ],
+  "externalBlockers": [
+    {
+      "id": "EXT-REAL-C-05",
+      "target": "REAL-C-05",
+      "recommendation": "DO_NOT_REINVESTIGATE",
+      "reviewPermitted": false,
+      "solvableBySoftware": false
+    },
+    {
+      "id": "EXT-REAL-C-03",
+      "target": "REAL-C-03",
+      "recommendation": "DO_NOT_REINVESTIGATE",
+      "reviewPermitted": false,
+      "solvableBySoftware": false
+    },
+    {
+      "id": "EXT-REAL-C-04",
+      "target": "REAL-C-04",
+      "recommendation": "DO_NOT_REINVESTIGATE",
+      "reviewPermitted": false,
+      "solvableBySoftware": false
+    },
+    {
+      "id": "EXT-CAP-AUTH",
+      "target": "CAP-C-01",
+      "recommendation": "DO_NOT_REINVESTIGATE",
+      "reviewPermitted": false,
+      "solvableBySoftware": false
+    }
+  ],
+  "constitutionalLocks": [
+    {
+      "id": "LOCK-REAL-C-05",
+      "closure": "REAL-C-05",
+      "state": "EXTERNAL_LOCKED",
+      "releasableBySoftware": false
+    },
+    {
+      "id": "LOCK-REAL-C-03",
+      "closure": "REAL-C-03",
+      "state": "EXTERNAL_LOCKED",
+      "releasableBySoftware": false
+    },
+    {
+      "id": "LOCK-REAL-C-04",
+      "closure": "REAL-C-04",
+      "state": "EXTERNAL_LOCKED",
+      "releasableBySoftware": false
+    },
+    {
+      "id": "LOCK-CAP-C-01",
+      "closure": "CAP-C-01",
+      "state": "EXTERNAL_LOCKED",
+      "releasableBySoftware": false
+    }
+  ],
+  "openGaps": 35,
+  "governanceVerdict": "NO_GO",
+  "closures": [
+    {
+      "id": "REAL-C-03",
+      "verdict": "NO_GO"
+    },
+    {
+      "id": "REAL-C-04",
+      "verdict": "NO_GO"
+    },
+    {
+      "id": "REAL-C-05",
+      "verdict": "NO_GO"
+    },
+    {
+      "id": "CAP-C-01",
+      "verdict": "NO_GO"
+    }
+  ],
+  "evidenceInconsistencies": [
+    "PI-8",
+    "PI-9"
+  ],
+  "warnings": [
+    "2 evidence inconsistency(ies): PI-8, PI-9.",
+    "9 item(s) EXTERNAL_BLOCKED (require an external actor; not software-solvable): PI-8, PI-9, ACT-06, REAL-C-05, CAP-ECON, CAP-WORKFLOW, CAP-EVENT, CAP-API, CAP-ECOSYS."
+  ]
+}

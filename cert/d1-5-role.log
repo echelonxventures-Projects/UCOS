@@ -1,0 +1,2 @@
+SET
+psql:role-check.sql:2: ERROR:  permission denied for table metadata_kv

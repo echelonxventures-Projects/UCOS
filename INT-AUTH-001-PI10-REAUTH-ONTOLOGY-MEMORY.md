@@ -1,12 +1,17 @@
-# INT-AUTH-001 (PHASE 19.3) — PI-10 Re-Authorization: Ontology Grounding, Memory Ownership & P-1/P-2 Verification
+# INT-REAUTH-001 (PHASE 19.3) — PI-10 Re-Authorization: Ontology Grounding, Memory Ownership & P-1/P-2 Verification
+
+<!-- Canonical Artifact ID: INT-REAUTH-001 (reassigned from INT-AUTH-001 by DUP-1 reconciliation, Group 3 / M-4). Filename preserved (append-only). -->
+
+
 
 | Field | Value |
 |-------|-------|
-| Artifact | **INT-AUTH-001 (PHASE 19.3 re-authorization series) — Ontology Grounding & Memory Ownership Evaluation + P-1/P-2 Verification** |
+| Artifact | **INT-REAUTH-001 (PHASE 19.3 re-authorization series) — Ontology Grounding & Memory Ownership Evaluation + P-1/P-2 Verification** |
+| Canonical Artifact ID | **INT-REAUTH-001** (reassigned from `INT-AUTH-001`; see ID note) |
 | Phase | PHASE 19.3 · PI-10 Intelligence Fabric Re-Authorization Review (Post-Remediation) |
 | Version | 1.0.0 |
 | Mode | **INDEPENDENT REVIEW ONLY** — audit/verify against on-disk evidence; no code, no authorization, no lock release |
-| ID note | The ID `INT-AUTH-001` was previously used by the PHASE 19.1 recommendation (`INT-AUTH-001-PI10-AUTHORIZATION-RECOMMENDATION.md`), which is **preserved unchanged**. This PHASE 19.3 series uses distinct filenames (append-only); the ID reuse is flagged as observation **OBS-19.3-ID**. |
+| ID note | **DUP-1 RECONCILIATION (governance action, Group 3 / M-4).** This artifact is assigned the distinct canonical ID **`INT-REAUTH-001`** (formerly **`INT-AUTH-001`**). The ID `INT-AUTH-001` collided with the PHASE 19.1 recommendation (`INT-AUTH-001-PI10-AUTHORIZATION-RECOMMENDATION.md`), which is **preserved unchanged and retains `INT-AUTH-001`**. The original collision — first self-flagged as **OBS-19.3-ID** — is **retained as evidence**: this PHASE 19.3 series used distinct filenames (append-only), and the ID reuse originally occurred here. Filename is **unchanged** (no rename/move/delete). **Traceability:** `INT-AUTH-001 (PHASE 19.3) → INT-REAUTH-001`. |
 | Method | Filesystem inspection + `npm test` (213/213) + read of `INT-REM-001/002/003`, `PHASE-21` reconciliation, `AD-0021`, `AD-0023`, `MEM-RAT-001` |
 | Owner | UCOS Authority Board (independent review) |
 
@@ -69,4 +74,4 @@ operationally satisfiable today.**
 - **Consumed by:** `INT-AUTH-004` (19.3 determination).
 - **Owner:** UCOS Authority Board.
 
-**END INT-AUTH-001 (19.3) — DESIGN GROUNDING/MEMORY SATISFIED · P-1 CONTESTED · P-2 FAILS.**
+**END INT-REAUTH-001 (formerly INT-AUTH-001, PHASE 19.3) — DESIGN GROUNDING/MEMORY SATISFIED · P-1 CONTESTED · P-2 FAILS.**

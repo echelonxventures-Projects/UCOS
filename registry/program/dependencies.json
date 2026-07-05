@@ -1,0 +1,60 @@
+{
+  "artifactId": "PROG-DEP-001",
+  "description": "Program dependency graph. Each edge {from, dependsOn} means 'from' cannot be READY until 'dependsOn' is COMPLETE. The graph must be acyclic; cycles are a governance defect and the compiler fails closed.",
+  "edges": [
+    { "from": "WI-06", "dependsOn": "WI-05" },
+    { "from": "WI-07", "dependsOn": "WI-06" },
+    { "from": "WI-08", "dependsOn": "WI-07" },
+    { "from": "WI-09", "dependsOn": "WI-08" },
+    { "from": "WI-10", "dependsOn": "WI-09" },
+
+    { "from": "PI-4", "dependsOn": "PI-2-3" },
+    { "from": "PI-5", "dependsOn": "PI-4" },
+    { "from": "PI-6", "dependsOn": "PI-4" },
+    { "from": "PI-7", "dependsOn": "PI-6" },
+    { "from": "PI-8", "dependsOn": "PI-7" },
+    { "from": "PI-9", "dependsOn": "PI-6" },
+    { "from": "PI-10", "dependsOn": "PI-8" },
+    { "from": "PI-10", "dependsOn": "PI-9" },
+    { "from": "PI-10", "dependsOn": "GOV-LEDGER-RESTORE" },
+    { "from": "PI-11", "dependsOn": "PI-7" },
+
+    { "from": "Prompt-08", "dependsOn": "Prompt-05" },
+    { "from": "Prompt-09", "dependsOn": "Prompt-08" },
+
+    { "from": "ACT-06", "dependsOn": "ACT-11" },
+    { "from": "ACT-07", "dependsOn": "ACT-06" },
+    { "from": "ACT-08", "dependsOn": "ACT-07" },
+    { "from": "ACT-09", "dependsOn": "ACT-07" },
+    { "from": "ACT-10", "dependsOn": "ACT-08" },
+    { "from": "ACT-10", "dependsOn": "ACT-09" },
+    { "from": "ACT-12", "dependsOn": "ACT-10" },
+
+    { "from": "REAL-C-01", "dependsOn": "GOV-LEDGER-RESTORE" },
+    { "from": "REAL-C-05", "dependsOn": "GOV-LEDGER-RESTORE" },
+
+    { "from": "CAP-OPS", "dependsOn": "PI-4" },
+    { "from": "CAP-RDY", "dependsOn": "PI-4" },
+    { "from": "CAP-PROOF", "dependsOn": "CAP-OPS" },
+    { "from": "CAP-RECON", "dependsOn": "PI-4" },
+
+    { "from": "CAP-ECON", "dependsOn": "PI-6" },
+    { "from": "CAP-ECON", "dependsOn": "PI-4" },
+    { "from": "CAP-RES", "dependsOn": "CAP-ECON" },
+    { "from": "CAP-WORKFLOW", "dependsOn": "PI-6" },
+    { "from": "CAP-WORKFLOW", "dependsOn": "PI-4" },
+    { "from": "CAP-EVENT", "dependsOn": "PI-5" },
+    { "from": "CAP-EVENT", "dependsOn": "PI-4" },
+    { "from": "CAP-API", "dependsOn": "WI-10" },
+    { "from": "CAP-API", "dependsOn": "PI-4" },
+    { "from": "CAP-UI", "dependsOn": "CAP-API" },
+    { "from": "CAP-AUTON", "dependsOn": "PI-10" },
+    { "from": "CAP-ECOSYS", "dependsOn": "PI-5" },
+    { "from": "CAP-INFRA", "dependsOn": "ACT-06" },
+    { "from": "CAP-LEARN", "dependsOn": "PI-10" },
+    { "from": "CAP-LEARN", "dependsOn": "PI-9" },
+    { "from": "CAP-CIV", "dependsOn": "PI-11" },
+    { "from": "CAP-CIV", "dependsOn": "CAP-ECON" },
+    { "from": "CAP-REALITY", "dependsOn": "CAP-CIV" }
+  ]
+}

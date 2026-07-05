@@ -1,0 +1,29 @@
+{
+  "name": "ucos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "UCOS Omega-Infinity monorepo root. Workspace aggregator + Constitutional Program Compiler command surface. The program registry (registry/program/*.json) is the single source of truth; the ucos:* scripts compile it into program state, the agent minimal-context, and the dashboard so any agent resumes without repository-wide rediscovery.",
+  "engines": {
+    "node": ">=23.6.0"
+  },
+  "scripts": {
+    "ucos:program-state": "node tools/program-compiler/src/cli.ts program-state",
+    "ucos:compile": "node tools/program-compiler/src/cli.ts compile",
+    "ucos:dashboard": "node tools/program-compiler/src/cli.ts dashboard",
+    "ucos:context": "node tools/program-compiler/src/cli.ts context",
+    "ucos:next": "node tools/program-compiler/src/cli.ts next",
+    "ucos:authorize": "node tools/program-compiler/src/cli.ts authorize",
+    "ucos:external-blockers": "node tools/program-compiler/src/cli.ts external-blockers",
+    "ucos:locks": "node tools/program-compiler/src/cli.ts locks",
+    "ucos:replay": "node tools/program-compiler/src/cli.ts replay",
+    "ucos:set-status": "node tools/program-compiler/src/cli.ts set-status",
+    "ucos:set-evidence": "node tools/program-compiler/src/cli.ts set-evidence",
+    "ucos:verify": "node tools/program-compiler/src/cli.ts verify"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/pg": "^8.20.0",
+    "pg": "^8.22.0"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "fieldSchemaModelVersion": "ucos-field-schema/1.0.0",
+  "id": "UCOS-DATA-CONTRACT-018/MetadataRecord",
+  "version": "1.0.0",
+  "payloadFamily": "MetadataRecord",
+  "dataContract": "UCOS-DATA-CONTRACT-018",
+  "title": "MetadataRecord",
+  "description": "Authoritative field-level payload schema for the MetadataRecord family of UCOS-DATA-CONTRACT-018 (API-018 Configuration & Metadata, GET /metadata/{class}). A MetadataRecord is one key-addressed metadata entry, optionally described by an attached schema, classified under one of the metadata classes MC-01..13 (UCOS-INF-ARCH-001). Field authority: UCOS-PDATA-ARCH-001. Fields are derived directly from the implemented Metadata substrate (MetadataPort/MetadataRecord, metadata-runtime, EV-PI23-BUILD VERIFIED) and API-018 operation intent. Classification is inherited (MC-01) and is not duplicated as a payload field.",
+  "schema": {
+    "kind": "object",
+    "additionalProperties": false,
+    "description": "One metadata record: key, value, and optional describing schema.",
+    "properties": [
+      {
+        "name": "key",
+        "required": true,
+        "schema": {
+          "kind": "primitive",
+          "type": "string",
+          "description": "Metadata key (prefix-queryable). Source authority: MetadataRecord.key (meta-core/ports.ts; metadata-store.ts query-by-prefix).",
+          "constraints": { "minLength": 1 }
+        }
+      },
+      {
+        "name": "metadataClass",
+        "required": false,
+        "schema": {
+          "kind": "primitive",
+          "type": "string",
+          "description": "Metadata class MC-01..13 the record belongs to. Source authority: API-018 GET /metadata/{class} + Information/Metadata Architecture MC-01..13 (UCOS-INF-ARCH-001).",
+          "constraints": { "pattern": "^MC-(0[1-9]|1[0-3])$" }
+        }
+      },
+      {
+        "name": "value",
+        "required": true,
+        "schema": {
+          "kind": "object",
+          "additionalProperties": true,
+          "properties": [],
+          "description": "The metadata value. Open object: an arbitrary structured value. Source authority: MetadataRecord.value (meta-core/ports.ts; typed as unknown, narrowed to a structured record here by field authority)."
+        }
+      },
+      {
+        "name": "schema",
+        "required": false,
+        "schema": {
+          "kind": "object",
+          "additionalProperties": true,
+          "properties": [],
+          "description": "Optional JSON-Schema (subset) describing/validating the value on write. Open object mirrors the substrate JsonSchema shape. Source authority: MetadataRecord.schema + MetadataPort.validate (metadata-runtime/schema-validator.ts)."
+        }
+      }
+    ]
+  }
+}

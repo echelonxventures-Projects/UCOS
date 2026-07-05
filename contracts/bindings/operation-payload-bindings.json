@@ -1,0 +1,112 @@
+{
+  "artifactId": "PDATA-BIND-001",
+  "bindingModelVersion": "ucos-operation-binding/1.0.0",
+  "authority": "UCOS-PDATA-ARCH-001 / Prompt-08 (Operation-Payload Binding)",
+  "description": "Authoritative Operation -> Payload bindings for the compiler-authorized scope of Prompt-08 (API-018 + API-027, whose payload families were authored by Prompt-05). Each operation binds its request body and response body to an authored field-schema family by registry id (contracts/field-schemas/*.fieldschema.json). Each emitted event message binds to its payload family. This is declarative binding DATA only: no transport (owned by Prompt 08 platform/runtime), no serialization, no security controls (Prompt 09), no code/DTO/validator. operationIds are the deterministic ids derived by tools/contract-generator (deriveOperationId): 0 dangling references.",
+  "constraints": [
+    "Every operation of every in-scope contract has exactly one request binding and one response binding.",
+    "Every bodyRef.ref resolves to an authored field-schema registry id.",
+    "Read (safe-read) operations declare no request body.",
+    "Cardinality is derived from operation intent (read-by-id/resolve-single -> single; list/read-class/resolve-for-context -> collection).",
+    "No endpoints, wire encoding, status codes, pagination mechanics, or controls are bound here (Prompt 08 transport / Prompt 09 security)."
+  ],
+  "contracts": [
+    {
+      "contract": "UCOS-API-CONTRACT-018",
+      "shortId": "API-018",
+      "dataContract": "UCOS-DATA-CONTRACT-018",
+      "operations": [
+        {
+          "operationId": "getConfigurationByScope",
+          "verbSemantics": "GET",
+          "path": "/configuration/{scope}",
+          "kind": "safe-read",
+          "pathParameters": ["scope"],
+          "request": { "declared": false, "bodyRef": null },
+          "response": { "declared": true, "bodyRef": { "ref": "UCOS-DATA-CONTRACT-018/ConfigurationValue" }, "cardinality": "single" }
+        },
+        {
+          "operationId": "putConfigurationByScopeByKey",
+          "verbSemantics": "PUT",
+          "path": "/configuration/{scope}/{key}",
+          "kind": "unsafe-idempotent",
+          "pathParameters": ["scope", "key"],
+          "request": { "declared": true, "bodyRef": { "ref": "UCOS-DATA-CONTRACT-018/ConfigurationValue" } },
+          "response": { "declared": true, "bodyRef": { "ref": "UCOS-DATA-CONTRACT-018/ConfigurationValue" }, "cardinality": "single" }
+        },
+        {
+          "operationId": "getMetadataByClass",
+          "verbSemantics": "GET",
+          "path": "/metadata/{class}",
+          "kind": "safe-read",
+          "pathParameters": ["class"],
+          "request": { "declared": false, "bodyRef": null },
+          "response": { "declared": true, "bodyRef": { "ref": "UCOS-DATA-CONTRACT-018/MetadataRecord" }, "cardinality": "collection" }
+        },
+        {
+          "operationId": "getFeatureFlagsByContext",
+          "verbSemantics": "GET",
+          "path": "/feature-flags/{context}",
+          "kind": "safe-read",
+          "pathParameters": ["context"],
+          "request": { "declared": false, "bodyRef": null },
+          "response": { "declared": true, "bodyRef": { "ref": "UCOS-DATA-CONTRACT-018/FeatureFlag" }, "cardinality": "collection" }
+        }
+      ],
+      "events": [
+        { "message": "ConfigurationChanged", "bodyRef": { "ref": "UCOS-DATA-CONTRACT-018/ConfigurationValue" } },
+        { "message": "MetadataUpdated", "bodyRef": { "ref": "UCOS-DATA-CONTRACT-018/MetadataRecord" } },
+        { "message": "FeatureFlagChanged", "bodyRef": { "ref": "UCOS-DATA-CONTRACT-018/FeatureFlag" } }
+      ]
+    },
+    {
+      "contract": "UCOS-API-CONTRACT-027",
+      "shortId": "API-027",
+      "dataContract": "UCOS-DATA-CONTRACT-027",
+      "operations": [
+        {
+          "operationId": "getRegistryArtifacts",
+          "verbSemantics": "GET",
+          "path": "/registry/artifacts",
+          "kind": "safe-read",
+          "pathParameters": [],
+          "request": { "declared": false, "bodyRef": null },
+          "response": { "declared": true, "bodyRef": { "ref": "UCOS-DATA-CONTRACT-027/RegistryArtifact" }, "cardinality": "collection" }
+        },
+        {
+          "operationId": "postRegistryArtifacts",
+          "verbSemantics": "POST",
+          "path": "/registry/artifacts",
+          "kind": "unsafe-create",
+          "pathParameters": [],
+          "request": { "declared": true, "bodyRef": { "ref": "UCOS-DATA-CONTRACT-027/RegistryArtifact" } },
+          "response": { "declared": true, "bodyRef": { "ref": "UCOS-DATA-CONTRACT-027/RegistryArtifact" }, "cardinality": "single" }
+        },
+        {
+          "operationId": "getRegistryArtifactsById",
+          "verbSemantics": "GET",
+          "path": "/registry/artifacts/{id}",
+          "kind": "safe-read",
+          "pathParameters": ["id"],
+          "request": { "declared": false, "bodyRef": null },
+          "response": { "declared": true, "bodyRef": { "ref": "UCOS-DATA-CONTRACT-027/RegistryArtifact" }, "cardinality": "single" }
+        },
+        {
+          "operationId": "getRegistryDiscovery",
+          "verbSemantics": "GET",
+          "path": "/registry/discovery?type=",
+          "kind": "safe-read",
+          "pathParameters": [],
+          "queryParameters": ["type"],
+          "request": { "declared": false, "bodyRef": null },
+          "response": { "declared": true, "bodyRef": { "ref": "UCOS-DATA-CONTRACT-027/DiscoveryRecord" }, "cardinality": "collection" }
+        }
+      ],
+      "events": [
+        { "message": "ArtifactRegistered", "bodyRef": { "ref": "UCOS-DATA-CONTRACT-027/RegistryArtifact" } },
+        { "message": "ArtifactSuperseded", "bodyRef": { "ref": "UCOS-DATA-CONTRACT-027/RegistryArtifact" } },
+        { "message": "ArtifactDiscovered", "bodyRef": { "ref": "UCOS-DATA-CONTRACT-027/DiscoveryRecord" } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "artifactId": "PROG-CLOSURE-001",
+  "description": "Constitutional governance-closure tracking (WS10). Each closure maps evidence, dependencies, and closure criteria; the compiler computes GO / GO_WITH_CONDITIONS / NO_GO automatically. Closures gate the overall program release verdict.",
+  "closures": [
+    {
+      "id": "REAL-C-03",
+      "title": "Operational Evidence Closure",
+      "description": "Apply-time operational evidence (G12-1 provisioning, G12-2 pipeline, G12-3 DR/metrics) sufficient to issue Operational Certification.",
+      "governanceGates": ["GATE-SEC-001", "GATE-QUAL-001", "GATE-REL-001"],
+      "dependencies": ["ACT-06", "ACT-07", "ACT-08", "ACT-09", "ACT-10", "ACT-12"],
+      "requiredEvidence": ["EV-ACT-06", "EV-ACT-07", "EV-ACT-08", "EV-ACT-09", "EV-ACT-10", "EV-ACT-12"],
+      "closureCriteria": [
+        "ENV-DEV/INT provisioned with live apply logs",
+        "delivery pipeline executed with promotion evidence",
+        "contract tests pass (API-018, API-027)",
+        "DR drill with measured RPO/RTO",
+        "immutable audit trail + availability/p99 metrics captured",
+        "Operational Certification issued"
+      ]
+    },
+    {
+      "id": "REAL-C-04",
+      "title": "Design-Only Fabric Implementation Closure",
+      "description": "PI-10 Intelligence and PI-11 Simulation fabrics constructed under scoped Article IX release and independently ratified.",
+      "governanceGates": ["GATE-QUAL-001", "GATE-SEC-001"],
+      "dependencies": ["PI-10", "PI-11"],
+      "requiredEvidence": ["EV-PI10-IMP", "EV-PI10-VAL", "EV-PI10-SEC", "EV-PI10-AUD", "EV-PI11-IMP", "EV-PI11-VAL", "EV-PI11-SEC", "EV-PI11-AUD"],
+      "closureCriteria": [
+        "AD-0024 issued (PI-10) and PI-11 constructed under AD-0022",
+        "adversarial suites 0 residual High/High",
+        "269 baseline preserved (additive-only)",
+        "independent PI-10 / PI-11 ratification"
+      ]
+    },
+    {
+      "id": "REAL-C-05",
+      "title": "Independent Attestation Closure",
+      "description": "Independent attestation of the self-attested PI-8/PI-9 ratifications, the retroactive AD-0016..0023 enrollment, and the R13/R14 certification ruling.",
+      "governanceGates": ["GATE-DOC-001"],
+      "dependencies": ["GOV-LEDGER-RESTORE", "REAL-C-05"],
+      "requiredEvidence": ["EV-REAL-C-05", "EV-PI8-RAT", "EV-PI9-RAT"],
+      "closureCriteria": [
+        "independent adjudicator model established with registered keys",
+        "PI-8/PI-9 ratifications independently attested (proposer != attestor)",
+        "retroactive AD enrollment confirmed on canonical AUTH-012 ledger",
+        "R13/R14 ruling reconciled via REAL-C-01"
+      ]
+    },
+    {
+      "id": "CAP-C-01",
+      "title": "Capability Universe Governance Closure",
+      "description": "Every discovered UCOS capability (PHASE X.1) is registered, compiler-governed, and either VERIFIED or on a governed authorization/construction path. Closes the capability-universe governance gap surfaced by the WS1-WS6 discovery.",
+      "governanceGates": ["GATE-DOC-001", "GATE-QUAL-001", "GATE-SEC-001"],
+      "dependencies": ["CAP-OPS", "CAP-RDY", "CAP-PROOF", "CAP-RECON", "CAP-ECON", "CAP-RES", "CAP-WORKFLOW", "CAP-EVENT", "CAP-API", "CAP-UI", "CAP-AUTON", "CAP-ECOSYS", "CAP-INFRA", "CAP-LEARN", "CAP-CIV", "CAP-REALITY"],
+      "requiredEvidence": ["EV-CAP-OPS-IMP", "EV-CAP-OPS-RECON", "EV-CAP-RDY-IMP", "EV-CAP-RDY-RECON", "EV-CAP-PROOF-IMP", "EV-CAP-PROOF-RECON", "EV-CAP-RECON", "EV-CAP-ECON-AUTH", "EV-CAP-RES-ARCH", "EV-CAP-WORKFLOW-AUTH", "EV-CAP-EVENT-AUTH", "EV-CAP-API-AUTH", "EV-CAP-UI-AUTH", "EV-CAP-AUTON-AUTH", "EV-CAP-ECOSYS-AUTH", "EV-CAP-INFRA-AUTH", "EV-CAP-LEARN-ARCH", "EV-CAP-CIV-AUTH", "EV-CAP-REALITY-ARCH"],
+      "closureCriteria": [
+        "implemented-invisible fabrics (Observability/Readiness/Proof) reconciled with authored evidence (CAP-RECON)",
+        "design-only capabilities each granted a scoped Article IX release, constructed, and independently ratified",
+        "unmodeled capabilities (Learning, Resource, Reality Graph) architected before construction",
+        "no capability remains outside compiler governance"
+      ]
+    }
+  ]
+}

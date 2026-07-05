@@ -52,8 +52,11 @@ export { validateAgainstSchema } from "./metadata-runtime/schema-validator.ts";
 export { LayeredConfigurationStore, DEFAULT_LAYER_ORDER } from "./configuration-runtime/configuration-store.ts";
 
 // Runtime assembly
-export { createSubstrate } from "./bootstrap.ts";
-export type { Substrate, SubstrateOptions } from "./bootstrap.ts";
+export { createSubstrate, rehydrate } from "./bootstrap.ts";
+export type { Substrate, SubstrateOptions, PersistenceOptions, PersistenceLogs } from "./bootstrap.ts";
+
+// Persistence Runtime (L4) — durable port adapters + append-only storage medium.
+export * from "./persistence-runtime/index.ts";
 
 // PI-4 Control Fabrics (AD-0017) — additive control plane over the substrate.
 export * from "./control/index.ts";

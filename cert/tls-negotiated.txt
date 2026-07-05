@@ -1,0 +1,12 @@
+# AC-D1 D1-4 TLS negotiation evidence — 2026-07-04T17:04:43Z
+# source: pg_stat_ssl on live connection to ucos-cert-pg (container port 55432)
+ pid | ssl | version |         cipher         
+-----+-----+---------+------------------------
+ 140 | t   | TLSv1.3 | TLS_AES_256_GCM_SHA384
+(1 row)
+
+ ssl_min_protocol_version 
+--------------------------
+ TLSv1.3
+(1 row)
+

@@ -1,0 +1,234 @@
+{
+  "$id": "ucos:contracts/schema/contract.schema.json",
+  "dialect": "json-schema-2020-12",
+  "title": "UCOS Contract Meta-Schema",
+  "description": "Canonical, versioned, transport-neutral and implementation-neutral meta-schema for a UCOS contract inventory entry. Validates API, event, and data contract kinds under one root, discriminated by 'contractKind'. Field-level request/response/error schemas are OPTIONAL because UCOS-CONTRACT-CAT-001 is a boundary-level catalog; deferred information is represented via explicit placeholder states, never invented. Additive evolution only.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "inventoryFormat": {
+      "type": "string",
+      "description": "Producer format tag of the inventory document. The v1 API inventory uses 'ucos-api-contract.inventory/v1'.",
+      "pattern": "^ucos-[a-z-]+\\.inventory/v[0-9]+$"
+    },
+    "inventoryKind": {
+      "type": "string",
+      "enum": [
+        "api-contract-extraction",
+        "event-contract-extraction",
+        "data-contract-extraction"
+      ]
+    },
+    "extraction": { "$ref": "#/$defs/extraction" },
+    "contract": { "$ref": "#/$defs/contract" },
+    "generationConstraints": { "$ref": "#/$defs/generationConstraints" },
+    "traceability": { "$ref": "#/$defs/traceability" }
+  },
+  "required": ["inventoryFormat", "inventoryKind", "contract"],
+  "$comment": "Intended dialect: JSON Schema draft 2020-12, declared via 'dialect' (the remote dialect keyword is intentionally omitted to keep artifacts offline and deterministic). ADDITIVE EVOLUTION ONLY: future versions may add OPTIONAL properties but MUST NOT remove, rename, or repurpose existing ones. NO implementation-specific fields (no hostnames, protocols, frameworks, serialization, HTTP status codes).",
+  "$defs": {
+    "metaSchemaVersion": {
+      "type": "string",
+      "const": "ucos-contract-meta/1.0.0",
+      "description": "Version of the UCOS contract meta-schema family. Bumped only additively."
+    },
+    "placeholderState": {
+      "type": "string",
+      "description": "First-class representation of catalog-level deferrals. These are the ONLY permitted non-concrete states; a generator MUST treat them as 'not defined' and never substitute an invented value.",
+      "enum": [
+        "NOT DEFINED IN CATALOG",
+        "PENDING ASR RATIFICATION",
+        "FLAGGED FOR PROMPT 09"
+      ]
+    },
+    "artifactId": {
+      "type": "string",
+      "description": "A traceable UCOS artifact identifier (e.g. UCOS-API-CONTRACT-018, DOM-018, CAP-10).",
+      "minLength": 1
+    },
+    "contractVersion": {
+      "type": "string",
+      "description": "Contract version as stated by the catalog (e.g. 'v1.0'). Governed by UCOS-SVC-POLICY-001.",
+      "minLength": 1
+    },
+    "payloadRef": {
+      "type": "object",
+      "description": "A reference to a payload family/data entity WITHOUT redefining its field-level schema. Faithful to the catalog: payloads reference PDE-*/LDO-* and inherit classification; field schemas remain owned by the data architecture.",
+      "additionalProperties": false,
+      "properties": {
+        "family": {
+          "type": "string",
+          "description": "Named payload family from the data contract (e.g. 'ConfigurationValue')."
+        },
+        "dataContract": {
+          "$ref": "#/$defs/artifactId",
+          "description": "Owning data contract id (e.g. UCOS-DATA-CONTRACT-018)."
+        },
+        "fieldLevelSchema": {
+          "oneOf": [
+            { "$ref": "#/$defs/placeholderState" },
+            { "$ref": "operation.schema.json#/$defs/schemaRef" }
+          ],
+          "description": "Either an explicit placeholder (deferred/absent) or a reference to a concrete schema once the data architecture defines it."
+        }
+      }
+    },
+    "extraction": {
+      "type": "object",
+      "description": "Provenance of how this inventory entry was derived from the source-of-record catalog.",
+      "additionalProperties": false,
+      "properties": {
+        "source": { "type": "string" },
+        "sourceArtifactId": { "$ref": "#/$defs/artifactId" },
+        "sourceVersion": { "type": "string" },
+        "sourceSection": { "type": "string" },
+        "extractedBy": { "type": "string" },
+        "extractionDate": { "type": "string" },
+        "fidelity": { "type": "string" }
+      },
+      "required": ["source", "sourceArtifactId"]
+    },
+    "emits": {
+      "type": "object",
+      "description": "Event contract(s) emitted by this contract, referenced by id + message names. Delivery semantics are OPTIONAL and additive (deferred in the catalog).",
+      "additionalProperties": false,
+      "properties": {
+        "eventContract": { "$ref": "#/$defs/artifactId" },
+        "shortId": { "type": "string" },
+        "producer": { "$ref": "#/$defs/artifactId" },
+        "domain": { "$ref": "#/$defs/artifactId" },
+        "capability": { "$ref": "#/$defs/artifactId" },
+        "messages": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "deliverySemantics": {
+          "type": "object",
+          "description": "Optional, additive. Absent in the boundary-level catalog for API-018/027.",
+          "additionalProperties": false,
+          "properties": {
+            "delivery": { "type": "string" },
+            "ordering": { "type": "string" },
+            "idempotencyKey": { "type": "boolean" },
+            "pevLinkage": {
+              "oneOf": [
+                { "$ref": "#/$defs/placeholderState" },
+                { "type": "array", "items": { "$ref": "#/$defs/artifactId" } }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "nfr": {
+      "type": "object",
+      "description": "Non-functional requirement block. Every value is either concrete or the 'PENDING ASR RATIFICATION' placeholder.",
+      "additionalProperties": false,
+      "properties": {
+        "latency": { "$ref": "#/$defs/nfrValue" },
+        "throughput": { "$ref": "#/$defs/nfrValue" },
+        "availability": { "$ref": "#/$defs/nfrValue" },
+        "recoveryRtoRpo": { "$ref": "#/$defs/nfrValue" }
+      }
+    },
+    "nfrValue": {
+      "oneOf": [
+        { "$ref": "#/$defs/placeholderState" },
+        { "type": "string" }
+      ]
+    },
+    "dataContractDetail": {
+      "type": "object",
+      "description": "Reference detail for the owning data contract. Does NOT redefine physical schemas.",
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/artifactId" },
+        "owningServiceDomain": { "type": "string" },
+        "capability": { "$ref": "#/$defs/artifactId" },
+        "payloadFamilies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "referencesDataArchitecture": { "type": "string" },
+        "classification": { "type": "string" },
+        "fieldLevelSchema": {
+          "oneOf": [
+            { "$ref": "#/$defs/placeholderState" },
+            { "type": "string" }
+          ]
+        }
+      }
+    },
+    "generationConstraints": {
+      "type": "object",
+      "description": "Machine-visible constraints instructing generators what MUST NOT be invented.",
+      "additionalProperties": false,
+      "properties": {
+        "note": { "type": "string" }
+      }
+    },
+    "traceability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "refines": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "governedBy": { "type": "string" },
+        "invariants": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "contract": {
+      "type": "object",
+      "description": "The contract entry. 'contractKind' discriminates API vs event vs data; API contracts require 'operations', event contracts require 'emits.messages', data contracts require 'dataContractDetail'.",
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/artifactId" },
+        "shortId": { "type": "string" },
+        "title": { "type": "string" },
+        "version": { "$ref": "#/$defs/contractVersion" },
+        "status": { "type": "string" },
+        "contractKind": {
+          "type": "string",
+          "enum": ["api", "event", "data"],
+          "default": "api",
+          "description": "Discriminator. Optional for backward compatibility with v1 API inventories (defaults to 'api')."
+        },
+        "producer": { "$ref": "#/$defs/artifactId" },
+        "domain": { "$ref": "#/$defs/artifactId" },
+        "capability": { "$ref": "#/$defs/artifactId" },
+        "dataContract": { "$ref": "#/$defs/artifactId" },
+        "consumers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "operations": {
+          "type": "array",
+          "items": { "$ref": "operation.schema.json" }
+        },
+        "seamEcr": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "seams": { "type": "array", "items": { "type": "string" } },
+            "ecr": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "emits": { "$ref": "#/$defs/emits" },
+        "nfr": { "$ref": "#/$defs/nfr" },
+        "security": {
+          "oneOf": [
+            { "$ref": "#/$defs/placeholderState" },
+            { "type": "string" }
+          ]
+        },
+        "dataContractDetail": { "$ref": "#/$defs/dataContractDetail" }
+      },
+      "required": ["id", "title", "version"]
+    }
+  }
+}

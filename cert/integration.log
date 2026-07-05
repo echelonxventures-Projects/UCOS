@@ -1,0 +1,13 @@
+[32m✔ D1-2 durable read-after-restart against the dom_ops SoR double (latest wins) [90m(7.710042ms)[39m[39m
+[32m✔ D1-3 tenant isolation: a tenant never reads another tenant's rows [90m(0.268458ms)[39m[39m
+[32m✔ D1-3 revocation fail-closed persists through the SoR and survives restart [90m(0.485625ms)[39m[39m
+[32m✔ D1-5 append-only + monotonic seq; history mutation is denied by the role [90m(1.187542ms)[39m[39m
+[32m✔ D1-4 DSN-by-reference + TLS 1.3 enforcement (fail-closed on inline/invalid) [90m(4.343875ms)[39m[39m
+[34mℹ tests 5[39m
+[34mℹ suites 0[39m
+[34mℹ pass 5[39m
+[34mℹ fail 0[39m
+[34mℹ cancelled 0[39m
+[34mℹ skipped 0[39m
+[34mℹ todo 0[39m
+[34mℹ duration_ms 1000.687333[39m

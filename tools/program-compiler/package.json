@@ -1,0 +1,28 @@
+{
+  "name": "@ucos/program-compiler",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "UCOS Constitutional Program Compiler & Autonomous Execution Governor (PHASE P.1). Deterministic, fail-closed engine that compiles registry/program/*.json (single source of truth) into program state: dependency resolution, evidence-based completion, ready/blocked detection, governance-closure verdicts, gap discovery, and the system-resolved next executable work item. Regenerates the agent minimal-context and dashboard so a fresh agent resumes without repository-wide rediscovery.",
+  "engines": {
+    "node": ">=23.6.0"
+  },
+  "bin": {
+    "ucos-program": "./src/cli.ts"
+  },
+  "scripts": {
+    "program-state": "node src/cli.ts program-state",
+    "compile": "node src/cli.ts compile",
+    "dashboard": "node src/cli.ts dashboard",
+    "context": "node src/cli.ts context",
+    "next": "node src/cli.ts next",
+    "replay": "node src/cli.ts replay",
+    "verify": "node src/cli.ts verify",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.0",
+    "typescript": "5.9.3"
+  },
+  "license": "UNLICENSED"
+}

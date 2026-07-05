@@ -1,0 +1,109 @@
+{
+  "inventoryFormat": "ucos-api-contract.inventory/v1",
+  "inventoryKind": "api-contract-extraction",
+  "extraction": {
+    "source": "specifications/contracts/UCOS-CONTRACT-CATALOG.md",
+    "sourceArtifactId": "UCOS-CONTRACT-CAT-001",
+    "sourceVersion": "1.0.0",
+    "sourceSection": "\u00a7A \u2014 API Contracts",
+    "extractedBy": "PHASE 11 \u2014 WI-05 (contract extraction inventory)",
+    "extractionDate": "2026-07-03",
+    "fidelity": "verbatim-catalog-only; no fields invented; absences preserved as declared"
+  },
+  "contract": {
+    "id": "UCOS-API-CONTRACT-018",
+    "shortId": "API-018",
+    "title": "Configuration & Metadata API",
+    "version": "v1.0",
+    "status": "CREATED \u2014 GENERATED (ratification deferred)",
+    "producer": "UCOS-SVC-018",
+    "domain": "DOM-018",
+    "capability": "CAP-10",
+    "dataContract": "DC-018",
+    "consumers": [
+      "UCOS-API-CONTRACT-030",
+      "all services (variability consumers)"
+    ],
+    "operations": [
+      {
+        "verbSemantics": "GET",
+        "path": "/configuration/{scope}",
+        "intent": "resolve config/variability",
+        "kind": "safe-read"
+      },
+      {
+        "verbSemantics": "PUT",
+        "path": "/configuration/{scope}/{key}",
+        "intent": "admin",
+        "kind": "unsafe-idempotent"
+      },
+      {
+        "verbSemantics": "GET",
+        "path": "/metadata/{class}",
+        "intent": "read MC-01..13",
+        "kind": "safe-read"
+      },
+      {
+        "verbSemantics": "GET",
+        "path": "/feature-flags/{context}",
+        "intent": "resolve feature flags for context",
+        "kind": "safe-read"
+      }
+    ],
+    "seamEcr": {
+      "seams": [
+        "DOM-027/025 -> DOM-018 (CS)",
+        "DOM-018 -> all (CF)"
+      ],
+      "ecr": [
+        "UCOS-EXP-CR-020"
+      ]
+    },
+    "emits": {
+      "eventContract": "UCOS-EVT-CONTRACT-018",
+      "shortId": "EVT-018",
+      "producer": "UCOS-SVC-018",
+      "domain": "DOM-018",
+      "capability": "CAP-10",
+      "messages": [
+        "ConfigurationChanged",
+        "MetadataUpdated",
+        "FeatureFlagChanged"
+      ]
+    },
+    "nfr": {
+      "latency": "PENDING ASR RATIFICATION",
+      "throughput": "PENDING ASR RATIFICATION",
+      "availability": "PENDING ASR RATIFICATION",
+      "recoveryRtoRpo": "PENDING ASR RATIFICATION"
+    },
+    "security": "FLAGGED FOR PROMPT 09",
+    "dataContractDetail": {
+      "id": "UCOS-DATA-CONTRACT-018",
+      "owningServiceDomain": "SVC-018 / DOM-018",
+      "capability": "CAP-10",
+      "payloadFamilies": [
+        "ConfigurationValue",
+        "MetadataRecord",
+        "FeatureFlag"
+      ],
+      "referencesDataArchitecture": "Config/Metadata LDO/PDE (DOM-018); MC-01..13",
+      "classification": "inherited from UCOS-PDATA-ARCH-001",
+      "fieldLevelSchema": "NOT DEFINED IN CATALOG (owned by Prompt 05 / UCOS-PDATA-ARCH-001; wire form deferred to Prompt 08)"
+    }
+  },
+  "generationConstraints": {
+    "note": "Catalog defines boundary-level operation intent + payload references only. No field-level request/response schemas, transport bindings, serialization formats, or security controls are defined. These remain deferred (Prompt 05/08/09) and MUST NOT be invented by the generator."
+  },
+  "traceability": {
+    "refines": [
+      "UCOS-SVC-ARCH-001",
+      "UCOS-CAP-ARCH-001",
+      "UCOS-PDATA-ARCH-001",
+      "UCOS-INF-ARCH-001 (MC-01..13)",
+      "UCOS-PEA-003"
+    ],
+    "governedBy": "UCOS-SVC-POLICY-001",
+    "invariants": ["IC-2 (contract-first, generated-only)"]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "artifactId": "PROG-STATE-001",
+  "program": "UCOS Omega-Infinity",
+  "programLayerVersion": "1.0.0",
+  "sourceOfTruth": true,
+  "description": "Constitutional Program Registry state. Single source of truth for roadmap, phase status, dependencies, evidence, closure, and the next executable work item. Agents consume this; agents do not reconstruct it. Append-only / migration-only per INV-10 and IP-14.",
+  "authority": {
+    "subordinateTo": [
+      "AUTH-001..012 (Authority Layer)",
+      "UCOS-CONST-001 (Constitution)",
+      "UCOS-ASR-NFR-001 (INV-1..13)",
+      "AUTH-012 Decision Log (AD-0001..0023)"
+    ],
+    "terminalAuthority": "Authority Board",
+    "nonWaivable": [
+      "S1",
+      "S3",
+      "S4"
+    ]
+  },
+  "constitutionalLock": {
+    "articleIX": "ACTIVE",
+    "constructionBlocked": true,
+    "scopedReleases": [
+      "AD-0016",
+      "AD-0017",
+      "AD-0018",
+      "AD-0019",
+      "AD-0020",
+      "AD-0021",
+      "AD-0022",
+      "AD-0023"
+    ],
+    "note": "Article IX generation lock ACTIVE except scoped additive fabric releases AD-0016..0023. Domain/service/business/experience/product/existential generation remains LOCKED. INV-14..20 NOT enrolled (AD-0014)."
+  },
+  "canonicalReality": {
+    "reconciledBy": "REAL-M-03 (PHASE U8.2)",
+    "testBaseline": "269 pass / 269 (tsc clean)",
+    "authorityChain": "RESTORED (AUTH-012 v1.0.13, AD-0001..0023)",
+    "implementedFabrics": [
+      "PI-2",
+      "PI-3",
+      "PI-4",
+      "PI-5",
+      "PI-6",
+      "PI-7",
+      "PI-8",
+      "PI-9"
+    ],
+    "designOnlyFabrics": [
+      "PI-10",
+      "PI-11",
+      "Civilization",
+      "Economy"
+    ],
+    "operationalEvidence": "NONE (G12-1/2/3 open)",
+    "certificationLevel": "CONDITIONALLY CERTIFIED (UCOM-ULTIMATE-CERT-001)",
+    "openAdjudications": [
+      "REAL-C-01",
+      "REAL-C-05",
+      "suite-count re-measurement (36 vs 40)"
+    ]
+  },
+  "currentPhase": {
+    "id": "PHASE-P.1",
+    "title": "Constitutional Program Compiler & Autonomous Execution Governor",
+    "status": "IN_PROGRESS"
+  },
+  "statusVocabulary": [
+    "OPEN",
+    "READY",
+    "IN_PROGRESS",
+    "BLOCKED",
+    "EXTERNAL_BLOCKED",
+    "COMPLETE"
+  ],
+  "evidenceVocabulary": [
+    "PENDING",
+    "SUBMITTED",
+    "VERIFIED",
+    "CERTIFIED"
+  ],
+  "closureVocabulary": [
+    "GO",
+    "GO_WITH_CONDITIONS",
+    "NO_GO"
+  ],
+  "lockStateVocabulary": [
+    "OPEN",
+    "LOCKED",
+    "EXTERNAL_LOCKED",
+    "RELEASED"
+  ],
+  "externalBlockerModel": {
+    "registry": "registry/program/external-blockers.json",
+    "lockRegistry": "registry/program/constitutional-locks.json",
+    "note": "PHASE G.2 — distinguishes EXTERNAL_BLOCKED (not software-solvable; requires a governed external actor) from INTERNAL_BLOCKED. Review of an external blocker is prohibited without a review trigger (rediscovery prevention). REAL-C-05 is EXTERNAL and must not be re-investigated or closed by software."
+  },
+  "generatedOutputs": {
+    "nextWorkItem": "registry/program/next-work-item.json",
+    "dashboardData": "registry/program/dashboard.json",
+    "dashboardDoc": "UCOS-PROGRAM-DASHBOARD.md",
+    "minimalContext": "MINIMAL_CONTEXT.md"
+  },
+  "lastComputed": "2026-07-05T08:49:40.577Z"
+}

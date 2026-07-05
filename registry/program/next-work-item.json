@@ -1,0 +1,176 @@
+{
+  "artifactId": "PROG-NEXT-001",
+  "program": "UCOS Omega-Infinity",
+  "computedAt": "2026-07-05T08:49:40.577Z",
+  "currentPhase": {
+    "id": "PHASE-P.1",
+    "title": "Constitutional Program Compiler & Autonomous Execution Governor",
+    "status": "IN_PROGRESS"
+  },
+  "nextExecutableWorkItem": {
+    "id": "CAP-RECON",
+    "title": "Reconcile compiler-invisible implemented fabrics (Observability/Readiness/Proof) into the registry with authored evidence + AD reconciliation",
+    "type": "governance",
+    "phase": "PHASE-X.1 Capability Universe",
+    "owner": "Platform Governance",
+    "priority": 69,
+    "metDependencies": [
+      "PI-4"
+    ],
+    "acceptanceCriteria": [
+      "author validation/audit evidence for CAP-OPS/CAP-RDY/CAP-PROOF (advance IMP evidence to VERIFIED)",
+      "reconcile authorizing scoped Article IX release(s) for operations/readiness on the AUTH-012 ledger",
+      "register any residual operability gaps"
+    ],
+    "requiredEvidence": [
+      "EV-CAP-RECON"
+    ],
+    "governanceGates": [
+      "GATE-DOC-001"
+    ],
+    "constitutionalConstraints": [
+      "Documentation/governance only (no implementation)",
+      "No independent-attestation requirement (GATE-DOC-001)"
+    ],
+    "evidence": {
+      "required": 1,
+      "certified": 0,
+      "verified": 0,
+      "submitted": 0,
+      "pending": 1,
+      "missing": 0,
+      "satisfied": false
+    }
+  },
+  "authorization": {
+    "workItemId": "CAP-RECON",
+    "authorized": true,
+    "decision": "AUTHORIZED",
+    "checks": [
+      {
+        "name": "registered",
+        "passed": true,
+        "detail": "CAP-RECON is registered"
+      },
+      {
+        "name": "dependencies-satisfied",
+        "passed": true,
+        "detail": "all dependencies COMPLETE"
+      },
+      {
+        "name": "required-evidence-known",
+        "passed": true,
+        "detail": "1 required evidence id(s) declared"
+      },
+      {
+        "name": "constitutional-gate-satisfied",
+        "passed": true,
+        "detail": "no hard constitutional block"
+      }
+    ],
+    "reasons": [
+      "AUTHORIZED: CAP-RECON may proceed."
+    ]
+  },
+  "readyQueue": [
+    "CAP-RECON"
+  ],
+  "externalBlockedItems": [
+    "PI-8",
+    "PI-9",
+    "ACT-06",
+    "REAL-C-05",
+    "CAP-ECON",
+    "CAP-WORKFLOW",
+    "CAP-EVENT",
+    "CAP-API",
+    "CAP-ECOSYS"
+  ],
+  "externalBlockers": [
+    {
+      "id": "EXT-REAL-C-05",
+      "target": "REAL-C-05",
+      "recommendation": "DO_NOT_REINVESTIGATE",
+      "reviewPermitted": false,
+      "required_actor": "UCOS Authority Board (designation) + a distinct Independent Adjudicator (attestation), custodian: Chief Authority Architect",
+      "blockedWorkItems": [
+        "REAL-C-05",
+        "PI-8",
+        "PI-9"
+      ]
+    },
+    {
+      "id": "EXT-REAL-C-03",
+      "target": "REAL-C-03",
+      "recommendation": "DO_NOT_REINVESTIGATE",
+      "reviewPermitted": false,
+      "required_actor": "Operations (human-executed under AD-0009) + Certification Authority",
+      "blockedWorkItems": [
+        "ACT-06",
+        "ACT-07",
+        "ACT-08",
+        "ACT-09",
+        "ACT-10",
+        "ACT-12"
+      ]
+    },
+    {
+      "id": "EXT-REAL-C-04",
+      "target": "REAL-C-04",
+      "recommendation": "DO_NOT_REINVESTIGATE",
+      "reviewPermitted": false,
+      "required_actor": "UCOS Authority Board (AD-0024 issuance) + Independent Adjudicator (PI-10/PI-11 ratification)",
+      "blockedWorkItems": [
+        "PI-10"
+      ]
+    },
+    {
+      "id": "EXT-CAP-AUTH",
+      "target": "CAP-C-01",
+      "recommendation": "DO_NOT_REINVESTIGATE",
+      "reviewPermitted": false,
+      "required_actor": "UCOS Authority Board (per-capability scoped Article IX release); custodian: Chief Authority Architect",
+      "blockedWorkItems": [
+        "CAP-ECON",
+        "CAP-RES",
+        "CAP-WORKFLOW",
+        "CAP-EVENT",
+        "CAP-API",
+        "CAP-UI",
+        "CAP-AUTON",
+        "CAP-ECOSYS",
+        "CAP-INFRA",
+        "CAP-LEARN",
+        "CAP-CIV",
+        "CAP-REALITY"
+      ]
+    }
+  ],
+  "constitutionalLocks": [
+    {
+      "id": "LOCK-REAL-C-05",
+      "closure": "REAL-C-05",
+      "state": "EXTERNAL_LOCKED",
+      "releasableBySoftware": false
+    },
+    {
+      "id": "LOCK-REAL-C-03",
+      "closure": "REAL-C-03",
+      "state": "EXTERNAL_LOCKED",
+      "releasableBySoftware": false
+    },
+    {
+      "id": "LOCK-REAL-C-04",
+      "closure": "REAL-C-04",
+      "state": "EXTERNAL_LOCKED",
+      "releasableBySoftware": false
+    },
+    {
+      "id": "LOCK-CAP-C-01",
+      "closure": "CAP-C-01",
+      "state": "EXTERNAL_LOCKED",
+      "releasableBySoftware": false
+    }
+  ],
+  "note": "System-resolved next executable work item. Do not choose your own; run ucos:authorize before starting. EXTERNAL_BLOCKED items are excluded — they require an external actor and must not be re-investigated without a review trigger."
+}

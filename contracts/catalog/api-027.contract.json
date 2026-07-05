@@ -1,0 +1,110 @@
+{
+  "inventoryFormat": "ucos-api-contract.inventory/v1",
+  "inventoryKind": "api-contract-extraction",
+  "extraction": {
+    "source": "specifications/contracts/UCOS-CONTRACT-CATALOG.md",
+    "sourceArtifactId": "UCOS-CONTRACT-CAT-001",
+    "sourceVersion": "1.0.0",
+    "sourceSection": "\u00a7A \u2014 API Contracts",
+    "extractedBy": "PHASE 11 \u2014 WI-05 (contract extraction inventory)",
+    "extractionDate": "2026-07-03",
+    "fidelity": "verbatim-catalog-only; no fields invented; absences preserved as declared"
+  },
+  "contract": {
+    "id": "UCOS-API-CONTRACT-027",
+    "shortId": "API-027",
+    "title": "Registry API",
+    "version": "v1.0",
+    "status": "CREATED \u2014 GENERATED (ratification deferred)",
+    "producer": "UCOS-SVC-027",
+    "domain": "DOM-027",
+    "capability": "CAP-19",
+    "dataContract": "DC-027",
+    "consumers": [
+      "UCOS-API-CONTRACT-030",
+      "all services (registration/discovery)",
+      "UCOS-SVC-018",
+      "UCOS-SVC-026"
+    ],
+    "operations": [
+      {
+        "verbSemantics": "GET",
+        "path": "/registry/artifacts",
+        "intent": "list registered artifacts",
+        "kind": "safe-read"
+      },
+      {
+        "verbSemantics": "POST",
+        "path": "/registry/artifacts",
+        "intent": "register",
+        "kind": "unsafe-create"
+      },
+      {
+        "verbSemantics": "GET",
+        "path": "/registry/artifacts/{id}",
+        "intent": "read a registered artifact",
+        "kind": "safe-read"
+      },
+      {
+        "verbSemantics": "GET",
+        "path": "/registry/discovery?type=",
+        "intent": "discover wiring/services",
+        "kind": "safe-read"
+      }
+    ],
+    "seamEcr": {
+      "seams": [
+        "DOM-022/025 -> DOM-027 (CS)",
+        "DOM-027 -> all (CS)"
+      ],
+      "ecr": [
+        "UCOS-EXP-CR-017",
+        "UCOS-EXP-CR-021"
+      ]
+    },
+    "emits": {
+      "eventContract": "UCOS-EVT-CONTRACT-027",
+      "shortId": "EVT-027",
+      "producer": "UCOS-SVC-027",
+      "domain": "DOM-027",
+      "capability": "CAP-19",
+      "messages": [
+        "ArtifactRegistered",
+        "ArtifactSuperseded",
+        "ArtifactDiscovered"
+      ]
+    },
+    "nfr": {
+      "latency": "PENDING ASR RATIFICATION",
+      "throughput": "PENDING ASR RATIFICATION",
+      "availability": "PENDING ASR RATIFICATION",
+      "recoveryRtoRpo": "PENDING ASR RATIFICATION"
+    },
+    "security": "FLAGGED FOR PROMPT 09",
+    "dataContractDetail": {
+      "id": "UCOS-DATA-CONTRACT-027",
+      "owningServiceDomain": "SVC-027 / DOM-027",
+      "capability": "CAP-19",
+      "payloadFamilies": [
+        "RegistryArtifact",
+        "DiscoveryRecord"
+      ],
+      "referencesDataArchitecture": "Registry LDO/PDE (DOM-027)",
+      "classification": "inherited from UCOS-PDATA-ARCH-001",
+      "fieldLevelSchema": "NOT DEFINED IN CATALOG (owned by Prompt 05 / UCOS-PDATA-ARCH-001; wire form deferred to Prompt 08)"
+    }
+  },
+  "generationConstraints": {
+    "note": "Catalog defines boundary-level operation intent + payload references only. No field-level request/response schemas, transport bindings, serialization formats, or security controls are defined. These remain deferred (Prompt 05/08/09) and MUST NOT be invented by the generator."
+  },
+  "traceability": {
+    "refines": [
+      "UCOS-SVC-ARCH-001",
+      "UCOS-CAP-ARCH-001",
+      "UCOS-PDATA-ARCH-001",
+      "UCOS-PEA-003"
+    ],
+    "governedBy": "UCOS-SVC-POLICY-001",
+    "invariants": ["IC-2 (contract-first, generated-only)"]
+  }
+}

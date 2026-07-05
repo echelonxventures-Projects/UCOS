@@ -1,0 +1,102 @@
+{
+  "$id": "ucos:contracts/schema/operation.schema.json",
+  "dialect": "json-schema-2020-12",
+  "title": "UCOS Contract — Operation Meta-Schema",
+  "description": "Meta-schema for a single contract operation at the boundary level. Verb semantics + path template + intent are catalog-verbatim; 'kind' is a DERIVED normalization of the catalog's stated verb semantics. Request/response/error are OPTIONAL references (deferred field-level schemas), never invented. Transport-neutral, implementation-neutral.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "operationId": {
+      "type": "string",
+      "description": "OPTIONAL stable canonical operation name. Absent in the v1 catalog inventory; when absent a generator MUST derive it deterministically (documented) rather than inventing arbitrary names."
+    },
+    "verbSemantics": {
+      "type": "string",
+      "description": "Catalog verb denoting operation SEMANTICS (safe/unsafe/idempotent), NOT a chosen transport verb.",
+      "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    },
+    "path": {
+      "type": "string",
+      "description": "Catalog-verbatim path template. Path/query parameters (e.g. {scope}, {key}, {class}, {context}, {id}, ?type=) are surfaced but their field-level TYPES are deferred.",
+      "minLength": 1
+    },
+    "intent": {
+      "type": "string",
+      "description": "Catalog-verbatim operation intent."
+    },
+    "kind": {
+      "type": "string",
+      "description": "DERIVED field: deterministic normalization of verbSemantics per the catalog's verb-semantics reading note (GET -> safe-read; PUT -> unsafe-idempotent; POST -> unsafe-create; PATCH -> unsafe-idempotent; DELETE -> unsafe-idempotent). Provenance = derived, not verbatim.",
+      "enum": [
+        "safe-read",
+        "unsafe-create",
+        "unsafe-idempotent",
+        "unsafe-delete"
+      ]
+    },
+    "parameters": {
+      "type": "array",
+      "description": "OPTIONAL. Structured path/query parameters. Absent in v1 catalog inventory (types deferred to Prompt 05/08).",
+      "items": { "$ref": "#/$defs/parameter" }
+    },
+    "request": {
+      "$ref": "request.schema.json",
+      "description": "OPTIONAL request contract. Deferred field-level schema represented via placeholder."
+    },
+    "responses": {
+      "type": "array",
+      "description": "OPTIONAL response contracts. Absent when the catalog defines no field-level response schema.",
+      "items": { "$ref": "response.schema.json" }
+    },
+    "errors": {
+      "$ref": "error.schema.json",
+      "description": "OPTIONAL error model. The catalog defines none for API-018/027; represented as declared:false."
+    },
+    "idempotency": {
+      "type": "object",
+      "description": "OPTIONAL idempotency obligation. Absent for API-018/027 operations in the catalog.",
+      "additionalProperties": false,
+      "properties": {
+        "requiresIdempotencyKey": { "type": "boolean" }
+      }
+    },
+    "pagination": {
+      "type": "object",
+      "description": "OPTIONAL cursor-pagination obligation for read collections. Declared generically by the catalog; concrete parameters deferred.",
+      "additionalProperties": false,
+      "properties": {
+        "style": { "type": "string", "enum": ["cursor"] },
+        "declared": { "type": "boolean" }
+      }
+    }
+  },
+  "required": ["verbSemantics", "path", "intent"],
+  "$comment": "Additive evolution only. 'operationId', 'parameters', 'request', 'responses', 'errors', 'idempotency', 'pagination' are OPTIONAL so v1 catalog inventories validate unchanged. No implementation-specific fields.",
+  "$defs": {
+    "parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "in": { "type": "string", "enum": ["path", "query", "header"] },
+        "required": { "type": "boolean" },
+        "schemaRef": { "$ref": "operation.schema.json#/$defs/schemaRef" }
+      },
+      "required": ["name", "in"]
+    },
+    "schemaRef": {
+      "type": "object",
+      "description": "A reference to a SchemaModel node (see SchemaModel.ts). Does NOT inline a field-level schema; points to one once defined by the data architecture.",
+      "additionalProperties": false,
+      "properties": {
+        "ref": {
+          "type": "string",
+          "description": "Opaque reference token to a canonical schema node (e.g. a data-contract payload family)."
+        },
+        "placeholder": {
+          "$ref": "contract.schema.json#/$defs/placeholderState"
+        }
+      }
+    }
+  }
+}

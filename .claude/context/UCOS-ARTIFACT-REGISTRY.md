@@ -28,7 +28,7 @@
 | AUTH-009 | Governance Canon | `.claude/authority/AUTH-009-GOVERNANCE-CANON.md` | AUTH | CANON | Ratified v1.0.0 | AUTH-002, AUTH-003, AUTH-008 | all GATE-*, all prompts/agents |
 | AUTH-010 | Traceability Canon | `.claude/authority/AUTH-010-TRACEABILITY-CANON.md` | AUTH | CANON | Ratified v1.0.0 | AUTH-002, AUTH-003 | CTX-TRACE-001, CTX-REG-001 |
 | AUTH-011 | Glossary Canon | `.claude/authority/AUTH-011-GLOSSARY-CANON.md` | AUTH | CANON | Ratified v1.0.0 | AUTH-001, AUTH-003 | AUTH-005 (controls CTX-GLOSS-001) |
-| AUTH-012 | Decision Log | `.claude/authority/AUTH-012-DECISION-LOG.md` | AUTH | DECISION | Live v1.0.5 (AD-0001..AD-0015) | AUTH-002, AUTH-009, AUTH-010 | all Authority changes |
+| AUTH-012 | Decision Log | `.claude/authority/AUTH-012-DECISION-LOG.md` | AUTH | DECISION | Live v1.0.13 (AD-0001..AD-0023; restored via AUTH-REST-001..004, Phase 21.1) | AUTH-002, AUTH-009, AUTH-010 | all Authority changes |
 | AUTH-INDEX-001 | Authority Index | `.claude/authority/AUTHORITY-INDEX.md` | AUTH | INDEX | Live v1.0.0 | AUTH-001..012 | all program artifacts |
 | AUTH-COV-001 | Authority Coverage Report | `.claude/authority/AUTHORITY-COVERAGE-REPORT.md` | AUTH | REPORT | Final | AUTH-001..012, AUTH-INDEX-001 | AUTH-COMP-001 |
 | AUTH-COMP-001 | Authority Completion Report | `.claude/authority/AUTHORITY-COMPLETION-REPORT.md` | AUTH | REPORT | Final | AUTH-001..012, AUTH-COV-001 | Phase 1.0 |
@@ -1128,7 +1128,7 @@
 | Artifact ID | Name | Path | Layer | Type | Status | Refines | Refined by |
 |-------------|------|------|-------|------|--------|---------|------------|
 | UCOS-A9-REL-001 | FGA-2 Article IX Release Review (Board Resolution A9-REL-001) | `FGA-2-ARTICLE-IX-RELEASE-REVIEW.md` | AUTH (decision) | DECISION RECORD | **BOARD DISPOSITION ISSUED — LIMITED EVIDENCE AUTHORIZATION** (AD-0015; Approval-By-Exception) | UCOS-P12-CERT-001, UCOS-RA1-ENV-001, UCOS-CONST-001 (Art. IX/XII), UCOS-CONSTRUCTION-BLOCKED, PHASE-10.6, AUTH-002/009/012, AUTH-012 AD-0014 | AUTH-012 AD-0015; RA-2/RA-3 (human-approved) → G12-1/2/3 closure → Operational Certification → FGA-2b |
-| AUTH-012 (AD-0015) | Decision Log entry — Article IX Limited Evidence Authorization (A9-REL-001) | `.claude/authority/AUTH-012-DECISION-LOG.md` | AUTH | DECISION | **LIVE v1.0.5** (append-only; AD-0001..AD-0015) | AUTH-002 (Art. XII), AUTH-009, AUTH-010 | all Authority changes |
+| AUTH-012 (AD-0015) | Decision Log entry — Article IX Limited Evidence Authorization (A9-REL-001) | `.claude/authority/AUTH-012-DECISION-LOG.md` | AUTH | DECISION | AD-0015 enrolled at **v1.0.5** (append-only); ledger head since advanced to **v1.0.13** (AD-0001..AD-0023) via AUTH-REST-001..004 (Phase 21.1) | AUTH-002 (Art. XII), AUTH-009, AUTH-010 | all Authority changes |
 
 > **Disposition of record.** Article IX objectives 5 ACHIEVED / 1 PARTIAL; deadlock (op-cert needs evidence;
 > evidence needs non-prod runtime the lock forbids) resolved by a bounded carve-out. Authorized (limited,
@@ -1628,3 +1628,123 @@
 > 21) — required first given the value-bearing sensitivity of this fabric — and (c) a separate Authority
 > Board scoped Article IX release (`AD-00xx`, Approval-Required per AUTH-012 §8 / AD-0009). Registered
 > append-only; no prior registry row altered. Not committed/pushed/tagged.
+
+
+---
+
+### Authority Chain Restoration (PHASE 21.1 — AUTH-012 ledger reconciliation; append-only; enrolls AD-0016..AD-0023; no prior row altered; Article IX unchanged; INV-1..13 & AD-0014 preserved)
+
+> **Append-only.** Registers the four AUTH-REST reconciliation artifacts that restored the AUTH-012
+> Decision Log to a complete, gap-free chain **AD-0001..AD-0023** at **v1.0.13**, synchronized with
+> `AUTHORITY-INDEX` (v1.0.13). Enrollment was strictly append-only: no prior decision record altered,
+> none deleted, and no on-disk authorization record (AD-0016..AD-0023) mutated. The AD-0021 / AD-0022 §0
+> numbering contradiction is adjudicated (**AD-0021 = PI-8 Ontology**; AD-0022 §0 note superseded). Zero
+> residual authority-chain defects. Supersedes the stale "Live v1.0.5" AUTH-012 status previously carried
+> in this registry (closes reconciliation finding **RD-1**) and completes the missing registration of the
+> restoration artifacts (closes **RD-2**). Discharges the `UCOS-AUTH-REC-PKG-001` (Phase 21) restoration
+> prerequisite. **No code / infrastructure / deployment / lock release performed.**
+
+| Artifact ID | Name | Path | Layer | Type | Status | Refines | Refined by |
+|-------------|------|------|-------|------|--------|---------|------------|
+| UCOS-AUTH-REST-001 | Authority Chain Verification (8/8 ADs verified: exist, authentic, Board-owned, continuous by reference) | `AUTH-REST-001-AUTHORITY-CHAIN-VERIFICATION.md` | AUTH | RECONCILIATION | **COMPLETE v1.0.0** | AUTH-012, AUTH-009, AUTH-010, AD-0016..AD-0023 | AUTH-REST-002/003/004 |
+| UCOS-AUTH-REST-002 | Ledger Reconciliation (AD-0016..AD-0023 enrolled append-only; log → v1.0.13; index synchronized) | `AUTH-REST-002-LEDGER-RECONCILIATION.md` | AUTH | RECONCILIATION | **COMPLETE v1.0.0** | AUTH-REST-001, AUTH-012 (§6/§9) | AUTH-REST-004; AUTH-012 v1.0.13 |
+| UCOS-AUTH-REST-003 | Conflict Resolution (AD-0021 = PI-8 confirmed; AD-0022 §0 note superseded; 0 residual conflicts) | `AUTH-REST-003-CONFLICT-RESOLUTION.md` | AUTH | RECONCILIATION | **COMPLETE v1.0.0** | AUTH-REST-001/002, AD-0021, AD-0022 | AUTH-REST-004 |
+| UCOS-AUTH-REST-004 | Final Authority State (AUTHORITY CHAIN RESTORED — AUTH-012 CLOSED; AD-0001..AD-0023; v1.0.13) | `AUTH-REST-004-FINAL-AUTHORITY-STATE.md` | AUTH | RECONCILIATION (terminal) | **FINAL — AUTH-012 CLOSED v1.0.13** | AUTH-REST-001/002/003, AUTH-012, AD-0014, AD-0016..AD-0023, `UCOS-CONST-001` (Art. IX/XI/XII) | future Authority changes |
+
+> **Determination of record.** AUTHORITY CHAIN RESTORED — AUTH-012 COMPLETE AND CONSISTENT
+> (AD-0001..AD-0023) at **v1.0.13**, synchronized with `AUTHORITY-INDEX`. Registered append-only; no prior
+> registry row deleted. Reconciles the RD-1 / RD-2 registry-drift findings from the repository
+> reconciliation assessment. Not committed/pushed/tagged.
+
+
+---
+
+### DUP-1 Reconciliation — Artifact-ID Collision Resolution (Group 3 / M-4; append-only; governance reconciliation action; no file rename/move/delete; no other artifact altered)
+
+> **Append-only.** Resolves reconciliation finding **DUP-1** (artifact-ID collision on `INT-AUTH-001`). The ID
+> `INT-AUTH-001` was borne by two files: the PHASE 19.1 recommendation (`INT-AUTH-001-PI10-AUTHORIZATION-RECOMMENDATION.md`,
+> registered above at its `INT-AUTH-001` row — **unchanged, retains the ID**) and the PHASE 19.3 re-authorization
+> evaluation (`INT-AUTH-001-PI10-REAUTH-ONTOLOGY-MEMORY.md`, previously **unregistered**). The PHASE 19.3 artifact
+> is reassigned the distinct canonical ID **`INT-REAUTH-001`** and registered here. The original collision is
+> retained as evidence (**OBS-19.3-ID**, preserved in both `PROJECT-STATE` §0W and the artifact's ID note).
+> **Filenames are unchanged** (no rename/move/delete; append-only, INV-10). This is a documentation/registry
+> reconciliation only — no decision, invariant, authorization, code, or lock-state changed.
+
+| Artifact ID | Name | Path | Layer | Type | Status | Refines | Refined by |
+|-------------|------|------|-------|------|--------|---------|------------|
+| INT-REAUTH-001 | PI-10 Re-Authorization (PHASE 19.3) — Ontology Grounding & Memory Ownership Evaluation + P-1/P-2 Verification (**reassigned from `INT-AUTH-001`**, DUP-1) | `INT-AUTH-001-PI10-REAUTH-ONTOLOGY-MEMORY.md` | ARCH (Intelligence) | REVIEW | **REVIEW — COMPLETE v1.0.0** (design grounding/memory SATISFIED; P-1 CONTESTED; P-2 FAILS — as of PHASE 19.3; later superseded by PHASE R10 `INTEL-001`) | `INT-REM-001/002/003`, `INT-AUTH-REV-001..004`, `INT-AUTH-001` (19.1 recommendation), `MEM-RAT-001`, `PHASE-21`, `AD-0021`, `AD-0023`, `ONTO-*`, `MEM-*`, AUTH-009/012 | `INT-AUTH-004` (19.3 determination) |
+
+> **ID traceability of record.** `INT-AUTH-001 (PHASE 19.3, file INT-AUTH-001-PI10-REAUTH-ONTOLOGY-MEMORY.md)` →
+> **`INT-REAUTH-001`**. The `INT-AUTH-001` ID now uniquely denotes the PHASE 19.1 recommendation
+> (`INT-AUTH-001-PI10-AUTHORIZATION-RECOMMENDATION.md`). DUP-1 **CLOSED**. Residual (out of this scope): the
+> `PROJECT-STATE` §0W narrative reference to the 19.3 artifact still cites the old ID with its 19.3 qualifier and
+> OBS-19.3-ID note — internally coherent as a historical record; may be aligned to `INT-REAUTH-001` in a future
+> approved state-maintenance action. Registered append-only; no prior registry row altered. Not committed/pushed/tagged.
+
+
+
+---
+
+## PCAMG — Principle-Centric Adaptive Meta-Governance Foundation (PROPOSED — append-only)
+
+> **Append-only registration.** The PCAMG Foundation is a **governed proposal package** (analog of the Ω∞
+> `UCOS-UEA-*` set). It is **PROPOSED — PENDING AUTHORITY BOARD REVIEW**; it enrolls nothing, supersedes no
+> ratified artifact (`AUTH-001..012`, `UCOS-CONST-001`, `AUTH-INDEX-001`), modifies no invariant (INV-1..13,
+> `INV-CORE-001`), does not override AUTH-012, and does **not** release the Article IX generation lock.
+> `UCOS-CONSTRUCTION-BLOCKED` and AD-0014 unchanged.
+
+| Artifact ID | Document | Program Phase | Status |
+|-------------|----------|:-------------:|:------:|
+| `PCAMG-0001` | `architecture/pcamg/PCAMG-0001-CHARTER.md` | Phase 0 — Governance Doctrine | PROPOSED — READY FOR AUTHORITY BOARD REVIEW |
+| `PCAMG-0002` | `architecture/pcamg/PCAMG-0002-UNIVERSAL-PRINCIPLE-REGISTRY.md` | Phase 1 — Invariant Principle Layer (PRIN-001..015; UUIDs) | PROPOSED |
+| `PCAMG-0003` | `architecture/pcamg/PCAMG-0003-META-CONSTITUTION.md` | Phase 2 — Meta-Constitution (M-I..M-XII) | PROPOSED |
+| `PCAMG-0004` | `architecture/pcamg/PCAMG-0004-GOVERNANCE-GENERATION-FRAMEWORK.md` | Phase 3 — Governance Generation | PROPOSED |
+| `PCAMG-0005` | `architecture/pcamg/PCAMG-0005-POLYCENTRIC-GOVERNANCE-NETWORK.md` | Phase 4 — Polycentric Network (PGD-01..08) | PROPOSED |
+| `PCAMG-0006` | `architecture/pcamg/PCAMG-0006-ADAPTIVE-EVOLUTION-FRAMEWORK.md` | Phase 5 — Adaptive Evolution | PROPOSED |
+| `PCAMG-0007` | `architecture/pcamg/PCAMG-0007-COMPLIANCE-ENGINE.md` | Phase 6 — Compliance Engine | PROPOSED |
+| `PCAMG-0008` | `architecture/pcamg/PCAMG-0008-AUTHORITY-HIERARCHY.md` | Phase 7 — Authority Hierarchy (Layer 0–8) | PROPOSED |
+| `PCAMG-INDEX` | `architecture/pcamg/PCAMG-INDEX.md` | Package index & readiness report | PROPOSED |
+
+**Determination:** PCAMG FOUNDATION DESIGNED — READY FOR AUTHORITY BOARD REVIEW. 9 artifacts; 7 program phases
+covered; up-traced to `AUTH-003`/INV-1..13/`INV-CORE-001` (mapped, not replaced); 8 governance domains anchored
+1:1 to existing fabrics/architectures. No enrollment, no supersession, no lock release, no code. Owner: UCOS
+Authority Board.
+
+
+
+---
+
+## PCAMG Constitutional Refoundation Corpus (append-only; PROPOSED — NOT ENROLLED)
+
+> Registered append-only. All artifacts are **PROPOSED — PENDING AUTHORITY BOARD REVIEW**; they enroll nothing,
+> supersede no ratified artifact, release no lock, and modify no invariant. Location:
+> `architecture/pcamg/refoundation/`. Re-roots (does not delete) the foundation package `PCAMG-0001..0008`.
+
+| Artifact ID | File | Tier / Layer | Status |
+|-------------|------|--------------|:------:|
+| `GD-0001` | `architecture/pcamg/refoundation/GD-0001-GOVERNANCE-DOCTRINE.md` | Doctrine (proposed Supreme) | PROPOSED |
+| `GD-0002` | `architecture/pcamg/refoundation/GD-0002-SOVEREIGNTY-ORIGIN-DOCTRINE.md` | Doctrine | PROPOSED |
+| `PCAMG-0000` | `architecture/pcamg/refoundation/PCAMG-0000-INVARIANT-PRINCIPLES-REGISTRY.md` | Layer 0 | PROPOSED |
+| `PCAMG-1000` | `architecture/pcamg/refoundation/PCAMG-1000-META-CONSTITUTION.md` | Layer 1 | PROPOSED |
+| `PCAMG-2000` | `architecture/pcamg/refoundation/PCAMG-2000-GOVERNANCE-GENERATION-FRAMEWORK.md` | Layer 2 | PROPOSED |
+| `PCAMG-3000` | `architecture/pcamg/refoundation/PCAMG-3000-POLYCENTRIC-GOVERNANCE-NETWORK.md` | Layer 3 | PROPOSED |
+| `PCAMG-4000` | `architecture/pcamg/refoundation/PCAMG-4000-FEDERATED-DOMAIN-GOVERNANCE.md` | Layer 4 | PROPOSED |
+| `PCAMG-5000` | `architecture/pcamg/refoundation/PCAMG-5000-AUTONOMOUS-EXECUTION-FABRIC-CONSTITUTION.md` | Layer 7 | PROPOSED |
+| `PCAMG-6000` | `architecture/pcamg/refoundation/PCAMG-6000-CONSTITUTIONAL-INTERPRETATION-FRAMEWORK.md` | Cross | PROPOSED |
+| `PCAMG-7000` | `architecture/pcamg/refoundation/PCAMG-7000-CONFLICT-RESOLUTION-FRAMEWORK.md` | Cross | PROPOSED |
+| `PCAMG-8000` | `architecture/pcamg/refoundation/PCAMG-8000-LEGITIMACY-AND-CONSENT-FRAMEWORK.md` | Cross | PROPOSED |
+| `SPEC-AUTHORITY-INDEX-REFACTORING` | `architecture/pcamg/refoundation/SPEC-AUTHORITY-INDEX-REFACTORING.md` | Spec | PROPOSED |
+| `SPEC-AUTH-009-MIGRATION` | `architecture/pcamg/refoundation/SPEC-AUTH-009-MIGRATION.md` | Spec | PROPOSED |
+| `SPEC-GOVERNANCE-REGISTRIES` | `architecture/pcamg/refoundation/SPEC-GOVERNANCE-REGISTRIES.md` | Spec | PROPOSED |
+| `SPEC-CONSTITUTIONAL-VALIDATION-RULES` | `architecture/pcamg/refoundation/SPEC-CONSTITUTIONAL-VALIDATION-RULES.md` | Spec | PROPOSED |
+| `SPEC-GOVERNANCE-COMPILER-RULES` | `architecture/pcamg/refoundation/SPEC-GOVERNANCE-COMPILER-RULES.md` | Spec | PROPOSED |
+| `SPEC-TRACEABILITY-FRAMEWORK` | `architecture/pcamg/refoundation/SPEC-TRACEABILITY-FRAMEWORK.md` | Spec | PROPOSED |
+| `SPEC-CONSTITUTIONAL-COMPLIANCE-FRAMEWORK` | `architecture/pcamg/refoundation/SPEC-CONSTITUTIONAL-COMPLIANCE-FRAMEWORK.md` | Spec | PROPOSED |
+| `SPEC-REPOSITORY-STRUCTURE` | `architecture/pcamg/refoundation/SPEC-REPOSITORY-STRUCTURE.md` | Spec | PROPOSED |
+| `PROG-MIGRATION-AND-ADOPTION` | `architecture/pcamg/refoundation/PROG-MIGRATION-AND-ADOPTION.md` | Program | PROPOSED |
+| `REFOUNDATION-INDEX` | `architecture/pcamg/refoundation/REFOUNDATION-INDEX.md` | Index | PROPOSED |
+
+- **Preserves:** `AUTH-001..012`, `UCOS-CONST-001`, `AUTH-INDEX-001`, INV-1..13, `INV-CORE-001`, AD-0014,
+  `PCAMG-0001..0008`.
+- **Governed by:** AUTH-009 (approval), AUTH-012 (decision record). **Owner:** UCOS Authority Board.
+- **Determination:** READY FOR AUTHORITY BOARD REVIEW. Article IX NOT released; `UCOS-CONSTRUCTION-BLOCKED` unchanged.

@@ -1,0 +1,386 @@
+[32m✔ loads example descriptors from the filesystem and composes them [90m(27.771375ms)[39m[39m
+[32m✔ executes capabilities and composed dependents through their contract [90m(274.252667ms)[39m[39m
+[32m✔ configuration layers override defaults without code change [90m(1.852208ms)[39m[39m
+[32m✔ rejects input that violates the contract [90m(3.383125ms)[39m[39m
+[32m✔ rejects operations not declared in the contract [90m(5.410709ms)[39m[39m
+[32m✔ cannot execute before composition [90m(3.18075ms)[39m[39m
+[32m✔ merges layers in order (later wins) [90m(5.2195ms)[39m[39m
+[32m✔ deep-merges nested objects [90m(0.29625ms)[39m[39m
+[32m✔ unknown capability resolves to empty config [90m(0.398833ms)[39m[39m
+[32m✔ unknown layers are appended and applied [90m(0.399084ms)[39m[39m
+[32m✔ registers governance processes and reads them back [90m(2.857ms)[39m[39m
+[32m✔ approvals are runtime records (nothing pre-approved) and gate on a known process [90m(0.893958ms)[39m[39m
+[32m✔ certifications can be granted and revoked [90m(0.225958ms)[39m[39m
+[32m✔ validateApproval throws when there is no active approval [90m(0.182584ms)[39m[39m
+[32m✔ registers and reads back a metadata-stored identity (no hardcoding) [90m(5.584625ms)[39m[39m
+[32m✔ rejects an invalid identity against the identity schema [90m(0.34775ms)[39m[39m
+[32m✔ rejects duplicate identity registration [90m(0.117416ms)[39m[39m
+[32m✔ enforces the identity lifecycle transitions [90m(0.15175ms)[39m[39m
+[32m✔ resolver authenticates active identities and enforces credentials [90m(0.245208ms)[39m[39m
+[32m✔ resolver rejects non-active identities [90m(0.102625ms)[39m[39m
+[32m✔ federated identity providers supply identities not stored locally [90m(0.093667ms)[39m[39m
+[32m✔ end-to-end: authenticated + authorized request executes and is audited [90m(2.773375ms)[39m[39m
+[32m✔ end-to-end: deny-by-default blocks execution and never reaches the kernel [90m(0.712042ms)[39m[39m
+[32m✔ end-to-end: unauthenticated request is denied and audited as authn-denied [90m(0.277709ms)[39m[39m
+[32m✔ end-to-end: insufficient trust is denied even with the permission [90m(0.216875ms)[39m[39m
+[32m✔ end-to-end: governance approval gate opens and closes execution at runtime [90m(20.180041ms)[39m[39m
+[32m✔ end-to-end: contract validation still applies after authorization (defense in depth) [90m(3.616125ms)[39m[39m
+[32m✔ deny-by-default when no policy grants access [90m(4.186292ms)[39m[39m
+[32m✔ allow policy grants when its permission requirement is met (glob) [90m(0.754459ms)[39m[39m
+[32m✔ deny overrides allow regardless of priority [90m(1.523958ms)[39m[39m
+[32m✔ require-trust is evaluated against the resolved trust level [90m(0.19125ms)[39m[39m
+[32m✔ require-governance-approval and require-certification consult the governance registry [90m(0.354917ms)[39m[39m
+[32m✔ policy registry validates and rejects malformed / duplicate policies [90m(0.339667ms)[39m[39m
+[32m✔ resolves the local trust level (default 0) [90m(3.074417ms)[39m[39m
+[32m✔ evaluates minLevel requirements [90m(10.101292ms)[39m[39m
+[32m✔ evaluates trust attribute requirements [90m(0.103625ms)[39m[39m
+[32m✔ federated trust authority can raise the effective level (max wins) [90m(0.102917ms)[39m[39m
+[32m✔ resolves dependencies before dependents [90m(24.949708ms)[39m[39m
+[32m✔ detects dependency cycles [90m(1.090708ms)[39m[39m
+[32m✔ reports missing dependency [90m(0.555458ms)[39m[39m
+[32m✔ reports unresolved contract [90m(0.233208ms)[39m[39m
+[32m✔ put persists to the journal and is readable through the projection [90m(87.911542ms)[39m[39m
+[32m✔ WRITE -> DRAIN -> REOPEN -> REHYDRATE -> IDENTICAL STATE, latest write wins [90m(6.794791ms)[39m[39m
+[32m✔ append-only version history: three distinct writes are all retained in the journal [90m(0.297583ms)[39m[39m
+[32m✔ idempotent no-op: a structurally identical re-put is neither applied nor journaled [90m(0.141417ms)[39m[39m
+[32m✔ fail-closed: an invalid schema-validated write throws and is never journaled [90m(1.152875ms)[39m[39m
+[32m✔ fail-closed: a durable append failure latches the store and surfaces on drain() [90m(0.821ms)[39m[39m
+[32m✔ revoke is fail-closed: revoked key stops resolving, is journaled, and survives reopen (D1-3) [90m(0.467375ms)[39m[39m
+[32m✔ a new capability can be introduced purely via metadata + provider (no core change) [90m(2.776666ms)[39m[39m
+[32m✔ newly introduced capability honors configuration overrides [90m(0.638625ms)[39m[39m
+[32m✔ composition fails when resolved config violates the capability config schema [90m(2.442792ms)[39m[39m
+[32m✔ unauthorized evolution (unratified apply) is blocked [90m(16.060125ms)[39m[39m
+[32m✔ forged proposal signature is blocked [90m(0.897292ms)[39m[39m
+[32m✔ forged certification is blocked [90m(1.110875ms)[39m[39m
+[32m✔ proposal replay / nonce reuse is blocked [90m(1.046833ms)[39m[39m
+[32m✔ stale (expired) proposal is blocked [90m(0.653917ms)[39m[39m
+[32m✔ governor bypass via non-allowlisted namespace is blocked [90m(0.491ms)[39m[39m
+[32m✔ self-modification attempt (core-dir codePath) is blocked [90m(0.458583ms)[39m[39m
+[32m✔ recursive evolution attempt (self-originated proposal) is blocked [90m(0.434541ms)[39m[39m
+[32m✔ infinite-loop / re-entrancy attempt is blocked (maxInFlight=1) [90m(0.520084ms)[39m[39m
+[32m✔ rollback abuse (rolling back a non-active/unknown unit) is blocked [90m(0.571125ms)[39m[39m
+[32m✔ federation-touching evolution without a re-ratification token is blocked [90m(1.905125ms)[39m[39m
+[32m✔ ratification bypass (certified but not ratified) is blocked [90m(0.954042ms)[39m[39m
+[32m✔ audit tampering is detected [90m(2.952208ms)[39m[39m
+[32m✔ partial-commit attempt leaves no residue (atomic all-or-nothing) [90m(1.665542ms)[39m[39m
+[32m✔ snapshot corruption is detected by validation [90m(0.348084ms)[39m[39m
+[32m✔ restore corruption is detected by rollback verification [90m(1.182583ms)[39m[39m
+[32m✔ isFederationTouching detects any federation-namespace target [90m(6.911375ms)[39m[39m
+[32m✔ federation-touching evolution WITH a valid re-ratification token applies (no boundary weakened) [90m(6.503791ms)[39m[39m
+[32m✔ a token does NOT permit silently weakening a ratified boundary (auto-rollback on regression) [90m(11.351583ms)[39m[39m
+[32m✔ federation-touching evolution with an invalidly-signed token is blocked [90m(3.715791ms)[39m[39m
+[32m✔ federation-touching evolution with an expired token is blocked [90m(1.554375ms)[39m[39m
+[32m✔ E10 self-target of the evolution namespace is blocked [90m(9.959583ms)[39m[39m
+[32m✔ E10 a unit declaring a prohibited core-dir codePath is blocked [90m(0.679458ms)[39m[39m
+[32m✔ E10 a unit declaring the evolution self-dir codePath is blocked [90m(1.074666ms)[39m[39m
+[32m✔ E10 a non-allowlisted target namespace is rejected (deny-by-default) [90m(1.458542ms)[39m[39m
+[32m✔ E11 a unit with depth != 0 is blocked [90m(1.443625ms)[39m[39m
+[32m✔ E11 a proposal originating from evolution execution is blocked [90m(0.664041ms)[39m[39m
+[32m✔ E11 admission is blocked while a transaction is in flight (maxInFlight=1) [90m(0.520709ms)[39m[39m
+[32m✔ E12 proposal rate limit denies once the window is exceeded [90m(0.151ms)[39m[39m
+[32m✔ E12 emergency halt denies all evolution admissions (fail-closed) [90m(0.105458ms)[39m[39m
+[32m✔ post-apply validation failure rolls back atomically (no partial commit) [90m(10.706542ms)[39m[39m
+[32m✔ a throwing op mid-apply reverts all earlier ops (fail-closed, no partial commit) [90m(3.143208ms)[39m[39m
+[32m✔ explicit rollback of an active evolution restores prior state and verifies [90m(2.209375ms)[39m[39m
+[32m✔ rollback verification detects a non-matching restored state (fail-closed detection) [90m(5.830792ms)[39m[39m
+[32m✔ a rolled-back (failed) evolution did not take effect and cannot be applied again [90m(9.444917ms)[39m[39m
+[32m✔ full lifecycle: a routine metadata evolution is proposed, ratified, and applied [90m(17.684ms)[39m[39m
+[32m✔ config evolution: effective configuration reflects the applied evolution-owned layer [90m(55.611084ms)[39m[39m
+[32m✔ impact analysis reports the declared change surfaces before approval [90m(0.595291ms)[39m[39m
+[32m✔ state machine records the full ratification path [90m(1.56325ms)[39m[39m
+[32m✔ lifecycle transition table forbids illegal transitions [90m(0.119791ms)[39m[39m
+[32m✔ snapshot capture is deterministic and self-validating [90m(0.5785ms)[39m[39m
+[32m✔ two sequential evolutions apply and the monotonic proposal counter advances [90m(3.056959ms)[39m[39m
+[32m✔ evolution audit chain is hash-linked, tamper-evident, and independently verifiable [90m(2.069292ms)[39m[39m
+[32m✔ cross-node audit reconciliation: consistent for identical, divergent for state-hash mismatch [90m(0.251125ms)[39m[39m
+[32m✔ T1 cross-domain identity spoofing (forged signature) is blocked [90m(12.557917ms)[39m[39m
+[32m✔ T2 trust poisoning is blocked (clamp to delegation/boundary ceiling) [90m(3.222917ms)[39m[39m
+[32m✔ T7 replay / nonce reuse is blocked [90m(0.953292ms)[39m[39m
+[32m✔ stale (expired) assertion is rejected [90m(0.625083ms)[39m[39m
+[32m✔ T8 authority escalation (missing power) is blocked [90m(1.151ms)[39m[39m
+[32m✔ out-of-boundary authority is rejected [90m(0.989458ms)[39m[39m
+[32m✔ unknown issuer is rejected [90m(0.4215ms)[39m[39m
+[32m✔ suspended node is rejected [90m(1.010417ms)[39m[39m
+[32m✔ revoked membership is rejected [90m(2.333209ms)[39m[39m
+[32m✔ T4/T11/T12 foreign identity cannot shadow or poison local keyspace [90m(3.336541ms)[39m[39m
+[32m✔ T6 partition (unreachable authority) fails closed [90m(0.593166ms)[39m[39m
+[32m✔ revoked federated identity is denied on next decision [90m(0.883333ms)[39m[39m
+[32m✔ T9 certification via revoked CA is rejected [90m(0.534958ms)[39m[39m
+[32m✔ T3 foreign allow policy is inadmissible (deny-only) [90m(0.632291ms)[39m[39m
+[32m✔ verified federated principal without permission is denied (deny-by-default preserved) [90m(3.042209ms)[39m[39m
+[32m✔ tampered claims (post-signature) invalidate the assertion [90m(0.927125ms)[39m[39m
+[32m✔ cross-domain identity: a verified federated principal executes a local capability [90m(146.144833ms)[39m[39m
+[32m✔ cross-domain identity + trust: verified principal with clamped trust executes [90m(2.166334ms)[39m[39m
+[32m✔ provenance is recorded on the materialized federated identity [90m(2.507334ms)[39m[39m
+[32m✔ namespaced id helpers round-trip and distinguish local vs foreign [90m(21.481042ms)[39m[39m
+[32m✔ clamped trust: boundary/delegation ceiling caps an over-asserted trust level [90m(9.401541ms)[39m[39m
+[32m✔ audit chain is hash-linked, tamper-evident, and independently verifiable [90m(8.254666ms)[39m[39m
+[32m✔ cross-node audit reconciliation detects effect-mismatch divergence (fail-closed) [90m(2.663792ms)[39m[39m
+[32m✔ certification authority verifies a signed certification and rejects a forged one [90m(0.892ms)[39m[39m
+[32m✔ policy delegation admits deny-only foreign policy and rejects foreign allow [90m(0.643833ms)[39m[39m
+[32m✔ K1 knowledge poisoning (non-member issuer) is blocked [90m(48.37625ms)[39m[39m
+[32m✔ K2 provenance forgery is detected [90m(0.639292ms)[39m[39m
+[32m✔ K3 certification forgery is blocked at commit [90m(2.160125ms)[39m[39m
+[32m✔ K4 authority escalation (SoD violation) is blocked [90m(0.651458ms)[39m[39m
+[32m✔ K5 trust boundary bypass is blocked (deny-by-default + clamp) [90m(1.007375ms)[39m[39m
+[32m✔ K6 knowledge replay (nonce reuse) is blocked [90m(0.885875ms)[39m[39m
+[32m✔ K7 knowledge tampering (unit hash mismatch) is blocked [90m(0.601166ms)[39m[39m
+[32m✔ K8 audit evasion (tampered chain) is detected [90m(5.731959ms)[39m[39m
+[32m✔ K9 federation poisoning (foreign override of local) is blocked [90m(2.254833ms)[39m[39m
+[32m✔ K10 lineage corruption is blocked at commit [90m(5.531458ms)[39m[39m
+[32m✔ K11 version conflict abuse is blocked (local shadows higher foreign version) [90m(23.664125ms)[39m[39m
+[32m✔ K12 knowledge drift is detected via snapshot comparison [90m(1.912958ms)[39m[39m
+[32m✔ knowledge audit chain is hash-linked and independently verifiable [90m(58.465417ms)[39m[39m
+[32m✔ audit tampering breaks verification [90m(9.437709ms)[39m[39m
+[32m✔ cross-node reconciliation flags state-hash divergence (fail-closed) [90m(0.626042ms)[39m[39m
+[32m✔ write-ahead: commit records the knowledge event and the underlying evolution audit is intact [90m(9.816792ms)[39m[39m
+[32m✔ committing knowledge routes the mutation through the Evolution Fabric (applied) [90m(25.306375ms)[39m[39m
+[32m✔ evolution governor invariants are inherited: knowledge persistence uses maxInFlight=1 sequentially [90m(55.811125ms)[39m[39m
+[32m✔ the Knowledge Store exposes no direct governed write — persistence is only via evolution [90m(1.976042ms)[39m[39m
+[32m✔ evolution audit for a knowledge commit is independently verifiable [90m(9.217333ms)[39m[39m
+[32m✔ inbound bundle from a boundary member with a valid signature verifies [90m(13.8245ms)[39m[39m
+[32m✔ inbound bundle from a non-member issuer is rejected (deny-by-default) [90m(0.752833ms)[39m[39m
+[32m✔ foreign trust is clamped to the boundary ceiling [90m(1.720334ms)[39m[39m
+[32m✔ local sovereignty: a foreign record cannot override a local active record [90m(6.11475ms)[39m[39m
+[32m✔ partition: an unreachable source node fails closed on inbound verification [90m(1.447917ms)[39m[39m
+[32m✔ importBundle round-trip: verified foreign knowledge is persisted trust-clamped via evolution [90m(3.967958ms)[39m[39m
+[32m✔ a valid certification verifies; a revoked CA no longer validates [90m(21.880958ms)[39m[39m
+[32m✔ ratification enforces separation of duties (ratifier != certifier) [90m(0.823583ms)[39m[39m
+[32m✔ ratification enforces the validator quorum [90m(0.569541ms)[39m[39m
+[32m✔ a well-formed ratification with distinct roles + quorum verifies [90m(0.794583ms)[39m[39m
+[32m✔ authority requires enumerated powers (no implicit authority) [90m(0.575709ms)[39m[39m
+[32m✔ certification replay (nonce reuse) is rejected [90m(0.78475ms)[39m[39m
+[32m✔ lineage verifies when every parent resolves to a stored record [90m(80.582333ms)[39m[39m
+[32m✔ broken lineage (unresolvable parent) is denied [90m(0.699166ms)[39m[39m
+[32m✔ commit is rejected when lineage is broken (fail-closed) [90m(0.999833ms)[39m[39m
+[32m✔ ancestors walks the derivation chain [90m(28.921375ms)[39m[39m
+[32m✔ query returns only active records by default (fail-closed on non-active) [90m(56.100917ms)[39m[39m
+[32m✔ namespace scoping isolates results [90m(18.10725ms)[39m[39m
+[32m✔ minTrustLevel filter excludes below-threshold records [90m(19.3935ms)[39m[39m
+[32m✔ revoked records are excluded from query results (fail-closed) [90m(1.960042ms)[39m[39m
+[32m✔ predicate filtering is applied and a throwing predicate excludes the record (fail-closed) [90m(1.782125ms)[39m[39m
+[32m✔ tampering a unit after hashing is detected (unitHash mismatch) — commit fails closed [90m(10.821417ms)[39m[39m
+[32m✔ a forged certification (wrong signing key) is rejected at commit [90m(20.82175ms)[39m[39m
+[32m✔ a stale (expired) certification is rejected [90m(0.625917ms)[39m[39m
+[32m✔ provenance verification: a federated record claiming 'local' origin is rejected [90m(0.400042ms)[39m[39m
+[32m✔ knowledge signing/verification round-trips via reused federation primitives [90m(0.753084ms)[39m[39m
+[32m✔ full lifecycle: a local knowledge record is created, ratified, committed active, and queryable [90m(62.466167ms)[39m[39m
+[32m✔ committed knowledge resolves to the active record [90m(2.311041ms)[39m[39m
+[32m✔ lifecycle table permits governed forward path + revoke, forbids illegal jumps [90m(0.079917ms)[39m[39m
+[32m✔ higher version supersedes on resolve (highest active wins) [90m(49.678291ms)[39m[39m
+[32m✔ commit records a KNOW_CREATED/ACTIVATED audit event [90m(4.89525ms)[39m[39m
+[32m✔ M8.1 self-promotion DENY: a single actor acting as consolidator+certifier(+ratifier) cannot promote its own memory (SoD) [90m(6.636042ms)[39m[39m
+[32m✔ M8.2 forged consolidation authority DENY: mis-signed and tampered governance assertions are rejected at commit [90m(29.323833ms)[39m[39m
+[32m✔ M8.3 SoD violation DENY at commit: a validly-signed ratification that collapses roles is still rejected (defence-in-depth) [90m(0.969292ms)[39m[39m
+[32m✔ M8.4 unauthorized consolidation DENY: a consolidator lacking the 'consolidate' power cannot governed-commit [90m(0.907042ms)[39m[39m
+[32m✔ M8.5 privilege-escalation DENY: empty-power authority is rejected, and an unregistered consolidator cannot commit [90m(1.736125ms)[39m[39m
+[32m✔ M11.1 desync DENY: a semantic memory contradicting ratified knowledge (revoked/superseded/draft) is rejected [90m(0.950459ms)[39m[39m
+[32m✔ M11.2 knowledgeRef validation DENY: a dangling ref, and any knowledge-backed semantic memory with no oracle, are rejected [90m(0.660375ms)[39m[39m
+[32m✔ M11.3 co-ratification holds: commit is admitted ONLY while backing knowledge is active/ratified (gate is not blanket-deny) [90m(37.844542ms)[39m[39m
+[32m✔ M11.4 cross-reference tampering DENY: mutating knowledgeRef after hashing breaks unit integrity [90m(0.427042ms)[39m[39m
+[32m✔ M11.5 knowledge rollback attack DENY: recall denies once backing knowledge is rolled back/revoked [90m(1.491625ms)[39m[39m
+[32m✔ M12.1 working-memory limit enforced: accumulation beyond the working cap is rejected (fail-closed) [90m(3.42125ms)[39m[39m
+[32m✔ M12.2 STM capacity limit enforced: accumulation beyond the short-term cap is rejected (fail-closed) [90m(7.38725ms)[39m[39m
+[32m✔ M12.3 flooding / resource-exhaustion attack fails: a write burst is bounded exactly at the cap [90m(24.621459ms)[39m[39m
+[32m✔ M12.4 unbounded accumulation DENY, but re-versioning an existing id is admitted (no false positive) [90m(24.443208ms)[39m[39m
+[32m✔ M12.5 opt-in only: an unconfigured tier is unbounded (no behaviour change) and long-term is never size-capped [90m(16.523875ms)[39m[39m
+[32m✔ M1 replay: a re-presented signed bundle is rejected (single-use nonce, fail-closed) [90m(23.503041ms)[39m[39m
+[32m✔ M2 forged assertion: a forged memory certification is rejected (fail-closed) [90m(3.703042ms)[39m[39m
+[32m✔ M3 namespace escape: recall is namespace-isolated; cross-namespace access denied [90m(4.994875ms)[39m[39m
+[32m✔ M4 authority escalation: a principal lacking 'consolidate' power cannot governed-commit [90m(2.643041ms)[39m[39m
+[32m✔ M4b SoD: consolidator and certifier may not be the same principal (consolidate≠certify) [90m(4.141625ms)[39m[39m
+[32m✔ M5 silent mutation: no direct store write path; every commit is audited [90m(2.305166ms)[39m[39m
+[32m✔ M6 audit tampering: any post-hoc edit to the hash-chained audit is detected [90m(1.836667ms)[39m[39m
+[32m✔ M7 federation poisoning: an out-of-boundary issuer is denied (deny-by-default) [90m(0.549375ms)[39m[39m
+[32m✔ M8 trust inflation: conferred trust is clamped to the boundary ceiling [90m(3.866875ms)[39m[39m
+[32m✔ M9 memory corruption: a record whose unitHash does not match its unit is rejected [90m(2.04725ms)[39m[39m
+[32m✔ M10 retention bypass: nothing is durable-by-omission; expired memory is unrecallable [90m(3.0975ms)[39m[39m
+[32m✔ M11 revocation bypass: a revoked memory cannot be recalled by any path (fail-closed) [90m(4.419833ms)[39m[39m
+[32m✔ M12 evolution bypass: durable persistence only occurs through the Evolution Fabric [90m(3.880167ms)[39m[39m
+[32m✔ governedCommit succeeds with valid SoD-compliant certification + ratification [90m(65.25525ms)[39m[39m
+[32m✔ ratification quorum is enforced (fail-closed) [90m(1.8505ms)[39m[39m
+[32m✔ certification verifies against its authority key; a mismatched signer fails [90m(3.021667ms)[39m[39m
+[32m✔ consolidation engine raises classification to max(sources) and merges lineage [90m(0.2635ms)[39m[39m
+[32m✔ reconciliation engine: identical histories are consistent; a tampered chain fails closed [90m(2.333ms)[39m[39m
+[32m✔ valid signed foreign bundle is imported (trust clamped to boundary ceiling) [90m(53.109ms)[39m[39m
+[32m✔ boundary is deny-by-default: an out-of-boundary issuer is rejected (M5) [90m(0.67975ms)[39m[39m
+[32m✔ local sovereignty: foreign memory cannot override a local active record (M5) [90m(3.383583ms)[39m[39m
+[32m✔ tampered bundle (unit hash mismatch) is rejected (M1) [90m(0.608459ms)[39m[39m
+[32m✔ invalid signature is rejected (M1) [90m(0.6855ms)[39m[39m
+[32m✔ classification ceiling: over-classified foreign memory may not cross the boundary (S4/M2) [90m(1.161167ms)[39m[39m
+[32m✔ partition is fail-closed: unreachable source node denies inbound memory (M6) [90m(1.577916ms)[39m[39m
+[32m✔ replay-stale bundle rejected: expired bundle is not fresh (M7) [90m(2.035291ms)[39m[39m
+[32m✔ classification is monotonic: promotion may not declassify (MGP-3/S4) [90m(0.954166ms)[39m[39m
+[32m✔ consolidation raises classification to the max of its sources [90m(60.10075ms)[39m[39m
+[32m✔ recall projection withholds records above the requester clearance (S4/M2) [90m(26.549917ms)[39m[39m
+[32m✔ audit-preserving forgetting: value unrecallable, audit fact retained (M9) [90m(6.035125ms)[39m[39m
+[32m✔ revocation propagates: a revoked record is excluded from recall (fail-closed) [90m(3.461458ms)[39m[39m
+[32m✔ memory audit chain is tamper-evident (hash break detected) [90m(5.598167ms)[39m[39m
+[32m✔ commit persists an active memory via evolution and it is recallable [90m(13.545333ms)[39m[39m
+[32m✔ durable mutation is evolution-routed (evolution audit chain records the persist) [90m(3.394375ms)[39m[39m
+[32m✔ recall of an unknown memory is denied and audited (no-synthesis, M4) [90m(0.396083ms)[39m[39m
+[32m✔ fail-closed expiry: an expired ephemeral memory is not recallable (M3) [90m(1.38475ms)[39m[39m
+[32m✔ legal-hold suspends time expiry and forgetting [90m(1.388625ms)[39m[39m
+[32m✔ versioned supersession: highest active version is recalled (no edit-in-place) [90m(13.113583ms)[39m[39m
+[32m✔ lifecycle table is fail-closed on illegal transitions [90m(0.130208ms)[39m[39m
+[32m✔ snapshot detects drift after a new memory is committed [90m(4.143417ms)[39m[39m
+[32m✔ retention derives finite expiry for durable (nothing durable-by-omission) [90m(0.339166ms)[39m[39m
+[32m✔ put / get / query by prefix [90m(0.904708ms)[39m[39m
+[32m✔ validateOnWrite rejects invalid values [90m(0.410458ms)[39m[39m
+[32m✔ validate exposes issues without throwing [90m(0.078958ms)[39m[39m
+[32m✔ full lifecycle: a local entity is created, ratified, committed active, and resolvable [90m(35.155458ms)[39m[39m
+[32m✔ lifecycle table permits governed forward path + revoke, forbids illegal jumps [90m(0.117708ms)[39m[39m
+[32m✔ committed entity resolves to the active record [90m(2.967959ms)[39m[39m
+[32m✔ higher version supersedes on resolve (highest active wins) [90m(46.905ms)[39m[39m
+[32m✔ query filters by kind and excludes non-active by default [90m(22.194709ms)[39m[39m
+[32m✔ graph projection assembles active entities, relationships, and classification edges [90m(16.603208ms)[39m[39m
+[32m✔ graph is a pure projection: a revoked record is excluded fail-closed [90m(5.611333ms)[39m[39m
+[32m✔ SI-1 referential integrity: a relationship with a dangling range is blocked (fail-closed) [90m(7.247084ms)[39m[39m
+[32m✔ SI-2 taxonomy acyclicity: a classification cycle is rejected (closes O5) [90m(15.257625ms)[39m[39m
+[32m✔ SI-2 detectCycle is a pure DAG check [90m(0.161166ms)[39m[39m
+[32m✔ SI-3 domain/range conformance: non-reciprocal inverseOf is blocked [90m(7.458583ms)[39m[39m
+[32m✔ SI-4 attribute conformance: a duplicate attribute name is blocked [90m(0.712583ms)[39m[39m
+[32m✔ SI-6 disjointness: co-classification under two disjoint types is blocked [90m(9.048667ms)[39m[39m
+[32m✔ SI-7 authority-neutrality: a constraint that targets a non-waivable S1/S3/S4 control is blocked [90m(0.5525ms)[39m[39m
+[32m✔ a well-formed graph passes the semantic-integrity gate (no block violations) [90m(5.488875ms)[39m[39m
+[32m✔ O3 separation of duties: author == ratifier is rejected [90m(1.025834ms)[39m[39m
+[32m✔ commit to active without governance is denied (deny-by-default) [90m(1.079917ms)[39m[39m
+[32m✔ O2 replay: a re-used ratification nonce is rejected by verify with a nonce cache [90m(0.673333ms)[39m[39m
+[32m✔ O8 tampered unit: a record whose unitHash does not match its unit is rejected [90m(1.650667ms)[39m[39m
+[32m✔ O9 revoked record no longer resolves (fail-closed) [90m(3.540125ms)[39m[39m
+[32m✔ O7 federated import is trust-clamped to the boundary ceiling [90m(3.248458ms)[39m[39m
+[32m✔ O6 local sovereignty: a foreign record cannot override a local active record [90m(4.850666ms)[39m[39m
+[32m✔ federation import without a valid token is denied [90m(0.681667ms)[39m[39m
+[32m✔ federation import from a non-member issuer is denied (deny-by-default) [90m(0.618125ms)[39m[39m
+[32m✔ commit records an ONTO_ACTIVATED audit event [90m(2.689375ms)[39m[39m
+[32m✔ O12 audit chain is hash-chained and independently verifiable; tamper is detected [90m(3.10375ms)[39m[39m
+[32m✔ a blocked integrity commit is audited as ONTO_INTEGRITY and never persisted [90m(2.379084ms)[39m[39m
+[32m✔ O11 sole mutation path: persistence flows through the Evolution Fabric (applied + audited) [90m(4.323167ms)[39m[39m
+[32m✔ telemetry: metrics are ingested only for an active tenant + registered metric (deny-by-default) [90m(4.202291ms)[39m[39m
+[32m✔ telemetry: ring buffer is bounded by tenant retention (backpressure via eviction) [90m(0.490917ms)[39m[39m
+[32m✔ observability: percentile aggregation + snapshot payload is tenant-scoped [90m(1.537625ms)[39m[39m
+[32m✔ health: fail-closed unknown with no fresh sample, healthy within bounds, unhealthy over max [90m(2.044334ms)[39m[39m
+[32m✔ slo: compliant within objective, breach recorded to audit when exceeded [90m(7.336791ms)[39m[39m
+[32m✔ alert: crossing the threshold fires once (edge) and auto-opens a governed incident [90m(52.468ms)[39m[39m
+[32m✔ evidence: an attested+sealed proof persists via evolution and resolves as latest [90m(5.671375ms)[39m[39m
+[32m✔ evidence: sealing to sealed requires a valid attestation and an SoD seal (fail-closed) [90m(0.82475ms)[39m[39m
+[32m✔ evidence: attestation for a tampered unit is rejected (hash binding) [90m(0.774542ms)[39m[39m
+[32m✔ incident: governed lifecycle open->acknowledged->mitigated->resolved->closed, versioned + audited [90m(44.707333ms)[39m[39m
+[32m✔ incident: illegal transitions are forbidden by the lifecycle table [90m(8.675167ms)[39m[39m
+[32m✔ audit: hash chain verifies and detects tampering [90m(7.774709ms)[39m[39m
+[32m✔ audit: cross-node reconciliation flags state-hash divergence (distributed capable) [90m(3.032084ms)[39m[39m
+[32m✔ multi-tenant: a query never crosses tenant boundaries [90m(4.705708ms)[39m[39m
+[32m✔ revocation: a revoked proof is excluded from resolution (fail-closed) [90m(5.222167ms)[39m[39m
+[32m✔ WRITE -> RESTART -> REHYDRATE -> IDENTICAL STATE (AC-11) [90m(65.176667ms)[39m[39m
+[32m✔ authoritative metadata survives process restart, latest version wins (AC-1, AC-9) [90m(120.596917ms)[39m[39m
+[32m✔ registry state survives restart and its derived version index is rebuilt (AC-3, AC-5) [90m(117.590125ms)[39m[39m
+[32m✔ configuration state survives restart with layered merge intact (AC-4) [90m(97.113667ms)[39m[39m
+[32m✔ derived composition graph rebuilds and executes after restart (AC-5) [90m(56.336125ms)[39m[39m
+[32m✔ authoritative state survives a real separate OS process (AC-2, machine restart) [90m(496.60975ms)[39m[39m
+[32m✔ two independent rehydrations of the same log produce identical state (AC-10) [90m(110.478292ms)[39m[39m
+[32m✔ rebuild is idempotent across repeated restarts (AC-10) [90m(131.902625ms)[39m[39m
+[32m✔ adapter-level determinism: same log replayed into a fresh store matches (AC-10) [90m(1.048ms)[39m[39m
+[32m✔ metadata port restores its records independently (AC-1) [90m(31.056875ms)[39m[39m
+[32m✔ registry port restores records and rebuilds the derived version index (AC-3, AC-5) [90m(57.66825ms)[39m[39m
+[32m✔ registry restores after an unregister (append-only tombstone semantics) (AC-3, AC-9) [90m(60.27575ms)[39m[39m
+[32m✔ configuration port restores layered values and dynamic layer order (AC-4) [90m(28.477042ms)[39m[39m
+[32m✔ a durable runtime does NOT boot into empty state when durable state exists [90m(8.935375ms)[39m[39m
+[32m✔ Evolution Fabric governed mutation persists and rehydrates (AC-8, AC-9) [90m(119.082666ms)[39m[39m
+[32m✔ register / get / list [90m(2.791375ms)[39m[39m
+[32m✔ resolve returns highest satisfying version [90m(1.579708ms)[39m[39m
+[32m✔ has honors range [90m(0.147917ms)[39m[39m
+[32m✔ duplicate registration is a conflict [90m(0.86625ms)[39m[39m
+[32m✔ invalid version rejected [90m(0.260291ms)[39m[39m
+[32m✔ unregister removes the record [90m(0.241583ms)[39m[39m
+[32m✔ validates a well-formed object [90m(2.475958ms)[39m[39m
+[32m✔ reports missing required property [90m(0.245292ms)[39m[39m
+[32m✔ reports type mismatch [90m(0.208292ms)[39m[39m
+[32m✔ rejects additional properties when disallowed [90m(0.206ms)[39m[39m
+[32m✔ validates enum and const [90m(0.301875ms)[39m[39m
+[32m✔ validates arrays and numeric bounds [90m(0.2225ms)[39m[39m
+[32m✔ validates string length and pattern [90m(0.227917ms)[39m[39m
+[32m✔ isValidVersion accepts and rejects [90m(0.954417ms)[39m[39m
+[32m✔ compareVersions orders correctly [90m(0.178166ms)[39m[39m
+[32m✔ satisfies handles exact, caret, gte and wildcard [90m(0.115958ms)[39m[39m
+[32m✔ caret respects 0.x semantics [90m(0.092333ms)[39m[39m
+[32m✔ maxSatisfying returns the highest matching version [90m(0.126ms)[39m[39m
+[32m✔ S1 — sandbox escape: a write outside the run keyspace is rejected + audited [90m(3.342ms)[39m[39m
+[32m✔ S2 — snapshot/twin poisoning: a forged/unsigned snapshot fails verify ⇒ bind denied [90m(1.521208ms)[39m[39m
+[32m✔ S3 — non-deterministic leakage: an unattested non-det forecast is advisory-only (non-committable) [90m(0.250125ms)[39m[39m
+[32m✔ S4 — predictive/model overreach: promotion without policy-PASS is denied [90m(4.247542ms)[39m[39m
+[32m✔ S5 — resource exhaustion: exceeding the step/entity budget aborts [90m(1.528875ms)[39m[39m
+[32m✔ S6 — classification leakage: emitting an impact below its inherited class is denied [90m(0.625959ms)[39m[39m
+[32m✔ S7 — replay/stale: a replayed snapshot nonce is denied [90m(0.704084ms)[39m[39m
+[32m✔ S8 — authority escalation: no commit power is expressible; SoD blocks certifier==modeller [90m(1.175666ms)[39m[39m
+[32m✔ S9 — federated poisoning: an over-cap foreign contribution is denied (advisory/deny-only) [90m(0.577833ms)[39m[39m
+[32m✔ S10 — audit divergence: a tampered audit chain fails verification [90m(0.208042ms)[39m[39m
+[32m✔ S11 — existential/civilization scope creep: civilization scenario without Board is denied [90m(0.574167ms)[39m[39m
+[32m✔ S12 — digital-twin drift/impersonation: a stale twin is non-projectable (fail-closed) [90m(0.95075ms)[39m[39m
+[32m✔ FDG premature binding is rejected for all three deferred gates (INT/MEM/ONT) [90m(1.064875ms)[39m[39m
+[32m✔ audit chain appends and verifies intact [90m(1.569875ms)[39m[39m
+[32m✔ reproducibility digest is recorded on projection audit entries (A2/A8) [90m(0.117667ms)[39m[39m
+[32m✔ tampering with a recorded entry is detected on verify (S10) [90m(0.172333ms)[39m[39m
+[32m✔ reordering entries breaks chain continuity [90m(0.112125ms)[39m[39m
+[32m✔ a satisfied constraint set passes (ok=true) [90m(2.8105ms)[39m[39m
+[32m✔ a hard-constraint failure ⇒ ok=false (non-promotable, S4) [90m(1.104209ms)[39m[39m
+[32m✔ a preserved-invariant failure ⇒ ok=false [90m(0.130167ms)[39m[39m
+[32m✔ a soft-constraint miss is a warning, not a failure [90m(0.09925ms)[39m[39m
+[32m✔ a constraint referencing an unbound ontology:* surface is DENIED, never skipped (FDG-ONT) [90m(0.819834ms)[39m[39m
+[32m✔ full lifecycle commits through Evolution then tears down the sandbox [90m(16.429625ms)[39m[39m
+[32m✔ the simulation fabric holds NO independent commit power (self-commit impossible, B5/S8) [90m(0.933791ms)[39m[39m
+[32m✔ a valid foreign contribution is admitted advisory-only, never promotable [90m(7.592083ms)[39m[39m
+[32m✔ trust is clamped to min(asserted, delegated, boundary) [90m(0.675459ms)[39m[39m
+[32m✔ an over-cap assertion (asserted > boundary) is denied (S9) [90m(0.705875ms)[39m[39m
+[32m✔ an unsigned or badly-signed foreign contribution is denied [90m(0.579291ms)[39m[39m
+[32m✔ local shadows foreign: a local artifact of the same id rejects the foreign one [90m(0.559166ms)[39m[39m
+[32m✔ under partition, foreign contributions fail closed [90m(1.157083ms)[39m[39m
+[32m✔ valid projection + passing constraints ⇒ adopt-proposal, advisory-only [90m(22.497167ms)[39m[39m
+[32m✔ invalid projection ⇒ reject [90m(0.359792ms)[39m[39m
+[32m✔ failing hard constraints ⇒ reject with a hard-constraint risk [90m(0.220291ms)[39m[39m
+[32m✔ soft warnings ⇒ inconclusive [90m(0.206041ms)[39m[39m
+[32m✔ impact inherits MAX class of inputs; emitting below inherited class is denied (S6) [90m(0.437708ms)[39m[39m
+[32m✔ deterministic projection produces a valid, reproducible projection [90m(6.532333ms)[39m[39m
+[32m✔ same inputs ⇒ identical projectionHash (re-derivable, A2) [90m(0.816875ms)[39m[39m
+[32m✔ a different seed ⇒ different reproducibility tuple [90m(0.652792ms)[39m[39m
+[32m✔ registering a non-deterministic model is denied (FDG-INT) [90m(0.4155ms)[39m[39m
+[32m✔ projection classification inherits the MAX of its inputs (S6) [90m(0.564625ms)[39m[39m
+[32m✔ a fully-valid, policy-PASS, certified+ratified promotion commits via Evolution [90m(27.275ms)[39m[39m
+[32m✔ an invalid projection cannot be promoted (S4) [90m(1.533583ms)[39m[39m
+[32m✔ a non-adopt impact recommendation blocks promotion [90m(1.061ms)[39m[39m
+[32m✔ SoD: certifier == modeller is rejected (S8) [90m(2.610208ms)[39m[39m
+[32m✔ the reproducibility gate rejects a mismatched re-derivation (S3/S10) [90m(1.2115ms)[39m[39m
+[32m✔ policy deny-by-default blocks promotion when no allow policy applies (S4) [90m(3.563334ms)[39m[39m
+[32m✔ a revoked run blocks promotion (fail-closed) [90m(2.282916ms)[39m[39m
+[32m✔ revoking an artifact makes it isRevoked and blocks assertNoneRevoked [90m(20.4095ms)[39m[39m
+[32m✔ revocation propagates across the artifact chain (twin/model/run/result) [90m(0.987042ms)[39m[39m
+[32m✔ revocation is durable in the reserved simulation:revoked namespace [90m(0.286625ms)[39m[39m
+[32m✔ revocation is forward-only (no un-revoke method exists) [90m(0.212625ms)[39m[39m
+[32m✔ a not-revoked artifact passes assertNoneRevoked [90m(0.302292ms)[39m[39m
+[32m✔ author → authorize → activate a standard scenario [90m(8.888792ms)[39m[39m
+[32m✔ authoring with an authority lacking the 'scenario' power is denied [90m(2.118709ms)[39m[39m
+[32m✔ a scenario whose class exceeds the authority's class cap is denied [90m(0.677167ms)[39m[39m
+[32m✔ an over-scope scenario (outside the authority scope glob) is denied [90m(0.588542ms)[39m[39m
+[32m✔ a civilization-class scenario without Board authorization is denied (SGP-9, S11) [90m(0.516ms)[39m[39m
+[32m✔ interventions materialize ONLY inside the run sandbox (non-actuation) [90m(0.640375ms)[39m[39m
+[32m✔ exceeding the step budget aborts (S5, BUDGET_EXCEEDED) [90m(0.574042ms)[39m[39m
+[32m✔ bind a twin to a valid signed snapshot => active [90m(6.994709ms)[39m[39m
+[32m✔ an unsigned or tampered snapshot is rejected (S2, SNAPSHOT_INVALID) [90m(0.7245ms)[39m[39m
+[32m✔ an expired snapshot is rejected (S7, SNAPSHOT_INVALID) [90m(0.459042ms)[39m[39m
+[32m✔ replaying a snapshot nonce is rejected (S7) [90m(0.56375ms)[39m[39m
+[32m✔ a stale twin is non-projectable (fail-closed, S12/TWIN_DRIFT) [90m(0.473666ms)[39m[39m
+[32m✔ FDG-MEM memory read enrichment is denied during PI-11 (inert seam) [90m(0.279584ms)[39m[39m
+[32m✔ the twin never exposes a write path to its target (non-actuation) [90m(0.180333ms)[39m[39m
+[32m✔ registry indexes an authority under the allowed namespace and round-trips it [90m(4.758584ms)[39m[39m
+[32m✔ all simulation writes stay within allowed namespaces [90m(0.452042ms)[39m[39m
+[32m✔ sandbox allocate creates an isolated store; a confined write succeeds [90m(1.509417ms)[39m[39m
+[32m✔ sandbox write OUTSIDE the run keyspace is rejected (SANDBOX_ESCAPE) and audited (S1) [90m(0.813417ms)[39m[39m
+[32m✔ sandbox teardown disposes all contents (fail-closed, idempotent) [90m(0.200834ms)[39m[39m
+[32m✔ double allocation of a live run is rejected [90m(0.237416ms)[39m[39m
+[34mℹ tests 378[39m
+[34mℹ suites 0[39m
+[34mℹ pass 378[39m
+[34mℹ fail 0[39m
+[34mℹ cancelled 0[39m
+[34mℹ skipped 0[39m
+[34mℹ todo 0[39m
+[34mℹ duration_ms 5220.47425[39m

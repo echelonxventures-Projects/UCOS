@@ -1,5 +1,26 @@
 # UCOS — PHASE 21 · Constitutional Reconciliation (AUTH-012)
 
+> ---
+> ## ⚠️ SUPERSEDED — DETERMINATION NO LONGER CURRENT (added Phase 21.1)
+>
+> **This report's final verdict ("AUTHORITY CHAIN DEFECT REMAINS") is SUPERSEDED.** It is preserved
+> unaltered as a point-in-time analysis (INV-10 append-only); its findings and conclusions below are
+> **historically accurate as of the ledger state it examined (AUTH-012 v1.0.5, AD-0001..AD-0015)** and
+> have **not** been rewritten.
+>
+> | Item | Current state of record |
+> |------|-------------------------|
+> | **Current determination of record** | **`AUTH-REST-004` — Final Authority State** (`AUTH-REST-004-FINAL-AUTHORITY-STATE.md`): **AUTHORITY CHAIN RESTORED — AUTH-012 CLOSED**. |
+> | **Restored authority chain** | **AUTH-012 v1.0.13** — complete and consistent **AD-0001..AD-0023**, synchronized with `AUTHORITY-INDEX` v1.0.13. |
+> | **Corrective action** | **Phase 21.1 — Authority Chain Restoration** (`AUTH-REST-001` verification · `AUTH-REST-002` ledger reconciliation · `AUTH-REST-003` conflict resolution · `AUTH-REST-004` final state), executing the AUTH-REC-003 §4 restoration procedure recommended by this report. |
+> | **Findings disposition** | F-REC-1 (ledger divergence) **RESOLVED** — AD-0016..AD-0023 enrolled append-only. F-REC-2 (AD-0021 conflict) **RESOLVED** — AD-0021 = PI-8 Ontology confirmed; AD-0022 §0 note superseded. F-REC-3/F-REC-4 (release link / version bookkeeping) **RESOLVED** — ledger head v1.0.13; index synchronized. |
+> | **Registry note** | `CTX-REG-001` updated (Phase 21.1 reconciliation, RD-1/RD-2) to reflect AUTH-012 v1.0.13 and register `UCOS-AUTH-REST-001..004`. |
+>
+> **Read `AUTH-REST-004` for the authoritative, current authority-chain state.** The analysis below remains
+> valid as the *reconstruction and recommendation* that motivated the restoration; only its **"DEFECT
+> REMAINS" verdict** is no longer current.
+> ---
+
 ## Authoritative Reconstruction of the Constitutional Decision Chain
 
 | Field | Value |

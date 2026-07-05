@@ -1,0 +1,66 @@
+{
+  "fieldSchemaModelVersion": "ucos-field-schema/1.0.0",
+  "id": "UCOS-DATA-CONTRACT-018/ConfigurationValue",
+  "version": "1.0.0",
+  "payloadFamily": "ConfigurationValue",
+  "dataContract": "UCOS-DATA-CONTRACT-018",
+  "title": "ConfigurationValue",
+  "description": "Authoritative field-level payload schema for the ConfigurationValue family of UCOS-DATA-CONTRACT-018 (API-018 Configuration & Metadata). A ConfigurationValue is the resolved, layered configuration for a scope (LD-17 / PD-17 Platform; PDE-070 Configuration Set). Field authority: UCOS-PDATA-ARCH-001. Fields are derived from the implemented Configuration substrate (ConfigurationPort, configuration-runtime, EV-PI23-BUILD VERIFIED) and API-018 operation intent. Classification is inherited at the domain level (MC-01) and is not a payload field. Transport form deferred to Prompt 08; security controls deferred to Prompt 09.",
+  "schema": {
+    "kind": "object",
+    "additionalProperties": false,
+    "description": "One configuration value or resolved configuration set for a scope.",
+    "properties": [
+      {
+        "name": "scope",
+        "required": true,
+        "schema": {
+          "kind": "primitive",
+          "type": "string",
+          "description": "Configuration scope selector. Source authority: API-018 GET /configuration/{scope} (UCOS-CONTRACT-CAT-001 §A).",
+          "constraints": { "minLength": 1 }
+        }
+      },
+      {
+        "name": "key",
+        "required": false,
+        "schema": {
+          "kind": "primitive",
+          "type": "string",
+          "description": "Specific configuration key within the scope, present when addressing a single value. Source authority: API-018 PUT /configuration/{scope}/{key}.",
+          "constraints": { "minLength": 1 }
+        }
+      },
+      {
+        "name": "capabilityId",
+        "required": false,
+        "schema": {
+          "kind": "primitive",
+          "type": "string",
+          "description": "Owning capability the configuration applies to (CAP-10). Source authority: ConfigurationPort — values are stored and resolved per capabilityId (meta-core/ports.ts, configuration-store.ts).",
+          "constraints": { "minLength": 1 }
+        }
+      },
+      {
+        "name": "layer",
+        "required": false,
+        "schema": {
+          "kind": "enum",
+          "base": "string",
+          "values": ["default", "environment", "instance"],
+          "description": "Resolution layer contributing this value; layers deep-merge in order (later wins). Source authority: ConfigurationPort DEFAULT_LAYER_ORDER (configuration-store.ts)."
+        }
+      },
+      {
+        "name": "value",
+        "required": true,
+        "schema": {
+          "kind": "object",
+          "additionalProperties": true,
+          "properties": [],
+          "description": "The effective configuration value/set. Open object: an arbitrary structured configuration map. Source authority: ConfigurationPort.resolve → Record<string, unknown> (configuration-store.ts). Interior shape is capability-defined, not redefined here."
+        }
+      }
+    ]
+  }
+}

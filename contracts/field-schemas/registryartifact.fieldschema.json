@@ -1,0 +1,76 @@
+{
+  "fieldSchemaModelVersion": "ucos-field-schema/1.0.0",
+  "id": "UCOS-DATA-CONTRACT-027/RegistryArtifact",
+  "version": "1.0.0",
+  "payloadFamily": "RegistryArtifact",
+  "dataContract": "UCOS-DATA-CONTRACT-027",
+  "title": "RegistryArtifact",
+  "description": "Authoritative field-level payload schema for the RegistryArtifact family of UCOS-DATA-CONTRACT-027 (API-027 Registry). A RegistryArtifact is one versioned, registered unit of authoritative knowledge of what exists (LD-14 / PD-14 Registry). Field authority: UCOS-PDATA-ARCH-001. Fields are derived from the implemented Registry substrate (RegistryPort/RegistryRecord, meta-core/ports.ts, EV-PI23-BUILD VERIFIED) and API-027 operation intent; transport form deferred to Prompt 08, security controls deferred to Prompt 09.",
+  "schema": {
+    "kind": "object",
+    "additionalProperties": false,
+    "description": "One registered artifact record. Realizes LDO-059 Artifact Descriptor / PDE-059.",
+    "properties": [
+      {
+        "name": "id",
+        "required": true,
+        "schema": {
+          "kind": "primitive",
+          "type": "string",
+          "description": "Stable, unique artifact identifier. Source authority: RegistryRecord.id (meta-core/ports.ts).",
+          "constraints": { "minLength": 1 }
+        }
+      },
+      {
+        "name": "version",
+        "required": true,
+        "schema": {
+          "kind": "primitive",
+          "type": "string",
+          "description": "Semantic version MAJOR.MINOR.PATCH. Source authority: RegistryRecord.version (SemVer, contracts/types.ts); versioning via Evolution (migration-only, IP-14/IP-15).",
+          "constraints": { "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" }
+        }
+      },
+      {
+        "name": "kind",
+        "required": true,
+        "schema": {
+          "kind": "enum",
+          "base": "string",
+          "values": ["capability", "contract"],
+          "description": "Artifact kind. Source authority: RegistryRecord.kind (meta-core/ports.ts) — the two registrable descriptor kinds."
+        }
+      },
+      {
+        "name": "descriptor",
+        "required": true,
+        "schema": {
+          "kind": "object",
+          "additionalProperties": true,
+          "properties": [],
+          "description": "The registered descriptor payload (CapabilityDescriptor | ContractDescriptor). Open object: internal shape is owned by the descriptor schemas (meta-core/descriptor-schemas.ts), not redefined here. Source authority: RegistryRecord.descriptor."
+        }
+      },
+      {
+        "name": "sourceDir",
+        "required": false,
+        "schema": {
+          "kind": "primitive",
+          "type": "string",
+          "description": "Directory the descriptor was loaded from (relative provider resolution). Source authority: RegistryRecord.sourceDir (optional).",
+          "constraints": { "minLength": 1 }
+        }
+      },
+      {
+        "name": "status",
+        "required": false,
+        "schema": {
+          "kind": "enum",
+          "base": "string",
+          "values": ["registered", "superseded"],
+          "description": "Registration lifecycle state. Source authority: EVT-027 lifecycle events ArtifactRegistered / ArtifactSuperseded (UCOS-CONTRACT-CAT-001 §A)."
+        }
+      }
+    ]
+  }
+}

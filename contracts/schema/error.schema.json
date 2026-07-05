@@ -1,0 +1,39 @@
+{
+  "$id": "ucos:contracts/schema/error.schema.json",
+  "dialect": "json-schema-2020-12",
+  "title": "UCOS Contract — Error Model Meta-Schema",
+  "description": "Meta-schema for the error model of a contract operation. Transport-neutral and implementation-neutral. Error shapes are OPTIONAL because UCOS-CONTRACT-CAT-001 defines NO error model at the boundary level; absence is represented explicitly via declared:false, never invented.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "declared": {
+      "type": "boolean",
+      "description": "true when a concrete error model is defined; false when the catalog defines none (the case for API-018/027)."
+    },
+    "placeholder": {
+      "$ref": "contract.schema.json#/$defs/placeholderState"
+    },
+    "errors": {
+      "type": "array",
+      "description": "OPTIONAL set of declared error conditions. Empty/absent when the catalog defines none.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Stable, transport-neutral error code (NOT an HTTP status)."
+          },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "payloadRef": {
+            "$ref": "contract.schema.json#/$defs/payloadRef"
+          }
+        },
+        "required": ["code"]
+      }
+    }
+  },
+  "required": ["declared"],
+  "$comment": "Additive evolution only: future versions may add OPTIONAL properties but MUST NOT remove or repurpose existing ones. No implementation-specific fields (no HTTP status codes, no framework error types)."
+}

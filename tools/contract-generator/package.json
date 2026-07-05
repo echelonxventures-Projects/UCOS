@@ -1,0 +1,24 @@
+{
+  "name": "@ucos/contract-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "UCOS Contract Skeleton Generator (PHASE 12 — WI-07). Deterministic, fail-closed pipeline: Contract Catalog inventory -> canonical generator model -> transport-neutral SDK skeletons (interfaces, operation clients, request/response/error scaffolds, registry manifests). Registry-driven; emits only Stage-3 PARTIAL-permitted skeletons; never invents deferred field-level schemas.",
+  "engines": {
+    "node": ">=23.6.0"
+  },
+  "bin": {
+    "ucos-contract-generate": "./src/cli.ts"
+  },
+  "scripts": {
+    "generate": "node src/cli.ts",
+    "generate:check": "node src/cli.ts --check",
+    "test": "node --test \"test/*.test.ts\"",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.0",
+    "typescript": "5.9.3"
+  },
+  "license": "UNLICENSED"
+}

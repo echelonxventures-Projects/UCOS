@@ -1,0 +1,153 @@
+{
+  "artifactId": "PROG-EXT-BLOCKER-001",
+  "description": "External Blocker Model (PHASE G.2, WS1). Registry of program items whose closure CANNOT be achieved by software and requires an external actor (Authority Board, Independent Adjudicator, human Operations, Certification Authority) to perform a governed action. The Constitutional Program Compiler consumes this to distinguish EXTERNAL_BLOCKED from INTERNAL_BLOCKED and to prevent token-wasting rediscovery. Append-only / migration-only per INV-10. Records reality exactly: it designates no actor, produces no attestation, and closes nothing.",
+  "vocabulary": {
+    "blockerClass": ["EXTERNAL"],
+    "reviewTriggerType": ["evidence-advance", "authority-action", "designation", "attestation"]
+  },
+  "externalBlockers": [
+    {
+      "id": "EXT-REAL-C-05",
+      "target": "REAL-C-05",
+      "targetClosure": "REAL-C-05",
+      "blockerClass": "EXTERNAL",
+      "solvableBySoftware": false,
+      "postActionSolvableBySoftware": false,
+      "reason": "Independent attestation (proposer != attestor) of the self-attested PI-8/PI-9 ratifications, the retroactive AD-0016..0023 enrollment, and the R13/R14 ruling. Self-closure is forbidden (SIG-5 / AUTH-009 Separation of Duties): the authoring/construction chain cannot attest its own work. No software agent can manufacture an independent adjudicator, so this blocker is intrinsically external and permanently non-software-solvable.",
+      "required_actor": "UCOS Authority Board (designation) + a distinct Independent Adjudicator (attestation), custodian: Chief Authority Architect",
+      "required_action": "G1 designate a distinct-actor Independent Adjudicator (not in authoring/construction chain) -> G2 enroll adjudicator key (KMS-backed, disjoint custody) -> G3 produce and verify genesis independent attestation -> durable AUTH-012 enrollment. G4 dual-witness applies at terminal/Operational certification.",
+      "required_evidence": ["EV-REAL-C-05", "EV-PI8-RAT", "EV-PI9-RAT"],
+      "required_authority": "Enrolled AUTH-012 Board decision; AUTH-009 (Separation of Duties, terminal authority); AUTH-008 (S1/S3/S4)",
+      "blockedWorkItems": ["REAL-C-05", "PI-8", "PI-9"],
+      "blockedEvidence": ["EV-REAL-C-05", "EV-PI8-RAT", "EV-PI9-RAT"],
+      "last_review_date": "2026-07-03",
+      "last_review_phase": "PHASE-G.1",
+      "last_review_determination": "PARTIAL — mechanism design-complete, ledger restoration VERIFIED, 0 independent attestations, gate G1-G4 = 0/4, closure criteria C1-C4 = 0/4. Closable only by the Authority Board via G1; NOT closable by this program (SIG-5).",
+      "review_trigger": {
+        "type": "evidence-advance",
+        "watchEvidence": ["EV-REAL-C-05", "EV-PI8-RAT", "EV-PI9-RAT"],
+        "baselineStates": {
+          "EV-REAL-C-05": "SUBMITTED",
+          "EV-PI8-RAT": "SUBMITTED",
+          "EV-PI9-RAT": "SUBMITTED"
+        },
+        "baselineAttestationChainLength": 0,
+        "reopenWhen": "ANY watched evidence advances beyond its baseline state, OR a new independent adjudicator designation, registered adjudicator key, genesis attestation, or AUTH-012 Board authority action is recorded.",
+        "additionalTriggers": [
+          "new independent adjudicator designation (G1)",
+          "new registered adjudicator key (G2)",
+          "new genesis independent attestation (G3)",
+          "new AUTH-012 Board authority action"
+        ]
+      },
+      "rediscoveryNote": "Phase G.1 already produced the definitive determination. Absent a review trigger, re-auditing REAL-C-05 yields the same PARTIAL result and only consumes tokens. DO NOT REINVESTIGATE without new evidence."
+    },
+    {
+      "id": "EXT-REAL-C-03",
+      "target": "REAL-C-03",
+      "targetClosure": "REAL-C-03",
+      "blockerClass": "EXTERNAL",
+      "solvableBySoftware": false,
+      "postActionSolvableBySoftware": false,
+      "reason": "Operational Evidence Closure requires apply-time evidence (G12-1 environment provisioning, G12-2 delivery-pipeline promotion, G12-3 DR drill with measured RPO/RTO, immutable audit trail + availability/p99 metrics) and issuance of Operational Certification. These are governed human-executed acts (AD-0009 Approval-Required); software cannot fabricate live apply logs, real DR measurements, or a certification decision.",
+      "required_actor": "Operations (human-executed under AD-0009) + Certification Authority",
+      "required_action": "Provision ENV-DEV/ENV-INT with live apply logs (ACT-06); bind CI runner and execute the delivery pipeline (ACT-07); run contract tests (ACT-08); execute backup/restore + DR drill (ACT-09); capture immutable audit trail + availability metrics (ACT-10); issue Operational Certification (ACT-12).",
+      "required_evidence": ["EV-ACT-06", "EV-ACT-07", "EV-ACT-08", "EV-ACT-09", "EV-ACT-10", "EV-ACT-12"],
+      "required_authority": "AD-0015 Limited Evidence Authorization; AD-0009 Approval-Required; GATE-SEC-001, GATE-QUAL-001, GATE-REL-001",
+      "blockedWorkItems": ["ACT-06", "ACT-07", "ACT-08", "ACT-09", "ACT-10", "ACT-12"],
+      "blockedEvidence": ["EV-ACT-06", "EV-ACT-07", "EV-ACT-08", "EV-ACT-09", "EV-ACT-10", "EV-ACT-12"],
+      "last_review_date": "2026-07-03",
+      "last_review_phase": "PHASE-G.2",
+      "last_review_determination": "NO_GO — 0/6 operational-evidence items captured; blocked at the internal dependency root (ACT-11 observability ADR) before the human-executed acts can begin.",
+      "review_trigger": {
+        "type": "evidence-advance",
+        "watchEvidence": ["EV-ACT-06", "EV-ACT-07", "EV-ACT-08", "EV-ACT-09", "EV-ACT-10", "EV-ACT-12"],
+        "baselineStates": {
+          "EV-ACT-06": "PENDING",
+          "EV-ACT-07": "PENDING",
+          "EV-ACT-08": "PENDING",
+          "EV-ACT-09": "PENDING",
+          "EV-ACT-10": "PENDING",
+          "EV-ACT-12": "PENDING"
+        },
+        "reopenWhen": "ANY watched operational-evidence item advances beyond PENDING (i.e., real apply/pipeline/DR/audit evidence is captured) or Operational Certification is issued.",
+        "additionalTriggers": [
+          "governed provisioning apply logs captured",
+          "pipeline promotion evidence captured",
+          "measured RPO/RTO from DR drill",
+          "Operational Certification issued"
+        ]
+      },
+      "rediscoveryNote": "The gap is captured operational evidence, not analysis. Re-analysis produces no new evidence. DO NOT REINVESTIGATE without captured operational evidence."
+    },
+    {
+      "id": "EXT-REAL-C-04",
+      "target": "REAL-C-04",
+      "targetClosure": "REAL-C-04",
+      "blockerClass": "EXTERNAL",
+      "solvableBySoftware": false,
+      "postActionSolvableBySoftware": true,
+      "reason": "Design-Only Fabric Implementation Closure requires PI-10 (Intelligence) construction under a scoped Article IX release AD-0024 that has NOT been issued, plus independent PI-10/PI-11 ratification. Issuing AD-0024 is an Authority Board governance act that software cannot self-authorize. Once AD-0024 is issued, PI-10 construction and PI-11 construction (already authorized under AD-0022 conditional) are internally software-solvable; ratification independence is subject to REAL-C-05.",
+      "required_actor": "UCOS Authority Board (AD-0024 issuance) + Independent Adjudicator (PI-10/PI-11 ratification)",
+      "required_action": "Issue scoped Article IX release AD-0024 for PI-10 -> construct PI-10 additively (propose-not-act, I1..I12 adversarial 0 residual High/High) -> construct PI-11 under AD-0022 conditional -> independent ratification of PI-10/PI-11.",
+      "required_evidence": ["EV-PI10-AUTH", "EV-PI10-IMP", "EV-PI10-VAL", "EV-PI10-SEC", "EV-PI10-AUD", "EV-PI11-IMP", "EV-PI11-VAL", "EV-PI11-SEC", "EV-PI11-AUD"],
+      "required_authority": "AD-0024 (NOT yet issued); AD-0022 conditional (SIM-COND-1..7); AD-0014 (no INV-14..20); GATE-QUAL-001, GATE-SEC-001",
+      "blockedWorkItems": ["PI-10"],
+      "blockedEvidence": ["EV-PI10-AUTH"],
+      "externalGate": "AD-0024 issuance (Authority Board)",
+      "last_review_date": "2026-07-03",
+      "last_review_phase": "PHASE-G.2",
+      "last_review_determination": "NO_GO — AD-0024 not issued (external Board gate). PI-10 BLOCKED on AD-0024 + incomplete PI-8/PI-9 dependencies; PI-11 is internally constructible under AD-0022 and is NOT external-blocked.",
+      "review_trigger": {
+        "type": "authority-action",
+        "watchEvidence": ["EV-PI10-AUTH"],
+        "baselineStates": {
+          "EV-PI10-AUTH": "PENDING"
+        },
+        "reopenWhen": "AD-0024 scoped Article IX release is issued by the Authority Board (EV-PI10-AUTH advances beyond PENDING).",
+        "additionalTriggers": ["AD-0024 issuance recorded on the AUTH-012 ledger"]
+      },
+      "rediscoveryNote": "PI-10 cannot begin until AD-0024 is issued; that is an external Board decision. PI-11 remains internally executable. DO NOT REINVESTIGATE the PI-10 authorization gap without an AD-0024 action."
+    },
+    {
+      "id": "EXT-CAP-AUTH",
+      "target": "CAP-C-01",
+      "targetClosure": "CAP-C-01",
+      "blockerClass": "EXTERNAL",
+      "solvableBySoftware": false,
+      "postActionSolvableBySoftware": true,
+      "reason": "The design-only capabilities discovered in PHASE X.1 (Economic, Resource, Workflow, Event, API service-runtime, UI, Autonomy, Ecosystem, Learning, Civilization, Reality Graph, Infrastructure) each require an Authority Board scoped Article IX release before any construction, because the Article IX generation lock is ACTIVE and construction is BLOCKED. Issuing a scoped release is a governance act software cannot self-authorize. Once a per-capability scoped release is issued, construction is internally software-solvable (analogous to PI-10/AD-0024).",
+      "required_actor": "UCOS Authority Board (per-capability scoped Article IX release); custodian: Chief Authority Architect",
+      "required_action": "For each design-only capability: architect (where unmodeled) -> issue a scoped Article IX release on the AUTH-012 ledger -> construct additively (propose-not-act; Evolution-only commit; S1/S3/S4; adversarial 0 residual High/High; baseline preserved) -> independent ratification.",
+      "required_evidence": ["EV-CAP-ECON-AUTH", "EV-CAP-WORKFLOW-AUTH", "EV-CAP-EVENT-AUTH", "EV-CAP-API-AUTH", "EV-CAP-UI-AUTH", "EV-CAP-AUTON-AUTH", "EV-CAP-ECOSYS-AUTH", "EV-CAP-INFRA-AUTH", "EV-CAP-LEARN-ARCH", "EV-CAP-CIV-AUTH", "EV-CAP-REALITY-ARCH", "EV-CAP-RES-ARCH"],
+      "required_authority": "Authority Board (AUTH-009 terminal); Constitution Article IX; AD-0014 (existential deferral for Civilization/Reality Graph); AUTH-008 (S1/S3/S4)",
+      "blockedWorkItems": ["CAP-ECON", "CAP-RES", "CAP-WORKFLOW", "CAP-EVENT", "CAP-API", "CAP-UI", "CAP-AUTON", "CAP-ECOSYS", "CAP-INFRA", "CAP-LEARN", "CAP-CIV", "CAP-REALITY"],
+      "blockedEvidence": ["EV-CAP-ECON-AUTH", "EV-CAP-WORKFLOW-AUTH", "EV-CAP-EVENT-AUTH", "EV-CAP-API-AUTH", "EV-CAP-UI-AUTH", "EV-CAP-AUTON-AUTH", "EV-CAP-ECOSYS-AUTH", "EV-CAP-INFRA-AUTH", "EV-CAP-LEARN-ARCH", "EV-CAP-CIV-AUTH", "EV-CAP-REALITY-ARCH", "EV-CAP-RES-ARCH"],
+      "externalGate": "Per-capability scoped Article IX release (Authority Board)",
+      "last_review_date": "2026-07-03",
+      "last_review_phase": "PHASE-X.1",
+      "last_review_determination": "NO_GO — 0/12 design-only capabilities authorized; each awaits an Authority Board scoped Article IX release (Article IX ACTIVE). Learning/Resource/Reality Graph additionally require architecture first; Civilization/Reality Graph are AD-0014-deferred.",
+      "review_trigger": {
+        "type": "authority-action",
+        "watchEvidence": ["EV-CAP-ECON-AUTH", "EV-CAP-WORKFLOW-AUTH", "EV-CAP-EVENT-AUTH", "EV-CAP-API-AUTH", "EV-CAP-UI-AUTH", "EV-CAP-AUTON-AUTH", "EV-CAP-ECOSYS-AUTH", "EV-CAP-INFRA-AUTH", "EV-CAP-LEARN-ARCH", "EV-CAP-CIV-AUTH", "EV-CAP-REALITY-ARCH", "EV-CAP-RES-ARCH"],
+        "baselineStates": {
+          "EV-CAP-ECON-AUTH": "PENDING",
+          "EV-CAP-WORKFLOW-AUTH": "PENDING",
+          "EV-CAP-EVENT-AUTH": "PENDING",
+          "EV-CAP-API-AUTH": "PENDING",
+          "EV-CAP-UI-AUTH": "PENDING",
+          "EV-CAP-AUTON-AUTH": "PENDING",
+          "EV-CAP-ECOSYS-AUTH": "PENDING",
+          "EV-CAP-INFRA-AUTH": "PENDING",
+          "EV-CAP-LEARN-ARCH": "PENDING",
+          "EV-CAP-CIV-AUTH": "PENDING",
+          "EV-CAP-REALITY-ARCH": "PENDING",
+          "EV-CAP-RES-ARCH": "PENDING"
+        },
+        "reopenWhen": "ANY watched capability-authorization evidence advances beyond PENDING (a scoped Article IX release or architecture authorization is recorded).",
+        "additionalTriggers": ["scoped Article IX release recorded on AUTH-012 ledger for any design-only capability"]
+      },
+      "rediscoveryNote": "The design-only capabilities are gated by Authority Board scoped releases, not by software. Re-analysis produces no authorization. DO NOT REINVESTIGATE without a recorded scoped release. NOTE: CAP-RECON (reconciliation of the implemented-invisible fabrics) is NOT external-blocked — it is software-solvable (GATE-DOC-001) and is the current next executable item."
+    }
+  ]
+}
