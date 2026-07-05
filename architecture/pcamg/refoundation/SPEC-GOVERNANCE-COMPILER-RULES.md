@@ -101,3 +101,23 @@ the four-stage compliance proof (`PCAMG-1000` M-X).
 - **Owner:** UCOS Authority Board (custodian: Governance Generation Steward).
 
 **END SPEC-GOVERNANCE-COMPILER-RULES · PROPOSED (NOT EXECUTED) · APPEND-ONLY · PENDING AUTHORITY BOARD REVIEW.**
+
+
+---
+
+## PCAMG-RUNTIME-0003A Canonical-Source Affirmation (Append-Only)
+
+> **APPEND-ONLY AFFIRMATION** issued by `PCAMG-RUNTIME-0003A-CERTIFICATION-REMEDIATION-PACKAGE`.
+> This note affirms — and does **not** change — the rule and error definitions in §3 and §4. No `CR-*` or
+> `CE-*` is added, removed, renumbered, or re-meaninged. No new doctrine; no constitutional-meaning change;
+> no authority reassignment. Base commit `65deb4c`; date 2026-07-05.
+
+In closing certification finding **F-01** (Governance Compiler catalog divergence), this specification's
+**§3 (`CR-1..12`)** and **§4 (`CE-*`, 10 codes)** are declared the **single canonical source of truth** for
+the Governance Compiler rule/error catalog. All runtime artifacts referencing `CR-*`/`CE-*` — notably
+`PCAMG-RUNTIME-0001` §5 and `PCAMG-RUNTIME-0002` §10.3 — derive their numbering and error mapping **from**
+this specification and were reconciled to it by append-only addenda under `PCAMG-RUNTIME-0003A`. In
+particular: `CR-10 = Append-only`, `CR-12 = Fail-closed (→ CE-AMBIGUOUS)`, and no `CE-UNRESOLVED` exists in
+the canonical catalog. This affirmation leaves §3/§4 semantically intact.
+
+**END PCAMG-RUNTIME-0003A CANONICAL-SOURCE AFFIRMATION · APPEND-ONLY · DEFINITIONS UNCHANGED · F-01 CLOSED.**

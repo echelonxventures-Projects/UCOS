@@ -1764,3 +1764,64 @@ deliberation. Construction of `src/control/governance/*` may begin **only** afte
 **END PCAMG-RUNTIME-0001 — CONSTITUTIONAL GOVERNANCE RUNTIME SPECIFICATION · PROPOSED (NOT ENROLLED) · 
 RUNTIME ARCHITECTURE COMPLETE · NO CONSTRUCTION AUTHORIZED · APPEND-ONLY · PENDING AUTHORITY BOARD REVIEW.**
 
+
+
+---
+
+## PCAMG-RUNTIME-0003A Remediation Addendum (Append-Only)
+
+> **APPEND-ONLY CORRECTION** issued by `PCAMG-RUNTIME-0003A-CERTIFICATION-REMEDIATION-PACKAGE`.
+> This addendum supersedes the referenced passages by correction note only. No prior line of this
+> specification is deleted or rewritten (INV-10). It creates no new doctrine, changes no constitutional
+> meaning, reassigns no authority, and authorizes no construction. Base commit `65deb4c`; date 2026-07-05.
+
+### R-1 — Governance Compiler catalog reconciliation (closes F-01, MEDIUM)
+
+The single canonical source of truth for the compiler rule/error catalog is
+`SPEC-GOVERNANCE-COMPILER-RULES` §3 (`CR-1..12`) and §4 (`CE-*`). Where §5.2/§5.3 of this specification
+diverge, the canonical catalog prevails as follows:
+
+| Element | §5.2/§5.3 as-written | **Canonical correction** |
+|---------|----------------------|--------------------------|
+| CR-10 | "Fail-closed (unresolved input halts compile) → `CE-UNRESOLVED`" | **`CR-10 = Append-only`** (recompilation supersedes prior output with a supersession link, INV-10; never deletes). No dedicated `CE-*` — enforced as a structural discipline. |
+| CR-12 | "Unambiguous → `CE-AMBIGUOUS`" | **`CR-12 = Fail-closed`** (any unresolved input, ambiguity, or rule violation halts compilation; no partial-activate). Ambiguity is reported as `CE-AMBIGUOUS`. |
+| `CE-UNRESOLVED` | introduced in §5.2 and §5.5 | **Retired.** Not part of the canonical 10-code `CE-*` catalog. Fail-closed halts surface the specific typed code of the failing rule (e.g., `CE-UNROOTED` for a missing/inactive principle that leaves a rule un-rooted; `CE-AMBIGUOUS` for unresolved ambiguity). |
+| §5.3 `rules_applied` | `CR-1..9, 11, 12` (CR-10 absent) | **`rules_applied = CR-1..12`**, including `CR-10` (append-only). |
+
+Canonical `CE-*` catalog (complete, 10 codes): `CE-UNROOTED`, `CE-META`, `CE-HARDCODE`, `CE-OWNER`,
+`CE-SOD`, `CE-SEC`, `CE-TRACE`, `CE-NONDET`, `CE-INVERSION`, `CE-AMBIGUOUS`.
+
+**Gate:** this reconciliation is required before Program phase A-5 (framework enrollment) or compiler
+construction, and is in force as of `PCAMG-RUNTIME-0003A`.
+
+### R-2 — Baseline reference correction (closes F-02, LOW)
+
+Every `≥254/254` occurrence in this specification (§1.2, the §9.1 test-tree comment, §10.1 Phase 8, §10.3,
+§10.4 criterion 8, and the Scope-Discipline table) is a stale snapshot and is superseded by the current
+baseline:
+
+> **Construction green-baseline floor = 443 / 443** (378 `platform-runtime` + 65 `contract-generator`),
+> reproduced at commit `65deb4c`. Frozen governance-corpus baseline = **284** at commit `56a32d3`.
+> The `254` figure (213 base + 41 memory) was a prior memory-fabric snapshot and understates the actual
+> floor. A construction phase MUST assert **no regression below 443/443**.
+
+### R-3 — §9.1 namespace path disambiguation (closes F-03, LOW)
+
+The §9.1 proposed tree root `packages/platform-runtime/src/control/governance/*` collides with the
+pre-existing, unrelated UCOS Governance Fabric (`governance-registry.ts`, GOV-001/002/003) in the same
+directory. At construction time (Article-IX-gated, deferred) the following namespace governance rules apply:
+
+| Rule | Statement |
+|------|-----------|
+| NG-1 | The PCAMG Constitutional Governance Runtime occupies a disambiguated root — canonical: `packages/platform-runtime/src/control/constitutional-governance/*` (alternative: `…/control/governance/pcamg/*`). |
+| NG-2 | The existing `src/control/governance/` UCOS Governance Fabric MUST NOT be moved, renamed, superseded, or mutated; integration is read-only and additive. |
+| NG-3 | The PCAMG `REG-GOV` module MUST NOT reuse the bare filename `governance-registry.ts` co-located with the existing fabric; disambiguation is by namespace, not co-location. |
+| NG-4 | The chosen namespace is carried into any construction-authorization act; the two "governance" concepts remain separately owned and separately traceable. |
+
+The §9.1 tree remains valid **relative to the disambiguated root** in NG-1; the bare
+`src/control/governance/*` root is superseded for PCAMG runtime placement.
+
+**Scope confirmation:** append-only; no code, no infrastructure, no enrollment, no Article IX release; ratified
+artifacts, INV-1..13, INV-CORE-*, and AD-0014 unchanged.
+
+**END PCAMG-RUNTIME-0003A REMEDIATION ADDENDUM · APPEND-ONLY · F-01/F-02/F-03 CLOSED.**

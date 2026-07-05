@@ -730,3 +730,32 @@ yields an identical verdict and `determinism_hash`.
 **END PCAMG-RUNTIME-0002 — REFERENCE IMPLEMENTATION BLUEPRINT.**
 Executable architecture for PCAMG-RUNTIME-0001. Construction/instantiation remains gated by Article IX /
 AUTH-012; this document instantiates nothing.
+
+
+---
+
+## PCAMG-RUNTIME-0003A Remediation Addendum (Append-Only)
+
+> **APPEND-ONLY CORRECTION** issued by `PCAMG-RUNTIME-0003A-CERTIFICATION-REMEDIATION-PACKAGE`.
+> No prior line of this blueprint is deleted or rewritten (INV-10). No new doctrine, no constitutional-meaning
+> change, no authority reassignment, no construction authorized. Base commit `65deb4c`; date 2026-07-05.
+
+### R-1 — §10.3 compiler-rules reconciliation (closes F-01, MEDIUM)
+
+The canonical compiler catalog is `SPEC-GOVERNANCE-COMPILER-RULES` §3/§4. The §10.3 certification table is
+reconciled to it as follows (append-only):
+
+| Cert | Canonical rule | Assertion / error mapping |
+|------|----------------|---------------------------|
+| `CERT-CR10` *(added)* | **CR-10 Append-only** | recompilation supersedes prior output via supersession link (INV-10); never deletes. Structural discipline; no dedicated `CE-*`. |
+| `CERT-CR12` *(affirmed)* | **CR-12 Fail-closed** | any unresolved input halts compile; no partial governance emitted. Ambiguity ⇒ `CE-AMBIGUOUS`. |
+
+All `CE-*` mappings in §10.3 bind to the canonical 10-code catalog: `CE-UNROOTED`, `CE-META`, `CE-HARDCODE`,
+`CE-OWNER`, `CE-SOD`, `CE-SEC`, `CE-TRACE`, `CE-NONDET`, `CE-INVERSION`, `CE-AMBIGUOUS`. There is **no**
+`CE-UNRESOLVED` in the catalog. With `CERT-CR10` added, the certified compiler-rule set enumerates
+**CR-1..12** in full.
+
+**Scope confirmation:** append-only; no code executed; no enrollment; consistent with
+`PCAMG-RUNTIME-0001` §5 as corrected by that artifact's `PCAMG-RUNTIME-0003A` addendum R-1.
+
+**END PCAMG-RUNTIME-0003A REMEDIATION ADDENDUM · APPEND-ONLY · F-01 CLOSED.**

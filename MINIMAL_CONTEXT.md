@@ -6,7 +6,7 @@
 > `registry/program/*.json`.
 
 **Program:** UCOS Omega-Infinity (Program Layer v1.0.0)
-**Computed:** 2026-07-05T08:49:40.577Z
+**Computed:** 2026-07-05T08:58:26.941Z
 
 ## Where the program is
 - Phase: **PHASE-P.1 — Constitutional Program Compiler & Autonomous Execution Governor** (IN_PROGRESS)
