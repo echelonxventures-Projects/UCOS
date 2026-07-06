@@ -24,3 +24,19 @@ export * from "./registries/index.ts";
 export * from "./audit-chain.ts";
 export * from "./audit-verifier.ts";
 export * from "./composition-root.ts";
+
+// Wave-A Authority Runtime Foundation (PCAMG-RUNTIME-0102A) — additive, read-over-Wave-1.
+// Namespaced re-exports avoid any collision with the `export *` surface above (e.g. the Wave-1
+// audit-verifier's `verifyChain`/`AuditChainVerificationResult`). Reachable through the platform
+// control surface as `constitutionalGovernance.authorityRuntime` / `.authorityVerification`.
+// Read-only, propose-only, fail-closed: confers NO ACTIVE state and originates NO authority.
+export * as authorityRuntime from "./authority/index.ts";
+export * as authorityVerification from "./verification/index.ts";
+
+// Wave-B Constitutional Resolution Layer (PCAMG-RUNTIME-0107A) — additive, read-over-Wave-A/Wave-1.
+// Namespaced re-export avoids any collision with the surfaces above (e.g. its resolution-audit
+// verifiers `verifyResolutionAudit`/`verifyResolutionReplay` are distinct from the Wave-1 audit
+// verifier's `verifyChain`/`verifyReplay`). Reachable through the platform control surface as
+// `constitutionalGovernance.constitutionalResolution`. Read-only resolvers + append-only resolution
+// audit: confers NO ACTIVE state, originates NO authority, and appends nothing to the governance chain.
+export * as constitutionalResolution from "./constitutional-resolution/index.ts";
