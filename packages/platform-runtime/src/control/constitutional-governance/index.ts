@@ -47,3 +47,11 @@ export * as constitutionalResolution from "./constitutional-resolution/index.ts"
 // append-only evidence emission: confers NO ACTIVE state, originates NO authority, executes NO
 // governance, and creates NO activation pathway (Wave-C/D boundary).
 export * as governanceEvaluation from "./governance-evaluation/index.ts";
+
+// Wave-D Execution Eligibility Layer (PCAMG-RUNTIME-0202B) — additive, read-over-Wave-C/Wave-B/Wave-A/Wave-1.
+// Namespaced re-export avoids any collision with the surfaces above. Reachable through the platform
+// control surface as `constitutionalGovernance.executionEligibility`. Read-only eligibility assessment
+// + append-only evidence emission: confers NO ACTIVE state, originates NO authority, executes NO
+// governance, triggers NO execution, and creates NO activation pathway. `ELIGIBLE` means "MAY advance
+// toward a future execution phase" — never authorization-to-execute (R-1 / R-3 semantic firewall).
+export * as executionEligibility from "./execution-eligibility/index.ts";
