@@ -40,3 +40,10 @@ export * as authorityVerification from "./verification/index.ts";
 // `constitutionalGovernance.constitutionalResolution`. Read-only resolvers + append-only resolution
 // audit: confers NO ACTIVE state, originates NO authority, and appends nothing to the governance chain.
 export * as constitutionalResolution from "./constitutional-resolution/index.ts";
+
+// Wave-C Governance Evaluation Layer (PCAMG-RUNTIME-0112A) — additive, read-over-Wave-B/Wave-A/Wave-1.
+// Namespaced re-export avoids any collision with the surfaces above. Reachable through the platform
+// control surface as `constitutionalGovernance.governanceEvaluation`. Read-only evaluation engines +
+// append-only evidence emission: confers NO ACTIVE state, originates NO authority, executes NO
+// governance, and creates NO activation pathway (Wave-C/D boundary).
+export * as governanceEvaluation from "./governance-evaluation/index.ts";
